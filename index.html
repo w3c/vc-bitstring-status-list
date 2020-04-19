@@ -277,7 +277,10 @@ includes the <code>RevocationList2020Credential</code> value.
         <h3>RevocationList2020Credential</h3>
 
         <p>
-
+When a revocation list is published, the result is a  <a>verifiable
+credential</a> that encapsulates the revocation list. The following section
+describes the format of the <a>verifiable credential</a> that encapsulates the
+revocation list:
         </p>
 
         <table class="simple">
@@ -287,18 +290,36 @@ includes the <code>RevocationList2020Credential</code> value.
           </thead>
           <tbody>
             <tr>
-              <td></td>
+              <td>id</td>
               <td>
+The <a>verifiable credential</a> that contains the revocation list MUST
+express an <code>id</code> property that matches the value specified in
+<code>revocationListCredential</code> for the corresponding
+<code>RevocationList2020Status</code>
+(see <a href="#revocationlist2020status"></a>).
               </td>
             </tr>
             <tr>
-              <td></td>
+              <td>type</td>
               <td>
+The <a>verifiable credential</a> that contains the revocation list MUST
+express a <code>type</code> property that includes the
+<code>RevocationList2020Credential</code> value.
               </td>
             </tr>
             <tr>
-              <td></td>
+              <td>credentialSubject.type</td>
               <td>
+The <code>type</code> of the credential <a>subject</a>, which is the
+revocation list, MUST be <code>RevocationList2020</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>credentialSubject.encodedList</td>
+              <td>
+The <code>encodedList</code> property of the credential <a>subject</a> MUST be
+the ZLIB-compressed [[RFC1950]], base-64 encoded [[RFC4648]] bitstring values
+for the associated range of <a>verifiable credential</a> status values.
               </td>
             </tr>
           </tbody>
