@@ -215,7 +215,34 @@ that uses the data model described in this specification.
             <tr>
               <td>id</td>
               <td>
-
+The constraints on the <code>id</code> property are listed in the
+Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
+value is expected to be a URL that identifies the status information associated
+with the <a>verifiable credential</a>. It MUST NOT be the URL for the
+revocation list.
+              </td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>
+The <code>type</code> property MUST be <code>RevocationList2020Status</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>revocationListIndex</td>
+              <td>
+The <code>revocationListIndex</code> property MUST be an arbitrary size integer
+greater than or equal to 0, expressed as a string. The value identifies the bit
+position of the revocation status of the <a>verifiable credential</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>revocationListCredential</td>
+              <td>
+The <code>revocationListCredential</code> property MUST be a URL to a
+<a>verifiable credential</a>. When the URL is dereferenced, the resulting
+<a>verifiable credential</a> MUST have <code>type</code> property that
+includes the <code>RevocationList2020Credential</code> value.
               </td>
             </tr>
           </tbody>
@@ -235,7 +262,7 @@ that uses the data model described in this specification.
     "id": "https://dmv.example.gov/credentials/status/3#94567",
     "type": "RevocationList2020Status",
     "revocationListIndex": "94567",
-    "revocationListCredential": "https://dmv.example.gov/credentials/status/3"
+    "revocationListCredential": "https://example.com/credentials/status/3"
   }</span>,
   "credentialSubject": {
     "id": "did:example:6789",
@@ -245,6 +272,58 @@ that uses the data model described in this specification.
 }
         </pre>
       </section>
+
+      <section>
+        <h3>RevocationList2020Credential</h3>
+
+        <p>
+
+        </p>
+
+        <table class="simple">
+          <thead>
+            <th style="white-space: nowrap">Property</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example nohighlight" title="Example RevocationList2020 Credential">
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/vc-revocation-list/v1"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">RevocationList2020Credential</span>"],
+  "issuer": "did:example:12345",
+  "issued": "2020-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">RevocationList2020</span>",
+    <span class="highlight">"encodedList": "H4sIAAAAAAAAA-3BMQEAAADCoPVPbQsvoAAAAAAAAAAAAAAAAP4GcwM92tQwAAA"</span>
+  },
+  "proof": { ... }
+}
+        </pre>
+      </section>
+
     </section>
 
   <section class="informative">
