@@ -102,8 +102,8 @@ pre .comment {
     <section id='abstract'>
       <p>
 This specification describes a privacy-preserving, space-efficient, and
-high-performance mechanism for publishing the revocation status of Verifiable
-Credentials.
+high-performance mechanism for publishing the revocation status of
+Verifiable Credentials.
       </p>
     </section>
 
@@ -130,7 +130,45 @@ or send them to
     <section class="informative">
       <h2>Introduction</h2>
       <p>
-
+It is often useful for an <a>issuer</a> of <a>verifiable credentials</a>
+[[VC-DATA-MODEL]] to link to a location where a <a>verifier</a> can check to see
+if a credential has been revoked. There are a variety of privacy and performance
+considerations that are made when designing, publishing, and processing
+revocation lists.
+      </p>
+      <p>
+One such privacy consideration happens when there is a one-to-one mapping
+between a <a>verifiable credential</a> and a URL where the revocation status is
+published. This type of mapping enables the website that publishes the URL to
+correlate the <a>holder</a>, time, and <a>verifier</a> when the status is
+checked. This could enable the <a>issuer</a> to discover the type of interaction
+the <a>holder</a> is having with the <a>verifier</a>, such as providing an age
+verification credential when entering a bar. Being tracked by the <a>issuer</a>
+of a driver's license when entering an establishment violates a privacy
+expectation that many people have today.
+      </p>
+      <p>
+Similarly, there are performance considerations that are explored when designing
+revocation lists. One such consideration is where the list is published and the
+burden it places from a bandwidth and processing perspective, both on the server
+and the client fetching the information. In order to meet privacy expectations,
+it is useful to bundle the status of large sets of credentials into a single
+list to help with herd privacy. However, doing so  can place an impossible
+burden on both the server and client if the status information is as much as a
+few hundred bytes in size across a population of hundreds of millions of
+<a>holders</a>.
+      </p>
+      <p>
+The rest of this document proposes a highly compressible, bitstring-based
+revocation list mechanism with strong privacy-preserving characteristics,
+that is compatible with the architecture of the Web, is highly space-efficient,
+and lends itself well to content distribution networks. As an example of
+using this specification to achieve a number of beneficial privacy and
+performance goals, it is possible to create a revocation list that can be
+constructed for 100,000 <a>verifiable credentials</a> that is roughly
+12,500 bytes in size in the worst case. In a case where a few hundred
+credentials have been revoked, the size of the list is less than a
+few hundred bytes while providing privacy in a herd of 100,000 individuals.
       </p>
     </section>
 
