@@ -1,7 +1,7 @@
 /* globals omitTerms, respecConfig, $, require */
 /* exported linkCrossReferences, restrictReferences, fixIncludes */
 
-var vcwg = {
+var ccg = {
   // Add as the respecConfig localBiblio variable
   // Extend or override global respec references
   localBiblio: {
@@ -14,36 +14,14 @@ var vcwg = {
       ],
       publisher: "University of California, Irvine."
     },
-    "VC-USECASES": {
-      title: "Verifiable Claims Use Cases",
-      href: "https://www.w3.org/TR/verifiable-claims-use-cases/",
+    "string-meta": {
+      title: "Requirements for Language and Direction Metadata in Data Formats",
+      href: "https://w3c.github.io/string-meta/",
       authors: [
-      	"Shane McCarron",
-        "Daniel Burnett",
-        "Gregg Kellogg",
-        "Brian Sletten",
-        "Manu Sporny"
-      ],
-      status: "NOTE",
-      publisher: "Verifiable Claims Working Group"
-    },
-    "VC-EXTENSION-REGISTRY": {
-      title: "Verifiable Credentials Extension Registry",
-      href: "https://w3c-ccg.github.io/vc-extension-registry/",
-      authors: [
-        "Manu Sporny"
-      ],
-      status: "CG-DRAFT",
-      publisher: "Credentials Community Group"
-    },
-    "STRING-META": {
-      title: "Strings on the Web: Language and Direction Metadata",
-      href: "https://www.w3.org/TR/string-meta/",
-      authors: [
-        "Addison Phillips",
+	"Addison Phillips",
         "Richard Ishida"
       ],
-      status: "WD",
+      status: "Editors-DRAFT",
       publisher: "Internationalization Working Group"
     },
     "LD-PROOFS": {
@@ -76,56 +54,9 @@ var vcwg = {
       status: "CG-DRAFT",
       publisher: "Digital Verification Community Group"
     },
-    "CL-SIGNATURES": {
-      title: "A Signature Scheme with Efficient Protocols",
-      href: "http://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf",
-      authors: [
-        "Jan Camenisch",
-        "Anna Lysyanskaya"
-      ],
-      status: "Peer Reviewed Paper",
-      publisher: "IBM Research"
-    },
     // aliases to known references
     "HTTP-SIGNATURES": {
       aliasOf: "http-signatures"
-    },
-    "MACAROONS": {
-      title: 'Macaroons',
-      // TODO: create spec
-      href: 'http://macaroons.io/',
-      authors: ['Arnar Birgisson', 'Joe Gibbs Politz', 'Úlfar Erlingsson',
-        'Ankur Taly', 'Michael Vrable', 'Mark Lentczner'],
-      status: 'unofficial',
-      publisher: 'Credentials Community Group'
-    },
-    'OPEN-BADGES': {
-      title: 'Open Badges',
-      href: 'https://github.com/openbadges/openbadges-specification',
-      authors: ['Brian Brennan', 'Mike Larsson', 'Chris McAvoy',
-        'Nate Otto', 'Kerri Lemoie'],
-      status:   'BA-DRAFT',
-      publisher:  'Badge Alliance Standard Working Group'
-    },
-    'RDF-NORMALIZATION': {
-      title: 'RDF Dataset Normalization',
-      href: 'http://json-ld.github.io/normalization/spec/',
-      authors: ['Dave Longley', 'Manu Sporny'],
-      status:   'CG-DRAFT',
-      publisher:  'Credentials W3C Community Group'
-    },
-    'DEMOGRAPHICS': {
-      title: 'Simple Demographics Often Identify People Uniquely',
-      href: 'http://dataprivacylab.org/projects/identifiability/paper1.pdf',
-      authors: ['Latanya Sweeney'],
-      publisher: 'Data Privacy Lab'
-    },
-    'VC-IMP-GUIDE': {
-      title: 'Verifiable Credentials Implementation Guidelines 1.0',
-      href: 'https://w3c.github.io/vc-imp-guide/',
-      authors: ['Andrei Sambra', 'Manu Sporny'],
-      status: 'ED',
-      publisher: 'Credentials Community Group'
     },
     'HASHLINK': {
       title: 'Cryptographic Hyperlinks',
@@ -134,24 +65,28 @@ var vcwg = {
       status: 'Internet-Draft',
       publisher: 'Internet Engineering Task Force (IETF)'
     },
+    'DID-CORE': {
+      title: 'Decentralized Identifier Specification v1.0',
+      href: 'https://w3c.github.io/did-spec/',
+      // authors: [],
+      status: 'ED-DRAFT',
+      publisher: 'DID Working Group'
+    },
+    'ZCAP': {
+      title: 'Authorization Capabilities for Linked Data',
+      href: 'https://w3c-ccg.github.io/zcap-ld/',
+      authors: [
+        "Christopher Lemmer Webber",
+        "Manu Sporny",
+        "Mark S. Miller"
+      ],
+      status: 'CG-DRAFT',
+      publisher: 'Credentials Community Group'
+    },
     'IPFS': {
       title: 'InterPlanetary File System (IPFS)',
       href: 'https://en.wikipedia.org/wiki/InterPlanetary_File_System',
       publisher: 'Wikipedia'
-    },
-    'JSON-SCHEMA-2018': {
-      title: 'JSON Schema: A Media Type for Describing JSON Documents',
-      href: 'https://tools.ietf.org/html/draft-handrews-json-schema',
-      authors: ['Austin Wright', 'Henry Andrews'],
-      status: 'Internet-Draft',
-      publisher: 'Internet Engineering Task Force (IETF)'
-    },
-    'JSON-LD': {
-      title: 'JSON-LD 1.1: A JSON-based Serialization for Linked Data',
-      href: 'https://www.w3.org/TR/json-ld11/',
-      authors: ['Gregg Kellogg', 'Manu Sporny', 'Dave Longley', 'Markus Lanthaler', 'Pierre-Antoine Champin', 'Niklas Lindström'],
-      status: 'WD',
-      publisher: 'W3C JSON-LD 1.1 Working Group'
     }
   }
 };
