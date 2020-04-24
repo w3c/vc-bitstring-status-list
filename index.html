@@ -455,6 +455,33 @@ Return <code>true</code> if revoked is 1, false otherwise.
 
     <section class="informative">
       <h3>Bitstring Generation Algorithm</h3>
+      <p>
+The following process, or one generating the exact output, MUST be followed
+when generating a revocation list bitstring. The algorithm takes a
+<strong>issuedCredentials</strong> list as input and returns a
+<strong>compressed bitstring</strong> as output.
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>bitstring</strong> be a list of bits where each bit is initialized
+to 0 (zero).
+        </li>
+        <li>
+For each bit in <strong>bitstring</strong>, if there is a
+corresponding <code>revocationListIndex</code> value in
+a revoked credential in <strong>issuedCredentials</strong>, set the bit to
+1 (one), otherwise set the bit to 0 (zero).
+        </li>
+        <li>
+Generate a <strong>compressed bitstring</strong> by using the ZLIB
+compression algorithm [[ZLIB]] on the <strong>bitstring</strong>
+and then base64-encoding [[BASE64]] the result.
+        </li>
+        <li>
+Return the <strong>compressed bitstring</strong>.
+        </li>
+      </ol>
     </section>
 
     <section class="informative">
