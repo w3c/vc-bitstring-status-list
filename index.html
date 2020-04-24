@@ -391,14 +391,9 @@ Let <strong>RLC</strong> be an unsigned
 without the <code>encodedList</code> property set.
         </li>
         <li>
-Generate a <strong>revocation bitstring</strong> by passing
+Generate a <strong>compressed bitstring</strong> by passing
 <strong>issued credentials</strong> to the
 <strong>Bitstring Generation Algorithm</strong>.
-        </li>
-        <li>
-Generate a <strong>compressed bitstring</strong> by using the ZLIB
-compression algorithm [[ZLIB]] on the <strong>revocation bitstring</strong>
-and then base64-encoding [[BASE64]] the result.
         </li>
         <li>
 Set the <code>encodedList</code> to <strong>compressed bitstring</strong>.
@@ -414,16 +409,52 @@ endpoint listed in the <a>verifiable credential</a>.
       <h3>Validate Algorithm</h3>
 
       <p>
-
+The following process, or one generating the exact output, MUST be followed
+when validating a <a>verifiable credential</a> that is contained in a
+<a href="#revocationlist2020credential">RevocationList2020Credential</a>:
       </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
+containing a <code>status</code> entry that is a
+<a href="#revocationlist2020status">RevocationList2020Status</a>.
+        </li>
+        <li>
+Verify all proofs associated with the <strong>credentialToValidate</strong>.
+If a proof fails, return a validation error.
+        </li>
+        <li>
+Let <strong>revocationListCredential</strong> be set to the value of the
+<a href="#revocationlist2020credential">RevocationList2020Credential</a>.
+        </li>
+        <li>
+Let <strong>compressed bitstring</strong> be the value of the
+<code>encodedList</code> property of the
+<a href="#revocationlist2020credential">RevocationList2020Credential</a>.
+        </li>
+        <li>
+Let <strong>credentialIndex</strong> be the value of the
+<code>revocationListIndex</code> property of the
+<a href="#revocationlist2020credential">RevocationList2020Status</a>.
+        </li>
+        <li>
+Generate a <strong>revocation bitstring</strong> by passing
+<strong>compressed bitstring</strong> to the
+<a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
+        </li>
+        <li>
+Let <strong>revoked</strong> be the value of the bit at position
+<strong>credentialIndex</strong>.
+        </li>
+        <li>
+Return <code>true</code> if revoked is 1, false otherwise.
+        </li>
+      </ol>
     </section>
 
     <section class="informative">
       <h3>Bitstring Generation Algorithm</h3>
-
-      <p>
-
-      </p>
     </section>
 
     <section class="informative">
