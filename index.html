@@ -96,6 +96,18 @@ pre .comment {
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+ol.algorithm {
+  counter-reset: numsection;
+  list-style-type: none;
+}
+ol.algorithm li {
+  margin: 0.5em 0;
+}
+ol.algorithm li:before {
+  font-weight: bold;
+  counter-increment: numsection;
+  content: counters(numsection, ".") ") ";
+}
     </style>
   </head>
   <body>
@@ -355,6 +367,74 @@ for the associated range of <a>verifiable credential</a> status values.
       </section>
 
     </section>
+
+  <section class="informative">
+    <h2>Algorithms</h2>
+
+    <section class="informative">
+      <h3>Generate Algorithm</h3>
+
+      <p>
+The following process, or one generating the exact output, MUST be followed
+when producing a
+<a href="#revocationlist2020credential">RevocationList2020Credential</a>:
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>issued credentials</strong> be a list of all issued
+<a>verifiable credentials</a>.
+        </li>
+        <li>
+Let <strong>RLC</strong> be an unsigned
+<a href="#revocationlist2020credential">RevocationList2020Credential</a>
+without the <code>encodedList</code> property set.
+        </li>
+        <li>
+Generate a <strong>revocation bitstring</strong> by passing
+<strong>issued credentials</strong> to the
+<strong>Bitstring Generation Algorithm</strong>.
+        </li>
+        <li>
+Generate a <strong>compressed bitstring</strong> by using the ZLIB
+compression algorithm [[ZLIB]] on the <strong>revocation bitstring</strong>
+and then base64-encoding [[BASE64]] the result.
+        </li>
+        <li>
+Set the <code>encodedList</code> to <strong>compressed bitstring</strong>.
+        </li>
+        <li>
+Generate a proof for the <strong>RLC</strong> and publish it to the
+endpoint listed in the <a>verifiable credential</a>.
+        </li>
+      </ol>
+    </section>
+
+    <section class="informative">
+      <h3>Validate Algorithm</h3>
+
+      <p>
+
+      </p>
+    </section>
+
+    <section class="informative">
+      <h3>Bitstring Generation Algorithm</h3>
+
+      <p>
+
+      </p>
+    </section>
+
+    <section class="informative">
+      <h3>Bitstring Expansion Algorithm</h3>
+
+      <p>
+
+      </p>
+    </section>
+
+  </section>
 
   <section class="informative">
     <h2>Privacy Considerations</h2>
