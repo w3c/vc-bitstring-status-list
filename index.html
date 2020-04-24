@@ -195,18 +195,41 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
     </section>
 
     <section class="informative">
-      <h2>Core Concepts</h2>
+      <h2>Core Concept</h2>
 
       <p>
-
+This section outlines the core concept utilized by the revocation list
+mechanism described in this document. At the most basic level, revocation
+information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
+are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
+list of all <a>verifiable credentials</a> it has issued. Each
+<a>verifiable credential</a> is associated with a position in the list. If
+the binary value of the position in the list is 1 (one), the
+<a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
       </p>
 
-      <section class="informative">
-        <h2>Core Concepts</h2>
+      <p>
+One of the benefits of using a bitstring is that it is a highly compressible
+data format since, in the average case, large numbers of credentials will
+remain unrevoked. This will ensure long sections of bits that are the same
+value and thus highly compressible using run-length compression techniques
+such as ZLIB [[RFC1950]]. The default bitstring size is 16KB (131,072 entries),
+and when only a handful of <a>verifiable credentials</a> are revoked, the
+compressed bitstring size is reduced down to a few hundred bytes.
+      </p>
 
-        <p>
+      <p>
+Another benefit of using a bitstring is that it enables large numbers of
+<a>verifiable credential</a> revocation statuses to be placed in the same  list.
+This specification utilizes a minimum bitstring length of 131,072 (16KB) This
+population size ensures an adequate amount of herd  privacy in the average case.
+If better herd privacy is required, the bitstring  can be made to be larger.
+      </p>
 
-        </p>
+      <p>
+The diagram below provides a visual depiction of these concepts:
+      </p>
+
       </section>
 
     </section>
@@ -340,7 +363,8 @@ revocation list, MUST be <code>RevocationList2020</code>.
               <td>
 The <code>encodedList</code> property of the credential <a>subject</a> MUST be
 the ZLIB-compressed [[RFC1950]], base-64 encoded [[RFC4648]] bitstring values
-for the associated range of <a>verifiable credential</a> status values.
+for the associated range of <a>verifiable credential</a> status values. The
+uncompressed bitstring MUST be at least 16KB in size.
               </td>
             </tr>
           </tbody>
@@ -368,10 +392,15 @@ for the associated range of <a>verifiable credential</a> status values.
 
     </section>
 
-  <section class="informative">
+  <section class="normative">
     <h2>Algorithms</h2>
 
-    <section class="informative">
+    <p>
+The following section outlines the algorithms that are used to generate
+and validate revocation lists as described by this document.
+    </p>
+
+    <section class="normative">
       <h3>Generate Algorithm</h3>
 
       <p>
@@ -405,7 +434,7 @@ endpoint listed in the <a>verifiable credential</a>.
       </ol>
     </section>
 
-    <section class="informative">
+    <section class="normative">
       <h3>Validate Algorithm</h3>
 
       <p>
@@ -453,7 +482,7 @@ Return <code>true</code> if revoked is 1, false otherwise.
       </ol>
     </section>
 
-    <section class="informative">
+    <section class="normative">
       <h3>Bitstring Generation Algorithm</h3>
       <p>
 The following process, or one generating the exact output, MUST be followed
@@ -464,8 +493,8 @@ when generating a revocation list bitstring. The algorithm takes a
 
       <ol class="algorithm">
         <li>
-Let <strong>bitstring</strong> be a list of bits where each bit is initialized
-to 0 (zero).
+Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
+where each bit is initialized to 0 (zero).
         </li>
         <li>
 For each bit in <strong>bitstring</strong>, if there is a
@@ -484,7 +513,7 @@ Return the <strong>compressed bitstring</strong>.
       </ol>
     </section>
 
-    <section class="informative">
+    <section class="normative">
       <h3>Bitstring Expansion Algorithm</h3>
 
       <p>
