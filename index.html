@@ -365,23 +365,22 @@ implications of deploying this specification into production environments.
     </p>
 
     <section class="informative">
-      <h2>Revocation Bitstring Length</h2>
+      <h3>Revocation Bitstring Length</h3>
 
       <p>
-This document specifies a minimum revocation bitstring length of 131072,
-or 16KB uncompressed. This is enough to give individuals an adequate amount of
+This document specifies a minimum revocation bitstring length of 131,072, or
+16KB uncompressed. This is enough to give <a>holders</a> an adequate amount of
 herd privacy if the number of verifiable credentials issued is large enough.
 However, if the number of issued verifiable credentials is a small population,
-the ability to correlate an individual increases because the number of
-allocated slots in the bitstring is small. Correlating this information with,
-for example, where the geographic request came from can also help to
-correlate individuals that have received a credential from the same geographic
-region.
+the ability to correlate an individual increases because the number of allocated
+slots in the bitstring is small. Correlating this information with, for example,
+where the geographic request came from can also help to correlate individuals
+that have received a credential from the same geographic region.
       </p>
     </section>
 
     <section class="informative">
-      <h2>Verifier Caching</h2>
+      <h3>Verifier Caching</h3>
 
       <p>
 It is possible for <a>verifiers</a> to increase the privacy of the
@@ -389,6 +388,19 @@ It is possible for <a>verifiers</a> to increase the privacy of the
 revocation lists that have been fetched from remote servers. By caching the
 content locally, less correlatable information can be inferred from
 <a>verifier</a>-based access patterns on the revocation list.
+      </p>
+    </section>
+
+    <section class="informative">
+      <h3>Content Distribution Networks</h3>
+
+      <p>
+The use of content distribution networks by <a>issuers</a> can increase the
+privacy of <a>holders</a> by reducing or eliminating requests for the
+revocation lists from the <a>issuer</a>. Often, a request for a revocation
+list will be served by an edge device and thus be faster and reduce the load
+on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
+from <a>issuers</a>.
       </p>
     </section>
 
