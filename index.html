@@ -188,6 +188,15 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
       <p>
 
       </p>
+
+      <section class="informative">
+        <h2>Core Concepts</h2>
+
+        <p>
+
+        </p>
+      </section>
+
     </section>
 
     <section class="normative">
@@ -355,9 +364,21 @@ This section details the general privacy considerations and specific privacy
 implications of deploying this specification into production environments.
     </p>
 
-    <p class="issue">
-Write privacy considerations.
-    </p>
+    <section class="informative">
+      <h2>Revocation Bitstring Length</h2>
+
+      <p>
+This document specifies a minimum revocation bitstring length of 131072,
+or 16KB uncompressed. This is enough to give individuals an adequate amount of
+herd privacy if the number of verifiable credentials issued is large enough.
+However, if the number of issued verifiable credentials is a small population,
+the ability to correlate an individual increases because the number of
+allocated slots in the bitstring is small. Correlating this information with,
+for example, where the geographic request came from can also help to
+correlate individuals that have received a credential from the same geographic
+region.
+      </p>
+    </section>
 
   </section>
 
