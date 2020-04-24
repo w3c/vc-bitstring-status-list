@@ -445,7 +445,7 @@ Generate a <strong>revocation bitstring</strong> by passing
         </li>
         <li>
 Let <strong>revoked</strong> be the value of the bit at position
-<strong>credentialIndex</strong>.
+<strong>credentialIndex</strong> in the <strong>revocation bitstring</strong>.
         </li>
         <li>
 Return <code>true</code> if revoked is 1, false otherwise.
@@ -475,8 +475,8 @@ a revoked credential in <strong>issuedCredentials</strong>, set the bit to
         </li>
         <li>
 Generate a <strong>compressed bitstring</strong> by using the ZLIB
-compression algorithm [[ZLIB]] on the <strong>bitstring</strong>
-and then base64-encoding [[BASE64]] the result.
+compression algorithm [[RFC1950]] on the <strong>bitstring</strong>
+and then base64-encoding [[RFC4648]] the result.
         </li>
         <li>
 Return the <strong>compressed bitstring</strong>.
@@ -488,8 +488,27 @@ Return the <strong>compressed bitstring</strong>.
       <h3>Bitstring Expansion Algorithm</h3>
 
       <p>
-
+The following process, or one generating the exact output, MUST be followed
+when expanding a compressed revocation list bitstring. The algorithm takes a
+<strong>compressed bitstring</strong> as input and returns a
+<strong>uncompressed bitstring</strong> as output.
       </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>compressed bitstring</strong> be a compressed revocation list
+bitstring.
+        </li>
+        <li>
+Generate an <strong>uncompressed bitstring</strong> by using the
+base64-decoding [[RFC4648]] algorithm on the
+<strong>compressed bitstring</strong> and then expanding the output using
+the ZLIB decompression algorithm [[RFC1950]].
+        </li>
+        <li>
+Return the <strong>uncompressed bitstring</strong>.
+        </li>
+      </ol>
     </section>
 
   </section>
