@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Revocation List 2020</title>
+    <title>Status List 2021</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
     <!--
       === NOTA BENE ===
       For the three scripts below, if your spec resides on dev.w3 you can check them
       out in the same tree and use relative links so that they'll work offline,
      -->
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script src="./common.js" class="remove"></script>
     <script type="text/javascript" class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-        specStatus: "CG-DRAFT",
+        specStatus: "UNOFFICIAL",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
-        shortName: "vc-status-rl-2020",
+        shortName: "vc-status-list-2021",
 
         // subtitle for the spec
-        subtitle: "A privacy-preserving mechanism for revoking Verifiable Credentials",
+        subtitle: "Privacy-preserving status information for Verifiable Credentials",
 
         // if you wish the publication date to be other than today, set this
         //publishDate: "2019-03-26",
         //crEnd: "2019-04-23",
         //implementationReportURI: "https://w3c.github.io/sdh-test-suite",
         previousMaturity: "UNOFFICIAL",
-        previousPublishDate: "2020-03-18",
+        previousPublishDate: "2021-03-18",
 
         // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
         // and its maturity status
@@ -37,11 +37,11 @@
         localBiblio: ccg.localBiblio,
         doJsonLd: true,
 
-        github: "https://github.com/digitalbazaar/vc-status-rl-2020/",
+        github: "https://github.com/w3c-ccg/vc-status-list-2021/",
         includePermalinks: false,
 
         // if there a publicly available Editor's Draft, this is the link
-        edDraftURI: "https://digitalbazaar.github.io/vc-status-rl-2020/",
+        edDraftURI: "https://w3c-ccg.github.io/vc-status-list-2021/",
 
         // if this is a LCWD, uncomment and set the end of its review period
         // lcEnd: "2009-08-05",
@@ -114,8 +114,8 @@ ol.algorithm li:before {
     <section id='abstract'>
       <p>
 This specification describes a privacy-preserving, space-efficient, and
-high-performance mechanism for publishing the revocation status of
-Verifiable Credentials.
+high-performance mechanism for publishing status information such as
+suspension or revocation of Verifiable Credentials.
       </p>
     </section>
 
@@ -124,13 +124,13 @@ Verifiable Credentials.
 This document is experimental and is undergoing heavy development.
 It is inadvisable to implement the specification in its current form.
 An
-<a href="https://github.com/digitalbazaar/vc-revocation-list-2020">experimental
+<a href="https://github.com/w3c-ccg/vc-status-list-2021">experimental
 implementation</a> is available.
       </p>
       <!--p>
 Comments regarding all aspects of this document are welcome.
 Please file issues
-directly on <a href="https://github.com/digitalbazaar/vc-status-rl-2020/issues/">GitHub</a>,
+directly on <a href="https://github.com/w3c-ccg/vc-status-list-2021/issues/">GitHub</a>,
 or send them to
 <a href="mailto:public-credentials@w3.org">public-credentials@w3.org</a>
 (<a href="mailto:public-credentials-request@w3.org?subject=subscribe">subscribe</a>,
@@ -144,13 +144,13 @@ or send them to
       <p>
 It is often useful for an <a>issuer</a> of <a>verifiable credentials</a>
 [[VC-DATA-MODEL]] to link to a location where a <a>verifier</a> can check to see
-if a credential has been revoked. There are a variety of privacy and performance
-considerations that are made when designing, publishing, and processing
-revocation lists.
+if a credential has been suspended or revoked. There are a variety of privacy
+and performance considerations that are made when designing, publishing, and
+processing status lists.
       </p>
       <p>
 One such privacy consideration happens when there is a one-to-one mapping
-between a <a>verifiable credential</a> and a URL where the revocation status is
+between a <a>verifiable credential</a> and a URL where the status is
 published. This type of mapping enables the website that publishes the URL to
 correlate the <a>holder</a>, time, and <a>verifier</a> when the status is
 checked. This could enable the <a>issuer</a> to discover the type of interaction
@@ -161,7 +161,7 @@ expectation that many people have today.
       </p>
       <p>
 Similarly, there are performance considerations that are explored when designing
-revocation lists. One such consideration is where the list is published and the
+status lists. One such consideration is where the list is published and the
 burden it places from a bandwidth and processing perspective, both on the server
 and the client fetching the information. In order to meet privacy expectations,
 it is useful to bundle the status of large sets of credentials into a single
@@ -172,11 +172,11 @@ hundreds of millions of <a>holders</a>.
       </p>
       <p>
 The rest of this document proposes a highly compressible, bitstring-based
-revocation list mechanism with strong privacy-preserving characteristics,
+status list mechanism with strong privacy-preserving characteristics,
 that is compatible with the architecture of the Web, is highly space-efficient,
 and lends itself well to content distribution networks. As an example of
 using this specification to achieve a number of beneficial privacy and
-performance goals, it is possible to create a revocation list that can be
+performance goals, it is possible to create a status list that can be
 constructed for 100,000 <a>verifiable credentials</a> that is roughly
 12,500 bytes in size in the worst case. In a case where a few hundred
 credentials have been revoked, the size of the list is less than a
@@ -198,8 +198,8 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
       <h2>Core Concept</h2>
 
       <p>
-This section outlines the core concept utilized by the revocation list
-mechanism described in this document. At the most basic level, revocation
+This section outlines the core concept utilized by the status list
+mechanism described in this document. At the most basic level, status
 information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
 are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
 list of all <a>verifiable credentials</a> it has issued. Each
@@ -220,7 +220,7 @@ compressed bitstring size is reduced down to a few hundred bytes.
 
       <p>
 Another benefit of using a bitstring is that it enables large numbers of
-<a>verifiable credential</a> revocation statuses to be placed in the same  list.
+<a>verifiable credential</a> statuses to be placed in the same  list.
 This specification utilizes a minimum bitstring length of 131,072 (16KB). This
 population size ensures an adequate amount of herd  privacy in the average case.
 If better herd privacy is required, the bitstring can be made to be larger.
@@ -228,7 +228,7 @@ If better herd privacy is required, the bitstring can be made to be larger.
 
       <figure id="bitstring">
         <img style="margin: auto; display: block; width: 75%;"
-             src="diagrams/RevocationList2020.svg" alt="diagram showing a
+             src="diagrams/StatusList2021.svg" alt="diagram showing a
              list of boxes at the top of the image with two of them in
              red depicting revoked credentials. Text beside the boxes to the
              right reads 16 kilobytes. An depiction of the boxes being
@@ -249,10 +249,10 @@ The following sections outlines the data model for this document.
       </p>
 
       <section>
-        <h3>RevocationList2020Status</h3>
+        <h3>RevocationList2021</h3>
 
         <p>
-When an <a>issuer</a> desires to enable revocation for a
+When an <a>issuer</a> desires to enable status information for a
 <a>verifiable credential</a>, they MAY add a <code>status</code> property
 that uses the data model described in this specification.
         </p>
@@ -272,50 +272,50 @@ The constraints on the <code>id</code> property are listed in the
 Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
 value is expected to be a URL that identifies the status information associated
 with the <a>verifiable credential</a>. It MUST NOT be the URL for the
-revocation list.
+status list.
               </td>
             </tr>
             <tr>
               <td>type</td>
               <td>
-The <code>type</code> property MUST be <code>RevocationList2020Status</code>.
+The <code>type</code> property MUST be <code>RevocationList2021</code>.
               </td>
             </tr>
             <tr>
-              <td>revocationListIndex</td>
+              <td>statusListIndex</td>
               <td>
-The <code>revocationListIndex</code> property MUST be an arbitrary size integer
+The <code>statusListIndex</code> property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the bit
 position of the revocation status of the <a>verifiable credential</a>.
               </td>
             </tr>
             <tr>
-              <td>revocationListCredential</td>
+              <td>statusListCredential</td>
               <td>
-The <code>revocationListCredential</code> property MUST be a URL to a
+The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
 <a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>RevocationList2020Credential</code> value.
+includes the <code>StatusList2021Credential</code> value.
               </td>
             </tr>
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example RevocationList2020Status">
+        <pre class="example nohighlight" title="Example RevocationList2021">
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/vc-revocation-list-2020/v1"
+    "https://w3id.org/vc-status-list-2021/v1"
   ],
   "id": "https://example.com/credentials/23894672394",
   "type": ["VerifiableCredential"],
   "issuer": "did:example:12345",
-  "issued": "2020-04-05T14:27:42Z",
+  "issued": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
     "id": "https://dmv.example.gov/credentials/status/3#94567",
-    "type": "RevocationList2020Status",
-    "revocationListIndex": "94567",
-    "revocationListCredential": "https://example.com/credentials/status/3"
+    "type": "RevocationList2021",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
   }</span>,
   "credentialSubject": {
     "id": "did:example:6789",
@@ -327,13 +327,12 @@ includes the <code>RevocationList2020Credential</code> value.
       </section>
 
       <section>
-        <h3>RevocationList2020Credential</h3>
+        <h3>SuspensionList2021</h3>
 
         <p>
-When a revocation list is published, the result is a  <a>verifiable
-credential</a> that encapsulates the revocation list. The following section
-describes the format of the <a>verifiable credential</a> that encapsulates the
-revocation list:
+When an <a>issuer</a> desires to enable status information for a
+<a>verifiable credential</a>, they MAY add a <code>status</code> property
+that uses the data model described in this specification.
         </p>
 
         <table class="simple">
@@ -347,26 +346,105 @@ revocation list:
             <tr>
               <td>id</td>
               <td>
-The <a>verifiable credential</a> that contains the revocation list MUST
-express an <code>id</code> property that matches the value specified in
-<code>revocationListCredential</code> for the corresponding
-<code>RevocationList2020Status</code>
-(see <a href="#revocationlist2020status"></a>).
+The constraints on the <code>id</code> property are listed in the
+Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
+value is expected to be a URL that identifies the status information associated
+with the <a>verifiable credential</a>. It MUST NOT be the URL for the
+status list.
               </td>
             </tr>
             <tr>
               <td>type</td>
               <td>
-The <a>verifiable credential</a> that contains the revocation list MUST
+The <code>type</code> property MUST be <code>RevocationList2021</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>statusListIndex</td>
+              <td>
+The <code>statusListIndex</code> property MUST be an arbitrary size integer
+greater than or equal to 0, expressed as a string. The value identifies the bit
+position of the revocation status of the <a>verifiable credential</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>statusListCredential</td>
+              <td>
+The <code>statusListCredential</code> property MUST be a URL to a
+<a>verifiable credential</a>. When the URL is dereferenced, the resulting
+<a>verifiable credential</a> MUST have <code>type</code> property that
+includes the <code>StatusList2021Credential</code> value.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pre class="example nohighlight" title="Example RevocationList2021">
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/vc-status-list-2021/v1"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "issued": "2021-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://dmv.example.gov/credentials/status/3#94567",
+    "type": "SuspensionList2021",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  },
+  "proof": { <span class="comment">...</span> }
+}
+        </pre>
+      </section>
+
+      <section>
+        <h3>StatusList2021Credential</h3>
+
+        <p>
+When a status list is published, the result is a  <a>verifiable
+credential</a> that encapsulates the status list. The following section
+describes the format of the <a>verifiable credential</a> that encapsulates the
+status list:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th style="white-space: nowrap">Property</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>
+The <a>verifiable credential</a> that contains the status list MUST
+express an <code>id</code> property that matches the value specified in
+<code>statusListCredential</code> for the corresponding
+<code>RevocationList2021</code>
+(see <a href="#revocationlist2021"></a>).
+              </td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>
+The <a>verifiable credential</a> that contains the status list MUST
 express a <code>type</code> property that includes the
-<code>RevocationList2020Credential</code> value.
+<code>StatusList2021Credential</code> value.
               </td>
             </tr>
             <tr>
               <td>credentialSubject.type</td>
               <td>
 The <code>type</code> of the credential <a>subject</a>, which is the
-revocation list, MUST be <code>RevocationList2020</code>.
+status list, MUST be <code>RevocationList2021</code>.
               </td>
             </tr>
             <tr>
@@ -381,19 +459,19 @@ uncompressed bitstring MUST be at least 16KB in size.
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example RevocationList2020 Credential">
+        <pre class="example nohighlight" title="Example RevocationList2021 Credential">
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/vc-revocation-list-2020/v1"
+    "https://w3id.org/vc-status-list-2021/v1"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">RevocationList2020Credential</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
   "issuer": "did:example:12345",
-  "issued": "2020-04-05T14:27:40Z",
+  "issued": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">RevocationList2020</span>",
+    "type": "<span class="highlight">RevocationList2021</span>",
     <span class="highlight">"encodedList": "H4sIAAAAAAAAA-3BMQEAAADCoPVPbQsvoAAAAAAAAAAAAAAAAP4GcwM92tQwAAA"</span>
   },
   "proof": { ... }
@@ -408,7 +486,7 @@ uncompressed bitstring MUST be at least 16KB in size.
 
     <p>
 The following section outlines the algorithms that are used to generate
-and validate revocation lists as described by this document.
+and validate status lists as described by this document.
     </p>
 
     <section class="normative">
@@ -417,7 +495,7 @@ and validate revocation lists as described by this document.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when producing a
-<a href="#revocationlist2020credential">RevocationList2020Credential</a>:
+<a href="#statuslist2021credential">StatusList2021Credential</a>:
       </p>
 
       <ol class="algorithm">
@@ -427,7 +505,7 @@ Let <strong>issued credentials</strong> be a list of all issued
         </li>
         <li>
 Let <strong>RLC</strong> be an unsigned
-<a href="#revocationlist2020credential">RevocationList2020Credential</a>
+<a href="#statuslist2021credential">StatusList2021Credential</a>
 without the <code>encodedList</code> property set.
         </li>
         <li>
@@ -451,32 +529,32 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when validating a <a>verifiable credential</a> that is contained in a
-<a href="#revocationlist2020credential">RevocationList2020Credential</a>:
+<a href="#statuslist2021credential">StatusList2021Credential</a>:
       </p>
 
       <ol class="algorithm">
         <li>
 Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
 containing a <code>status</code> entry that is a
-<a href="#revocationlist2020status">RevocationList2020Status</a>.
+<a href="#revocationlist2021status">RevocationList2021</a>.
         </li>
         <li>
 Verify all proofs associated with the <strong>credentialToValidate</strong>.
 If a proof fails, return a validation error.
         </li>
         <li>
-Let <strong>revocationListCredential</strong> be set to the value of the
-<a href="#revocationlist2020credential">RevocationList2020Credential</a>.
+Let <strong>statusListCredential</strong> be set to the value of the
+<a href="#statuslist2021credential">StatusList2021Credential</a>.
         </li>
         <li>
 Let <strong>compressed bitstring</strong> be the value of the
 <code>encodedList</code> property of the
-<a href="#revocationlist2020credential">RevocationList2020Credential</a>.
+<a href="#statuslist2021credential">StatusList2021Credential</a>.
         </li>
         <li>
 Let <strong>credentialIndex</strong> be the value of the
-<code>revocationListIndex</code> property of the
-<a href="#revocationlist2020credential">RevocationList2020Status</a>.
+<code>statusListIndex</code> property of the
+<a href="#statuslist2021credential">RevocationList2021</a>.
         </li>
         <li>
 Generate a <strong>revocation bitstring</strong> by passing
@@ -497,7 +575,7 @@ Return <code>true</code> if revoked is 1, false otherwise.
       <h3>Bitstring Generation Algorithm</h3>
       <p>
 The following process, or one generating the exact output, MUST be followed
-when generating a revocation list bitstring. The algorithm takes a
+when generating a status list bitstring. The algorithm takes a
 <strong>issuedCredentials</strong> list as input and returns a
 <strong>compressed bitstring</strong> as output.
       </p>
@@ -509,7 +587,7 @@ where each bit is initialized to 0 (zero).
         </li>
         <li>
 For each bit in <strong>bitstring</strong>, if there is a
-corresponding <code>revocationListIndex</code> value in
+corresponding <code>statusListIndex</code> value in
 a revoked credential in <strong>issuedCredentials</strong>, set the bit to
 1 (one), otherwise set the bit to 0 (zero).
         </li>
@@ -529,14 +607,14 @@ Return the <strong>compressed bitstring</strong>.
 
       <p>
 The following process, or one generating the exact output, MUST be followed
-when expanding a compressed revocation list bitstring. The algorithm takes a
+when expanding a compressed status list bitstring. The algorithm takes a
 <strong>compressed bitstring</strong> as input and returns a
 <strong>uncompressed bitstring</strong> as output.
       </p>
 
       <ol class="algorithm">
         <li>
-Let <strong>compressed bitstring</strong> be a compressed revocation list
+Let <strong>compressed bitstring</strong> be a compressed status list
 bitstring.
         </li>
         <li>
@@ -582,9 +660,9 @@ that have received a credential from the same geographic region.
       <p>
 It is possible for <a>verifiers</a> to increase the privacy of the
 <a>holder</a> whose <a>verifiable credential</a> is being checked by caching
-revocation lists that have been fetched from remote servers. By caching the
+status lists that have been fetched from remote servers. By caching the
 content locally, less correlatable information can be inferred from
-<a>verifier</a>-based access patterns on the revocation list.
+<a>verifier</a>-based access patterns on the status list.
       </p>
     </section>
 
@@ -594,7 +672,7 @@ content locally, less correlatable information can be inferred from
       <p>
 The use of content distribution networks by <a>issuers</a> can increase the
 privacy of <a>holders</a> by reducing or eliminating requests for the
-revocation lists from the <a>issuer</a>. Often, a request for a revocation
+status lists from the <a>issuer</a>. Often, a request for a revocation
 list will be served by an edge device and thus be faster and reduce the load
 on the server as well as cloaking <a>verifiers</a> and <a>holders</a>
 from <a>issuers</a>.
