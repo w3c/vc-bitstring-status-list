@@ -313,7 +313,7 @@ includes the <code>StatusList2021Credential</code> value.
   "issued": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
     "id": "https://dmv.example.gov/credentials/status/3#94567",
-    "type": "RevocationList2021",
+    "type": "RevocationList2021Status",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
   }</span>,
@@ -428,7 +428,7 @@ status list:
 The <a>verifiable credential</a> that contains the status list MUST
 express an <code>id</code> property that matches the value specified in
 <code>statusListCredential</code> for the corresponding
-<code>RevocationList2021</code>
+<code>RevocationList2021Status</code>
 (see <a href="#revocationlist2021"></a>).
               </td>
             </tr>
@@ -536,7 +536,7 @@ when validating a <a>verifiable credential</a> that is contained in a
         <li>
 Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
 containing a <code>status</code> entry that is a
-<a href="#revocationlist2021status">RevocationList2021</a>.
+<a href="#revocationlist2021status">RevocationList2021Status</a>.
         </li>
         <li>
 Verify all proofs associated with the <strong>credentialToValidate</strong>.
@@ -554,7 +554,7 @@ Let <strong>compressed bitstring</strong> be the value of the
         <li>
 Let <strong>credentialIndex</strong> be the value of the
 <code>statusListIndex</code> property of the
-<a href="#statuslist2021credential">RevocationList2021</a>.
+<a href="#statuslist2021credential">RevocationList2021Status</a>.
         </li>
         <li>
 Generate a <strong>revocation bitstring</strong> by passing
