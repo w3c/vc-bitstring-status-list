@@ -4,7 +4,7 @@
 
     "StatusList2021Credential": {
       "@id":
-        "https://w3id.org/vc-status-list-2021#StatusList2021Credential",
+        "https://w3id.org/vc/status-list#StatusList2021Credential",
       "@context": {
         "@protected": true,
 
@@ -18,20 +18,20 @@
 
     "RevocationList2021": {
       "@id":
-        "https://w3id.org/vc-status-list-2021#RevocationList2021",
+        "https://w3id.org/vc/status-list#RevocationList2021",
       "@context": {
         "@protected": true,
 
         "id": "@id",
         "type": "@type",
 
-        "encodedList": "https://w3id.org/vc-status-list-2021#encodedList"
+        "encodedList": "https://w3id.org/vc/status-list#encodedList"
       }
     },
 
     "RevocationList2021Status": {
       "@id":
-        "https://w3id.org/vc-status-list-2021#RevocationList2021Status",
+        "https://w3id.org/vc/status-list#RevocationList2021Status",
       "@context": {
         "@protected": true,
 
@@ -40,17 +40,17 @@
 
         "statusListCredential": {
           "@id":
-            "https://w3id.org/vc-status-list-2021#statusListCredential",
+            "https://w3id.org/vc/status-list#statusListCredential",
           "@type": "@id"
         },
         "statusListIndex":
-          "https://w3id.org/vc-status-list-2021#statusListIndex"
+          "https://w3id.org/vc/status-list#statusListIndex"
       }
     },
 
     "SuspensionList2021": {
       "@id":
-        "https://w3id.org/vc-status-list-2021#SuspensionList2021",
+        "https://w3id.org/vc/status-list#SuspensionList2021",
       "@context": {
         "@protected": true,
 
@@ -59,11 +59,11 @@
 
         "statusListCredential": {
           "@id":
-            "https://w3id.org/vc-status-list-2021#statusListCredential",
+            "https://w3id.org/vc/status-list#statusListCredential",
           "@type": "@id"
         },
         "statusListIndex":
-          "https://w3id.org/vc-status-list-2021#statusListIndex"
+          "https://w3id.org/vc/status-list#statusListIndex"
       }
     }
   }
