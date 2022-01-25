@@ -4,7 +4,7 @@
 
     "StatusList2021Credential": {
       "@id":
-        "https://w3id.org/vc-status-list-2021/#StatusList2021Credential",
+        "https://w3id.org/vc-status-list-2021#StatusList2021Credential",
       "@context": {
         "@protected": true,
 
