@@ -213,7 +213,7 @@ One of the benefits of using a bitstring is that it is a highly compressible
 data format since, in the average case, large numbers of credentials will
 remain unrevoked. This will ensure long sections of bits that are the same
 value and thus highly compressible using run-length compression techniques
-such as ZLIB [[RFC1950]]. The default bitstring size is 16KB (131,072 entries),
+such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
 and when only a handful of <a>verifiable credentials</a> are revoked, the
 compressed bitstring size is reduced down to a few hundred bytes.
       </p>
@@ -232,7 +232,7 @@ If better herd privacy is required, the bitstring can be made to be larger.
              list of boxes at the top of the image with two of them in
              red depicting revoked credentials. Text beside the boxes to the
              right reads 16 kilobytes. An depiction of the boxes being
-             ZLIB compressed into a cylinder on the bottom of the page shows
+             GZIP compressed into a cylinder on the bottom of the page shows
              that compression has resulted in a final size of 135 bytes.">
         <figcaption style="text-align: center;">
           A visual depiction of the concepts outlined in this section.
@@ -451,7 +451,7 @@ status list, MUST be <code>RevocationList2021</code>.
               <td>credentialSubject.encodedList</td>
               <td>
 The <code>encodedList</code> property of the credential <a>subject</a> MUST be
-the ZLIB-compressed [[RFC1950]], base-64 encoded [[RFC4648]] bitstring values
+the GZIP-compressed [[RFC1952]], base-64 encoded [[RFC4648]] bitstring values
 for the associated range of <a>verifiable credential</a> status values. The
 uncompressed bitstring MUST be at least 16KB in size.
               </td>
@@ -592,8 +592,8 @@ a revoked credential in <strong>issuedCredentials</strong>, set the bit to
 1 (one), otherwise set the bit to 0 (zero).
         </li>
         <li>
-Generate a <strong>compressed bitstring</strong> by using the ZLIB
-compression algorithm [[RFC1950]] on the <strong>bitstring</strong>
+Generate a <strong>compressed bitstring</strong> by using the GZIP
+compression algorithm [[RFC1952]] on the <strong>bitstring</strong>
 and then base64-encoding [[RFC4648]] the result.
         </li>
         <li>
@@ -621,7 +621,7 @@ bitstring.
 Generate an <strong>uncompressed bitstring</strong> by using the
 base64-decoding [[RFC4648]] algorithm on the
 <strong>compressed bitstring</strong> and then expanding the output using
-the ZLIB decompression algorithm [[RFC1950]].
+the GZIP decompression algorithm [[RFC1952]].
         </li>
         <li>
 Return the <strong>uncompressed bitstring</strong>.
