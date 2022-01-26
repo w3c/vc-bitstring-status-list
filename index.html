@@ -282,7 +282,7 @@ The <code>type</code> property MUST be <code>RevocationList2021Status</code>.
               </td>
             </tr>
             <tr>
-              <td>statusListIndex</td>
+              <td id="statusListIndex-1">statusListIndex</td>
               <td>
 The <code>statusListIndex</code> property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the bit
@@ -290,7 +290,7 @@ position of the revocation status of the <a>verifiable credential</a>.
               </td>
             </tr>
             <tr>
-              <td>statusListCredential</td>
+              <td id="statusListCredential-1">statusListCredential</td>
               <td>
 The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
@@ -360,7 +360,7 @@ The <code>type</code> property MUST be <code>SuspensionList2021Status</code>.
               </td>
             </tr>
             <tr>
-              <td>statusListIndex</td>
+              <td id="statusListIndex-2">statusListIndex</td>
               <td>
 The <code>statusListIndex</code> property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the bit
@@ -368,7 +368,7 @@ position of the revocation status of the <a>verifiable credential</a>.
               </td>
             </tr>
             <tr>
-              <td>statusListCredential</td>
+              <td id="statusListCredential-2">statusListCredential</td>
               <td>
 The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
@@ -448,7 +448,7 @@ status list, MUST be <code>RevocationList2021</code>.
               </td>
             </tr>
             <tr>
-              <td>credentialSubject.encodedList</td>
+                <td id="encodedList">credentialSubject.encodedList</td>
               <td>
 The <code>encodedList</code> property of the credential <a>subject</a> MUST be
 the GZIP-compressed [[RFC1952]], base-64 encoded [[RFC4648]] bitstring values
