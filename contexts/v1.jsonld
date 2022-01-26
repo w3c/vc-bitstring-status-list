@@ -48,9 +48,9 @@
       }
     },
 
-    "SuspensionList2021": {
+    "SuspensionList2021Status": {
       "@id":
-        "https://w3id.org/vc/status-list#SuspensionList2021",
+        "https://w3id.org/vc/status-list#SuspensionList2021Status",
       "@context": {
         "@protected": true,
 
