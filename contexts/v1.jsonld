@@ -2,9 +2,9 @@
   "@context": {
     "@protected": true,
 
-    "RevocationList2020Credential": {
+    "StatusList2021Credential": {
       "@id":
-        "https://w3id.org/vc-revocation-list-2020#RevocationList2020Credential",
+        "https://w3id.org/vc/status-list#StatusList2021Credential",
       "@context": {
         "@protected": true,
 
@@ -16,35 +16,54 @@
       }
     },
 
-    "RevocationList2020": {
+    "RevocationList2021": {
       "@id":
-        "https://w3id.org/vc-revocation-list-2020#RevocationList2020",
+        "https://w3id.org/vc/status-list#RevocationList2021",
       "@context": {
         "@protected": true,
 
         "id": "@id",
         "type": "@type",
 
-        "encodedList": "https://w3id.org/vc-revocation-list-2020#encodedList"
+        "encodedList": "https://w3id.org/vc/status-list#encodedList"
       }
     },
 
-    "RevocationList2020Status": {
+    "RevocationList2021Status": {
       "@id":
-        "https://w3id.org/vc-revocation-list-2020#RevocationList2020Status",
+        "https://w3id.org/vc/status-list#RevocationList2021Status",
       "@context": {
         "@protected": true,
 
         "id": "@id",
         "type": "@type",
 
-        "revocationListCredential": {
+        "statusListCredential": {
           "@id":
-            "https://w3id.org/vc-revocation-list-2020#revocationListCredential",
+            "https://w3id.org/vc/status-list#statusListCredential",
           "@type": "@id"
         },
-        "revocationListIndex":
-          "https://w3id.org/vc-revocation-list-2020#revocationListIndex"
+        "statusListIndex":
+          "https://w3id.org/vc/status-list#statusListIndex"
+      }
+    },
+
+    "SuspensionList2021Status": {
+      "@id":
+        "https://w3id.org/vc/status-list#SuspensionList2021Status",
+      "@context": {
+        "@protected": true,
+
+        "id": "@id",
+        "type": "@type",
+
+        "statusListCredential": {
+          "@id":
+            "https://w3id.org/vc/status-list#statusListCredential",
+          "@type": "@id"
+        },
+        "statusListIndex":
+          "https://w3id.org/vc/status-list#statusListIndex"
       }
     }
   }
