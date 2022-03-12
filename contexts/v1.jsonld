@@ -2,7 +2,7 @@
   "@context": {
     "@protected": true,
 
-    "StatusList2021Credential": {
+    "StatusListCredential2021": {
       "@id":
         "https://w3id.org/vc/status-list#StatusList2021Credential",
       "@context": {
@@ -16,54 +16,39 @@
       }
     },
 
-    "RevocationList2021": {
+    "StatusList2021": {
       "@id":
-        "https://w3id.org/vc/status-list#RevocationList2021",
+        "https://w3id.org/vc/status-list#StatusList2021",
       "@context": {
         "@protected": true,
 
         "id": "@id",
         "type": "@type",
 
+        "statusPurpose":
+          "https://w3id.org/vc/status-list#statusPurpose",
         "encodedList": "https://w3id.org/vc/status-list#encodedList"
       }
     },
 
-    "RevocationList2021Status": {
+    "StatusListEntry2021": {
       "@id":
-        "https://w3id.org/vc/status-list#RevocationList2021Status",
+        "https://w3id.org/vc/status-list#StatusListEntry2021",
       "@context": {
         "@protected": true,
 
         "id": "@id",
         "type": "@type",
 
+        "statusPurpose":
+          "https://w3id.org/vc/status-list#statusPurpose",
+        "statusListIndex":
+          "https://w3id.org/vc/status-list#statusListIndex",
         "statusListCredential": {
           "@id":
             "https://w3id.org/vc/status-list#statusListCredential",
           "@type": "@id"
-        },
-        "statusListIndex":
-          "https://w3id.org/vc/status-list#statusListIndex"
-      }
-    },
-
-    "SuspensionList2021Status": {
-      "@id":
-        "https://w3id.org/vc/status-list#SuspensionList2021Status",
-      "@context": {
-        "@protected": true,
-
-        "id": "@id",
-        "type": "@type",
-
-        "statusListCredential": {
-          "@id":
-            "https://w3id.org/vc/status-list#statusListCredential",
-          "@type": "@id"
-        },
-        "statusListIndex":
-          "https://w3id.org/vc/status-list#statusListIndex"
+        }
       }
     }
   }
