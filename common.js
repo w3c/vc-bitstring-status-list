@@ -118,10 +118,11 @@ require(["core/pubsubhub"], (respecEvents) => {
 // To ensure a definition appears in the Terminology section, use
 //  and link to it!
 // This is triggered by postProcess in the respec config.
-function restrictRefs(config, document){
+function restrictRefs(utils, content, url){
 
   // Get set of ids internal dfns referenced in the spec body
   const internalDfnLinks = document.querySelectorAll("a.internalDFN");
+
   let internalDfnIds = new Set();
   for (const dfnLink of internalDfnLinks) {
     const dfnHref = dfnLink.href.split("#")[1];

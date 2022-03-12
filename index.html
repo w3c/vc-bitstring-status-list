@@ -13,7 +13,8 @@
     <script type="text/javascript" class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-        specStatus: "UNOFFICIAL",
+        specStatus: "CG-DRAFT",
+        group: "credentials",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
         shortName: "vc-status-list-2021",
@@ -90,6 +91,14 @@
 
         // name (with the @w3c.org) of the public mailing to which comments are due
         wgPublicList: "public-credentials",
+
+        // turn off unused defns warning since we have restrictRefs
+        lint: {
+          "no-unused-dfns": false
+        },
+
+        // post process
+        postProcess: [restrictRefs],
 
         // URI of the patent status for this WG, for Rec-track documents
         // !!!! IMPORTANT !!!!
@@ -200,62 +209,62 @@ constructed for 100,000 <a>verifiable credentials</a> that is roughly
 credentials have been revoked, the size of the list is less than a
 few hundred bytes while providing privacy in a herd of 100,000 individuals.
       </p>
-    </section>
 
-    <section id="conformance" class="normative">
-    </section>
+      <section class="informative">
+        <h3>Conceptual Framework</h3>
 
-    <section class="informative">
-      <h2>Terminology</h2>
+        <p>
+  This section outlines the core concept utilized by the status list
+  mechanism described in this document. At the most basic level, status
+  information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
+  are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
+  list of all <a>verifiable credentials</a> it has issued. Each
+  <a>verifiable credential</a> is associated with a position in the list. If
+  the binary value of the position in the list is 1 (one), the
+  <a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
+        </p>
 
-      <div
-        data-include="./terms.html" data-oninclude="restrictReferences"></div>
-    </section>
+        <p>
+  One of the benefits of using a bitstring is that it is a highly compressible
+  data format since, in the average case, large numbers of credentials will
+  remain unrevoked. This will ensure long sections of bits that are the same
+  value and thus highly compressible using run-length compression techniques
+  such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
+  and when only a handful of <a>verifiable credentials</a> are revoked, the
+  compressed bitstring size is reduced down to a few hundred bytes.
+        </p>
 
-    <section class="informative">
-      <h2>Core Concept</h2>
+        <p>
+  Another benefit of using a bitstring is that it enables large numbers of
+  <a>verifiable credential</a> statuses to be placed in the same  list.
+  This specification utilizes a minimum bitstring length of 131,072 (16KB). This
+  population size ensures an adequate amount of herd  privacy in the average case.
+  If better herd privacy is required, the bitstring can be made to be larger.
+        </p>
 
-      <p>
-This section outlines the core concept utilized by the status list
-mechanism described in this document. At the most basic level, status
-information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
-are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
-list of all <a>verifiable credentials</a> it has issued. Each
-<a>verifiable credential</a> is associated with a position in the list. If
-the binary value of the position in the list is 1 (one), the
-<a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
-      </p>
+        <figure id="bitstring">
+          <img style="margin: auto; display: block; width: 75%;"
+               src="diagrams/StatusList2021.svg" alt="diagram showing a
+               list of boxes at the top of the image with two of them in
+               red depicting revoked credentials. Text beside the boxes to the
+               right reads 16 kilobytes. An depiction of the boxes being
+               GZIP compressed into a cylinder on the bottom of the page shows
+               that compression has resulted in a final size of 135 bytes.">
+          <figcaption style="text-align: center;">
+            A visual depiction of the concepts outlined in this section.
+          </figcaption>
+        </figure>
 
-      <p>
-One of the benefits of using a bitstring is that it is a highly compressible
-data format since, in the average case, large numbers of credentials will
-remain unrevoked. This will ensure long sections of bits that are the same
-value and thus highly compressible using run-length compression techniques
-such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
-and when only a handful of <a>verifiable credentials</a> are revoked, the
-compressed bitstring size is reduced down to a few hundred bytes.
-      </p>
+      </section>
 
-      <p>
-Another benefit of using a bitstring is that it enables large numbers of
-<a>verifiable credential</a> statuses to be placed in the same  list.
-This specification utilizes a minimum bitstring length of 131,072 (16KB). This
-population size ensures an adequate amount of herd  privacy in the average case.
-If better herd privacy is required, the bitstring can be made to be larger.
-      </p>
+      <section class="informative">
+        <h3>Terminology</h3>
 
-      <figure id="bitstring">
-        <img style="margin: auto; display: block; width: 75%;"
-             src="diagrams/StatusList2021.svg" alt="diagram showing a
-             list of boxes at the top of the image with two of them in
-             red depicting revoked credentials. Text beside the boxes to the
-             right reads 16 kilobytes. An depiction of the boxes being
-             GZIP compressed into a cylinder on the bottom of the page shows
-             that compression has resulted in a final size of 135 bytes.">
-        <figcaption style="text-align: center;">
-          A visual depiction of the concepts outlined in this section.
-        </figcaption>
-      </figure>
+        <div data-include="./terms.html"></div>
+      </section>
+
+      <section id="conformance" class="normative">
+      </section>
 
     </section>
 
