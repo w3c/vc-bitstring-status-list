@@ -276,7 +276,7 @@ The following sections outlines the data model for this document.
       </p>
 
       <section>
-        <h3>RevocationList2021Status</h3>
+        <h3>StatusListEntry2021</h3>
 
         <p>
 When an <a>issuer</a> desires to enable status information for a
@@ -305,7 +305,39 @@ status list.
             <tr>
               <td>type</td>
               <td>
-The <code>type</code> property MUST be <code>RevocationList2021Status</code>.
+The <code>type</code> property MUST be <code>StatusListEntry2021</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>statusPurpose</td>
+              <td>
+The purpose of the status entry MUST be a string. While the value of the
+string is arbitrary, the following values MUST be used for their intended
+purpose:
+                <table class="simple">
+                  <thead>
+                    <tr>
+                      <th style="white-space: nowrap">Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>revocation</code></td>
+                      <td>
+Used to cancel the validity of a <a>verifiable credential</a>. This status is
+not reversible.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>suspension</code></td>
+                      <td>
+Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
+This status is reversible.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </td>
             </tr>
             <tr>
@@ -313,7 +345,7 @@ The <code>type</code> property MUST be <code>RevocationList2021Status</code>.
               <td>
 The <code>statusListIndex</code> property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the bit
-position of the revocation status of the <a>verifiable credential</a>.
+position of the status of the <a>verifiable credential</a>.
               </td>
             </tr>
             <tr>
@@ -322,7 +354,7 @@ position of the revocation status of the <a>verifiable credential</a>.
 The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
 <a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>StatusList2021Credential</code> value.
+includes the <code>StatusListCredential2021</code> value.
               </td>
             </tr>
           </tbody>
@@ -339,8 +371,8 @@ includes the <code>StatusList2021Credential</code> value.
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
-    "id": "https://dmv.example.gov/credentials/status/3#94567",
-    "type": "RevocationList2021Status",
+    "type": "StatusListEntry2021",
+    "statusPurpose": "revocation",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
   }</span>,
@@ -354,85 +386,7 @@ includes the <code>StatusList2021Credential</code> value.
       </section>
 
       <section>
-        <h3>SuspensionList2021Status</h3>
-
-        <p>
-When an <a>issuer</a> desires to enable status information for a
-<a>verifiable credential</a>, they MAY add a <code>status</code> property
-that uses the data model described in this specification.
-        </p>
-
-        <table class="simple">
-          <thead>
-            <tr>
-              <th style="white-space: nowrap">Property</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>id</td>
-              <td>
-The constraints on the <code>id</code> property are listed in the
-Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
-value is expected to be a URL that identifies the status information associated
-with the <a>verifiable credential</a>. It MUST NOT be the URL for the
-status list.
-              </td>
-            </tr>
-            <tr>
-              <td>type</td>
-              <td>
-The <code>type</code> property MUST be <code>SuspensionList2021Status</code>.
-              </td>
-            </tr>
-            <tr>
-              <td>statusListIndex</td>
-              <td>
-The <code>statusListIndex</code> property MUST be an arbitrary size integer
-greater than or equal to 0, expressed as a string. The value identifies the bit
-position of the revocation status of the <a>verifiable credential</a>.
-              </td>
-            </tr>
-            <tr>
-              <td>statusListCredential</td>
-              <td>
-The <code>statusListCredential</code> property MUST be a URL to a
-<a>verifiable credential</a>. When the URL is dereferenced, the resulting
-<a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>StatusList2021Credential</code> value.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <pre class="example nohighlight" title="Example SuspensionList2021Status">
-{
-  "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/vc-status-list-2021/v1"
-  ],
-  "id": "https://example.com/credentials/23894672394",
-  "type": ["VerifiableCredential"],
-  "issuer": "did:example:12345",
-  "issued": "2021-04-05T14:27:42Z",
-  <span class="highlight">"credentialStatus": {
-    "id": "https://dmv.example.gov/credentials/status/3#94567",
-    "type": "SuspensionList2021Status",
-    "statusListIndex": "94567",
-    "statusListCredential": "https://example.com/credentials/status/3"
-  }</span>,
-  "credentialSubject": {
-    "id": "did:example:6789",
-    "type": "Person"
-  },
-  "proof": { <span class="comment">...</span> }
-}
-        </pre>
-      </section>
-
-      <section>
-        <h3>StatusList2021Credential</h3>
+        <h3>StatusListCredential2021</h3>
 
         <p>
 When a status list is published, the result is a  <a>verifiable
@@ -452,11 +406,10 @@ status list:
             <tr>
               <td>id</td>
               <td>
-The <a>verifiable credential</a> that contains the status list MUST
+The <a>verifiable credential</a> that contains the status list MAY
 express an <code>id</code> property that matches the value specified in
 <code>statusListCredential</code> for the corresponding
-<code>RevocationList2021Status</code>
-(see <a href="#revocationlist2021status"></a>).
+<code>StatusListEntry2021</code> (see <a href="#statuslistentry2021"></a>).
               </td>
             </tr>
             <tr>
@@ -464,14 +417,46 @@ express an <code>id</code> property that matches the value specified in
               <td>
 The <a>verifiable credential</a> that contains the status list MUST
 express a <code>type</code> property that includes the
-<code>StatusList2021Credential</code> value.
+<code>StatusListCredential2021</code> value.
               </td>
             </tr>
             <tr>
               <td>credentialSubject.type</td>
               <td>
 The <code>type</code> of the credential <a>subject</a>, which is the
-status list, MUST be <code>RevocationList2021</code>.
+status list, MUST be <code>StatusList2021</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>credentialSubject.statusPurpose</td>
+              <td>
+The purpose of the status entry MUST be a string. While the value of the
+string is arbitrary, the following values MUST be used for their intended
+purpose:
+                <table class="simple">
+                  <thead>
+                    <tr>
+                      <th style="white-space: nowrap">Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>revocation</code></td>
+                      <td>
+Used to cancel the validity of a <a>verifiable credential</a>. This status is
+not reversible.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>suspension</code></td>
+                      <td>
+Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
+This status is reversible.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </td>
             </tr>
             <tr>
@@ -483,23 +468,25 @@ for the associated range of <a>verifiable credential</a> status values. The
 uncompressed bitstring MUST be at least 16KB in size.
               </td>
             </tr>
+
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example RevocationList2021 Credential">
+        <pre class="example nohighlight" title="Example StatusList2021 Credential">
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://w3id.org/vc-status-list-2021/v1"
+    "https://w3id.org/vc/status-list-2021/v1"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">StatusListCredential2021</span>"],
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">RevocationList2021</span>",
-    <span class="highlight">"encodedList": "H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"</span>
+    "type": "<span class="highlight">StatusList2021</span>",
+    "statusPurpose": "<span class="highlight">revocation</span>",
+    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   },
   "proof": { ... }
 }
@@ -522,7 +509,7 @@ and validate status lists as described by this document.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when producing a
-<a href="#statuslist2021credential">StatusList2021Credential</a>:
+<a href="#statuslistcredential2021">StatusListCredential2021</a>:
       </p>
 
       <ol class="algorithm">
@@ -532,7 +519,7 @@ Let <strong>issued credentials</strong> be a list of all issued
         </li>
         <li>
 Let <strong>RLC</strong> be an unsigned
-<a href="#statuslist2021credential">StatusList2021Credential</a>
+<a href="#statuslistcredential2021">StatusListCredential2021</a>
 without the <code>encodedList</code> property set.
         </li>
         <li>
@@ -556,32 +543,36 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when validating a <a>verifiable credential</a> that is contained in a
-<a href="#statuslist2021credential">StatusList2021Credential</a>:
+<a href="#statuslistcredential2021">StatusListCredential2021</a>:
       </p>
 
       <ol class="algorithm">
         <li>
 Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
-containing a <code>status</code> entry that is a
-<a href="#revocationlist2021status">RevocationList2021Status</a>.
+containing a <code>credentialStatus</code> entry that is a
+<a href="#statuslistentry2021">StatusListEntry2021</a>.
+        </li>
+        <li>
+Let <strong>status purpose</strong> be the value of <code>statusPurpose</code>
+in the <code>credentialStatus</code> entry in the
+<strong>credentialToValidate</strong>.
         </li>
         <li>
 Verify all proofs associated with the <strong>credentialToValidate</strong>.
 If a proof fails, return a validation error.
         </li>
         <li>
-Let <strong>statusListCredential</strong> be set to the value of the
-<a href="#statuslist2021credential">StatusList2021Credential</a>.
-        </li>
+Verify that the <strong>status purpose</strong> matches the
+<code>statusPurpose</code> value in the <strong>statusListCredential</strong>.
         <li>
 Let <strong>compressed bitstring</strong> be the value of the
 <code>encodedList</code> property of the
-<a href="#statuslist2021credential">StatusList2021Credential</a>.
+<a href="#statuslistcredential2021">StatusListCredential2021</a>.
         </li>
         <li>
 Let <strong>credentialIndex</strong> be the value of the
 <code>statusListIndex</code> property of the
-<a href="#statuslist2021credential">RevocationList2021Status</a>.
+<a href="#statuslistcredential2021">RevocationList2021Status</a>.
         </li>
         <li>
 Generate a <strong>revocation bitstring</strong> by passing
@@ -589,11 +580,12 @@ Generate a <strong>revocation bitstring</strong> by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let <strong>revoked</strong> be the value of the bit at position
+Let <strong>status</strong> be the value of the bit at position
 <strong>credentialIndex</strong> in the <strong>revocation bitstring</strong>.
         </li>
         <li>
-Return <code>true</code> if revoked is 1, false otherwise.
+Return <code>true</code> if <strong>status</strong> is 1, <code>false</code>
+otherwise.
         </li>
       </ol>
     </section>
