@@ -2,7 +2,7 @@
   "@context": {
     "@protected": true,
 
-    "StatusListCredential2021": {
+    "StatusList2021Credential": {
       "@id":
         "https://w3id.org/vc/status-list#StatusList2021Credential",
       "@context": {
@@ -31,9 +31,9 @@
       }
     },
 
-    "StatusListEntry2021": {
+    "StatusList2021Entry": {
       "@id":
-        "https://w3id.org/vc/status-list#StatusListEntry2021",
+        "https://w3id.org/vc/status-list#StatusList2021Entry",
       "@context": {
         "@protected": true,
 

@@ -283,7 +283,7 @@ The following sections outlines the data model for this document.
       </p>
 
       <section>
-        <h3>StatusListEntry2021</h3>
+        <h3>StatusList2021Entry</h3>
 
         <p>
 When an <a>issuer</a> desires to enable status information for a
@@ -312,7 +312,7 @@ status list.
             <tr>
               <td>type</td>
               <td>
-The <code>type</code> property MUST be <code>StatusListEntry2021</code>.
+The <code>type</code> property MUST be <code>StatusList2021Entry</code>.
               </td>
             </tr>
             <tr>
@@ -361,7 +361,7 @@ position of the status of the <a>verifiable credential</a>.
 The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
 <a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>StatusListCredential2021</code> value.
+includes the <code>StatusList2021Credential</code> value.
               </td>
             </tr>
           </tbody>
@@ -378,7 +378,7 @@ includes the <code>StatusListCredential2021</code> value.
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
-    "type": "StatusListEntry2021",
+    "type": "StatusList2021Entry",
     "statusPurpose": "revocation",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
@@ -393,7 +393,7 @@ includes the <code>StatusListCredential2021</code> value.
       </section>
 
       <section>
-        <h3>StatusListCredential2021</h3>
+        <h3>StatusList2021Credential</h3>
 
         <p>
 When a status list is published, the result is a  <a>verifiable
@@ -416,7 +416,7 @@ status list:
 The <a>verifiable credential</a> that contains the status list MAY
 express an <code>id</code> property that matches the value specified in
 <code>statusListCredential</code> for the corresponding
-<code>StatusListEntry2021</code> (see <a href="#statuslistentry2021"></a>).
+<code>StatusList2021Entry</code> (see <a href="#statuslist2021entry"></a>).
               </td>
             </tr>
             <tr>
@@ -424,7 +424,7 @@ express an <code>id</code> property that matches the value specified in
               <td>
 The <a>verifiable credential</a> that contains the status list MUST
 express a <code>type</code> property that includes the
-<code>StatusListCredential2021</code> value.
+<code>StatusList2021Credential</code> value.
               </td>
             </tr>
             <tr>
@@ -486,7 +486,7 @@ uncompressed bitstring MUST be at least 16KB in size.
     "https://w3id.org/vc/status-list/2021/v1"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">StatusListCredential2021</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:40Z",
   "credentialSubject": {
@@ -516,7 +516,7 @@ and validate status lists as described by this document.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when producing a
-<a href="#statuslistcredential2021">StatusListCredential2021</a>:
+<a href="#statuslist2021credential">StatusList2021Credential</a>:
       </p>
 
       <ol class="algorithm">
@@ -526,7 +526,7 @@ Let <strong>issued credentials</strong> be a list of all issued
         </li>
         <li>
 Let <strong>RLC</strong> be an unsigned
-<a href="#statuslistcredential2021">StatusListCredential2021</a>
+<a href="#statuslist2021credential">StatusList2021Credential</a>
 without the <code>encodedList</code> property set.
         </li>
         <li>
@@ -550,14 +550,14 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when validating a <a>verifiable credential</a> that is contained in a
-<a href="#statuslistcredential2021">StatusListCredential2021</a>:
+<a href="#statuslist2021credential">StatusList2021Credential</a>:
       </p>
 
       <ol class="algorithm">
         <li>
 Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
 containing a <code>credentialStatus</code> entry that is a
-<a href="#statuslistentry2021">StatusListEntry2021</a>.
+<a href="#statuslist2021entry">StatusList2021Entry</a>.
         </li>
         <li>
 Let <strong>status purpose</strong> be the value of <code>statusPurpose</code>
@@ -574,12 +574,12 @@ Verify that the <strong>status purpose</strong> matches the
         <li>
 Let <strong>compressed bitstring</strong> be the value of the
 <code>encodedList</code> property of the
-<a href="#statuslistcredential2021">StatusListCredential2021</a>.
+<a href="#statuslist2021credential">StatusList2021Credential</a>.
         </li>
         <li>
 Let <strong>credentialIndex</strong> be the value of the
 <code>statusListIndex</code> property of the
-<a href="#statuslistcredential2021">RevocationList2021Status</a>.
+<a href="#statuslist2021credential">RevocationList2021Status</a>.
         </li>
         <li>
 Generate a <strong>revocation bitstring</strong> by passing
