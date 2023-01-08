@@ -1,10 +1,10 @@
 {
   "group": [
-    "credentials"
+    "98922"
   ],
   "contacts": [
-    "msporny", "dlongley"
+    "msporny", "dlongley", "iherman"
   ],
-  "shortName": "vc-status-rl-2020",
-  "repo-type": "cg-report"
+  "shortName": "vc-status-list-2021",
+  "repo-type": "note"
 }
