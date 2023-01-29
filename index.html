@@ -305,11 +305,15 @@ property that uses the data model described in this specification.
             <tr>
               <td>id</td>
               <td>
-The constraints on the <code>id</code> property are listed in the
-Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
-value is expected to be a URL that identifies the status information associated
-with the <a>verifiable credential</a>. It MUST NOT be the URL for the
-status list.
+An optional identifier for the status list entry. The constraints on the
+<code>id</code> property are listed in the Verifiable Credentials Data Model
+specification [[VC-DATA-MODEL]]. If specified, the value is expected to be a URL
+that identifies the status information associated with the <a>verifiable
+credential</a>. It MUST NOT be the URL for the status list. The value is
+not used during the verification or validation process and does not need to be
+related to the `statusListCredential` value. If necessary, the value can be
+used to uniquely identify the `StatusList2021Entry` object such as when it is
+stored in a database.
               </td>
             </tr>
             <tr>
@@ -362,9 +366,9 @@ position of the status of the <a>verifiable credential</a>.
               <td>statusListCredential</td>
               <td>
 The <code>statusListCredential</code> property MUST be a URL to a
-<a>verifiable credential</a>. When the URL is dereferenced, the resulting
-<a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>StatusList2021Credential</code> value.
+<a>verifiable credential</a>. When the URL is dereferenced, the result
+MUST be a <a>verifiable credential</a> that contains a <code>type</code>
+property that includes the <code>StatusList2021Credential</code> value.
               </td>
             </tr>
           </tbody>
@@ -587,7 +591,7 @@ when validating a <a>verifiable credential</a> that is contained in a
 
       <ol class="algorithm">
         <li>
-Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
+Let <strong>credentialToValidate</strong> be a <a>verifiable credential</a>
 containing a <code>credentialStatus</code> entry that is a
 <a href="#statuslist2021entry">StatusList2021Entry</a>.
         </li>
@@ -597,8 +601,9 @@ in the <code>credentialStatus</code> entry in the
 <strong>credentialToValidate</strong>.
         </li>
         <li>
-Verify all proofs associated with the <strong>credentialToValidate</strong>.
-If a proof fails, return a validation error.
+Dereference the <code>statusListCredential</code> URL and ensure that all
+proofs verify successfully. If the dereference fails, or if any of the proof
+verifications fail, return a validation error.
         </li>
         <li>
 Verify that the <strong>status purpose</strong> matches the
