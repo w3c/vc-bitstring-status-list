@@ -472,7 +472,13 @@ This status is reversible.
 The <code>encodedList</code> property of the credential <a>subject</a> MUST be
 the GZIP-compressed [[RFC1952]], base-64 encoded [[RFC4648]] bitstring values
 for the associated range of <a>verifiable credential</a> status values. The
-uncompressed bitstring MUST be at least 16KB in size.
+uncompressed bitstring MUST be at least 16KB in size. The bitstring MUST be
+encoded as a big-endian value with a start index value of zero
+(<code>0</code>) located at the left-most bit in the bitstring and the
+end index of one less than the length of the bitstring
+(<code>bitstring_length - 1</code>) and located at the right-most bit in the
+bitstring. Further information on bitstring encoding can be found in Section
+<a href="#bitstring-encoding"></a>.
               </td>
             </tr>
 
@@ -724,9 +730,30 @@ advice of security and cryptography professionals when implementing mission
 critical systems using the technology outlined in this specification.
     </p>
 
-    <p class="issue">
-Write security considerations.
-    </p>
+    <section class="informative">
+      <h3>Bitstring Encoding</h3>
+
+      <p>
+It is critical that implementers pay particular attention to the way that they
+encode and decode bitstrings. Failure to do so can result in a failure to check
+the correct position in a bitstring. Checking an incorrect bitstring index can
+lead to failures such as mistaking a revoked credential for one that is not
+revoked. As stated in Section <a href="#statuslist2021credential"></a>,
+bitstrings are encoded as big-endian values with the index starting at the
+left-most index of the bitstring array. The diagram below demonstrates the
+proper layout for an uncompressed bitstring.
+      </p>
+
+      <figure id="bitstring">
+        <img style="margin: auto; display: block; width: 75%;"
+             src="diagrams/bitstring-layout.svg" alt="a diagram showing two
+             wide rectangles shown side-by-side. Each rectangle is partitioned
+             into eight boxes. ">
+        <figcaption style="text-align: center;">
+          A visual depiction of the bitstring layout.
+        </figcaption>
+      </figure>
+    </section>
 
   </section>
 
