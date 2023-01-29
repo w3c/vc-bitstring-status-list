@@ -748,7 +748,12 @@ proper layout for an uncompressed bitstring.
         <img style="margin: auto; display: block; width: 75%;"
              src="diagrams/bitstring-layout.svg" alt="a diagram showing two
              wide rectangles shown side-by-side. Each rectangle is partitioned
-             into eight boxes. ">
+             into eight boxes to represent the 8 bits in a byte. The left
+             rectangle is labeled 'First byte' and the right rectable is
+             labeled 'Last byte'. The left rectangle's left-most bit box is
+             pointed to by an arrow labeled 'index: 0'. The right rectangle's
+             right-most bit box is pointed to by an arrow labeled
+             'index: length - 1'.">
         <figcaption style="text-align: center;">
           A visual depiction of the bitstring layout.
         </figcaption>
