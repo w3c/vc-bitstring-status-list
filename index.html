@@ -428,6 +428,28 @@ express a <code>type</code> property that includes the
               </td>
             </tr>
             <tr>
+              <td>validFrom</td>
+              <td>
+The earliest point in time at which the status list is valid. This property is
+defined in the Verifiable Credentials Data Model specification in
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
+Section 4.6: Validity Period</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>validUntil</td>
+              <td>
+The latest point in time at which the status list is valid. This property is
+defined in the Verifiable Credentials Data Model specification in
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
+Section 4.6: Validity Period</a>. Implementations that consume the status list
+SHOULD cache the status list <a>verifiable credential</a> until this
+time. Implementations that publish the status list are expected to align
+any protocol specific caching information, such as the HTTP `Cache-Control`
+header, with the value in this field.
+              </td>
+            </tr>
+            <tr>
               <td>credentialSubject.type</td>
               <td>
 The <code>type</code> of the credential <a>subject</a>, which is the
