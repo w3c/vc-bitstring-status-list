@@ -303,12 +303,12 @@ property that uses the data model described in this specification.
               <td>
 An optional identifier for the status list entry. The constraints on the
 <code>id</code> property are listed in the Verifiable Credentials Data Model
-specification [[VC-DATA-MODEL]]. If specified, the value is expected to be a URL
+specification [[VC-DATA-MODEL]]. If present, the value is expected to be a URL
 that identifies the status information associated with the <a>verifiable
 credential</a>. It MUST NOT be the URL for the status list. The value is
-not used during the verification or validation process and does not need to be
+not used during the verification or validation process, and does not need to be
 related to the `statusListCredential` value. If necessary, the value can be
-used to uniquely identify the `StatusList2021Entry` object such as when it is
+used to uniquely identify the `StatusList2021Entry` object, such as when it is
 stored in a database.
               </td>
             </tr>
@@ -569,7 +569,7 @@ in the <code>credentialStatus</code> entry in the
 <strong>credentialToValidate</strong>.
         </li>
         <li>
-Dereference the <code>statusListCredential</code> URL and ensure that all
+Dereference the <code>statusListCredential</code> URL, and ensure that all
 proofs verify successfully. If the dereference fails, or if any of the proof
 verifications fail, return a validation error.
         </li>
