@@ -711,8 +711,11 @@ from <a>issuers</a>.
 In general, this specification cannot protect data <a>subject</a> from tracking by a malicious <a>issuer</a>.
 </p>
 <p>
-A malicious <a>issuer</a> might intentionally attack herd privacy by creating a unique status list
-per credential issued in order to establish a 1-1 mapping to track when a <a>verifier</a> processes a specific credential.
+A malicious <a>issuer</a> might intentionally attack herd privacy by creating a
+unique status list per credential issued in order to establish a 1-1 mapping to track
+when a <a>verifier</a> processes a specific credential. Similarly, they could establish
+another a 1-1 mapping by using a different cryptographic key for every credential
+issued that is tracked in a status list.
 </p>
 <p class="issue" data-number="6"></p>
 </section>
