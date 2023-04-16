@@ -17,7 +17,7 @@
         group: "vc",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
-        shortName: "vc-status-list-2021",
+        shortName: "vc-status-list",
 
         // subtitle for the spec
         subtitle: "Privacy-preserving status information for Verifiable Credentials",
@@ -49,49 +49,53 @@
 
         // editors, add as many as you like
         // only "name" is required
-        editors: [
-          { name: "Manu Sporny", url: "http://manu.sporny.org/",
-            company: "Digital Bazaar", companyURL: "http://digitalbazaar.com/"},
-          { name: "Dave Longley", url: "https://github.com/dlongley",
-            company: "Digital Bazaar", companyURL: "https://digitalbazaar.com/"},
-          {
-            name: 'Orie Steele',
-            url: 'https://github.com/OR13',
-            company: 'Transmute',
-            companyURL: 'https://www.transmute.industries/',
-          },
-          {
-            name: 'Mike Prorock',
-            url: 'https://mesur.io/',
-            company: 'mesur.io',
-            companyURL: 'https://mesur.io/',
-          },
-          {
-            name: 'Mahmoud Alkhraishi',
-            url: 'https://github.com/mkhraisha',
-            company: 'Mavennet',
-            companyURL: 'https://mavennet.com/',
-          },
-        ],
+        editors: [{
+          name: "Manu Sporny",
+          url: "http://manu.sporny.org/",
+          company: "Digital Bazaar",
+          companyURL: "https://www.digitalbazaar.com/",
+          w3cid: 41758
+        }, {
+          name: "Dave Longley",
+          url: "https://github.com/dlongley",
+          company: "Digital Bazaar",
+          companyURL: "https://www.digitalbazaar.com/",
+          w3cid: 48025
+        }, {
+          name: 'Orie Steele',
+          url: 'https://github.com/OR13',
+          company: 'Transmute',
+          companyURL: 'https://www.transmute.industries/',
+          w3cid: 109171
+        }, {
+          name: 'Mike Prorock',
+          url: 'https://mesur.io/',
+          company: 'mesur.io',
+          companyURL: 'https://mesur.io/',
+          w3cid: 1
+        }, {
+          name: 'Mahmoud Alkhraishi',
+          url: 'https://github.com/mkhraisha',
+          company: 'Mavennet',
+          companyURL: 'https://mavennet.com/',
+          w3cid: 121911
+        }],
         // authors, add as many as you like.
         // This is optional, uncomment if you have authors as well as editors.
         // only "name" is required. Same format as editors.
-        authors:
-        [
-          { name: "Dave Longley", url: "https://github.com/dlongley",
-            company: "Digital Bazaar", companyURL: "http://digitalbazaar.com/"},
-          { name: "Manu Sporny", url: "http://manu.sporny.org/",
-            company: "Digital Bazaar", companyURL: "http://digitalbazaar.com/" }
-        ],
-        // name of the WG
-        wg:           "Credentials Community Group",
-
-        // URI of the public WG page
-        wgURI:        "https://www.w3.org/community/credentials/",
-
-        // name (with the @w3c.org) of the public mailing to which comments are due
-        wgPublicList: "public-credentials",
-
+        authors: [{
+          name: "Dave Longley",
+          url: "https://github.com/dlongley",
+          company: "Digital Bazaar",
+          companyURL: "https://www.digitalbazaar.com/",
+          w3cid: 48025
+        }, {
+          name: "Manu Sporny",
+          url: "http://manu.sporny.org/",
+          company: "Digital Bazaar",
+          companyURL: "https://www.digitalbazaar.com/",
+          w3cid: 41758
+        }],
         // turn off unused defns warning since we have restrictRefs
         lint: {
           "no-unused-dfns": false
@@ -799,7 +803,7 @@ proper layout for an uncompressed bitstring.
           A visual depiction of the bitstring layout.
         </figcaption>
       </figure>
-      
+
       <p>
 For example, if a bitstring is 131,072 bits in size (16KB), the first index will be 0, and the last index will be 131,071.
       </p>
