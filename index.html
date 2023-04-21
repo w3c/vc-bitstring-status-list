@@ -859,5 +859,94 @@ Write i18n considerations.
 
   </section>
 
+  <section>
+    <h2>Appendix</h2>
+    <section>
+      <h2>JSON Web Token Examples</h2>
+      <pre class="example nohighlight" title="JSON Web Token Status List">
+eyJhbGciOiJFUzI1NiIsImlzcyI6ImRpZDpleGFtcGxlOjEyMyIsImtpZCI6IiMwIiwidHlwIjoidmMrbGQrand0IiwiY3R5IjoidmMrbGQranNvbiJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3czaWQub3JnL3ZjL3N0YXR1cy1saXN0LzIwMjEvdjEiXSwiaWQiOiJodHRwczovL3ZlbmRvci5leGFtcGxlL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIlN0YXR1c0xpc3QyMDIxQ3JlZGVudGlhbCJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjMiLCJ2YWxpZEZyb20iOiIyMDIxLTA0LTA1VDE0OjI3OjQwLjAwMFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6Imh0dHBzOi8vdmVuZG9yLmV4YW1wbGUvY3JlZGVudGlhbHMvc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJTdGF0dXNMaXN0MjAyMSIsInN0YXR1c1B1cnBvc2UiOiJzdXNwZW5zaW9uIiwiZW5jb2RlZExpc3QiOiJINHNJQUFBQUFBQUFBMk1BQUkzdkF0SUJBQUFBIn19.eRnHulruzCNFAD4n3PlAkn7hPouynDvMZxmID8bP0hXCZN3_CswKyIOFSyndpD6EhJfET7j5vVEuVrZXnnC_2A
+      </pre>
+      <pre class="example nohighlight" title="JSON Web Token Status List (Verified)">
+{
+  "protectedHeader": {
+    "alg": "ES256",
+    "iss": "did:example:123",
+    "kid": "#0",
+    "typ": "vc+ld+jwt",
+    "cty": "vc+ld+json"
+  },
+  "payload": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://w3id.org/vc/status-list/2021/v1"
+    ],
+    "id": "https://vendor.example/credentials/status/3",
+    "type": [
+      "VerifiableCredential",
+      "StatusList2021Credential"
+    ],
+    "issuer": "did:example:123",
+    "validFrom": "2021-04-05T14:27:40.000Z",
+    "credentialSubject": {
+      "id": "https://vendor.example/credentials/status/3#list",
+      "type": "StatusList2021",
+      "statusPurpose": "suspension",
+      "encodedList": "H4sIAAAAAAAAA2MAAI3vAtIBAAAA"
+    }
+  }
+}
+      </pre>
+      <pre class="example nohighlight" title="JSON Web Token Verifiable Credential With Status">
+eyJhbGciOiJFUzI1NiIsImlzcyI6ImRpZDpleGFtcGxlOjEyMyIsImtpZCI6IiMwIiwidHlwIjoidmMrbGQrand0IiwiY3R5IjoidmMrbGQranNvbiJ9.eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3czaWQub3JnL3ZjL3N0YXR1cy1saXN0LzIwMjEvdjEiXSwiaWQiOiJodHRwOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvMTg3MiIsInR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJOZXdDcmVkZW50aWFsVHlwZSJdLCJpc3N1ZXIiOnsiaWQiOiJkaWQ6ZXhhbXBsZToxMjMiLCJ0eXBlIjpbIk9yZ2FuaXphdGlvbiIsIk9yZ2FuaXphdGlvblR5cGUiXX0sInZhbGlkRnJvbSI6IjIwMTAtMDEtMDFUMTk6MjM6MjRaIiwiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjNCIsInR5cGUiOiJTdGF0dXNMaXN0MjAyMUVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InN1c3BlbnNpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI0Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIn0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7ImlkIjoiZGlkOmV4YW1wbGU6NDU2IiwidHlwZSI6WyJQZXJzb24iLCJKb2JUeXBlIl0sImNsYWltTmFtZSI6ImNsYWltVmFsdWUifX0.krP-9305AZEUu686iw_DfakBihBYPbyXDqQ51n2eYLJolg04k0RFS7g-JCKbpRkUclqQKrN3OBs2SQdcMgGpWg
+      </pre>
+      <pre class="example nohighlight" title="JSON Web Token Verifiable Credential With Status (Verified)">
+{
+  "suspension": false,
+  "protectedHeader": {
+    "alg": "ES256",
+    "iss": "did:example:123",
+    "kid": "#0",
+    "typ": "vc+ld+jwt",
+    "cty": "vc+ld+json"
+  },
+  "payload": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://w3id.org/vc/status-list/2021/v1"
+    ],
+    "id": "http://example.com/credentials/1872",
+    "type": [
+      "VerifiableCredential",
+      "NewCredentialType"
+    ],
+    "issuer": {
+      "id": "did:example:123",
+      "type": [
+        "Organization",
+        "OrganizationType"
+      ]
+    },
+    "validFrom": "2010-01-01T19:23:24Z",
+    "credentialStatus": {
+      "id": "https://example.com/credentials/status/3#4",
+      "type": "StatusList2021Entry",
+      "statusPurpose": "suspension",
+      "statusListIndex": "4",
+      "statusListCredential": "https://example.com/credentials/status/3"
+    },
+    "credentialSubject": {
+      "id": "did:example:456",
+      "type": [
+        "Person",
+        "JobType"
+      ],
+      "claimName": "claimValue"
+    }
+  }
+}
+      </pre>
+    </section>
+  </section>
+
   </body>
 </html>
