@@ -494,8 +494,8 @@ This status is reversible.
                       <td><code>status</code></td>
                       <td>
 Used to indicate a status message associated with a <a>verifiable credential</a>.
-The status message descriptions MUST be defined in <code>credentialSubject.message</code>.
-<code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
+The status message descriptions MUST be defined in <code>credentialStatus.message</code>.
+<code>credentialStatus.size</code> MUST be defined with this <code>statusPurpose</code>.
                       </td>
                     </tr>
                   </tbody>
@@ -519,13 +519,13 @@ bitstring. Further information on bitstring encoding can be found in Section
             </tr>
             <tr>
               <td>
-                credentialSubject.ttl
+                credentialStatus.ttl
               </td>
               <td>
                 The <code>ttl</code> indicates the "time to live" in milliseconds.
                 This property MAY be present, but if not present, implementers MUST 
                 use a value of <code>300000</code> for this property.  A verifier
-                MUST not use a cached <code>StatusList2021Credential</code> that was
+                MUST NOT use a cached <code>StatusList2021Credential</code> that was
                 cached more for more than the <code>ttl</code> duration prior to the
                 start of verification operation on a <a>verifiable credential</a>.
                 Implementations that publish the status list SHOULD align
@@ -535,23 +535,23 @@ bitstring. Further information on bitstring encoding can be found in Section
             </tr>
             <tr>
               <td>
-                credentialSubject.size
+                credentialStatus.size
               </td>
               <td>
                 The <code>size</code> indicates the size of the status entry in bits.
                 If size is omitted then the size of each status entry is assumed to be
                 1 bit (and therefore capable of capturing a boolean status).
                 <code>size</code> MAY be provided, but if <code>size</code> is not present
-                as a property of the <code>credentialSubject</code> then <code>size</code>
+                as a property of the <code>credentialStatus</code> then <code>size</code>
                 MUST be processed as 1.  <code>size</code> MUST be greater than zero.
                 if <code>size</code> is provided, and is greater than 1, then the property
-                <code>credentialSubject.message</code> MUST be present, and the number of
+                <code>credentialStatus.message</code> MUST be present, and the number of
                 status messages must equal the number of possible values.
               </td>
             </tr>
             <tr>
               <td>
-                credentialSubject.message
+                credentialStatus.message
               </td>
               <td>
                 The <code>message</code> property MUST be an array, and if present
