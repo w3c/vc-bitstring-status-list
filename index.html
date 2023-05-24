@@ -354,7 +354,7 @@ This status is reversible.
               <td>statusListIndex</td>
               <td>
 The <code>statusListIndex</code> property MUST be an arbitrary size integer
-greater than or equal to 0, expressed as a string. The value identifies the bit
+greater than or equal to 0, expressed as a string. The value identifies the
 position of the status of the <a>verifiable credential</a>.
               </td>
             </tr>
@@ -446,11 +446,7 @@ Section 4.6: Validity Period</a>.
 The latest point in time at which the status list is valid. This property is
 defined in the Verifiable Credentials Data Model specification in
 <a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
-Section 4.6: Validity Period</a>. Implementations that consume the status list
-SHOULD cache the status list <a>verifiable credential</a> until this
-time. Implementations that publish the status list are expected to align
-any protocol-specific caching information, such as the HTTP `Cache-Control`
-header, with the value in this field.
+Section 4.6: Validity Period</a>. 
               </td>
             </tr>
             <tr>
@@ -488,6 +484,14 @@ Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
 This status is reversible.
                       </td>
                     </tr>
+                    <tr>
+                      <td><code>status</code></td>
+                      <td>
+Used to indicate a status message associated with a <a>verifiable credential</a>.
+The status message descriptions MUST be defined in <code>credentialSubject.message</code>.
+<code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -507,7 +511,66 @@ bitstring. Further information on bitstring encoding can be found in Section
 <a href="#bitstring-encoding"></a>.
               </td>
             </tr>
-
+            <tr>
+              <td>
+                credentialSubject.ttl
+              </td>
+              <td>
+                The <code>ttl</code> indicates the "time to live" in milliseconds.
+                This property MAY be present, but if not present, implementers MUST 
+                use a value of <code>300000</code> for this property.  A verifier
+                MUST not use a cached <code>StatusList2021Credential</code> that was
+                cached more for more than the <code>ttl</code> duration prior to the
+                start of verification operation on a <a>verifiable credential</a>.
+                Implementations that publish the status list SHOULD align
+                any protocol-specific caching information, such as the 
+                HTTP `Cache-Control` header, with the value in this field.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.size
+              </td>
+              <td>
+                The <code>size</code> indicates the size of the status entry in bits.
+                If size is omitted then the size of each status entry is assumed to be
+                1 bit (and therefore capable of capturing a boolean status).
+                <code>size</code> MAY be provided, but if <code>size</code> is not present
+                as a property of the <code>credentialSubject</code> then <code>size</code>
+                MUST be processed as 1.  <code>size</code> MUST be greater than zero.
+                if <code>size</code> is provided, and is greater than 1, then the property
+                <code>credentialSubject.message</code> MUST be present, and the number of
+                status messages must equal the number of possible values.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.message
+              </td>
+              <td>
+                The <code>message</code> property MUST be an array, and if present
+                the length of the array must equal the number of possible status states
+                indicated by <code>size</code>. <code>message</code> MAY be present if
+                <code>size</code> is 1. <code>message</code> MUST be present if
+                <code>size</code> is greater than 1.  If not present, the message value
+                associated with the bit value of <code>0</code> is "unset" and the bit
+                value of <code>1</code> is "set".
+                Elements in the <code>message</code> array if present, MUST contain at 
+                minimum two properties:
+                <ul>
+                  <li><code>status</code> being a string of the hex value of the status</li>
+                  <li><code>value</code> a string containing the associated message</li>
+                </ul>
+                Implementers MAY add additional values to objects in the <code>message</code>
+                array.
+                Implementers MAY use the string value of <code>undefined</code> in the value
+                to indidate that a status corresponding is not definied for the associated
+                status value, but that it may be definied in the future.
+                Rules for how to handle various status messages are outside the scope of
+                normative reuqirements in this document, but it is assumed that implementers
+                SHOULD and will document rules for processing various status codes.
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -620,12 +683,15 @@ Generate a <strong>revocation bitstring</strong> by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let <strong>status</strong> be the value of the bit at position
-<strong>credentialIndex</strong> in the <strong>revocation bitstring</strong>.
+Let <strong>status</strong> be the value at position indicated by the
+<strong>credentialIndex</strong> times the <strong>size</strong> in the 
+<strong>revocation bitstring</strong>.
         </li>
         <li>
-Return <code>true</code> if <strong>status</strong> is 1, <code>false</code>
-otherwise.
+For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code> 
+return <code>true</code> if <strong>status</strong> is 1, <code>false</code>
+otherwise.  Otherwise, return the corresponding <code>value</code> of the status
+as indicated in the <code>message</code> array.
         </li>
       </ol>
     </section>
@@ -645,10 +711,11 @@ Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
-For each bit in <strong>bitstring</strong>, if there is a
-corresponding <code>statusListIndex</code> value in
-a revoked credential in <strong>issuedCredentials</strong>, set the bit to
-1 (one), otherwise set the bit to 0 (zero).
+For each value in <strong>bitstring</strong>, if there is a
+corresponding <strong>statusListIndex</strong> value in
+a credential in <strong>issuedCredentials</strong>, set the value to the 
+appropriate status.  The position of the value is computed as <strong>statusListIndex</strong>
+times the <strong>size</strong>.  
         </li>
         <li>
 Generate a <strong>compressed bitstring</strong> by using the GZIP
