@@ -10,6 +10,8 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script src="./common.js" class="remove"></script>
+    <script class="remove"
+      src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@2.0.0/dist/main.js"></script>
     <script type="text/javascript" class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -102,7 +104,7 @@
         },
 
         // post process
-        postProcess: [restrictRefs],
+        postProcess: [restrictRefs, window.respecVc.createVcExamples],
 
         // URI of the patent status for this WG, for Rec-track documents
         // !!!! IMPORTANT !!!!
@@ -858,6 +860,65 @@ account when utilizing this data model.
 Write i18n considerations.
     </p>
 
+  </section>
+
+  <section class="informative">
+    <h2>Appendix</h2>
+    <section>
+      <h2>Examples</h2>
+      <section>
+        <h2>Revocable Verifiable Credential</h2>
+<pre class="example nohighlight vc" title="A Revocable Verifiable Credential"
+data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2",
+    "https://w3id.org/vc/status-list/2021/v1"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://example.com/credentials/status/3#94567"
+    "type": "StatusList2021Entry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  }
+}
+</pre>
+        
+      </section>
+      <section>
+        <h2>Status List Verifiable Credential</h2>
+<pre class="example nohighlight vc" title="A Status List Verifiable Credential"
+data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2",
+    "https://w3id.org/vc/status-list/2021/v1"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">StatusList2021</span>",
+    "statusPurpose": "<span class="highlight">revocation</span>",
+    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+  }
+}
+</pre>
+      </section>
+    </section>
   </section>
 
   </body>
