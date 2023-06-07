@@ -541,11 +541,11 @@ bitstring. Further information on bitstring encoding can be found in Section
               <td>
                 The <code>size</code> indicates the size of the status entry in bits.
                 If size is omitted then the size of each status entry is assumed to be
-                1 bit (and therefore capable of capturing a boolean status).
+                one bit (and therefore capable of capturing a boolean status).
                 <code>size</code> MAY be provided, but if <code>size</code> is not present
                 as a property of the <code>credentialStatus</code> then <code>size</code>
-                MUST be processed as 1.  <code>size</code> MUST be greater than zero.
-                if <code>size</code> is provided, and is greater than 1, then the property
+                MUST be processed as `1`.  <code>size</code> MUST be greater than zero.
+                if <code>size</code> is provided, and is greater than `1`, then the property
                 <code>credentialStatus.message</code> MUST be present, and the number of
                 status messages must equal the number of possible values.
               </td>
@@ -558,8 +558,8 @@ bitstring. Further information on bitstring encoding can be found in Section
                 The <code>message</code> property MUST be an array, and if present
                 the length of the array must equal the number of possible status states
                 indicated by <code>size</code>. <code>message</code> MAY be present if
-                <code>size</code> is 1. <code>message</code> MUST be present if
-                <code>size</code> is greater than 1.  If not present, the message value
+                <code>size</code> is `1`. <code>message</code> MUST be present if
+                <code>size</code> is greater than `1`.  If not present, the message value
                 associated with the bit value of <code>0</code> is "unset" and the bit
                 value of <code>1</code> is "set".
                 Elements in the <code>message</code> array if present, MUST contain at 
@@ -697,7 +697,7 @@ Let <strong>status</strong> be the value at position indicated by the
         </li>
         <li>
 For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code> 
-return <code>true</code> if <strong>status</strong> is 1, <code>false</code>
+return <code>true</code> if <strong>status</strong> is `1`, <code>false</code>
 otherwise.  Otherwise, return the corresponding <code>value</code> of the status
 as indicated in the <code>message</code> array.
         </li>
