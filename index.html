@@ -494,8 +494,8 @@ This status is reversible.
                       <td><code>status</code></td>
                       <td>
 Used to indicate a status message associated with a <a>verifiable credential</a>.
-The status message descriptions MUST be defined in <code>credentialStatus.message</code>.
-<code>credentialStatus.size</code> MUST be defined with this <code>statusPurpose</code>.
+The status message descriptions MUST be defined in <code>credentialSubject.message</code>.
+<code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
 <p class="issue" data-number="66">We need to add an example for multiple status codes</p>
                       </td>
                     </tr>
@@ -520,7 +520,7 @@ bitstring. Further information on bitstring encoding can be found in Section
             </tr>
             <tr>
               <td>
-                credentialStatus.ttl
+                credentialSubject.ttl
               </td>
               <td>
                 The <code>ttl</code> indicates the "time to live" in milliseconds.
@@ -536,7 +536,7 @@ bitstring. Further information on bitstring encoding can be found in Section
             </tr>
             <tr>
               <td>
-                credentialStatus.size
+                credentialSubject.size
               </td>
               <td>
                 The <code>size</code> indicates the size of the status entry in bits.
@@ -552,7 +552,7 @@ bitstring. Further information on bitstring encoding can be found in Section
             </tr>
             <tr>
               <td>
-                credentialStatus.message
+                credentialSubject.message
               </td>
               <td>
                 The <code>message</code> property MUST be an array, and if present
@@ -570,12 +570,35 @@ bitstring. Further information on bitstring encoding can be found in Section
                 </ul>
                 Implementers MAY add additional values to objects in the <code>message</code>
                 array.
+                Implementers MAY add a boolean value to elements in the <code>message</code>
+                named <code>verify</code> which adds an instruction to verifiers where if the
+                value of <code>verify</code> is <code>true</code> the verifier SHOULD not
+                use the status to reject verification of the verifiable credential. If the
+                value of <code>verify</code> is <code>false</code>, then a verifier SHOULD
+                NOT verify the verifiable credential.
                 Implementers MAY use the string value of <code>undefined</code> in the value
                 to indicate that a status corresponding is not defined for the associated
                 status value, but that it may be definied in the future.
                 Rules for how to handle various status messages are outside the scope of
                 normative reuqirements in this document, but it is assumed that implementers
                 SHOULD and will document rules for processing various status codes.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.reference
+              </td>
+              <td>
+                The <code>reference</code> property provides a point for implementers to
+                include a [[URL]] to material related to the status. An implementer MAY include
+                the <code>reference</code> property, and if they do, the value MUST be a
+                [[URL]] or an array of URLs. Implementers using a `statusPurpose` of `status`
+                are strongly encouraged to provide a <code>reference</code>.
+                <p class="note" title="Details around reference">
+                  <code>reference</code> is especially important when interpertation of the 
+                  status for a credential may involve some understanding of the business case
+                  involved.
+                </p>
               </td>
             </tr>
           </tbody>
@@ -599,6 +622,32 @@ bitstring. Further information on bitstring encoding can be found in Section
   },
   "proof": { ... }
 }
+        </pre>
+        <pre class="example nohighlight" title="Example StatusList2021Credential">
+          {
+            "@context": [
+              "https://www.w3.org/2018/credentials/v1",
+              "https://w3id.org/vc/status-list/2021/v1"
+            ],
+            "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+            "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+            "issuer": "did:example:12345",
+            "issued": "2021-04-05T14:27:40Z",
+            "credentialSubject": {
+              "id": "https://example.com/status/3#list",
+              "type": "<span class="highlight">StatusList2021</span>",
+              "ttl": 500,
+              "statusPurpose": "<span class="highlight">status</span>",
+              "reference": "https://example.org/status-dictionary/"
+              "message": [ 
+                  {"status":"0x0", "value":"valid", "verify": true},
+                  {"status":"0x1", "value":"invalid", "verify": false},
+                  {"status":"0x2", "value":"pending_review", "verify": true},
+                  ...
+              ],
+              "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+            }
+          }
         </pre>
       </section>
 
