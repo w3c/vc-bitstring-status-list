@@ -488,7 +488,7 @@ This status is reversible.
                       <td><code>status</code></td>
                       <td>
 Used to indicate a status message associated with a <a>verifiable credential</a>.
-The status message descriptions MUST be defined in <code>credentialSubject.message</code>.
+The status message descriptions MUST be defined in <code>credentialSubject.statusMessages</code>.
 <code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
 <p class="issue" data-number="66">We need to add an example for multiple status codes</p>
                       </td>
@@ -540,31 +540,31 @@ bitstring. Further information on bitstring encoding can be found in Section
                 as a property of the <code>credentialStatus</code> then <code>size</code>
                 MUST be processed as `1`.  <code>size</code> MUST be greater than zero.
                 if <code>size</code> is provided, and is greater than `1`, then the property
-                <code>credentialStatus.message</code> MUST be present, and the number of
+                <code>credentialStatus.statusMessages</code> MUST be present, and the number of
                 status messages must equal the number of possible values.
               </td>
             </tr>
             <tr>
               <td>
-                credentialSubject.message
+                credentialSubject.statusMessages
               </td>
               <td>
-                The <code>message</code> property MUST be an array, and if present
+                The <code>statusMessages</code> property MUST be an array, and if present
                 the length of the array must equal the number of possible status states
-                indicated by <code>size</code>. <code>message</code> MAY be present if
-                <code>size</code> is `1`. <code>message</code> MUST be present if
+                indicated by <code>size</code>. <code>statusMessages</code> MAY be present if
+                <code>size</code> is `1`. <code>statusMessages</code> MUST be present if
                 <code>size</code> is greater than `1`.  If not present, the message value
                 associated with the bit value of <code>0</code> is "unset" and the bit
                 value of <code>1</code> is "set".
-                Elements in the <code>message</code> array if present, MUST contain at 
+                Elements in the <code>statusMessages</code> array if present, MUST contain at 
                 minimum two properties:
                 <ul>
                   <li><code>status</code> being a string of the hex value of the status</li>
                   <li><code>value</code> a string containing the associated message</li>
                 </ul>
-                Implementers MAY add additional values to objects in the <code>message</code>
+                Implementers MAY add additional values to objects in the <code>statusMessages</code>
                 array.
-                Implementers MAY add a boolean value to elements in the <code>message</code>
+                Implementers MAY add a boolean value to elements in the <code>statusMessages</code>
                 named <code>verify</code> which adds an instruction to verifiers where if the
                 value of <code>verify</code> is <code>true</code> the verifier SHOULD not
                 use the status to reject verification of the verifiable credential. If the
@@ -633,7 +633,7 @@ bitstring. Further information on bitstring encoding can be found in Section
               "ttl": 500,
               "statusPurpose": "<span class="highlight">status</span>",
               "reference": "https://example.org/status-dictionary/"
-              "message": [ 
+              "statusMessages": [ 
                   {"status":"0x0", "value":"valid", "verify": true},
                   {"status":"0x1", "value":"invalid", "verify": false},
                   {"status":"0x2", "value":"pending_review", "verify": true},
@@ -741,7 +741,7 @@ Let <strong>status</strong> be the value at position indicated by the
 For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code> 
 return <code>true</code> if <strong>status</strong> is `1`, <code>false</code>
 otherwise.  Otherwise, return the corresponding <code>value</code> of the status
-as indicated in the <code>message</code> array.
+as indicated in the <code>statusMessages</code> array.
         </li>
       </ol>
     </section>
