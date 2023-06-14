@@ -542,7 +542,7 @@ bitstring. Further information on bitstring encoding can be found in Section
                 The <code>size</code> indicates the size of the status entry in bits.
                 <code>size</code> MAY be provided, but if <code>size</code> is not present
                 as a property of the <code>credentialStatus</code> then <code>size</code>
-                MUST be processed as `1`.  <code>size</code> MUST be greater than zero.
+                MUST be processed as `1`.  <code>size</code> MUST be an integer greater than zero.
                 if <code>size</code> is provided, and is greater than `1`, then the property
                 <code>credentialStatus.statusMessages</code> MUST be present, and the number of
                 status messages must equal the number of possible values.
