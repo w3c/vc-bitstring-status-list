@@ -568,6 +568,9 @@ bitstring. Further information on bitstring encoding can be found in Section
                 use the status to reject verification of the verifiable credential. If the
                 value of <code>verify</code> is <code>false</code>, then a verifier SHOULD
                 NOT verify the verifiable credential.
+                If <code>verify</verify> is present, then the values of `0` and `1` should 
+                be processed identically to the values of `0` and `1` in a status list with a
+                <code>statusPurpose<code> of <code>suspension</code>.
                 Implementers MAY use the string value of <code>undefined</code> in the value
                 to indicate that a status corresponding is not defined for the associated
                 status value, but that it may be definied in the future.
