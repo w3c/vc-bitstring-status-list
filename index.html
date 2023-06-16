@@ -540,10 +540,10 @@ bitstring. Further information on bitstring encoding can be found in Section
               </td>
               <td>
                 The <code>size</code> indicates the size of the status entry in bits.
-                <code>size</code> MAY be provided, but if <code>size</code> is not present
-                as a property of the <code>credentialStatus</code> then <code>size</code>
+                <code>size</code> MAY be provided. If <code>size</code> is not present
+                as a property of the <code>credentialStatus</code>, then <code>size</code>
                 MUST be processed as `1`.  <code>size</code> MUST be an integer greater than zero.
-                if <code>size</code> is provided, and is greater than `1`, then the property
+                If <code>size</code> is provided and is greater than `1`, then the property
                 <code>credentialStatus.statusMessages</code> MUST be present, and the number of
                 status messages must equal the number of possible values.
               </td>
@@ -553,18 +553,18 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.statusMessages
               </td>
               <td>
-                The <code>statusMessages</code> property MUST be an array, and if present
+                The <code>statusMessages</code> property MUST be an array. If present,
                 the length of the array must equal the number of possible status states
                 indicated by <code>size</code>. <code>statusMessages</code> MAY be present if
                 <code>size</code> is `1`. <code>statusMessages</code> MUST be present if
                 <code>size</code> is greater than `1`.  If not present, the message value
                 associated with the bit value of <code>0</code> is "unset" and the bit
                 value of <code>1</code> is "set".
-                Elements in the <code>statusMessages</code> array if present, MUST contain at 
+                If present, elements in the <code>statusMessages</code> array MUST contain at 
                 minimum two properties:
                 <ul>
-                  <li><code>status</code> being a string of the hex value of the status</li>
-                  <li><code>value</code> a string containing the associated message</li>
+                  <li><code>status</code>, being a string of the hex value of the status</li>
+                  <li><code>value</code>, being a string containing the associated message</li>
                 </ul>
                 Implementers MAY add additional values to objects in the <code>statusMessages</code>
                 array.
