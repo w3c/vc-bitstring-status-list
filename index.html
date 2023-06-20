@@ -518,7 +518,7 @@ bitstring. Further information on bitstring encoding can be found in Section
               </td>
               <td>
                 The <code>ttl</code> indicates the "time to live" in milliseconds.
-                This property MAY be present, but if not present, implementers MUST 
+                This property MAY be present. If not present, implementers MUST 
                 use a value of <code>300000</code> for this property.  A verifier
                 MUST NOT use a cached <code>StatusList2021Credential</code> that was
                 cached for more than the <code>ttl</code> duration prior to the
@@ -735,14 +735,15 @@ Generate a <strong>revocation bitstring</strong> by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let <strong>status</strong> be the value at position indicated by the
+Let <strong>status</strong> be the value at the position indicated by the
 <strong>credentialIndex</strong> times the <strong>size</strong> in the 
 <strong>bitstring</strong>.
         </li>
         <li>
-For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code> 
-return <code>true</code> if <strong>status</strong> is `1`, <code>false</code>
-otherwise.  Otherwise, return the corresponding <code>value</code> of the status
+For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>, 
+return <code>true</code> if <code>status</code> is `1`, and return <code>false</code>
+if <code>status</code> has any other value.  For other <code>statusPurpose</code>,
+return the corresponding <code>value</code> of the <code>status</code>
 as indicated in the <code>statusMessages</code> array.
         </li>
       </ol>
@@ -763,11 +764,11 @@ Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
-For each value in <strong>bitstring</strong>, if there is a
-corresponding <strong>statusListIndex</strong> value in
-a credential in <strong>issuedCredentials</strong>, set the value to the 
-appropriate status. The position of the value is computed as <strong>statusListIndex</strong>
-times the <strong>size</strong>.  
+For each value in <code>bitstring</code>, if there is a
+corresponding <code>statusListIndex</code> value in
+a credential in <code>issuedCredentials</code>, set the value to the 
+appropriate status. The position of the value is computed as <code>statusListIndex</code>
+times the <code>size</code>.  
         </li>
         <li>
 Generate a <strong>compressed bitstring</strong> by using the GZIP
