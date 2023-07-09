@@ -128,7 +128,7 @@ A privacy concern arises when there is a one-to-one mapping between a verifiable
 
 #### Malicious Issuers and Verifiers
 
-In general, the herd privacy protections offered by this specification can be circumvented by malicious issuers and verifiers. Its privacy benefits can only be realized when issuers and verifiers intend to avoid tracking or sharing the presentation of particular credentials.
+The herd privacy protections offered by this specification can generally be circumvented by malicious issuers and verifiers. Its privacy benefits can only be realized when issuers and verifiers intend to avoid tracking or sharing the presentation of particular credentials.
 
 A malicious issuer might intentionally attack herd privacy by creating a unique status list per credential issued in order to establish a 1-1 mapping to track when a verifier processes a specific credential. Similarly, they could establish another a 1-1 mapping by using a different cryptographic key for every credential issued that is tracked in a status list.
 
