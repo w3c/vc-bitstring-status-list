@@ -120,7 +120,7 @@ An example credential issued to use a multiple statusMessage statusList looks id
 
 There are a variety of privacy and performance considerations that are made when designing, publishing, and processing status lists. The following are some of the considerations that are being discussed by the Working Group.
 
-### Privacy Considerations:
+### Privacy Considerations
 
 #### Correlation between holder, time, and verifier
 
