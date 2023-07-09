@@ -33,7 +33,7 @@ The Working Group is still discussing a unification of design, blending status l
 
 ### Example 1: Single State StatusList Credential
 
-A Status List credential contains a list embedded in it, this list has a singular purpose namely "revocation". The list is a bitstring, where each bit represents the status of a verifiable credential. The list is encoded as a base64url-encoded bitstring. The bitstring is decoded to a byte array, which is then decoded to a list of integers. The list of integers is then converted to a list of booleans. The list of booleans is then used to determine the status of a verifiable credential.:
+A `StatusList` credential contains a list with a singular purpose: "revocation". The list is a bitstring, where each bit represents the status of a verifiable credential. The list is encoded as a base64url-encoded bitstring. The bitstring is decoded to a byte array, which is then decoded to a list of integers. The list of integers is then converted to a list of booleans. The list of booleans is then used to determine the status of a verifiable credential, as shown.
 
 ```JSON
 {
