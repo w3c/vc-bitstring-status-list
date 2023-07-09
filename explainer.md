@@ -84,7 +84,7 @@ An issuer can then issue a credential with a `credentialStatus` field that utili
 
 ### Example 2: Multiple State StatusList Credential
 
-A StatusList credential may optionally contain a list of status messages. The following example defines statuses for "0x0", "0x1", "0x2":
+A `StatusList` credential may optionally contain a list of status messages. The following example defines statuses for "`0x0`", "`0x1`", and "`0x2`":
 
 ```JSON
 {
