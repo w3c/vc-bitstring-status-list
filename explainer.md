@@ -114,7 +114,7 @@ A `StatusList` credential may optionally contain a list of status messages. The 
 }
 ```
 
-An example credential issued to use a multiple statusMessage statusList looks identical to one issued for a single use.
+An example credential issued to use a multiple state `statusList` looks identical to one issued for a single use.
 
 ## Detailed design discussion
 
