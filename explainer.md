@@ -23,7 +23,7 @@ Provide a location for an issuer of a Verifiable Credential [VC-Data-Model](http
 
 ## How does it work?
 
-At the most basic level, status information for all verifiable credentials issued by an issuer are expressed as simple binary values. The issuer keeps a bitstring list of all verifiable credentials it has issued. Each verifiable credential is associated with a position in the list. If the binary value of the position in the list is 1 (one), the verifiable credential is revoked, if it is 0 (zero) it is not revoked. The verifier can then check the status of a verifiable credential by looking up the position of the verifiable credential in the bitstring list. This is the basic model used for Revocation and Suspension.
+At the most basic level, status information for all verifiable credentials issued by an issuer are expressed as simple binary values. The issuer keeps a bitstring list of all verifiable credentials it has issued. Each verifiable credential is associated with a position in the list. If the binary value of the position in the list is 1 (one), the verifiable credential is revoked; if it is 0 (zero), it is not revoked. The verifier can then check the status of a verifiable credential by looking up the position of the verifiable credential in the bitstring list. This is the basic model used for Revocation and Suspension.
 
 A status list may have multiple states, exposed via a series of status messages. These status messages are intended to be extensible and interoperable with existing status message vocabularies. The status messages are intended to be human-readable and machine-readable. The status messages are intended to be used by verifiers to determine the status of a verifiable credential.
 
