@@ -136,7 +136,7 @@ A malicious verifier might intentionally attack herd privacy by sharing informat
 
 ### Performance Considerations
 
-Similarly, there are performance considerations that are explored when designing status lists. One such consideration is where the list is published and the burden it places from a bandwidth and processing perspective, both on the server and the client fetching the information. In order to meet privacy expectations, it is useful to bundle the status of large sets of credentials into a single list to help with herd privacy. However, doing so can place an impossible burden on both the server and client if the status information is as much as a few hundred bytes in size per credential across a population of hundreds of millions of holders.
+There are various performance considerations that are explored when designing status lists. One such consideration is the bandwidth and processing burden a published list places both on the server and on the client fetching the information. Bundling the statuses of large sets of credentials into a single list can help with herd privacy. However, doing so can place an impossible burden on both server and client if the size of the status information is as much as a few hundred bytes per credential across a population of hundreds of millions of holders.
 
 ### Addressing Privacy and Performance
 
