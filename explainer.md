@@ -27,7 +27,7 @@ At the most basic level, status information for all verifiable credentials issue
 
 A status list may have multiple states, exposed via a series of status messages. These status messages are intended to be extensible and interoperable with existing status message vocabularies. The status messages are intended to be both human-readable and machine-readable. The status messages are intended to be used by verifiers to determine the status of a verifiable credential.
 
-The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
+The Working Group is still discussing a unification of design, blending status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what such a unified design should look like from ease-of-implementation, privacy, and security standpoints.
 
 ## Examples
 
