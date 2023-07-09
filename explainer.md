@@ -124,7 +124,7 @@ There are a variety of privacy and performance considerations that are made when
 
 #### Correlation between holder, time, and verifier
 
-A privacy consideration arises when there is a one-to-one mapping between a verifiable credential and a URL where the status is published. This type of mapping enables the website that publishes the URL to correlate the holder, time, and verifier when the status is checked. This could enable the issuer to discover the type of interaction the holder is having with the verifier, such as providing an age verification credential when entering a bar. Being tracked by the issuer of a driver's license when entering an establishment violates a privacy expectation that many people have today.
+A privacy concern arises when there is a one-to-one mapping between a verifiable credential and a URL where its status is published. This type of mapping enables the website that publishes the URL to correlate the holder, time, and verifier, whenever the status is checked. This could enable the issuer to discover the type of interaction the holder is having with the verifier, such as providing an age verification credential when entering a bar. Being tracked by the issuer of a driver's license when entering an establishment violates a privacy expectation that many people have today.
 
 #### Malicious Issuers and Verifiers
 
