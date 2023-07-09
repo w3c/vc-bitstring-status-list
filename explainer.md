@@ -55,7 +55,7 @@ A `StatusList` credential contains a list with a singular purpose: "revocation".
 }
 ```
 
-An issuer can then issue a credential with a `credentialStatus` field that utilizes the issued statusListCredential:
+An issuer can then issue a credential with a `credentialStatus` field that utilizes the issued `statusListCredential`.
 
 ```JSON
 {
