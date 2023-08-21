@@ -10,6 +10,8 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script src="./common.js" class="remove"></script>
+    <script class="remove"
+      src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@2.0.1/dist/main.js"></script>
     <script type="text/javascript" class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -102,7 +104,7 @@
         },
 
         // post process
-        postProcess: [restrictRefs],
+        postProcess: [restrictRefs, window.respecVc.createVcExamples],
 
         // URI of the patent status for this WG, for Rec-track documents
         // !!!! IMPORTANT !!!!
@@ -288,11 +290,15 @@ property that uses the data model described in this specification.
             <tr>
               <td>id</td>
               <td>
-The constraints on the <code>id</code> property are listed in the
-Verifiable Credentials Data Model specification [[VC-DATA-MODEL]]. The
-value is expected to be a URL that identifies the status information associated
-with the <a>verifiable credential</a>. It MUST NOT be the URL for the
-status list.
+An optional identifier for the status list entry. The constraints on the
+<code>id</code> property are listed in the Verifiable Credentials Data Model
+specification [[VC-DATA-MODEL]]. If present, the value is expected to be a URL
+that identifies the status information associated with the <a>verifiable
+credential</a>. It MUST NOT be the URL for the status list. The value is
+not used during the verification or validation process, and does not need to be
+related to the `statusListCredential` value. If necessary, the value can be
+used to uniquely identify the `StatusList2021Entry` object, such as when it is
+stored in a database.
               </td>
             </tr>
             <tr>
@@ -337,7 +343,7 @@ This status is reversible.
               <td>statusListIndex</td>
               <td>
 The <code>statusListIndex</code> property MUST be an arbitrary size integer
-greater than or equal to 0, expressed as a string. The value identifies the bit
+greater than or equal to 0, expressed as a string. The value identifies the
 position of the status of the <a>verifiable credential</a>.
               </td>
             </tr>
@@ -428,11 +434,7 @@ Section 4.6: Validity Period</a>.
 The latest point in time at which the status list is valid. This property is
 defined in the Verifiable Credentials Data Model specification in
 <a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
-Section 4.6: Validity Period</a>. Implementations that consume the status list
-SHOULD cache the status list <a>verifiable credential</a> until this
-time. Implementations that publish the status list are expected to align
-any protocol-specific caching information, such as the HTTP `Cache-Control`
-header, with the value in this field.
+Section 4.6: Validity Period</a>. 
               </td>
             </tr>
             <tr>
@@ -470,6 +472,14 @@ Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
 This status is reversible.
                       </td>
                     </tr>
+                    <tr>
+                      <td><code>status</code></td>
+                      <td>
+Used to indicate a status message associated with a <a>verifiable credential</a>.
+The status message descriptions MUST be defined in <code>credentialSubject.statusMessages</code>.
+<code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -489,7 +499,81 @@ bitstring. Further information on bitstring encoding can be found in Section
 <a href="#bitstring-encoding"></a>.
               </td>
             </tr>
-
+            <tr>
+              <td>
+                credentialSubject.ttl
+              </td>
+              <td>
+                The <code>ttl</code> indicates the "time to live" in milliseconds.
+                This property MAY be present. If not present, implementers MUST 
+                use a value of <code>300000</code> for this property.  A verifier
+                MUST NOT use a cached <code>StatusList2021Credential</code> that was
+                cached for more than the <code>ttl</code> duration prior to the
+                start of verification operation on a <a>verifiable credential</a>.
+                Implementations that publish the status list SHOULD align
+                any protocol-specific caching information, such as the 
+                HTTP `Cache-Control` header, with the value in this field.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.size
+              </td>
+              <td>
+                The <code>size</code> indicates the size of the status entry in bits.
+                <code>size</code> MAY be provided. If <code>size</code> is not present
+                as a property of the <code>credentialStatus</code>, then <code>size</code>
+                MUST be processed as `1`.  <code>size</code> MUST be an integer greater than zero.
+                If <code>size</code> is provided and is greater than `1`, then the property
+                <code>credentialStatus.statusMessages</code> MUST be present, and the number of
+                status messages must equal the number of possible values.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.statusMessages
+              </td>
+              <td>
+                The <code>statusMessages</code> property MUST be an array. If present,
+                the length of the array must equal the number of possible status states
+                indicated by <code>size</code>. <code>statusMessages</code> MAY be present if
+                <code>size</code> is `1`. <code>statusMessages</code> MUST be present if
+                <code>size</code> is greater than `1`.  If not present, the message value
+                associated with the bit value of <code>0</code> is "unset" and the bit
+                value of <code>1</code> is "set".
+                If present, elements in the <code>statusMessages</code> array MUST contain at 
+                minimum two properties:
+                <ul>
+                  <li><code>status</code>, being a string of the hex value of the status</li>
+                  <li><code>value</code>, being a string containing the associated message</li>
+                </ul>
+                Implementers MAY add additional values to objects in the <code>statusMessages</code>
+                array.
+                Implementers MAY use the string value of <code>undefined</code> in the value
+                to indicate that a corresponding status is not defined for the associated
+                status value, but that it may be defined in the future.
+                Rules for how to handle various status messages are outside the scope of
+                normative requirements in this document, but it is assumed that implementers
+                will document rules for processing various status codes.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.reference
+              </td>
+              <td>
+                The <code>reference</code> property provides a point for implementers to
+                include a [[URL]] to material related to the status. An implementer MAY include
+                the <code>reference</code> property, and if they do, the value MUST be a
+                [[URL]] or an array of URLs. Implementers using a `statusPurpose` of `status`
+                are strongly encouraged to provide a <code>reference</code>.
+                <p class="note" title="Details around reference">
+                  <code>reference</code> is especially important when interpertation of the 
+                  status for a credential may involve some understanding of the business case
+                  involved.
+                </p>
+              </td>
+            </tr>
           </tbody>
         </table>
 
@@ -510,6 +594,35 @@ bitstring. Further information on bitstring encoding can be found in Section
   },
   "proof": { ... }
 }
+        </pre>
+                <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
+The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
+                </p>
+                <pre class="example nohighlight" title="Example StatusList2021Credential">
+          {
+            "@context": [
+              "https://www.w3.org/ns/credentials/v2",
+            ],
+            "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+            "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+            "issuer": "did:example:12345",
+            "issued": "2021-04-05T14:27:40Z",
+            "credentialSubject": {
+              "id": "https://example.com/status/3#list",
+              "type": "<span class="highlight">StatusList2021</span>",
+              "ttl": 500,
+              "statusPurpose": "<span class="highlight">status</span>",
+              "reference": "https://example.org/status-dictionary/",
+              "size": 2,
+              "statusMessages": [ 
+                  {"status":"0x0", "value":"valid"},
+                  {"status":"0x1", "value":"invalid"},
+                  {"status":"0x2", "value":"pending_review"},
+                  ...
+              ],
+              "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+            }
+          }
         </pre>
       </section>
 
@@ -568,7 +681,7 @@ when validating a <a>verifiable credential</a> that is contained in a
 
       <ol class="algorithm">
         <li>
-Let <strong>credentialToValidate</strong> be a <a>verifiable credentials</a>
+Let <strong>credentialToValidate</strong> be a <a>verifiable credential</a>
 containing a <code>credentialStatus</code> entry that is a
 <a href="#bitstringstatuslistentry">BitStringStatusListEntry</a>.
         </li>
@@ -578,8 +691,9 @@ in the <code>credentialStatus</code> entry in the
 <strong>credentialToValidate</strong>.
         </li>
         <li>
-Verify all proofs associated with the <strong>credentialToValidate</strong>.
-If a proof fails, return a validation error.
+Dereference the <code>statusListCredential</code> URL, and ensure that all
+proofs verify successfully. If the dereference fails, or if any of the proof
+verifications fail, return a validation error.
         </li>
         <li>
 Verify that the <strong>status purpose</strong> matches the
@@ -601,12 +715,16 @@ Generate a <strong>revocation bitstring</strong> by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let <strong>status</strong> be the value of the bit at position
-<strong>credentialIndex</strong> in the <strong>revocation bitstring</strong>.
+Let <strong>status</strong> be the value at the position indicated by the
+<strong>credentialIndex</strong> times the <strong>size</strong> in the 
+<strong>bitstring</strong>.
         </li>
         <li>
-Return <code>true</code> if <strong>status</strong> is 1, <code>false</code>
-otherwise.
+For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>, 
+return <code>true</code> if <code>status</code> is `1`, and return <code>false</code>
+if <code>status</code> has any other value.  For other <code>statusPurpose</code>,
+return the corresponding <code>value</code> of the <code>status</code>
+as indicated in the <code>statusMessages</code> array.
         </li>
       </ol>
     </section>
@@ -626,10 +744,11 @@ Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
-For each bit in <strong>bitstring</strong>, if there is a
+For each value in <code>bitstring</code>, if there is a
 corresponding <code>statusListIndex</code> value in
-a revoked credential in <strong>issuedCredentials</strong>, set the bit to
-1 (one), otherwise set the bit to 0 (zero).
+a credential in <code>issuedCredentials</code>, set the value to the 
+appropriate status. The position of the value is computed as <code>statusListIndex</code>
+times the <code>size</code>.  
         </li>
         <li>
 Generate a <strong>compressed bitstring</strong> by using the GZIP
@@ -839,6 +958,63 @@ account when utilizing this data model.
 Write i18n considerations.
     </p>
 
+  </section>
+
+  <section class="informative">
+    <h2>Appendix</h2>
+    <section>
+      <h2>Examples</h2>
+      <section>
+        <h2>Revocable Verifiable Credential</h2>
+<pre class="example nohighlight vc" title="A Revocable Verifiable Credential"
+data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "StatusList2021Entry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  }
+}
+</pre>
+        
+      </section>
+      <section>
+        <h2>Status List Verifiable Credential</h2>
+<pre class="example nohighlight vc" title="A Status List Verifiable Credential"
+data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">StatusList2021</span>",
+    "statusPurpose": "<span class="highlight">revocation</span>",
+    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+  }
+}
+</pre>
+      </section>
+    </section>
   </section>
 
   </body>
