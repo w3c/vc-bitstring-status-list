@@ -297,7 +297,7 @@ that identifies the status information associated with the <a>verifiable
 credential</a>. It MUST NOT be the URL for the status list. The value is
 not used during the verification or validation process, and does not need to be
 related to the `statusListCredential` value. If necessary, the value can be
-used to uniquely identify the `StatusList2021Entry` object, such as when it is
+used to uniquely identify the `BitStringStatusListEntry` object, such as when it is
 stored in a database.
               </td>
             </tr>
@@ -359,7 +359,7 @@ includes the <code>BitStringStatusListCredential</code> value.
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example StatusList2021Entry">
+        <pre class="example nohighlight" title="Example BitStringStatusListEntry">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -508,7 +508,7 @@ bitstring. Further information on bitstring encoding can be found in Section
                 The <code>ttl</code> indicates the "time to live" in milliseconds.
                 This property MAY be present. If not present, implementers MUST 
                 use a value of <code>300000</code> for this property.  A verifier
-                MUST NOT use a cached <code>StatusList2021Credential</code> that was
+                MUST NOT use a cached <code>BitstringStatusListCredential</code> that was
                 cached for more than the <code>ttl</code> duration prior to the
                 start of verification operation on a <a>verifiable credential</a>.
                 Implementations that publish the status list SHOULD align
@@ -599,18 +599,18 @@ bitstring. Further information on bitstring encoding can be found in Section
                 <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
 The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
                 </p>
-                <pre class="example nohighlight" title="Example StatusList2021Credential">
+                <pre class="example nohighlight" title="Example BitStringStatusListCredential">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2",
             ],
             "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-            "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+            "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
             "issuer": "did:example:12345",
             "issued": "2021-04-05T14:27:40Z",
             "credentialSubject": {
               "id": "https://example.com/status/3#list",
-              "type": "<span class="highlight">StatusList2021</span>",
+              "type": "<span class="highlight">BitStringStatusList</span>",
               "ttl": 500,
               "statusPurpose": "<span class="highlight">status</span>",
               "reference": "https://example.org/status-dictionary/",
@@ -980,7 +980,7 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
   "validFrom": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
     "id": "https://example.com/credentials/status/3#94567",
-    "type": "StatusList2021Entry",
+    "type": "BitStringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
@@ -1003,12 +1003,12 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
     "https://www.w3.org/ns/credentials/examples/v2"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">StatusList2021Credential</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
   "issuer": "did:example:12345",
   "validFrom": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">StatusList2021</span>",
+    "type": "<span class="highlight">BitStringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
