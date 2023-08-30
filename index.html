@@ -351,45 +351,27 @@ position of the status of the <a>verifiable credential</a>.
               <td>statusListCredential</td>
               <td>
 The <code>statusListCredential</code> property MUST be a URL to a
-<<<<<<< HEAD
-<a>verifiable credential</a>. When the URL is dereferenced, the result
-MUST be a <a>verifiable credential</a> that contains a <code>type</code>
-property that includes the <code>StatusList2021Credential</code> value.
-=======
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
 <a>verifiable credential</a> MUST have <code>type</code> property that
 includes the <code>StatusListCredential</code> value.
->>>>>>> 0b2296b (chore: update title and urls to contexts)
               </td>
             </tr>
           </tbody>
         </table>
 
-<<<<<<< HEAD
         <pre class="example nohighlight" title="Example StatusList2021Entry">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
-=======
-        <pre class="example nohighlight" title="Example StatusListCredential">
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://www.w3.org/ns/status-list/v2"
->>>>>>> 0b2296b (chore: update title and urls to contexts)
+)
   ],
   "id": "https://example.com/credentials/23894672394",
   "type": ["VerifiableCredential"],
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
-<<<<<<< HEAD
-    "id": "https://example.com/credentials/status/3#94567",
-    "type": "StatusList2021Entry",
-=======
     "id": "https://example.com/credentials/status/3#94567"
     "type": "StatusListEntry",
->>>>>>> 0b2296b (chore: update title and urls to contexts)
     "statusPurpose": "revocation",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
@@ -600,10 +582,6 @@ bitstring. Further information on bitstring encoding can be found in Section
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
-<<<<<<< HEAD
-=======
-    "https://www.w3.org/ns/status-list/v2"
->>>>>>> 0b2296b (chore: update title and urls to contexts)
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
   "type": ["VerifiableCredential", "<span class="highlight">StatusListCredential</span>"],
