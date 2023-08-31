@@ -368,13 +368,21 @@ includes the <code>BitStringStatusListCredential</code> value.
   "type": ["VerifiableCredential"],
   "issuer": "did:example:12345",
   "issued": "2021-04-05T14:27:42Z",
-  <span class="highlight">"credentialStatus": {
-    "id": "https://example.com/credentials/status/3#94567"
-    "type": "BitStringStatusListEntry",
-    "statusPurpose": "revocation",
-    "statusListIndex": "94567",
-    "statusListCredential": "https://example.com/credentials/status/3"
-  }</span>,
+  <span class="highlight">"credentialStatus": [
+    {
+      "id": "https://example.com/credentials/status/3#94567"
+      "type": "BitStringStatusListEntry",
+      "statusPurpose": "revocation",
+      "statusListIndex": "94567",
+      "statusListCredential": "https://example.com/credentials/status/3"
+    }, {
+      "id": "https://example.com/credentials/status/4#23452"
+      "type": "BitStringStatusListEntry",
+      "statusPurpose": "suspension",
+      "statusListIndex": "23452",
+      "statusListCredential": "https://example.com/credentials/status/4"
+    }    
+  ]</span>,
   "credentialSubject": {
     "id": "did:example:6789",
     "type": "Person"
