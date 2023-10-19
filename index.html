@@ -362,12 +362,12 @@ includes the <code>BitStringStatusListCredential</code> value.
         <pre class="example nohighlight" title="Example StatusListCredential">
 {
   "@context": [
-    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/v2"
   ],
   "id": "https://example.com/credentials/23894672394",
   "type": ["VerifiableCredential"],
   "issuer": "did:example:12345",
-  "issued": "2021-04-05T14:27:42Z",
+  "validFrom": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": [
     {
       "id": "https://example.com/credentials/status/3#94567"
@@ -381,7 +381,7 @@ includes the <code>BitStringStatusListCredential</code> value.
       "statusPurpose": "suspension",
       "statusListIndex": "23452",
       "statusListCredential": "https://example.com/credentials/status/4"
-    }    
+    }
   ]</span>,
   "credentialSubject": {
     "id": "did:example:6789",
@@ -442,7 +442,7 @@ Section 4.6: Validity Period</a>.
 The latest point in time at which the status list is valid. This property is
 defined in the Verifiable Credentials Data Model specification in
 <a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
-Section 4.6: Validity Period</a>. 
+Section 4.6: Validity Period</a>.
               </td>
             </tr>
             <tr>
@@ -513,13 +513,13 @@ bitstring. Further information on bitstring encoding can be found in Section
               </td>
               <td>
                 The <code>ttl</code> indicates the "time to live" in milliseconds.
-                This property MAY be present. If not present, implementers MUST 
+                This property MAY be present. If not present, implementers MUST
                 use a value of <code>300000</code> for this property.  A verifier
                 MUST NOT use a cached <code>BitstringStatusListCredential</code> that was
                 cached for more than the <code>ttl</code> duration prior to the
                 start of verification operation on a <a>verifiable credential</a>.
                 Implementations that publish the status list SHOULD align
-                any protocol-specific caching information, such as the 
+                any protocol-specific caching information, such as the
                 HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
@@ -549,7 +549,7 @@ bitstring. Further information on bitstring encoding can be found in Section
                 <code>size</code> is greater than `1`.  If not present, the message value
                 associated with the bit value of <code>0</code> is "unset" and the bit
                 value of <code>1</code> is "set".
-                If present, elements in the <code>statusMessages</code> array MUST contain at 
+                If present, elements in the <code>statusMessages</code> array MUST contain at
                 minimum two properties:
                 <ul>
                   <li><code>status</code>, being a string of the hex value of the status</li>
@@ -576,7 +576,7 @@ bitstring. Further information on bitstring encoding can be found in Section
                 [[URL]] or an array of URLs. Implementers using a `statusPurpose` of `status`
                 are strongly encouraged to provide a <code>reference</code>.
                 <p class="note" title="Details around reference">
-                  <code>reference</code> is especially important when interpertation of the 
+                  <code>reference</code> is especially important when interpertation of the
                   status for a credential may involve some understanding of the business case
                   involved.
                 </p>
@@ -588,12 +588,12 @@ bitstring. Further information on bitstring encoding can be found in Section
         <pre class="example nohighlight" title="Example BitStringStatusListCredential">
 {
   "@context": [
-    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/v2"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
   "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
   "issuer": "did:example:12345",
-  "issued": "2021-04-05T14:27:40Z",
+  "validFrom": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
     "type": "<span class="highlight">BitStringStatusList</span>",
@@ -609,12 +609,12 @@ The Working Group is still discussing the unification of a design between status
                 <pre class="example nohighlight" title="Example BitStringStatusListCredential">
           {
             "@context": [
-              "https://www.w3.org/ns/credentials/v2",
+              "https://www.w3.org/ns/credentials/v2"
             ],
             "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
             "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
             "issuer": "did:example:12345",
-            "issued": "2021-04-05T14:27:40Z",
+            "validFrom": "2021-04-05T14:27:40Z",
             "credentialSubject": {
               "id": "https://example.com/status/3#list",
               "type": "<span class="highlight">BitStringStatusList</span>",
@@ -622,7 +622,7 @@ The Working Group is still discussing the unification of a design between status
               "statusPurpose": "<span class="highlight">status</span>",
               "reference": "https://example.org/status-dictionary/",
               "size": 2,
-              "statusMessages": [ 
+              "statusMessages": [
                   {"status":"0x0", "value":"valid"},
                   {"status":"0x1", "value":"invalid"},
                   {"status":"0x2", "value":"pending_review"},
@@ -724,11 +724,11 @@ Generate a <strong>revocation bitstring</strong> by passing
         </li>
         <li>
 Let <strong>status</strong> be the value at the position indicated by the
-<strong>credentialIndex</strong> times the <strong>size</strong> in the 
+<strong>credentialIndex</strong> times the <strong>size</strong> in the
 <strong>bitstring</strong>.
         </li>
         <li>
-For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>, 
+For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>,
 return <code>true</code> if <code>status</code> is `1`, and return <code>false</code>
 if <code>status</code> has any other value.  For other <code>statusPurpose</code>,
 return the corresponding <code>value</code> of the <code>status</code>
@@ -754,9 +754,9 @@ where each bit is initialized to 0 (zero).
         <li>
 For each value in <code>bitstring</code>, if there is a
 corresponding <code>statusListIndex</code> value in
-a credential in <code>issuedCredentials</code>, set the value to the 
+a credential in <code>issuedCredentials</code>, set the value to the
 appropriate status. The position of the value is computed as <code>statusListIndex</code>
-times the <code>size</code>.  
+times the <code>size</code>.
         </li>
         <li>
 Generate a <strong>compressed bitstring</strong> by using the GZIP
@@ -998,7 +998,7 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
   }
 }
 </pre>
-        
+
       </section>
       <section>
         <h2>Status List Verifiable Credential</h2>
