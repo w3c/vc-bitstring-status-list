@@ -813,6 +813,10 @@ Return the <strong>uncompressed bitstring</strong>.
       SD-JWT might have content-type <code>application/vc+ld+json+sd-jwt</code>.
     </p>
     <p>
+      Some implementations might choose to support less specific media types, for example:
+      <code>application/ld+json</code>, <code>application/json</code> or <code>application/sd-jwt</code>.
+    </p>
+    <p>
       When dereferencing over HTTP, 
       the use of the <a data-cite="rfc7231#section-5.3.2">accept</a> 
       and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, 
