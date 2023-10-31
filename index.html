@@ -799,6 +799,33 @@ Return the <strong>uncompressed bitstring</strong>.
   </section>
 
   <section class="informative">
+    <h2>Media Types</h2>
+    <p>
+      When dereferencing <code>statusListCredential</code>,
+      the content type of the <code>statusListCredential</code> might
+      be any media type registered for the purpose of expressing a
+      verifiable credential with one or more proofs.
+    </p>
+    <p>
+      For example, a verifiable credential secured with 
+      Data Integrity Proofs might have content type <code>application/vc+ld+json</code>,
+      whereas a verifiable credential secured with 
+      SD-JWT might have content-type <code>application/vc+ld+json+sd-jwt</code>.
+    </p>
+    <p>
+      When dereferencing over HTTP, 
+      the use of the <a data-cite="rfc7231#section-5.3.2">accept</a> 
+      and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, 
+      might allow some implementations to negotiate for the proof format 
+      used to secure the <code>statusListCredential</code>.
+    </p>
+    <p>
+      Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415 Unsupported Media Type</a>
+      status code to signal if they do not support the requested media type.
+    </p>
+  </section>
+
+  <section class="informative">
     <h2>Privacy Considerations</h2>
 
     <p>
