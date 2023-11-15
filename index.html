@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bit String Status List v1.0</title>
+    <title>Bitstring Status List v1.0</title>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
     <!--
       === NOTA BENE ===
@@ -271,7 +271,7 @@ The following sections outlines the data model for this document.
       </p>
 
       <section>
-        <h3>BitStringStatusListEntry</h3>
+        <h3>BitstringStatusListEntry</h3>
 
         <p>
 When an <a>issuer</a> desires to enable status information for a
@@ -297,14 +297,14 @@ that identifies the status information associated with the <a>verifiable
 credential</a>. It MUST NOT be the URL for the status list. The value is
 not used during the verification or validation process, and does not need to be
 related to the `statusListCredential` value. If necessary, the value can be
-used to uniquely identify the `BitStringStatusListEntry` object, such as when it is
+used to uniquely identify the `BitstringStatusListEntry` object, such as when it is
 stored in a database.
               </td>
             </tr>
             <tr>
               <td>type</td>
               <td>
-The <code>type</code> property MUST be <code>BitStringStatusListEntry</code>.
+The <code>type</code> property MUST be <code>BitstringStatusListEntry</code>.
               </td>
             </tr>
             <tr>
@@ -353,7 +353,7 @@ position of the status of the <a>verifiable credential</a>.
 The <code>statusListCredential</code> property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
 <a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>BitStringStatusListCredential</code> value.
+includes the <code>BitstringStatusListCredential</code> value.
               </td>
             </tr>
           </tbody>
@@ -371,13 +371,13 @@ includes the <code>BitStringStatusListCredential</code> value.
   <span class="highlight">"credentialStatus": [
     {
       "id": "https://example.com/credentials/status/3#94567"
-      "type": "BitStringStatusListEntry",
+      "type": "BitstringStatusListEntry",
       "statusPurpose": "revocation",
       "statusListIndex": "94567",
       "statusListCredential": "https://example.com/credentials/status/3"
     }, {
       "id": "https://example.com/credentials/status/4#23452"
-      "type": "BitStringStatusListEntry",
+      "type": "BitstringStatusListEntry",
       "statusPurpose": "suspension",
       "statusListIndex": "23452",
       "statusListCredential": "https://example.com/credentials/status/4"
@@ -393,7 +393,7 @@ includes the <code>BitStringStatusListCredential</code> value.
       </section>
 
       <section>
-        <h3>BitStringStatusListCredential</h3>
+        <h3>BitstringStatusListCredential</h3>
 
         <p>
 When a status list is published, the result is a  <a>verifiable
@@ -416,7 +416,7 @@ status list:
 The <a>verifiable credential</a> that contains the status list MAY
 express an <code>id</code> property that matches the value specified in
 <code>statusListCredential</code> for the corresponding
-<code>BitStringStatusListEntry</code> (see <a href="#bitstringstatuslistentry"></a>).
+<code>BitstringStatusListEntry</code> (see <a href="#bitstringstatuslistentry"></a>).
               </td>
             </tr>
             <tr>
@@ -424,7 +424,7 @@ express an <code>id</code> property that matches the value specified in
               <td>
 The <a>verifiable credential</a> that contains the status list MUST
 express a <code>type</code> property that includes the
-<code>BitStringStatusListCredential</code> value.
+<code>BitstringStatusListCredential</code> value.
               </td>
             </tr>
             <tr>
@@ -449,7 +449,7 @@ Section 4.6: Validity Period</a>.
               <td>credentialSubject.type</td>
               <td>
 The <code>type</code> of the credential <a>subject</a>, which is the
-status list, MUST be <code>BitStringStatusList</code>.
+status list, MUST be <code>BitstringStatusList</code>.
               </td>
             </tr>
             <tr>
@@ -585,18 +585,18 @@ bitstring. Further information on bitstring encoding can be found in Section
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example BitStringStatusListCredential">
+        <pre class="example nohighlight" title="Example BitstringStatusListCredential">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
   "issuer": "did:example:12345",
   "validFrom": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">BitStringStatusList</span>",
+    "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   },
@@ -606,18 +606,18 @@ bitstring. Further information on bitstring encoding can be found in Section
                 <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
 The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
                 </p>
-                <pre class="example nohighlight" title="Example BitStringStatusListCredential">
+                <pre class="example nohighlight" title="Example BitstringStatusListCredential">
           {
             "@context": [
               "https://www.w3.org/ns/credentials/v2"
             ],
             "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-            "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
+            "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
             "issuer": "did:example:12345",
             "validFrom": "2021-04-05T14:27:40Z",
             "credentialSubject": {
               "id": "https://example.com/status/3#list",
-              "type": "<span class="highlight">BitStringStatusList</span>",
+              "type": "<span class="highlight">BitstringStatusList</span>",
               "ttl": 500,
               "statusPurpose": "<span class="highlight">status</span>",
               "reference": "https://example.org/status-dictionary/",
@@ -650,7 +650,7 @@ and validate status lists as described by this document.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when producing a
-<a href="#bitstringstatuslistcredential">BitStringStatusListCredential</a>:
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
       </p>
 
       <ol class="algorithm">
@@ -660,7 +660,7 @@ Let <strong>issued credentials</strong> be a list of all issued
         </li>
         <li>
 Let <strong>RLC</strong> be an unsigned
-<a href="#bitstringstatuslistcredential">BitStringStatusListCredential</a>
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>
 without the <code>encodedList</code> property set.
         </li>
         <li>
@@ -684,14 +684,14 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when validating a <a>verifiable credential</a> that is contained in a
-<a href="#bitstringstatuslistcredential">BitStringStatusListCredential</a>:
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
       </p>
 
       <ol class="algorithm">
         <li>
 Let <strong>credentialToValidate</strong> be a <a>verifiable credential</a>
 containing a <code>credentialStatus</code> entry that is a
-<a href="#bitstringstatuslistentry">BitStringStatusListEntry</a>.
+<a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
 Let <strong>status purpose</strong> be the value of <code>statusPurpose</code>
@@ -710,12 +710,12 @@ Verify that the <strong>status purpose</strong> matches the
         <li>
 Let <strong>compressed bitstring</strong> be the value of the
 <code>encodedList</code> property of the
-<a href="#bitstringstatuslistcredential">BitStringStatusListCredential</a>.
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
         </li>
         <li>
 Let <strong>credentialIndex</strong> be the value of the
 <code>statusListIndex</code> property of the
-<a href="#bitstringstatuslistentry">BitStringStatusListEntry</a>.
+<a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
 Generate a <strong>revocation bitstring</strong> by passing
@@ -987,7 +987,7 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
   "validFrom": "2021-04-05T14:27:42Z",
   <span class="highlight">"credentialStatus": {
     "id": "https://example.com/credentials/status/3#94567",
-    "type": "BitStringStatusListEntry",
+    "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "94567",
     "statusListCredential": "https://example.com/credentials/status/3"
@@ -1010,12 +1010,12 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
     "https://www.w3.org/ns/credentials/examples/v2"
   ],
   "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">BitStringStatusListCredential</span>"],
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
   "issuer": "did:example:12345",
   "validFrom": "2021-04-05T14:27:40Z",
   "credentialSubject": {
     "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">BitStringStatusList</span>",
+    "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
