@@ -1,0 +1,2277 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="generator" content="ReSpec 34.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+:is(aside,div).example{border-left-width:.5em;border-left-style:solid;border-color:#e0cb52;background:#fcfaee}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+.example pre{background-color:rgba(0,0,0,.03)}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;margin-top:.25em}
+.dfn-panel ul a[href]{color:#333}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+<title>Bitstring Status List v1.0</title>
+    
+    
+    
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+:is(h1,h2,h3,h4,h5,h6,a) abbr{border:none}
+dfn{font-weight:700}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+.toc a,.tof a{text-decoration:none}
+a .figno,a .secno{color:#000}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}
+.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+.simple th a{color:#fff;padding:3px 5px;text-align:left}
+.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+.simple td{padding:3px 10px;border-top:1px solid #ddd}
+.simple tr:nth-child(even){background:#f0f6ff}
+.section dd>p:first-child{margin-top:0}
+.section dd>p:last-child{margin-bottom:0}
+.section dd{margin-bottom:1em}
+.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+    
+    
+    
+    
+<style>
+
+pre .highlight {
+  font-weight: bold;
+  color: green;
+}
+pre .comment {
+  font-weight: bold;
+  color: Gray;
+}
+.color-text {
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+ol.algorithm {
+  counter-reset: numsection;
+  list-style-type: none;
+}
+ol.algorithm li {
+  margin: 0.5em 0;
+}
+ol.algorithm li:before {
+  font-weight: bold;
+  counter-increment: numsection;
+  content: counters(numsection, ".") ") ";
+}
+    
+</style>
+  
+<meta name="description" content="This specification describes a privacy-preserving, space-efficient, and
+high-performance mechanism for publishing status information such as
+suspension or revocation of Verifiable Credentials through use of bitstrings.">
+<link rel="canonical" href="https://www.w3.org/TR/vc-bitstring-status-list/">
+<script type="application/ld+json">{
+  "@context": [
+    "http://schema.org",
+    {
+      "@vocab": "http://schema.org/",
+      "@language": "en",
+      "w3p": "http://www.w3.org/2001/02pd/rec54#",
+      "foaf": "http://xmlns.com/foaf/0.1/",
+      "datePublished": {
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      },
+      "inLanguage": {
+        "@language": null
+      },
+      "isBasedOn": {
+        "@type": "@id"
+      },
+      "license": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "id": "https://www.w3.org/TR/vc-bitstring-status-list/",
+  "type": [
+    "TechArticle",
+    "w3p:WD"
+  ],
+  "name": "Bitstring Status List v1.0",
+  "inLanguage": "en",
+  "license": "https://www.w3.org/copyright/software-license-2023/",
+  "datePublished": "2023-11-23",
+  "copyrightHolder": {
+    "name": "World Wide Web Consortium",
+    "url": "https://www.w3.org/"
+  },
+  "discussionUrl": "https://github.com/w3c/vc-bitstring-status-list/issues/",
+  "alternativeHeadline": "Privacy-preserving status information for Verifiable Credentials",
+  "isBasedOn": "",
+  "description": "This specification describes a privacy-preserving, space-efficient, and\nhigh-performance mechanism for publishing status information such as\nsuspension or revocation of Verifiable Credentials through use of bitstrings.",
+  "editor": [
+    {
+      "type": "Person",
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "worksFor": {
+        "name": "Digital Bazaar",
+        "url": "https://www.digitalbazaar.com/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Dave Longley",
+      "url": "https://github.com/dlongley",
+      "worksFor": {
+        "name": "Digital Bazaar",
+        "url": "https://www.digitalbazaar.com/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "worksFor": {
+        "name": "Transmute",
+        "url": "https://transmute.industries/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Mike Prorock",
+      "url": "https://mesur.io/",
+      "worksFor": {
+        "name": "mesur.io",
+        "url": "https://mesur.io/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Mahmoud Alkhraishi",
+      "url": "https://github.com/mkhraisha",
+      "worksFor": {
+        "name": "Mavennet",
+        "url": "https://www.mavennet.com/"
+      }
+    }
+  ],
+  "contributor": [
+    {
+      "type": "Person",
+      "name": "Dave Longley",
+      "url": "https://github.com/dlongley",
+      "worksFor": {
+        "name": "Digital Bazaar",
+        "url": "https://www.digitalbazaar.com/"
+      }
+    },
+    {
+      "type": "Person",
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "worksFor": {
+        "name": "Digital Bazaar",
+        "url": "https://www.digitalbazaar.com/"
+      }
+    }
+  ],
+  "citation": [
+    {
+      "id": "https://www.w3.org/TR/vc-data-model/",
+      "type": "TechArticle",
+      "name": "Verifiable Credentials Data Model v1.1",
+      "url": "https://www.w3.org/TR/vc-data-model/",
+      "creator": [
+        {
+          "name": "Manu Sporny"
+        },
+        {
+          "name": "Grant Noble"
+        },
+        {
+          "name": "Dave Longley"
+        },
+        {
+          "name": "Daniel Burnett"
+        },
+        {
+          "name": "Brent Zundel"
+        },
+        {
+          "name": "Kyle Den Hartog"
+        }
+      ],
+      "publisher": {
+        "name": "W3C"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc1952",
+      "type": "TechArticle",
+      "name": "GZIP file format specification version 4.3",
+      "url": "https://www.rfc-editor.org/rfc/rfc1952",
+      "creator": [
+        {
+          "name": "P. Deutsch"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc4648",
+      "type": "TechArticle",
+      "name": "The Base16, Base32, and Base64 Data Encodings",
+      "url": "https://www.rfc-editor.org/rfc/rfc4648",
+      "creator": [
+        {
+          "name": "S. Josefsson"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://url.spec.whatwg.org/",
+      "type": "TechArticle",
+      "name": "URL Standard",
+      "url": "https://url.spec.whatwg.org/",
+      "creator": [
+        {
+          "name": "Anne van Kesteren"
+        }
+      ],
+      "publisher": {
+        "name": "WHATWG"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc2119",
+      "type": "TechArticle",
+      "name": "Key words for use in RFCs to Indicate Requirement Levels",
+      "url": "https://www.rfc-editor.org/rfc/rfc2119",
+      "creator": [
+        {
+          "name": "S. Bradner"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.rfc-editor.org/rfc/rfc8174",
+      "type": "TechArticle",
+      "name": "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words",
+      "url": "https://www.rfc-editor.org/rfc/rfc8174",
+      "creator": [
+        {
+          "name": "B. Leiba"
+        }
+      ],
+      "publisher": {
+        "name": "IETF"
+      }
+    },
+    {
+      "id": "https://www.w3.org/TR/WCAG21/",
+      "type": "TechArticle",
+      "name": "Web Content Accessibility Guidelines (WCAG) 2.1",
+      "url": "https://www.w3.org/TR/WCAG21/",
+      "creator": [
+        {
+          "name": "Michael Cooper"
+        },
+        {
+          "name": "Andrew Kirkpatrick"
+        },
+        {
+          "name": "Joshue O'Connor"
+        },
+        {
+          "name": "Alastair Campbell"
+        }
+      ],
+      "publisher": {
+        "name": "W3C"
+      }
+    }
+  ]
+}</script>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script type="text/javascript">
+  /**
+   * Displays a Verifiable Credential example given an element that contains
+   * PRE tags and an elementClass to match against and display.
+   */
+  function displayVcExample(element, elementClass) {
+    // find all SPAN.tab sibling elements in an example block
+    const tabs = element.parentElement.querySelectorAll('.tab');
+    // highlight the currently clicked on tab
+    for(tab of tabs) {
+      tab.classList.remove('selected');
+    }
+    element.classList.add('selected');
+
+    // find all PRE sibling elements in an example block
+    const examples = element.parentElement.querySelectorAll('pre');
+    // display the provided elementClass, hide all other PRE blocks
+    for(example of examples) {
+      if(example.classList.contains(elementClass)) {
+        example.style.display = 'block';
+      } else {
+        example.style.display = 'none';
+      }
+    }
+  }
+
+  window.displayVcExample = displayVcExample;
+  </script>
+<style>
+
+  .example .tab {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: solid gray thin;
+    border-radius: 4px 4px 0px 0px;
+    border-color: #574b0f;
+    padding: 4px;
+    cursor: default;
+    margin: 4px;
+  }
+
+  .example .tab.selected {
+    background-color: inherit;
+    border-bottom: solid #fcfaee thin;
+  }
+
+  .example .tab:hover {
+    color: #034575;
+    background-color: #e0cb52;
+  }
+
+  .example .tab-separator {
+    background: gray;
+    height: 1px;
+    border: 1px;
+  }
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "specStatus": "WD",
+  "group": "vc",
+  "shortName": "vc-bitstring-status-list",
+  "subtitle": "Privacy-preserving status information for Verifiable Credentials",
+  "localBiblio": {
+    "REST": {
+      "title": "Architectural Styles and the Design of Network-based Software Architectures",
+      "date": "2000",
+      "href": "http://www.ics.uci.edu/~fielding/pubs/dissertation/",
+      "authors": [
+        "Fielding, Roy Thomas"
+      ],
+      "publisher": "University of California, Irvine."
+    },
+    "string-meta": {
+      "title": "Requirements for Language and Direction Metadata in Data Formats",
+      "href": "https://w3c.github.io/string-meta/",
+      "authors": [
+        "Addison Phillips",
+        "Richard Ishida"
+      ],
+      "status": "Editors-DRAFT",
+      "publisher": "Internationalization Working Group"
+    },
+    "LD-PROOFS": {
+      "title": "Linked Data Proofs",
+      "href": "https://w3c-dvcg.github.io/ld-proofs/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Digital Verification Community Group"
+    },
+    "LD-SIGNATURES": {
+      "title": "Linked Data Signatures",
+      "href": "https://w3c-dvcg.github.io/ld-signatures/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Digital Verification Community Group"
+    },
+    "LDS-RSA2018": {
+      "title": "The 2018 RSA Linked Data Signature Suite",
+      "href": "https://w3c-dvcg.github.io/lds-rsa2018/",
+      "authors": [
+        "Manu Sporny",
+        "Dave Longley"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Digital Verification Community Group"
+    },
+    "HTTP-SIGNATURES": {
+      "aliasOf": "http-signatures"
+    },
+    "HASHLINK": {
+      "title": "Cryptographic Hyperlinks",
+      "href": "https://tools.ietf.org/html/draft-sporny-hashlink",
+      "authors": [
+        "Manu Sporny"
+      ],
+      "status": "Internet-Draft",
+      "publisher": "Internet Engineering Task Force (IETF)"
+    },
+    "DID-CORE": {
+      "title": "Decentralized Identifier Specification v1.0",
+      "href": "https://w3c.github.io/did-spec/",
+      "status": "ED-DRAFT",
+      "publisher": "DID Working Group"
+    },
+    "ZCAP": {
+      "title": "Authorization Capabilities for Linked Data",
+      "href": "https://w3c-ccg.github.io/zcap-ld/",
+      "authors": [
+        "Christopher Lemmer Webber",
+        "Manu Sporny",
+        "Mark S. Miller"
+      ],
+      "status": "CG-DRAFT",
+      "publisher": "Credentials Community Group"
+    },
+    "IPFS": {
+      "title": "InterPlanetary File System (IPFS)",
+      "href": "https://en.wikipedia.org/wiki/InterPlanetary_File_System",
+      "publisher": "Wikipedia"
+    }
+  },
+  "doJsonLd": true,
+  "github": "https://github.com/w3c/vc-bitstring-status-list/",
+  "includePermalinks": false,
+  "edDraftURI": "https://w3c.github.io/vc-bitstring-status-list/",
+  "editors": [
+    {
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://www.digitalbazaar.com/",
+      "w3cid": 41758
+    },
+    {
+      "name": "Dave Longley",
+      "url": "https://github.com/dlongley",
+      "company": "Digital Bazaar",
+      "companyURL": "https://www.digitalbazaar.com/",
+      "w3cid": 48025
+    },
+    {
+      "name": "Orie Steele",
+      "url": "https://github.com/OR13",
+      "company": "Transmute",
+      "companyURL": "https://transmute.industries/",
+      "w3cid": 109171
+    },
+    {
+      "name": "Mike Prorock",
+      "url": "https://mesur.io/",
+      "company": "mesur.io",
+      "companyURL": "https://mesur.io/",
+      "w3cid": 130636
+    },
+    {
+      "name": "Mahmoud Alkhraishi",
+      "url": "https://github.com/mkhraisha",
+      "company": "Mavennet",
+      "companyURL": "https://www.mavennet.com/",
+      "w3cid": 121911
+    }
+  ],
+  "authors": [
+    {
+      "name": "Dave Longley",
+      "url": "https://github.com/dlongley",
+      "company": "Digital Bazaar",
+      "companyURL": "https://www.digitalbazaar.com/",
+      "w3cid": 48025
+    },
+    {
+      "name": "Manu Sporny",
+      "url": "http://manu.sporny.org/",
+      "company": "Digital Bazaar",
+      "companyURL": "https://www.digitalbazaar.com/",
+      "w3cid": 41758
+    }
+  ],
+  "lint": {
+    "no-unused-dfns": false
+  },
+  "postProcess": [
+    null,
+    null
+  ],
+  "maxTocLevel": 2,
+  "inlineCSS": true,
+  "otherLinks": [
+    {
+      "key": "Related Documents",
+      "data": [
+        {
+          "value": "Verifiable Credentials Data Model",
+          "href": "https://www.w3.org/TR/vc-data-model/"
+        }
+      ]
+    }
+  ],
+  "publishDate": "2023-11-23",
+  "publishISODate": "2023-11-23T00:00:00.000Z",
+  "generatedSubtitle": "W3C Working Draft 23 November 2023"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-WD"></head>
+  <body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
+  </a></p>
+    <h1 id="title" class="title">Bitstring Status List v1.0</h1> <h2 id="subtitle" class="subtitle">Privacy-preserving status information for Verifiable Credentials</h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#WD">W3C Working Draft</a> <time class="dt-published" datetime="2023-11-23">23 November 2023</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2023/WD-vc-bitstring-status-list-20231123/">https://www.w3.org/TR/2023/WD-vc-bitstring-status-list-20231123/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/vc-bitstring-status-list/">https://www.w3.org/TR/vc-bitstring-status-list/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/vc-bitstring-status-list/">https://w3c.github.io/vc-bitstring-status-list/</a></dd>
+        <dt>History:</dt>
+              <dd>
+                <a href="https://www.w3.org/standards/history/vc-bitstring-status-list/"
+                  data-previous-shortname="vc-status-list">https://www.w3.org/standards/history/vc-bitstring-status-list/</a>
+              </dd>
+              <dd>
+                    <a href="https://github.com/w3c/vc-bitstring-status-list/commits/">Commit history</a>
+              </dd>
+
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="http://manu.sporny.org/">Manu Sporny</a> (<a class="p-org org h-org" href="https://www.digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="48025">
+    <a class="u-url url p-name fn" href="https://github.com/dlongley">Dave Longley</a> (<a class="p-org org h-org" href="https://www.digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="109171">
+    <a class="u-url url p-name fn" href="https://github.com/OR13">Orie Steele</a> (<a class="p-org org h-org" href="https://transmute.industries/">Transmute</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="130636">
+    <a class="u-url url p-name fn" href="https://mesur.io/">Mike Prorock</a> (<a class="p-org org h-org" href="https://mesur.io/">mesur.io</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="121911">
+    <a class="u-url url p-name fn" href="https://github.com/mkhraisha">Mahmoud Alkhraishi</a> (<a class="p-org org h-org" href="https://www.mavennet.com/">Mavennet</a>)
+  </dd>
+        
+        <dt>Authors:</dt><dd class="editor p-author h-card vcard" data-editor-id="48025">
+    <a class="u-url url p-name fn" href="https://github.com/dlongley">Dave Longley</a> (<a class="p-org org h-org" href="https://www.digitalbazaar.com/">Digital Bazaar</a>)
+  </dd><dd class="editor p-author h-card vcard" data-editor-id="41758">
+    <a class="u-url url p-name fn" href="http://manu.sporny.org/">Manu Sporny</a> (<a class="p-org org h-org" href="https://www.digitalbazaar.com/">Digital Bazaar</a>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/vc-bitstring-status-list/">GitHub w3c/vc-bitstring-status-list</a>
+        (<a href="https://github.com/w3c/vc-bitstring-status-list/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/vc-bitstring-status-list/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/vc-bitstring-status-list/issues/">open issues</a>)
+      </dd>
+        
+        <dt>Related Documents</dt><dd>
+    <a href="https://www.w3.org/TR/vc-data-model/">Verifiable Credentials Data Model</a>
+  </dd>
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+    ©
+    2023
+    
+    <a href="https://www.w3.org/">World Wide Web Consortium</a>.
+    <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+  </p>
+    <hr title="Separator for header">
+  </div>
+    <section id="abstract" class="introductory"><h2>Abstract</h2>
+      <p>
+This specification describes a privacy-preserving, space-efficient, and
+high-performance mechanism for publishing status information such as
+suspension or revocation of Verifiable Credentials through use of bitstrings.
+      </p>
+    </section>
+
+    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      https://www.w3.org/TR/.</em></p><p>
+    This document was published by the <a href="https://www.w3.org/groups/wg/vc">Verifiable Credentials Working Group</a> as
+    a Working Draft using the
+        <a href="https://www.w3.org/2023/Process-20231103/#recs-and-notes">Recommendation track</a>. 
+  </p><p>Publication as a Working Draft does not
+  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
+    
+  </p><p>
+    
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent
+          Policy</a>.
+      
+    
+                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                <a rel="disclosure" href="https://www.w3.org/groups/wg/vc/ipr">public list of any patent disclosures</a>
+          made in connection with the deliverables of
+          the group; that page also includes
+          instructions for disclosing a patent. An individual who has actual
+          knowledge of a patent which the individual believes contains
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+          must disclose the information in accordance with
+          <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+        
+  </p><p>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#conceptual-framework"><bdi class="secno">1.1 </bdi>Conceptual Framework</a></li><li class="tocline"><a class="tocxref" href="#terminology"><bdi class="secno">1.2 </bdi>Terminology</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.3 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data Model</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bitstringstatuslistentry"><bdi class="secno">2.1 </bdi>BitstringStatusListEntry</a></li><li class="tocline"><a class="tocxref" href="#bitstringstatuslistcredential"><bdi class="secno">2.2 </bdi>BitstringStatusListCredential</a></li></ol></li><li class="tocline"><a class="tocxref" href="#algorithms"><bdi class="secno">3. </bdi>Algorithms</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#generate-algorithm"><bdi class="secno">3.1 </bdi>Generate Algorithm</a></li><li class="tocline"><a class="tocxref" href="#validate-algorithm"><bdi class="secno">3.2 </bdi>Validate Algorithm</a></li><li class="tocline"><a class="tocxref" href="#bitstring-generation-algorithm"><bdi class="secno">3.3 </bdi>Bitstring Generation Algorithm</a></li><li class="tocline"><a class="tocxref" href="#bitstring-expansion-algorithm"><bdi class="secno">3.4 </bdi>Bitstring Expansion Algorithm</a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">4. </bdi>Privacy Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#revocation-bitstring-length"><bdi class="secno">4.1 </bdi>Revocation Bitstring Length</a></li><li class="tocline"><a class="tocxref" href="#verifier-caching"><bdi class="secno">4.2 </bdi>Verifier Caching</a></li><li class="tocline"><a class="tocxref" href="#content-distribution-networks"><bdi class="secno">4.3 </bdi>Content Distribution Networks</a></li><li class="tocline"><a class="tocxref" href="#malicious-issuers-and-verifiers"><bdi class="secno">4.4 </bdi>Malicious Issuers and Verifiers</a></li></ol></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">5. </bdi>Security Considerations</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#bitstring-encoding"><bdi class="secno">5.1 </bdi>Bitstring Encoding</a></li></ol></li><li class="tocline"><a class="tocxref" href="#accessibility-considerations"><bdi class="secno">6. </bdi>Accessibility Considerations</a></li><li class="tocline"><a class="tocxref" href="#internationalization-considerations"><bdi class="secno">7. </bdi>Internationalization Considerations</a></li><li class="tocline"><a class="tocxref" href="#appendix"><bdi class="secno">8. </bdi>Appendix</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">8.1 </bdi>Examples</a><ol class="toc"></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">A. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">A.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">A.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+
+    <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
+      
+      <p>
+It is often useful for an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-1">issuer</a> of <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-1">verifiable credentials</a>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model v1.1">VC-DATA-MODEL</a></cite>] to link to a location where a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-1">verifier</a> can check to see
+if a credential has been suspended or revoked. There are a variety of privacy
+and performance considerations that are made when designing, publishing, and
+processing status lists.
+      </p>
+      <p>
+One such privacy consideration happens when there is a one-to-one mapping
+between a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-2">verifiable credential</a> and a URL where the status is
+published. This type of mapping enables the website that publishes the URL to
+correlate the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-1">holder</a>, time, and <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-2">verifier</a> when the status is
+checked. This could enable the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-2">issuer</a> to discover the type of interaction
+the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-2">holder</a> is having with the <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-3">verifier</a>, such as providing an age
+verification credential when entering a bar. Being tracked by the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-3">issuer</a>
+of a driver's license when entering an establishment violates a privacy
+expectation that many people have today.
+      </p>
+      <p>
+Similarly, there are performance considerations that are explored when designing
+status lists. One such consideration is where the list is published and the
+burden it places from a bandwidth and processing perspective, both on the server
+and the client fetching the information. In order to meet privacy expectations,
+it is useful to bundle the status of large sets of credentials into a single
+list to help with herd privacy. However, doing so can place an impossible
+burden on both the server and client if the status information is as much as a
+few hundred bytes in size per credential across a population of
+hundreds of millions of <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-3">holders</a>.
+      </p>
+      <p>
+The rest of this document proposes a highly compressible, bitstring-based
+status list mechanism with strong privacy-preserving characteristics,
+that is compatible with the architecture of the Web, is highly space-efficient,
+and lends itself well to content distribution networks. As an example of
+using this specification to achieve a number of beneficial privacy and
+performance goals, it is possible to create a status list that can be
+constructed for 100,000 <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-3">verifiable credentials</a> that is roughly
+12,500 bytes in size in the worst case. In a case where a few hundred
+credentials have been revoked, the size of the list is less than a
+few hundred bytes while providing privacy in a herd of 100,000 individuals.
+      </p>
+
+      <section class="informative" id="conceptual-framework"><div class="header-wrapper"><h3 id="x1-1-conceptual-framework"><bdi class="secno">1.1 </bdi>Conceptual Framework</h3><a class="self-link" href="#conceptual-framework" aria-label="Permalink for Section 1.1"></a></div><p><em>This section is non-normative.</em></p>
+        
+
+        <p>
+  This section outlines the core concept utilized by the status list
+  mechanism described in this document. At the most basic level, status
+  information for all <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-4">verifiable credentials</a> issued by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-4">issuer</a>
+  are expressed as simple binary values. The <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-5">issuer</a> keeps a bitstring
+  list of all <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-5">verifiable credentials</a> it has issued. Each
+  <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-6">verifiable credential</a> is associated with a position in the list. If
+  the binary value of the position in the list is 1 (one), the
+  <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-7">verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
+        </p>
+
+        <p>
+  One of the benefits of using a bitstring is that it is a highly compressible
+  data format since, in the average case, large numbers of credentials will
+  remain unrevoked. This will ensure long sections of bits that are the same
+  value and thus highly compressible using run-length compression techniques
+  such as GZIP [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>]. The default bitstring size is 16KB (131,072 entries),
+  and when only a handful of <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-8">verifiable credentials</a> are revoked, the
+  compressed bitstring size is reduced down to a few hundred bytes.
+        </p>
+
+        <p>
+  Another benefit of using a bitstring is that it enables large numbers of
+  <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-9">verifiable credential</a> statuses to be placed in the same  list.
+  This specification utilizes a minimum bitstring length of 131,072 (16KB). This
+  population size ensures an adequate amount of herd  privacy in the average case.
+  If better herd privacy is required, the bitstring can be made to be larger.
+        </p>
+
+        <figure id="bitstring">
+          <img style="margin: auto; display: block; width: 75%;" src="diagrams/StatusList2021.svg" alt="diagram showing a
+               list of boxes at the top of the image with two of them in
+               red depicting revoked credentials. Text beside the boxes to the
+               right reads 16 kilobytes. An depiction of the boxes being
+               GZIP compressed into a cylinder on the bottom of the page shows
+               that compression has resulted in a final size of 135 bytes.">
+          <figcaption style="text-align: center;"><a class="self-link" href="#bitstring">Figure <bdi class="figno">1</bdi></a> <span class="fig-title">
+            A visual depiction of the concepts outlined in this section.
+          </span></figcaption>
+        </figure>
+
+      </section>
+
+      <section class="informative" id="terminology"><div class="header-wrapper"><h3 id="x1-2-terminology"><bdi class="secno">1.2 </bdi>Terminology</h3><a class="self-link" href="#terminology" aria-label="Permalink for Section 1.2"></a></div><p><em>This section is non-normative.</em></p>
+        
+
+        <div><p>
+The following terms are used to describe concepts in this specification.
+</p>
+
+<dl class="termlist">
+  <dt><dfn data-lt="claims|claim" id="dfn-claims" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">claim</dfn></dt>
+  <dd>
+An assertion made about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-1">subject</a>.
+  </dd>
+  <dt><dfn data-lt="credential|credentials" id="dfn-credential" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">credential</dfn></dt>
+  <dd>
+A set of one or more <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-1">claims</a> made by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-6">issuer</a>.
+The <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-2">claims</a> in a credential can be about different <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-2">subjects</a>.
+<p>
+  Our definition of credential differs from, 
+  <a href="https://csrc.nist.gov/glossary/term/credential">NIST's definitions of credential</a>.
+</p>
+  </dd>
+  <dt><dfn id="dfn-data-minimization" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">data minimization</dfn></dt>
+  <dd>
+The act of limiting the amount of shared data strictly to the minimum
+necessary to successfully accomplish a task or goal.
+  </dd>
+  <dt><dfn data-lt="decentralized identifiers|DID|DIDs|decentralized identifier" id="dfn-decentralized-identifiers" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">decentralized identifier</dfn></dt>
+  <dd>
+A portable URL-based identifier, also known as a <strong><em>DID</em></strong>,
+associated with an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-1">entity</a>. These identifiers are most often used in a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-10">verifiable credential</a> and are associated with <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-3">subjects</a> such that a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-11">verifiable credential</a> itself can be easily ported from one
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-repository-1">repository</a> to another without the need to reissue the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-1">credential</a>.
+An example of a DID is <code>did:example:123456abcdef</code>.
+  </dd>
+  
+  
+  <dt><dfn data-lt="default graph" id="dfn-default-graph" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default graph</dfn></dt>
+  <dd>
+    The <a href="#dfn-graphs" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-graphs-1">graph</a> containing all <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-3">claims</a> that are not explicitly part of
+    a <a href="#dfn-named-graphs" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-named-graphs-1">named graph</a>.
+  </dd>
+  
+  
+  
+  
+  <dt><dfn data-lt="entities|entity's|entity" id="dfn-entities" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">entity</dfn></dt>
+  <dd>
+Anything that can be referenced in statements as an abstract or concrete noun.
+Entities include but are not limited to people, organizations, physical things,
+documents, abstract concepts, fictional characters, and arbitrary text. Any
+entity might perform roles in the ecosystem, if it is capable of doing so. Note
+that some entities fundamentally cannot take actions, e.g., the string "abc"
+cannot issue credentials.
+  </dd>
+  <dt><dfn data-lt="graphs|graph" id="dfn-graphs" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">graph</dfn></dt>
+  <dd>
+A set of claims, forming a network of information composed of <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-5">subjects</a>
+and their relationship to other <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-6">subjects</a> or data. Each <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-4">claim</a> is
+part of a graph; this is either explicit in the case of <a href="#dfn-named-graphs" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-named-graphs-2">named graphs</a>, or
+implicit for the <a href="#dfn-default-graph" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-graph-1">default graph</a>.
+  </dd>
+  <dt><dfn data-lt="holders|holder's|holders'|holder" id="dfn-holders" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">holder</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-2">entity</a> might perform by possessing one or more
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-15">verifiable credentials</a> and generating <a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-2">verifiable presentations</a>
+from them. A holder is often, but not always, a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-7">subject</a> of the
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-16">verifiable credentials</a> they are holding. Holders store their
+<a href="#dfn-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-2">credentials</a> in <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-repository-3">credential repositories</a>.
+  </dd>
+  
+  
+  <dt><dfn data-lt="identity providers|idp|identity provider" id="dfn-identity-providers" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">identity provider</dfn></dt>
+  <dd>
+An identity provider, sometimes abbreviated as <em>IdP</em>, is a system
+for creating, maintaining, and managing identity information for
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-4">holders</a>, while providing authentication services to
+<a href="#dfn-relying-parties" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-relying-parties-1">relying party</a> applications within a federation or distributed network.
+In this case the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-5">holder</a> is always the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-8">subject</a>. Even if the
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-17">verifiable credentials</a> are bearer <a href="#dfn-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-credential-3">credentials</a>, it is assumed the
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-18">verifiable credentials</a> remain with the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-9">subject</a>, and if they are
+not, they were stolen by an attacker. This specification does not use this term
+unless comparing or mapping the concepts in this document to other
+specifications. This specification decouples the <a href="#dfn-identity-providers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-identity-providers-1">identity provider</a>
+concept into two distinct concepts: the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-8">issuer</a> and the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-6">holder</a>.
+  </dd>
+  <dt><dfn data-lt="issuers|issuer's|issuer" id="dfn-issuers" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">issuer</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-5">entity</a> can perform by asserting <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-5">claims</a> about one or
+more <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-10">subjects</a>, creating a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-19">verifiable credential</a> from these
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-6">claims</a>, and transmitting the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-20">verifiable credential</a> to a
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-7">holder</a>.
+  </dd>
+  <dt><dfn data-lt="named graphs|named graph" id="dfn-named-graphs" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">named graph</dfn></dt>
+  <dd>
+A <a href="#dfn-graphs" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-graphs-2">graph</a> associated with specific properties, such as
+<code>verifiableCredential</code> or <code>proof</code>. These properties
+result in separate <a href="#dfn-graphs" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-graphs-3">graphs</a> that contain all <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-7">claims</a> defined in the
+corresponding JSON objects.
+  </dd>
+  
+  
+  <dt><dfn data-lt="credential repository|credential repositories|repositories|repository" id="dfn-credential-repository" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">repository</dfn></dt>
+  <dd>
+A program, such as a storage vault or personal <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-22">verifiable credential</a>
+wallet, that stores and protects access to <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-8">holders'</a>
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-23">verifiable credentials</a>.
+  </dd>
+  
+  
+  <dt><dfn data-lt="subjects|subject's|subject" id="dfn-subjects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">subject</dfn></dt>
+  <dd>
+A thing about which <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-8">claims</a> are made.
+  </dd>
+  
+  
+  
+  
+  <dt><dfn data-lt="verifiable credential|verifiable credentials|vc|vcs" id="dfn-verifiable-credential" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable credential</dfn></dt>
+  <dd>
+A verifiable credential is a tamper-evident credential that has authorship that
+can be cryptographically verified. Verifiable credentials can be used to build
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-4">verifiable presentations</a>, which can also be cryptographically verified.
+  </dd>
+  <dt><dfn data-lt="verifiable data registries|verifiable data registry" id="dfn-verifiable-data-registries" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable data registry</dfn></dt>
+  <dd>
+A role a system might perform by mediating the creation and <a href="#dfn-verify" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verify-1">verification</a>
+of identifiers, keys, and other relevant data, such as
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-26">verifiable credential</a> schemas, revocation registries, issuer public keys,
+and so on, which might be required to use <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-27">verifiable credentials</a>. Some
+configurations might require correlatable identifiers for <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-11">subjects</a>. Some
+registries, such as ones for UUIDs and public keys, might just act as namespaces
+for identifiers.
+  </dd>
+  <dt><dfn data-lt="verifiable presentation|verifiable presentations|vp|vps" id="dfn-verifiable-presentation" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifiable presentation</dfn></dt>
+  <dd>
+A verifiable presentation is a tamper-evident presentation encoded in such a way
+that authorship of the data can be trusted after a process of cryptographic
+verification. Certain types of verifiable presentations might contain data that
+is synthesized from, but do not contain, the original <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-28">verifiable credentials</a>
+(for example, zero-knowledge proofs).
+  </dd>
+  <dt><dfn data-lt="verify|verified|verifying|verifiable|verifiability|verification" id="dfn-verify" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verification</dfn></dt>
+  <dd>
+The evaluation of whether a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-29">verifiable credential</a> or <a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-5">verifiable
+presentation</a> is an authentic and current statement of the issuer or
+presenter, respectively. This includes checking that: the credential (or
+presentation) conforms to the specification; the proof method is satisfied; and,
+if present, the status check succeeds. Verification of a credential does not
+imply evaluation of the truth of <a href="#dfn-claims" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-claims-10">claims</a> encoded in the credential.
+  </dd>
+  <dt><dfn data-lt="verifier|verifiers|verifier's|credential verifiers|credential verifier's" id="dfn-verifier" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">verifier</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-entities-6">entity</a> performs by receiving one or more
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-30">verifiable credentials</a>, optionally inside a
+<a href="#dfn-verifiable-presentation" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-presentation-6">verifiable presentation</a> for processing. Other specifications might refer
+to this concept as a <dfn data-lt="relying parties|relying party" id="dfn-relying-parties" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">relying party</dfn>.
+  </dd>
+  
+  
+</dl>
+</div>
+      </section>
+
+      <section id="conformance" class="normative"><div class="header-wrapper"><h3 id="x1-3-conformance"><bdi class="secno">1.3 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.3"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, <em class="rfc2119">MUST NOT</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p>
+      </section>
+
+    </section>
+
+    <section class="normative" id="data-model"><div class="header-wrapper"><h2 id="x2-data-model"><bdi class="secno">2. </bdi>Data Model</h2><a class="self-link" href="#data-model" aria-label="Permalink for Section 2."></a></div>
+      
+
+      <p>
+The following sections outlines the data model for this document.
+      </p>
+
+      <section id="bitstringstatuslistentry"><div class="header-wrapper"><h3 id="x2-1-bitstringstatuslistentry"><bdi class="secno">2.1 </bdi>BitstringStatusListEntry</h3><a class="self-link" href="#bitstringstatuslistentry" aria-label="Permalink for Section 2.1"></a></div>
+        
+
+        <p>
+When an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-13">issuer</a> desires to enable status information for a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-31">verifiable credential</a>, they <em class="rfc2119">MAY</em> add a <code>credentialStatus</code>
+property that uses the data model described in this specification.
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th style="white-space: nowrap">Property</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>
+An optional identifier for the status list entry. The constraints on the
+<code>id</code> property are listed in the Verifiable Credentials Data Model
+specification [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model" title="Verifiable Credentials Data Model v1.1">VC-DATA-MODEL</a></cite>]. If present, the value is expected to be a URL
+that identifies the status information associated with the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-32">verifiable
+credential</a>. It <em class="rfc2119">MUST NOT</em> be the URL for the status list. The value is
+not used during the verification or validation process, and does not need to be
+related to the <code>statusListCredential</code> value. If necessary, the value can be
+used to uniquely identify the <code>BitstringStatusListEntry</code> object, such as when it is
+stored in a database.
+              </td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>
+The <code>type</code> property <em class="rfc2119">MUST</em> be <code>BitstringStatusListEntry</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>statusPurpose</td>
+              <td>
+The purpose of the status entry <em class="rfc2119">MUST</em> be a string. While the value of the
+string is arbitrary, the following values <em class="rfc2119">MUST</em> be used for their intended
+purpose:
+                <table class="simple">
+                  <thead>
+                    <tr>
+                      <th style="white-space: nowrap">Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>revocation</code></td>
+                      <td>
+Used to cancel the validity of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-33">verifiable credential</a>. This status is
+not reversible.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>suspension</code></td>
+                      <td>
+Used to temporarily prevent the acceptance of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-34">verifiable credential</a>.
+This status is reversible.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>statusListIndex</td>
+              <td>
+The <code>statusListIndex</code> property <em class="rfc2119">MUST</em> be an arbitrary size integer
+greater than or equal to 0, expressed as a string. The value identifies the
+position of the status of the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-35">verifiable credential</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>statusListCredential</td>
+              <td>
+The <code>statusListCredential</code> property <em class="rfc2119">MUST</em> be a URL to a
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-36">verifiable credential</a>. When the URL is dereferenced, the resulting
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-37">verifiable credential</a> <em class="rfc2119">MUST</em> have <code>type</code> property that
+includes the <code>BitstringStatusListCredential</code> value.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-statuslistcredential">
+        <div class="marker">
+    <a class="self-link" href="#example-example-statuslistcredential">Example<bdi> 1</bdi></a><span class="example-title">: Example StatusListCredential</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": [
+    {
+      "id": "https://example.com/credentials/status/3#94567"
+      "type": "BitstringStatusListEntry",
+      "statusPurpose": "revocation",
+      "statusListIndex": "94567",
+      "statusListCredential": "https://example.com/credentials/status/3"
+    }, {
+      "id": "https://example.com/credentials/status/4#23452"
+      "type": "BitstringStatusListEntry",
+      "statusPurpose": "suspension",
+      "statusListIndex": "23452",
+      "statusListCredential": "https://example.com/credentials/status/4"
+    }
+  ]</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  },
+  "proof": { <span class="comment">...</span> }
+}</pre>
+      </div>
+      </section>
+
+      <section id="bitstringstatuslistcredential"><div class="header-wrapper"><h3 id="x2-2-bitstringstatuslistcredential"><bdi class="secno">2.2 </bdi>BitstringStatusListCredential</h3><a class="self-link" href="#bitstringstatuslistcredential" aria-label="Permalink for Section 2.2"></a></div>
+        
+
+        <p>
+When a status list is published, the result is a  <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-38">verifiable
+credential</a> that encapsulates the status list. The following section
+describes the format of the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-39">verifiable credential</a> that encapsulates the
+status list:
+        </p>
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th style="white-space: nowrap">Property</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>
+The <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-40">verifiable credential</a> that contains the status list <em class="rfc2119">MAY</em>
+express an <code>id</code> property that matches the value specified in
+<code>statusListCredential</code> for the corresponding
+<code>BitstringStatusListEntry</code> (see <a href="#bitstringstatuslistentry" class="sec-ref"><bdi class="secno">2.1 </bdi>BitstringStatusListEntry</a>).
+              </td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>
+The <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-41">verifiable credential</a> that contains the status list <em class="rfc2119">MUST</em>
+express a <code>type</code> property that includes the
+<code>BitstringStatusListCredential</code> value.
+              </td>
+            </tr>
+            <tr>
+              <td>validFrom</td>
+              <td>
+The earliest point in time at which the status list is valid. This property is
+defined in the Verifiable Credentials Data Model specification in
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
+Section 4.6: Validity Period</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>validUntil</td>
+              <td>
+The latest point in time at which the status list is valid. This property is
+defined in the Verifiable Credentials Data Model specification in
+<a href="https://www.w3.org/TR/vc-data-model-2.0/#validity-period">
+Section 4.6: Validity Period</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>credentialSubject.type</td>
+              <td>
+The <code>type</code> of the credential <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-12">subject</a>, which is the
+status list, <em class="rfc2119">MUST</em> be <code>BitstringStatusList</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>credentialSubject.statusPurpose</td>
+              <td>
+The purpose of the status entry <em class="rfc2119">MUST</em> be a string. While the value of the
+string is arbitrary, the following values <em class="rfc2119">MUST</em> be used for their intended
+purpose:
+                <table class="simple">
+                  <thead>
+                    <tr>
+                      <th style="white-space: nowrap">Value</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>revocation</code></td>
+                      <td>
+Used to cancel the validity of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-42">verifiable credential</a>. This status is
+not reversible.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>suspension</code></td>
+                      <td>
+Used to temporarily prevent the acceptance of a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-43">verifiable credential</a>.
+This status is reversible.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>status</code></td>
+                      <td>
+Used to indicate a status message associated with a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-44">verifiable credential</a>.
+The status message descriptions <em class="rfc2119">MUST</em> be defined in <code>credentialSubject.statusMessages</code>.
+<code>credentialSubject.size</code> <em class="rfc2119">MUST</em> be defined with this <code>statusPurpose</code>.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+                <td>credentialSubject.encodedList</td>
+              <td>
+The <code>encodedList</code> property of the credential <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-subjects-13">subject</a> <em class="rfc2119">MUST</em> be
+the GZIP-compressed [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>], base-64 encoded [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc4648" title="The Base16, Base32, and Base64 Data Encodings">RFC4648</a></cite>] bitstring values
+for the associated range of <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-45">verifiable credential</a> status values. The
+uncompressed bitstring <em class="rfc2119">MUST</em> be at least 16KB in size. The bitstring <em class="rfc2119">MUST</em> be
+encoded such that the first index, with a value of zero
+(<code>0</code>), is located at the left-most bit in the bitstring and the
+last index, with a value of one less than the length of the bitstring
+(<code>bitstring_length - 1</code>), is located at the right-most bit in the
+bitstring. Further information on bitstring encoding can be found in Section
+<a href="#bitstring-encoding" class="sec-ref"><bdi class="secno">5.1 </bdi>Bitstring Encoding</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.ttl
+              </td>
+              <td>
+                The <code>ttl</code> indicates the "time to live" in milliseconds.
+                This property <em class="rfc2119">MAY</em> be present. If not present, implementers <em class="rfc2119">MUST</em>
+                use a value of <code>300000</code> for this property.  A verifier
+                <em class="rfc2119">MUST NOT</em> use a cached <code>BitstringStatusListCredential</code> that was
+                cached for more than the <code>ttl</code> duration prior to the
+                start of verification operation on a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-46">verifiable credential</a>.
+                Implementations that publish the status list <em class="rfc2119">SHOULD</em> align
+                any protocol-specific caching information, such as the
+                HTTP <code>Cache-Control</code> header, with the value in this field.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.size
+              </td>
+              <td>
+                The <code>size</code> indicates the size of the status entry in bits.
+                <code>size</code> <em class="rfc2119">MAY</em> be provided. If <code>size</code> is not present
+                as a property of the <code>credentialStatus</code>, then <code>size</code>
+                <em class="rfc2119">MUST</em> be processed as <code>1</code>.  <code>size</code> <em class="rfc2119">MUST</em> be an integer greater than zero.
+                If <code>size</code> is provided and is greater than <code>1</code>, then the property
+                <code>credentialStatus.statusMessages</code> <em class="rfc2119">MUST</em> be present, and the number of
+                status messages must equal the number of possible values.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.statusMessages
+              </td>
+              <td>
+                The <code>statusMessages</code> property <em class="rfc2119">MUST</em> be an array. If present,
+                the length of the array must equal the number of possible status states
+                indicated by <code>size</code>. <code>statusMessages</code> <em class="rfc2119">MAY</em> be present if
+                <code>size</code> is <code>1</code>. <code>statusMessages</code> <em class="rfc2119">MUST</em> be present if
+                <code>size</code> is greater than <code>1</code>.  If not present, the message value
+                associated with the bit value of <code>0</code> is "unset" and the bit
+                value of <code>1</code> is "set".
+                If present, elements in the <code>statusMessages</code> array <em class="rfc2119">MUST</em> contain at
+                minimum two properties:
+                <ul>
+                  <li><code>status</code>, being a string of the hex value of the status</li>
+                  <li><code>value</code>, being a string containing the associated message</li>
+                </ul>
+                Implementers <em class="rfc2119">MAY</em> add additional values to objects in the <code>statusMessages</code>
+                array.
+                Implementers <em class="rfc2119">MAY</em> use the string value of <code>undefined</code> in the value
+                to indicate that a corresponding status is not defined for the associated
+                status value, but that it may be defined in the future.
+                Rules for how to handle various status messages are outside the scope of
+                normative requirements in this document, but it is assumed that implementers
+                will document rules for processing various status codes.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                credentialSubject.reference
+              </td>
+              <td>
+                The <code>reference</code> property provides a point for implementers to
+                include a [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>] to material related to the status. An implementer <em class="rfc2119">MAY</em> include
+                the <code>reference</code> property, and if they do, the value <em class="rfc2119">MUST</em> be a
+                [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>] or an array of URLs. Implementers using a <code>statusPurpose</code> of <code>status</code>
+                are strongly encouraged to provide a <code>reference</code>.
+                <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span><span class="issue-label">: Details around reference</span></div><p class="">
+                  <code>reference</code> is especially important when interpertation of the
+                  status for a credential may involve some understanding of the business case
+                  involved.
+                </p></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="example" id="example-example-bitstringstatuslistcredential">
+        <div class="marker">
+    <a class="self-link" href="#example-example-bitstringstatuslistcredential">Example<bdi> 2</bdi></a><span class="example-title">: Example BitstringStatusListCredential</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">BitstringStatusList</span>",
+    "statusPurpose": "<span class="highlight">revocation</span>",
+    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+  },
+  "proof": { ... }
+}</pre>
+      </div>
+                <div class="issue" id="issue-container-number-73"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/vc-bitstring-status-list/issues/73"><span class="issue-number">Issue 73</span></a><span class="issue-label">: Design of multiple status messages is not finalized. <a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22before-CR%22" style="background-color: rgb(221, 188, 20); color: rgb(0, 0, 0);" aria-label="GitHub label: before-CR">before-CR</a></span></div><p class="">
+The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
+                </p></div>
+                <div class="example" id="example-example-bitstringstatuslistcredential-0">
+        <div class="marker">
+    <a class="self-link" href="#example-example-bitstringstatuslistcredential-0">Example<bdi> 3</bdi></a><span class="example-title">: Example BitstringStatusListCredential</span>
+  </div> <pre class="nohighlight">{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">BitstringStatusList</span>",
+    "ttl": 500,
+    "statusPurpose": "<span class="highlight">status</span>",
+    "reference": "https://example.org/status-dictionary/",
+    "size": 2,
+    "statusMessages": [
+        {"status":"0x0", "value":"valid"},
+        {"status":"0x1", "value":"invalid"},
+        {"status":"0x2", "value":"pending_review"},
+        ...
+    ],
+    "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+  }
+}</pre>
+      </div>
+      </section>
+
+    </section>
+
+  <section class="normative" id="algorithms"><div class="header-wrapper"><h2 id="x3-algorithms"><bdi class="secno">3. </bdi>Algorithms</h2><a class="self-link" href="#algorithms" aria-label="Permalink for Section 3."></a></div>
+    
+
+    <p>
+The following section outlines the algorithms that are used to generate
+and validate status lists as described by this document.
+    </p>
+
+    <section class="normative" id="generate-algorithm"><div class="header-wrapper"><h3 id="x3-1-generate-algorithm"><bdi class="secno">3.1 </bdi>Generate Algorithm</h3><a class="self-link" href="#generate-algorithm" aria-label="Permalink for Section 3.1"></a></div>
+      
+
+      <p>
+The following process, or one generating the exact output, <em class="rfc2119">MUST</em> be followed
+when producing a
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>issued credentials</strong> be a list of all issued
+<a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-47">verifiable credentials</a>.
+        </li>
+        <li>
+Let <strong>RLC</strong> be an unsigned
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>
+without the <code>encodedList</code> property set.
+        </li>
+        <li>
+Generate a <strong>compressed bitstring</strong> by passing
+<strong>issued credentials</strong> to the
+<strong>Bitstring Generation Algorithm</strong>.
+        </li>
+        <li>
+Set the <code>encodedList</code> to <strong>compressed bitstring</strong>.
+        </li>
+        <li>
+Generate a proof for the <strong>RLC</strong> and publish it to the
+endpoint listed in the <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-48">verifiable credential</a>.
+        </li>
+      </ol>
+    </section>
+
+    <section class="normative" id="validate-algorithm"><div class="header-wrapper"><h3 id="x3-2-validate-algorithm"><bdi class="secno">3.2 </bdi>Validate Algorithm</h3><a class="self-link" href="#validate-algorithm" aria-label="Permalink for Section 3.2"></a></div>
+      
+
+      <p>
+The following process, or one generating the exact output, <em class="rfc2119">MUST</em> be followed
+when validating a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-49">verifiable credential</a> that is contained in a
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>credentialToValidate</strong> be a <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-50">verifiable credential</a>
+containing a <code>credentialStatus</code> entry that is a
+<a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
+        </li>
+        <li>
+Let <strong>status purpose</strong> be the value of <code>statusPurpose</code>
+in the <code>credentialStatus</code> entry in the
+<strong>credentialToValidate</strong>.
+        </li>
+        <li>
+Dereference the <code>statusListCredential</code> URL, and ensure that all
+proofs verify successfully. If the dereference fails, or if any of the proof
+verifications fail, return a validation error.
+        </li>
+        <li>
+Verify that the <strong>status purpose</strong> matches the
+<code>statusPurpose</code> value in the <strong>statusListCredential</strong>.
+        </li>
+        <li>
+Let <strong>compressed bitstring</strong> be the value of the
+<code>encodedList</code> property of the
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
+        </li>
+        <li>
+Let <strong>credentialIndex</strong> be the value of the
+<code>statusListIndex</code> property of the
+<a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
+        </li>
+        <li>
+Generate a <strong>revocation bitstring</strong> by passing
+<strong>compressed bitstring</strong> to the
+<a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
+        </li>
+        <li>
+Let <strong>status</strong> be the value at the position indicated by the
+<strong>credentialIndex</strong> times the <strong>size</strong> in the
+<strong>bitstring</strong>.
+        </li>
+        <li>
+For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>,
+return <code>true</code> if <code>status</code> is <code>1</code>, and return <code>false</code>
+if <code>status</code> has any other value.  For other <code>statusPurpose</code>,
+return the corresponding <code>value</code> of the <code>status</code>
+as indicated in the <code>statusMessages</code> array.
+        </li>
+      </ol>
+    </section>
+
+    <section class="normative" id="bitstring-generation-algorithm"><div class="header-wrapper"><h3 id="x3-3-bitstring-generation-algorithm"><bdi class="secno">3.3 </bdi>Bitstring Generation Algorithm</h3><a class="self-link" href="#bitstring-generation-algorithm" aria-label="Permalink for Section 3.3"></a></div>
+      
+      <p>
+The following process, or one generating the exact output, <em class="rfc2119">MUST</em> be followed
+when generating a status list bitstring. The algorithm takes a
+<strong>issuedCredentials</strong> list as input and returns a
+<strong>compressed bitstring</strong> as output.
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
+where each bit is initialized to 0 (zero).
+        </li>
+        <li>
+For each value in <code>bitstring</code>, if there is a
+corresponding <code>statusListIndex</code> value in
+a credential in <code>issuedCredentials</code>, set the value to the
+appropriate status. The position of the value is computed as <code>statusListIndex</code>
+times the <code>size</code>.
+        </li>
+        <li>
+Generate a <strong>compressed bitstring</strong> by using the GZIP
+compression algorithm [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>] on the <strong>bitstring</strong>
+and then base64-encoding [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc4648" title="The Base16, Base32, and Base64 Data Encodings">RFC4648</a></cite>] the result.
+        </li>
+        <li>
+Return the <strong>compressed bitstring</strong>.
+        </li>
+      </ol>
+    </section>
+
+    <section class="normative" id="bitstring-expansion-algorithm"><div class="header-wrapper"><h3 id="x3-4-bitstring-expansion-algorithm"><bdi class="secno">3.4 </bdi>Bitstring Expansion Algorithm</h3><a class="self-link" href="#bitstring-expansion-algorithm" aria-label="Permalink for Section 3.4"></a></div>
+      
+
+      <p>
+The following process, or one generating the exact output, <em class="rfc2119">MUST</em> be followed
+when expanding a compressed status list bitstring. The algorithm takes a
+<strong>compressed bitstring</strong> as input and returns a
+<strong>uncompressed bitstring</strong> as output.
+      </p>
+
+      <ol class="algorithm">
+        <li>
+Let <strong>compressed bitstring</strong> be a compressed status list
+bitstring.
+        </li>
+        <li>
+Generate an <strong>uncompressed bitstring</strong> by using the
+base64-decoding [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc4648" title="The Base16, Base32, and Base64 Data Encodings">RFC4648</a></cite>] algorithm on the
+<strong>compressed bitstring</strong> and then expanding the output using
+the GZIP decompression algorithm [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>].
+        </li>
+        <li>
+Return the <strong>uncompressed bitstring</strong>.
+        </li>
+      </ol>
+    </section>
+
+  </section>
+
+  <section class="informative" id="privacy-considerations"><div class="header-wrapper"><h2 id="x4-privacy-considerations"><bdi class="secno">4. </bdi>Privacy Considerations</h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Section 4."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+This section details the general privacy considerations and specific privacy
+implications of deploying this specification into production environments.
+    </p>
+
+    <section class="informative" id="revocation-bitstring-length"><div class="header-wrapper"><h3 id="x4-1-revocation-bitstring-length"><bdi class="secno">4.1 </bdi>Revocation Bitstring Length</h3><a class="self-link" href="#revocation-bitstring-length" aria-label="Permalink for Section 4.1"></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+This document specifies a minimum revocation bitstring length of 131,072, or
+16KB uncompressed. This is enough to give <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-11">holders</a> an adequate amount of
+herd privacy if the number of verifiable credentials issued is large enough.
+However, if the number of issued verifiable credentials is a small population,
+the ability to correlate an individual increases because the number of allocated
+slots in the bitstring is small. Correlating this information with, for example,
+where the geographic request came from can also help to correlate individuals
+that have received a credential from the same geographic region.
+      </p>
+    </section>
+
+    <section class="informative" id="verifier-caching"><div class="header-wrapper"><h3 id="x4-2-verifier-caching"><bdi class="secno">4.2 </bdi>Verifier Caching</h3><a class="self-link" href="#verifier-caching" aria-label="Permalink for Section 4.2"></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+It is possible for <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-9">verifiers</a> to increase the privacy of the
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-12">holder</a> whose <a href="#dfn-verifiable-credential" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifiable-credential-51">verifiable credential</a> is being checked by caching
+status lists that have been fetched from remote servers. By caching the
+content locally, less correlatable information can be inferred from
+<a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-10">verifier</a>-based access patterns on the status list.
+      </p>
+    </section>
+
+    <section class="informative" id="content-distribution-networks"><div class="header-wrapper"><h3 id="x4-3-content-distribution-networks"><bdi class="secno">4.3 </bdi>Content Distribution Networks</h3><a class="self-link" href="#content-distribution-networks" aria-label="Permalink for Section 4.3"></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+The use of content distribution networks by <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-14">issuers</a> can increase the
+privacy of <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-13">holders</a> by reducing or eliminating requests for the
+status lists from the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-15">issuer</a>. Often, a request for a revocation
+list will be served by an edge device and thus be faster and reduce the load
+on the server as well as cloaking <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-11">verifiers</a> and <a href="#dfn-holders" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-holders-14">holders</a>
+from <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-16">issuers</a>.
+      </p>
+    </section>
+
+<section class="informative" id="malicious-issuers-and-verifiers"><div class="header-wrapper"><h3 id="x4-4-malicious-issuers-and-verifiers"><bdi class="secno">4.4 </bdi>Malicious Issuers and Verifiers</h3><a class="self-link" href="#malicious-issuers-and-verifiers" aria-label="Permalink for Section 4.4"></a></div><p><em>This section is non-normative.</em></p>
+
+<p>
+In general, the herd privacy protections offered by this specification can be circumvented by malicious <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-17">issuers</a> and <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-12">verifiers</a>. Its privacy benefits can only be realized when issuers and verifiers intend to avoid tracking or sharing the presentation of particular credentials.
+</p>
+<p>
+A malicious <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-18">issuer</a> might intentionally attack herd privacy by creating a
+unique status list per credential issued in order to establish a 1-1 mapping to track
+when a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-13">verifier</a> processes a specific credential. Similarly, they could establish
+another a 1-1 mapping by using a different cryptographic key for every credential
+issued that is tracked in a status list.
+</p>
+<p>
+A malicious <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-verifier-14">verifier</a> might intentionally attack herd privacy by sharing
+information from presented credentials with a malicious <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-issuers-19">issuer</a>.
+</p>
+<div class="issue closed" id="issue-container-number-6"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><a href="https://github.com/w3c/vc-bitstring-status-list/issues/6"><span class="issue-number">Issue 6</span></a><span class="issue-label">: Preventing multiple single-credential status lists per issuer <a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22ready-for-pr%22" style="background-color: rgb(23, 42, 12); color: rgb(255, 255, 255);" aria-label="GitHub label: ready-for-pr">ready-for-pr</a></span></div><p dir="auto">What prevents the issuer from hosting several status list bitstrings (one for each credential) and embedding a <code class="notranslate">statusListIndex</code> value that represents one of those bitstrings at issuance time? This loophole would allow a 1:1 mapping between credential and status list, eliminating the herd privacy guarantees that are integral to this spec.</p></div>
+</section>
+
+  </section>
+
+  <section class="informative" id="security-considerations"><div class="header-wrapper"><h2 id="x5-security-considerations"><bdi class="secno">5. </bdi>Security Considerations</h2><a class="self-link" href="#security-considerations" aria-label="Permalink for Section 5."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+There are a number of security considerations that implementers should be
+aware of when processing data described by this specification. Ignoring or
+not understanding the implications of this section can result in
+security vulnerabilities.
+    </p>
+
+    <p>
+While this section attempts to highlight a broad set of security
+considerations, it is not a complete list. Implementers are urged to seek the
+advice of security and cryptography professionals when implementing mission
+critical systems using the technology outlined in this specification.
+    </p>
+
+    <section class="informative" id="bitstring-encoding"><div class="header-wrapper"><h3 id="x5-1-bitstring-encoding"><bdi class="secno">5.1 </bdi>Bitstring Encoding</h3><a class="self-link" href="#bitstring-encoding" aria-label="Permalink for Section 5.1"></a></div><p><em>This section is non-normative.</em></p>
+      
+
+      <p>
+It is critical that implementers pay particular attention to the way that they
+encode and decode bitstrings. Failure to do so can result in checking the
+wrong bitstring index for a given credential, leading to a misinterpretation
+of its present state (e.g., mistaking a revoked status for an unrevoked
+status). As stated in Section <a href="#bitstringstatuslistcredential" class="sec-ref"><bdi class="secno">2.2 </bdi>BitstringStatusListCredential</a>,
+bitstrings are encoded such that the first (zeroth) index refers to the
+left-most bit of the bitstring array. The diagram below demonstrates the
+proper layout for an uncompressed bitstring.
+      </p>
+
+      <figure id="bitstring-layout">
+        <img style="margin: auto; display: block; width: 75%;" src="diagrams/bitstring-layout.svg" alt="a diagram showing two
+             wide rectangles shown side-by-side. Each rectangle is partitioned
+             into eight boxes to represent the 8 bits in a byte. The left
+             rectangle is labeled 'First byte' and the right rectangle is
+             labeled 'Last byte'. The left rectangle's left-most bit box is
+             pointed to by an arrow labeled 'index: 0'. The right rectangle's
+             right-most bit box is pointed to by an arrow labeled
+             'index: length - 1'.">
+        <figcaption style="text-align: center;"><a class="self-link" href="#bitstring-layout">Figure <bdi class="figno">2</bdi></a> <span class="fig-title">
+          A visual depiction of the bitstring layout.
+        </span></figcaption>
+      </figure>
+
+      <p>
+For example, if a bitstring is 131,072 bits in size (16KB), the first index will be 0, and the last index will be 131,071.
+      </p>
+    </section>
+
+  </section>
+
+  <section class="informative" id="accessibility-considerations"><div class="header-wrapper"><h2 id="x6-accessibility-considerations"><bdi class="secno">6. </bdi>Accessibility Considerations</h2><a class="self-link" href="#accessibility-considerations" aria-label="Permalink for Section 6."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+There are a number of accessibility considerations implementers should be
+aware of when processing data described in this specification. As with any web
+standards or protocols implementation, ignoring accessibility issues makes
+this information unusable to a large subset of the population. It is important
+to follow accessibility guidelines and standards, such as [<cite><a class="bibref" data-link-type="biblio" href="#bib-wcag21" title="Web Content Accessibility Guidelines (WCAG) 2.1">WCAG21</a></cite>], to ensure
+all people, regardless of ability, can make use of this data. This is
+especially important when establishing systems utilizing cryptography, which
+have historically created problems for assistive technologies.
+    </p>
+
+    <p>
+This section details the general accessibility considerations to take into
+account when utilizing this data model.
+    </p>
+
+    <div class="issue" id="issue-container-generatedID-0"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><span>Issue</span></div><p class="">
+Write accessibility considerations.
+    </p></div>
+
+  </section>
+
+  <section class="informative" id="internationalization-considerations"><div class="header-wrapper"><h2 id="x7-internationalization-considerations"><bdi class="secno">7. </bdi>Internationalization Considerations</h2><a class="self-link" href="#internationalization-considerations" aria-label="Permalink for Section 7."></a></div><p><em>This section is non-normative.</em></p>
+    
+
+    <p>
+There are a number of internationalization considerations implementers should be
+aware of when publishing data described in this specification. As with any web
+standards or protocols implementation, ignoring internationalization makes it
+difficult for data to be produced and consumed across a disparate set of
+languages and societies, which would limit the applicability of the
+specification and significantly diminish its value as a standard.
+    </p>
+
+    <p>
+This section outlines general internationalization considerations to take into
+account when utilizing this data model.
+    </p>
+
+    <div class="issue" id="issue-container-generatedID-1"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="3"><span>Issue</span></div><p class="">
+Write i18n considerations.
+    </p></div>
+
+  </section>
+
+  <section class="informative" id="appendix"><div class="header-wrapper"><h2 id="x8-appendix"><bdi class="secno">8. </bdi>Appendix</h2><a class="self-link" href="#appendix" aria-label="Permalink for Section 8."></a></div><p><em>This section is non-normative.</em></p>
+    
+    <section id="examples"><div class="header-wrapper"><h3 id="x8-1-examples"><bdi class="secno">8.1 </bdi>Examples</h3><a class="self-link" href="#examples" aria-label="Permalink for Section 8.1"></a></div>
+      
+      <section id="revocable-verifiable-credential"><div class="header-wrapper"><h4 id="x8-1-1-revocable-verifiable-credential"><bdi class="secno">8.1.1 </bdi>Revocable Verifiable Credential</h4><a class="self-link" href="#revocable-verifiable-credential" aria-label="Permalink for Section 8.1.1"></a></div>
+        
+<div class="example" id="example-a-revocable-verifiable-credential">
+        <div class="marker">
+    <a class="self-link" href="#example-a-revocable-verifiable-credential">Example<bdi> 4</bdi></a><span class="example-title">: A Revocable Verifiable Credential</span>
+  </div> <div style="padding: 5px;"></div><span style="" class="tab selected" onclick="window.displayVcExample(this, 'credential');">Verifiable Credential</span><span style="" class="tab" onclick="window.displayVcExample(this, 'vc-proof');">Secured with Data Integrity</span><span class="tab" style="" onclick="window.displayVcExample(this, 'vc-jwt');">Secured with VC-JWT</span><div class="tab-separator"></div><pre class="nohighlight credential" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  }
+}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/23894672394",<br>  "type": [<br>    "VerifiableCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:42Z",<br>  "credentialStatus": {<br>    "id": "https://example.com/credentials/status/3#94567",<br>    "type": "BitstringStatusListEntry",<br>    "statusPurpose": "revocation",<br>    "statusListIndex": "94567",<br>    "statusListCredential": "https://example.com/credentials/status/3"<br>  },<br>  "credentialSubject": {<br>    "id": "did:example:6789",<br>    "type": "Person"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2023-11-19T09:01:30Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z23mXDRrxY9PQ7M64Ft4hpCXR1kfpyjZZ1VDnX6dWY7gDVMRVyLwWpci<br>2NR8w4z52QnMDWLm1C3vym6PmpXidT1mY"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/23894672394",<br>    "type": [<br>      "VerifiableCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:42Z",<br>    "credentialStatus": {<br>      "id": "https://example.com/credentials/status/3#94567",<br>      "type": "BitstringStatusListEntry",<br>      "statusPurpose": "revocation",<br>      "statusListIndex": "94567",<br>      "statusListCredential": "https://example.com/credentials/status/3"<br>    },<br>    "credentialSubject": {<br>      "id": "did:example:6789",<br>      "type": "Person"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/23894672394",<br>  "sub": "did:example:6789"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXI<br>iOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIi<br>wiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhb<br>HMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3Rh<br>dHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR<br>1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dX<br>MvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlI<br>joiUGVyc29uIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhh<br>bXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiLCJzdWIiOiJkaWQ6ZXhhbXBsZTo2Nzg<br>5In0.o28DNRV-LDhuCIKiTwzNg_xnx5Z4Q0hb4G-k6gLlyad-G2CBdHCwvfMkSxOe3T2dvtNF99<br>3_YRuNMc-uZjUivA</pre>
+      </div>
+
+      </section>
+      <section id="status-list-verifiable-credential"><div class="header-wrapper"><h4 id="x8-1-2-status-list-verifiable-credential"><bdi class="secno">8.1.2 </bdi>Status List Verifiable Credential</h4><a class="self-link" href="#status-list-verifiable-credential" aria-label="Permalink for Section 8.1.2"></a></div>
+        
+<div class="example" id="example-a-status-list-verifiable-credential">
+        <div class="marker">
+    <a class="self-link" href="#example-a-status-list-verifiable-credential">Example<bdi> 5</bdi></a><span class="example-title">: A Status List Verifiable Credential</span>
+  </div> <div style="padding: 5px;"></div><span style="" class="tab selected" onclick="window.displayVcExample(this, 'credential');">Verifiable Credential</span><span style="" class="tab" onclick="window.displayVcExample(this, 'vc-proof');">Secured with Data Integrity</span><span class="tab" style="" onclick="window.displayVcExample(this, 'vc-jwt');">Secured with VC-JWT</span><div class="tab-separator"></div><pre class="nohighlight credential" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">BitstringStatusList</span>",
+    "statusPurpose": "<span class="highlight">revocation</span>",
+    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+  }
+}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/status/3",<br>  "type": [<br>    "VerifiableCredential",<br>    "BitstringStatusListCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:40Z",<br>  "credentialSubject": {<br>    "id": "https://example.com/status/3#list",<br>    "type": "BitstringStatusList",<br>    "statusPurpose": "revocation",<br>    "encodedList": "H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC<br>3AYbSVKsAQAAA"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2023-11-19T09:01:30Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z5fJNvYnerk4JMUuEt4SGYSDJgmFBz6N64UJXpT6Z2f4mCrj4Mjx3RHF<br>EoX39suXLzdpmmzxVE5Gv4RsRZW5P6NYj"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/status/3",<br>    "type": [<br>      "VerifiableCredential",<br>      "BitstringStatusListCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:40Z",<br>    "credentialSubject": {<br>      "id": "https://example.com/status/3#list",<br>      "type": "BitstringStatusList",<br>      "statusPurpose": "revocation",<br>      "encodedList": "H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAA<br>IC3AYbSVKsAQAAA"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/status/3",<br>  "sub": "https://example.com/status/3#list"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N<br>0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaW<br>RGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6I<br>mh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0<br>dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6Ikg0c0l<br>BQUFBQUFBQUEtM0JNUUVBQUFEQ29QVlBiUXdmb0FBQUFBQUFBQUFBQUFBQUFBQUFBSUMzQVliU1<br>ZLc0FRQUFBIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhhb<br>XBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMiLCJzdWIiOiJodHRwczovL2V4YW1wbGUuY29t<br>L3N0YXR1cy8zI2xpc3QifQ.S1NbNcG6bifvagbEyDXVzEnNZG1AHvQJ9ATxfytbvFGEfACiO0Pq<br>DbKYZxaqmWFkWX7NNM5SYhnLxXDIaGwd9Q</pre>
+      </div>
+      </section>
+    </section>
+  </section>
+
+  
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="a-references"><bdi class="secno">A. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix A."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="a-1-normative-references"><bdi class="secno">A.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix A.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-rfc1952">[RFC1952]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc1952"><cite>GZIP file format specification version 4.3</cite></a>. P. Deutsch.  IETF. May 1996. Informational. URL: <a href="https://www.rfc-editor.org/rfc/rfc1952">https://www.rfc-editor.org/rfc/rfc1952</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc4648">[RFC4648]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc4648"><cite>The Base16, Base32, and Base64 Data Encodings</cite></a>. S. Josefsson.  IETF. October 2006. Proposed Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc4648">https://www.rfc-editor.org/rfc/rfc4648</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd><dt id="bib-url">[URL]</dt><dd>
+      <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
+    </dd><dt id="bib-vc-data-model">[VC-DATA-MODEL]</dt><dd>
+      <a href="https://www.w3.org/TR/vc-data-model/"><cite>Verifiable Credentials Data Model v1.1</cite></a>. Manu Sporny; Grant Noble; Dave Longley; Daniel Burnett; Brent Zundel; Kyle Den Hartog.  W3C. 3 March 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="a-2-informative-references"><bdi class="secno">A.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix A.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-wcag21">[WCAG21]</dt><dd>
+      <a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Michael Cooper; Andrew Kirkpatrick; Joshue O'Connor; Alastair Campbell.  W3C. 21 September 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-claims" aria-label="Links in this document to definition: claim">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-claims" aria-label="Permalink for definition: claim. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-claims-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-claims-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-claims-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-claims-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-claims-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-claims-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-claims-7" title="Reference 7">(7)</a> <a href="#ref-for-dfn-claims-8" title="Reference 8">(8)</a>  <a href="#ref-for-dfn-claims-10" title="Reference 10">(10)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential" aria-label="Links in this document to definition: credential">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential" aria-label="Permalink for definition: credential. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-credential-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-credential-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-credential-3" title="Reference 3">(3)</a>  
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-data-minimization" aria-label="Links in this document to definition: data minimization">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-data-minimization" aria-label="Permalink for definition: data minimization. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+       
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-decentralized-identifiers" aria-label="Links in this document to definition: decentralized identifier">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-decentralized-identifiers" aria-label="Permalink for definition: decentralized identifier. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+       
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-graph" aria-label="Links in this document to definition: default graph">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-default-graph" aria-label="Permalink for definition: default graph. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-default-graph-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-entities" aria-label="Links in this document to definition: entity">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-entities" aria-label="Permalink for definition: entity. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-entities-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-entities-2" title="Reference 2">(2)</a>   <a href="#ref-for-dfn-entities-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-entities-6" title="Reference 6">(6)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-graphs" aria-label="Links in this document to definition: graph">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-graphs" aria-label="Permalink for definition: graph. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-graphs-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-graphs-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-graphs-3" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-holders" aria-label="Links in this document to definition: holder">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-holders" aria-label="Permalink for definition: holder. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-holders-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-holders-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-holders-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-holders-4" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-holders-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-holders-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-holders-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-holders-8" title="Reference 5">(5)</a>   
+    </li><li>
+      <a href="#ref-for-dfn-holders-11" title="§ 4.1 Revocation Bitstring Length">§ 4.1 Revocation Bitstring Length</a> 
+    </li><li>
+      <a href="#ref-for-dfn-holders-12" title="§ 4.2 Verifier Caching">§ 4.2 Verifier Caching</a> 
+    </li><li>
+      <a href="#ref-for-dfn-holders-13" title="§ 4.3 Content Distribution Networks">§ 4.3 Content Distribution Networks</a> <a href="#ref-for-dfn-holders-14" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-identity-providers" aria-label="Links in this document to definition: identity provider">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-identity-providers" aria-label="Permalink for definition: identity provider. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-identity-providers-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-issuers" aria-label="Links in this document to definition: issuer">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-issuers" aria-label="Permalink for definition: issuer. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-issuers-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-issuers-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-issuers-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-issuers-4" title="§ 1.1 Conceptual Framework">§ 1.1 Conceptual Framework</a> <a href="#ref-for-dfn-issuers-5" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-issuers-6" title="§ 1.2 Terminology">§ 1.2 Terminology</a>  <a href="#ref-for-dfn-issuers-8" title="Reference 3">(3)</a>     
+    </li><li>
+      <a href="#ref-for-dfn-issuers-13" title="§ 2.1 BitstringStatusListEntry">§ 2.1 BitstringStatusListEntry</a> 
+    </li><li>
+      <a href="#ref-for-dfn-issuers-14" title="§ 4.3 Content Distribution Networks">§ 4.3 Content Distribution Networks</a> <a href="#ref-for-dfn-issuers-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-issuers-16" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-issuers-17" title="§ 4.4 Malicious Issuers and Verifiers">§ 4.4 Malicious Issuers and Verifiers</a> <a href="#ref-for-dfn-issuers-18" title="Reference 2">(2)</a> <a href="#ref-for-dfn-issuers-19" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-named-graphs" aria-label="Links in this document to definition: named graph">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-named-graphs" aria-label="Permalink for definition: named graph. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-named-graphs-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-named-graphs-2" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-credential-repository" aria-label="Links in this document to definition: repository">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-credential-repository" aria-label="Permalink for definition: repository. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-credential-repository-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a>  <a href="#ref-for-dfn-credential-repository-3" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-subjects" aria-label="Links in this document to definition: subject">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-subjects" aria-label="Permalink for definition: subject. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-subjects-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-subjects-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-subjects-3" title="Reference 3">(3)</a>  <a href="#ref-for-dfn-subjects-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-subjects-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-subjects-7" title="Reference 7">(7)</a> <a href="#ref-for-dfn-subjects-8" title="Reference 8">(8)</a> <a href="#ref-for-dfn-subjects-9" title="Reference 9">(9)</a> <a href="#ref-for-dfn-subjects-10" title="Reference 10">(10)</a> <a href="#ref-for-dfn-subjects-11" title="Reference 11">(11)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-subjects-12" title="§ 2.2 BitstringStatusListCredential">§ 2.2 BitstringStatusListCredential</a> <a href="#ref-for-dfn-subjects-13" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-credential" aria-label="Links in this document to definition: verifiable credential">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-credential" aria-label="Permalink for definition: verifiable credential. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-verifiable-credential-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-verifiable-credential-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-3" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-4" title="§ 1.1 Conceptual Framework">§ 1.1 Conceptual Framework</a> <a href="#ref-for-dfn-verifiable-credential-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verifiable-credential-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-credential-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-credential-9" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-10" title="§ 1.2 Terminology">§ 1.2 Terminology</a> <a href="#ref-for-dfn-verifiable-credential-11" title="Reference 2">(2)</a>    <a href="#ref-for-dfn-verifiable-credential-15" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verifiable-credential-16" title="Reference 7">(7)</a> <a href="#ref-for-dfn-verifiable-credential-17" title="Reference 8">(8)</a> <a href="#ref-for-dfn-verifiable-credential-18" title="Reference 9">(9)</a> <a href="#ref-for-dfn-verifiable-credential-19" title="Reference 10">(10)</a> <a href="#ref-for-dfn-verifiable-credential-20" title="Reference 11">(11)</a>  <a href="#ref-for-dfn-verifiable-credential-22" title="Reference 13">(13)</a> <a href="#ref-for-dfn-verifiable-credential-23" title="Reference 14">(14)</a>   <a href="#ref-for-dfn-verifiable-credential-26" title="Reference 17">(17)</a> <a href="#ref-for-dfn-verifiable-credential-27" title="Reference 18">(18)</a> <a href="#ref-for-dfn-verifiable-credential-28" title="Reference 19">(19)</a> <a href="#ref-for-dfn-verifiable-credential-29" title="Reference 20">(20)</a> <a href="#ref-for-dfn-verifiable-credential-30" title="Reference 21">(21)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-31" title="§ 2.1 BitstringStatusListEntry">§ 2.1 BitstringStatusListEntry</a> <a href="#ref-for-dfn-verifiable-credential-32" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-33" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verifiable-credential-34" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-credential-35" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-credential-36" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verifiable-credential-37" title="Reference 7">(7)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-38" title="§ 2.2 BitstringStatusListCredential">§ 2.2 BitstringStatusListCredential</a> <a href="#ref-for-dfn-verifiable-credential-39" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifiable-credential-40" title="Reference 3">(3)</a> <a href="#ref-for-dfn-verifiable-credential-41" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-credential-42" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-credential-43" title="Reference 6">(6)</a> <a href="#ref-for-dfn-verifiable-credential-44" title="Reference 7">(7)</a> <a href="#ref-for-dfn-verifiable-credential-45" title="Reference 8">(8)</a> <a href="#ref-for-dfn-verifiable-credential-46" title="Reference 9">(9)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-47" title="§ 3.1 Generate Algorithm">§ 3.1 Generate Algorithm</a> <a href="#ref-for-dfn-verifiable-credential-48" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-49" title="§ 3.2 Validate Algorithm">§ 3.2 Validate Algorithm</a> <a href="#ref-for-dfn-verifiable-credential-50" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifiable-credential-51" title="§ 4.2 Verifier Caching">§ 4.2 Verifier Caching</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-data-registries" aria-label="Links in this document to definition: verifiable data registry">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-data-registries" aria-label="Permalink for definition: verifiable data registry. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+       
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifiable-presentation" aria-label="Links in this document to definition: verifiable presentation">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifiable-presentation" aria-label="Permalink for definition: verifiable presentation. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+       <a href="#ref-for-dfn-verifiable-presentation-2" title="Reference 2">(2)</a>  <a href="#ref-for-dfn-verifiable-presentation-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-verifiable-presentation-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-verifiable-presentation-6" title="Reference 6">(6)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verify" aria-label="Links in this document to definition: verification">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verify" aria-label="Permalink for definition: verification. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-verify-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-verifier" aria-label="Links in this document to definition: verifier">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-verifier" aria-label="Permalink for definition: verifier. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-verifier-1" title="§ 1. Introduction">§ 1. Introduction</a> <a href="#ref-for-dfn-verifier-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifier-3" title="Reference 3">(3)</a> 
+    </li><li>
+           
+    </li><li>
+      <a href="#ref-for-dfn-verifier-9" title="§ 4.2 Verifier Caching">§ 4.2 Verifier Caching</a> <a href="#ref-for-dfn-verifier-10" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifier-11" title="§ 4.3 Content Distribution Networks">§ 4.3 Content Distribution Networks</a> 
+    </li><li>
+      <a href="#ref-for-dfn-verifier-12" title="§ 4.4 Malicious Issuers and Verifiers">§ 4.4 Malicious Issuers and Verifiers</a> <a href="#ref-for-dfn-verifier-13" title="Reference 2">(2)</a> <a href="#ref-for-dfn-verifier-14" title="Reference 3">(3)</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-relying-parties" aria-label="Links in this document to definition: relying party">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-relying-parties" aria-label="Permalink for definition: relying party. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-relying-parties-1" title="§ 1.2 Terminology">§ 1.2 Terminology</a> 
+    </li>
+  </ul>
+    </div><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
