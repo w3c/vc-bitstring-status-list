@@ -355,6 +355,13 @@ Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
 This status is reversible.
                       </td>
                     </tr>
+                    <tr>
+                      <td>`message`</td>
+                      <td>
+Used to convey an arbitrary message related to the status of the
+<a>verifiable credential</a>.
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -501,12 +508,12 @@ This status is reversible.
                       </td>
                     </tr>
                     <tr>
-                      <td>`status`</td>
+                      <td>`message`</td>
                       <td>
 Used to indicate a status message associated with a <a>verifiable
 credential</a>. The status message descriptions MUST be defined in
-`credentialSubject.statusMessages`. `credentialSubject.size` MUST be defined
-with this `statusPurpose`.
+`credentialSubject.statusMessages`. `credentialSubject.size` MUST be specified
+when this `statusPurpose` value is used.
                       </td>
                     </tr>
                   </tbody>
@@ -745,10 +752,9 @@ Let |status| be the value at the position indicated by the
 |credentialIndex| times the |size| in the |bitstring|.
         </li>
         <li>
-For `statusPurpose` of `revocation` or `suspension`,
-return `true` if `status` is `1`, and return `false`
-if `status` has any other value.  For other `statusPurpose`,
-return the corresponding `value` of the `status`
+For `statusPurpose` of `revocation` or `suspension`, return `true` if |status|
+is `1`, and return `false` if |status| has any other value. If the
+`statusPurpose` is `message`, return the corresponding `message` of the `value`
 as indicated in the `statusMessages` array.
         </li>
       </ol>
