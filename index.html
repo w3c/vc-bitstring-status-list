@@ -275,7 +275,7 @@ The following sections outlines the data model for this document.
 
         <p>
 When an <a>issuer</a> desires to enable status information for a
-<a>verifiable credential</a>, they MAY add a <code>credentialStatus</code>
+<a>verifiable credential</a>, they MAY add a `credentialStatus`
 property that uses the data model described in this specification.
         </p>
 
@@ -291,7 +291,7 @@ property that uses the data model described in this specification.
               <td>id</td>
               <td>
 An optional identifier for the status list entry. The constraints on the
-<code>id</code> property are listed in the Verifiable Credentials Data Model
+`id` property are listed in the Verifiable Credentials Data Model
 specification [[VC-DATA-MODEL]]. If present, the value is expected to be a URL
 that identifies the status information associated with the <a>verifiable
 credential</a>. It MUST NOT be the URL for the status list. The value is
@@ -304,7 +304,7 @@ stored in a database.
             <tr>
               <td>type</td>
               <td>
-The <code>type</code> property MUST be <code>BitstringStatusListEntry</code>.
+The `type` property MUST be `BitstringStatusListEntry`.
               </td>
             </tr>
             <tr>
@@ -322,14 +322,14 @@ purpose:
                   </thead>
                   <tbody>
                     <tr>
-                      <td><code>revocation</code></td>
+                      <td>`revocation`</td>
                       <td>
 Used to cancel the validity of a <a>verifiable credential</a>. This status is
 not reversible.
                       </td>
                     </tr>
                     <tr>
-                      <td><code>suspension</code></td>
+                      <td>`suspension`</td>
                       <td>
 Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
 This status is reversible.
@@ -342,7 +342,7 @@ This status is reversible.
             <tr>
               <td>statusListIndex</td>
               <td>
-The <code>statusListIndex</code> property MUST be an arbitrary size integer
+The `statusListIndex` property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the
 position of the status of the <a>verifiable credential</a>.
               </td>
@@ -350,10 +350,10 @@ position of the status of the <a>verifiable credential</a>.
             <tr>
               <td>statusListCredential</td>
               <td>
-The <code>statusListCredential</code> property MUST be a URL to a
+The `statusListCredential` property MUST be a URL to a
 <a>verifiable credential</a>. When the URL is dereferenced, the resulting
-<a>verifiable credential</a> MUST have <code>type</code> property that
-includes the <code>BitstringStatusListCredential</code> value.
+<a>verifiable credential</a> MUST have `type` property that
+includes the `BitstringStatusListCredential` value.
               </td>
             </tr>
           </tbody>
@@ -414,17 +414,17 @@ status list:
               <td>id</td>
               <td>
 The <a>verifiable credential</a> that contains the status list MAY
-express an <code>id</code> property that matches the value specified in
-<code>statusListCredential</code> for the corresponding
-<code>BitstringStatusListEntry</code> (see <a href="#bitstringstatuslistentry"></a>).
+express an `id` property that matches the value specified in
+`statusListCredential` for the corresponding
+`BitstringStatusListEntry` (see <a href="#bitstringstatuslistentry"></a>).
               </td>
             </tr>
             <tr>
               <td>type</td>
               <td>
 The <a>verifiable credential</a> that contains the status list MUST
-express a <code>type</code> property that includes the
-<code>BitstringStatusListCredential</code> value.
+express a `type` property that includes the
+`BitstringStatusListCredential` value.
               </td>
             </tr>
             <tr>
@@ -448,8 +448,8 @@ Section 4.6: Validity Period</a>.
             <tr>
               <td>credentialSubject.type</td>
               <td>
-The <code>type</code> of the credential <a>subject</a>, which is the
-status list, MUST be <code>BitstringStatusList</code>.
+The `type` of the credential <a>subject</a>, which is the
+status list, MUST be `BitstringStatusList`.
               </td>
             </tr>
             <tr>
@@ -467,25 +467,25 @@ purpose:
                   </thead>
                   <tbody>
                     <tr>
-                      <td><code>revocation</code></td>
+                      <td>`revocation`</td>
                       <td>
 Used to cancel the validity of a <a>verifiable credential</a>. This status is
 not reversible.
                       </td>
                     </tr>
                     <tr>
-                      <td><code>suspension</code></td>
+                      <td>`suspension`</td>
                       <td>
 Used to temporarily prevent the acceptance of a <a>verifiable credential</a>.
 This status is reversible.
                       </td>
                     </tr>
                     <tr>
-                      <td><code>status</code></td>
+                      <td>`status`</td>
                       <td>
 Used to indicate a status message associated with a <a>verifiable credential</a>.
-The status message descriptions MUST be defined in <code>credentialSubject.statusMessages</code>.
-<code>credentialSubject.size</code> MUST be defined with this <code>statusPurpose</code>.
+The status message descriptions MUST be defined in `credentialSubject.statusMessages`.
+`credentialSubject.size` MUST be defined with this `statusPurpose`.
                       </td>
                     </tr>
                   </tbody>
@@ -495,14 +495,14 @@ The status message descriptions MUST be defined in <code>credentialSubject.statu
             <tr>
                 <td>credentialSubject.encodedList</td>
               <td>
-The <code>encodedList</code> property of the credential <a>subject</a> MUST be
+The `encodedList` property of the credential <a>subject</a> MUST be
 the GZIP-compressed [[RFC1952]], base-64 encoded [[RFC4648]] bitstring values
 for the associated range of <a>verifiable credential</a> status values. The
 uncompressed bitstring MUST be at least 16KB in size. The bitstring MUST be
 encoded such that the first index, with a value of zero
-(<code>0</code>), is located at the left-most bit in the bitstring and the
+(`0`), is located at the left-most bit in the bitstring and the
 last index, with a value of one less than the length of the bitstring
-(<code>bitstring_length - 1</code>), is located at the right-most bit in the
+(`bitstring_length - 1`), is located at the right-most bit in the
 bitstring. Further information on bitstring encoding can be found in Section
 <a href="#bitstring-encoding"></a>.
               </td>
@@ -512,11 +512,11 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.ttl
               </td>
               <td>
-                The <code>ttl</code> indicates the "time to live" in milliseconds.
+                The `ttl` indicates the "time to live" in milliseconds.
                 This property MAY be present. If not present, implementers MUST
-                use a value of <code>300000</code> for this property.  A verifier
-                MUST NOT use a cached <code>BitstringStatusListCredential</code> that was
-                cached for more than the <code>ttl</code> duration prior to the
+                use a value of `300000` for this property.  A verifier
+                MUST NOT use a cached `BitstringStatusListCredential` that was
+                cached for more than the `ttl` duration prior to the
                 start of verification operation on a <a>verifiable credential</a>.
                 Implementations that publish the status list SHOULD align
                 any protocol-specific caching information, such as the
@@ -528,12 +528,12 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.size
               </td>
               <td>
-                The <code>size</code> indicates the size of the status entry in bits.
-                <code>size</code> MAY be provided. If <code>size</code> is not present
-                as a property of the <code>credentialStatus</code>, then <code>size</code>
-                MUST be processed as `1`.  <code>size</code> MUST be an integer greater than zero.
-                If <code>size</code> is provided and is greater than `1`, then the property
-                <code>credentialStatus.statusMessages</code> MUST be present, and the number of
+                The `size` indicates the size of the status entry in bits.
+                `size` MAY be provided. If `size` is not present
+                as a property of the `credentialStatus`, then `size`
+                MUST be processed as `1`.  `size` MUST be an integer greater than zero.
+                If `size` is provided and is greater than `1`, then the property
+                `credentialStatus.statusMessages` MUST be present, and the number of
                 status messages must equal the number of possible values.
               </td>
             </tr>
@@ -542,22 +542,22 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.statusMessages
               </td>
               <td>
-                The <code>statusMessages</code> property MUST be an array. If present,
+                The `statusMessages` property MUST be an array. If present,
                 the length of the array must equal the number of possible status states
-                indicated by <code>size</code>. <code>statusMessages</code> MAY be present if
-                <code>size</code> is `1`. <code>statusMessages</code> MUST be present if
-                <code>size</code> is greater than `1`.  If not present, the message value
-                associated with the bit value of <code>0</code> is "unset" and the bit
-                value of <code>1</code> is "set".
-                If present, elements in the <code>statusMessages</code> array MUST contain at
+                indicated by `size`. `statusMessages` MAY be present if
+                `size` is `1`. `statusMessages` MUST be present if
+                `size` is greater than `1`.  If not present, the message value
+                associated with the bit value of `0` is "unset" and the bit
+                value of `1` is "set".
+                If present, elements in the `statusMessages` array MUST contain at
                 minimum two properties:
                 <ul>
-                  <li><code>status</code>, being a string of the hex value of the status</li>
-                  <li><code>value</code>, being a string containing the associated message</li>
+                  <li>`status`, being a string of the hex value of the status</li>
+                  <li>`value`, being a string containing the associated message</li>
                 </ul>
-                Implementers MAY add additional values to objects in the <code>statusMessages</code>
+                Implementers MAY add additional values to objects in the `statusMessages`
                 array.
-                Implementers MAY use the string value of <code>undefined</code> in the value
+                Implementers MAY use the string value of `undefined` in the value
                 to indicate that a corresponding status is not defined for the associated
                 status value, but that it may be defined in the future.
                 Rules for how to handle various status messages are outside the scope of
@@ -570,13 +570,13 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.reference
               </td>
               <td>
-                The <code>reference</code> property provides a point for implementers to
+                The `reference` property provides a point for implementers to
                 include a [[URL]] to material related to the status. An implementer MAY include
-                the <code>reference</code> property, and if they do, the value MUST be a
+                the `reference` property, and if they do, the value MUST be a
                 [[URL]] or an array of URLs. Implementers using a `statusPurpose` of `status`
-                are strongly encouraged to provide a <code>reference</code>.
+                are strongly encouraged to provide a `reference`.
                 <p class="note" title="Details around reference">
-                  <code>reference</code> is especially important when interpertation of the
+                  `reference` is especially important when interpertation of the
                   status for a credential may involve some understanding of the business case
                   involved.
                 </p>
@@ -661,7 +661,7 @@ Let |issued credentials| be a list of all issued
         <li>
 Let |RLC| be an unsigned
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>
-without the <code>encodedList</code> property set.
+without the `encodedList` property set.
         </li>
         <li>
 Generate a |compressed bitstring| by passing
@@ -669,7 +669,7 @@ Generate a |compressed bitstring| by passing
 <a href="#bitstring-generation-algorithm">Bitstring Generation Algorithm</a>.
         </li>
         <li>
-Set the <code>encodedList</code> to |compressed bitstring|.
+Set the `encodedList` to |compressed bitstring|.
         </li>
         <li>
 Generate a proof for the |RLC| and publish it to the
@@ -690,31 +690,31 @@ when validating a <a>verifiable credential</a> that is contained in a
       <ol class="algorithm">
         <li>
 Let |credentialToValidate| be a <a>verifiable credential</a>
-containing a <code>credentialStatus</code> entry that is a
+containing a `credentialStatus` entry that is a
 <a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
-Let |status purpose| be the value of <code>statusPurpose</code>
-in the <code>credentialStatus</code> entry in the
+Let |status purpose| be the value of `statusPurpose`
+in the `credentialStatus` entry in the
 |credentialToValidate|.
         </li>
         <li>
-Dereference the <code>statusListCredential</code> URL, and ensure that all
+Dereference the `statusListCredential` URL, and ensure that all
 proofs verify successfully. If the dereference fails, or if any of the proof
 verifications fail, return a validation error.
         </li>
         <li>
 Verify that the |status purpose| matches the
-<code>statusPurpose</code> value in the |statusListCredential|.
+`statusPurpose` value in the |statusListCredential|.
         </li>
         <li>
 Let |compressed bitstring| be the value of the
-<code>encodedList</code> property of the
+`encodedList` property of the
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
         </li>
         <li>
 Let |credentialIndex| be the value of the
-<code>statusListIndex</code> property of the
+`statusListIndex` property of the
 <a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
@@ -727,11 +727,11 @@ Let |status| be the value at the position indicated by the
 |credentialIndex| times the |size| in the |bitstring|.
         </li>
         <li>
-For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>,
-return <code>true</code> if <code>status</code> is `1`, and return <code>false</code>
-if <code>status</code> has any other value.  For other <code>statusPurpose</code>,
-return the corresponding <code>value</code> of the <code>status</code>
-as indicated in the <code>statusMessages</code> array.
+For `statusPurpose` of `revocation` or `suspension`,
+return `true` if `status` is `1`, and return `false`
+if `status` has any other value.  For other `statusPurpose`,
+return the corresponding `value` of the `status`
+as indicated in the `statusMessages` array.
         </li>
       </ol>
     </section>
@@ -751,11 +751,11 @@ Let |bitstring| be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
-For each value in <code>bitstring</code>, if there is a
-corresponding <code>statusListIndex</code> value in
-a credential in <code>issuedCredentials</code>, set the value to the
-appropriate status. The position of the value is computed as <code>statusListIndex</code>
-times the <code>size</code>.
+For each value in `bitstring`, if there is a
+corresponding `statusListIndex` value in
+a credential in `issuedCredentials`, set the value to the
+appropriate status. The position of the value is computed as `statusListIndex`
+times the `size`.
         </li>
         <li>
 Generate a |compressed bitstring| by using the GZIP
@@ -800,27 +800,27 @@ Return the |uncompressed bitstring|.
   <section class="informative">
     <h2>Media Types</h2>
     <p>
-      When dereferencing <code>statusListCredential</code>,
-      the content type of the <code>statusListCredential</code> might
+      When dereferencing `statusListCredential`,
+      the content type of the `statusListCredential` might
       be any media type registered for the purpose of expressing a
       verifiable credential with one or more proofs.
     </p>
     <p>
       For example, a verifiable credential secured with
-      Data Integrity Proofs might have content type <code>application/vc+ld+json</code>,
+      Data Integrity Proofs might have content type `application/vc+ld+json`,
       whereas a verifiable credential secured with
-      SD-JWT might have content-type <code>application/sd-jwt</code>.
+      SD-JWT might have content-type `application/sd-jwt`.
     </p>
     <p>
       Some implementations might choose to support less specific media types such as
-      <code>application/ld+json</code> or <code>application/json</code>.
+      `application/ld+json` or `application/json`.
     </p>
     <p>
       When dereferencing over HTTP,
       the use of the <a data-cite="rfc7231#section-5.3.2">accept</a>
       and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers,
       might allow some implementations to negotiate for the proof format
-      used to secure the <code>statusListCredential</code>.
+      used to secure the `statusListCredential`.
     </p>
     <p>
       Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415 Unsupported Media Type</a>
