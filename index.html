@@ -655,24 +655,24 @@ when producing a
 
       <ol class="algorithm">
         <li>
-Let <strong>issued credentials</strong> be a list of all issued
+Let |issued credentials| be a list of all issued
 <a>verifiable credentials</a>.
         </li>
         <li>
-Let <strong>RLC</strong> be an unsigned
+Let |RLC| be an unsigned
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>
 without the <code>encodedList</code> property set.
         </li>
         <li>
-Generate a <strong>compressed bitstring</strong> by passing
-<strong>issued credentials</strong> to the
-<strong>Bitstring Generation Algorithm</strong>.
+Generate a |compressed bitstring| by passing
+|issued credentials| to the
+<a href="#bitstring-generation-algorithm">Bitstring Generation Algorithm</a>.
         </li>
         <li>
-Set the <code>encodedList</code> to <strong>compressed bitstring</strong>.
+Set the <code>encodedList</code> to |compressed bitstring|.
         </li>
         <li>
-Generate a proof for the <strong>RLC</strong> and publish it to the
+Generate a proof for the |RLC| and publish it to the
 endpoint listed in the <a>verifiable credential</a>.
         </li>
       </ol>
@@ -689,14 +689,14 @@ when validating a <a>verifiable credential</a> that is contained in a
 
       <ol class="algorithm">
         <li>
-Let <strong>credentialToValidate</strong> be a <a>verifiable credential</a>
+Let |credentialToValidate| be a <a>verifiable credential</a>
 containing a <code>credentialStatus</code> entry that is a
 <a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
-Let <strong>status purpose</strong> be the value of <code>statusPurpose</code>
+Let |status purpose| be the value of <code>statusPurpose</code>
 in the <code>credentialStatus</code> entry in the
-<strong>credentialToValidate</strong>.
+|credentialToValidate|.
         </li>
         <li>
 Dereference the <code>statusListCredential</code> URL, and ensure that all
@@ -704,28 +704,27 @@ proofs verify successfully. If the dereference fails, or if any of the proof
 verifications fail, return a validation error.
         </li>
         <li>
-Verify that the <strong>status purpose</strong> matches the
-<code>statusPurpose</code> value in the <strong>statusListCredential</strong>.
+Verify that the |status purpose| matches the
+<code>statusPurpose</code> value in the |statusListCredential|.
         </li>
         <li>
-Let <strong>compressed bitstring</strong> be the value of the
+Let |compressed bitstring| be the value of the
 <code>encodedList</code> property of the
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
         </li>
         <li>
-Let <strong>credentialIndex</strong> be the value of the
+Let |credentialIndex| be the value of the
 <code>statusListIndex</code> property of the
 <a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
-Generate a <strong>revocation bitstring</strong> by passing
-<strong>compressed bitstring</strong> to the
+Generate a |revocation bitstring| by passing
+|compressed bitstring| to the
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let <strong>status</strong> be the value at the position indicated by the
-<strong>credentialIndex</strong> times the <strong>size</strong> in the
-<strong>bitstring</strong>.
+Let |status| be the value at the position indicated by the
+|credentialIndex| times the |size| in the |bitstring|.
         </li>
         <li>
 For <code>statusPurpose</code> of <code>revocation</code> or <code>suspension</code>,
@@ -742,13 +741,13 @@ as indicated in the <code>statusMessages</code> array.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when generating a status list bitstring. The algorithm takes a
-<strong>issuedCredentials</strong> list as input and returns a
-<strong>compressed bitstring</strong> as output.
+|issuedCredentials| list as input and returns a
+|compressed bitstring| as output.
       </p>
 
       <ol class="algorithm">
         <li>
-Let <strong>bitstring</strong> be a list of bits with a minimum size of 16KB,
+Let |bitstring| be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
@@ -759,12 +758,12 @@ appropriate status. The position of the value is computed as <code>statusListInd
 times the <code>size</code>.
         </li>
         <li>
-Generate a <strong>compressed bitstring</strong> by using the GZIP
-compression algorithm [[RFC1952]] on the <strong>bitstring</strong>
+Generate a |compressed bitstring| by using the GZIP
+compression algorithm [[RFC1952]] on the |bitstring|
 and then base64-encoding [[RFC4648]] the result.
         </li>
         <li>
-Return the <strong>compressed bitstring</strong>.
+Return the |compressed bitstring|.
         </li>
       </ol>
     </section>
@@ -775,23 +774,23 @@ Return the <strong>compressed bitstring</strong>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when expanding a compressed status list bitstring. The algorithm takes a
-<strong>compressed bitstring</strong> as input and returns a
-<strong>uncompressed bitstring</strong> as output.
+|compressed bitstring| as input and returns a
+|uncompressed bitstring| as output.
       </p>
 
       <ol class="algorithm">
         <li>
-Let <strong>compressed bitstring</strong> be a compressed status list
+Let |compressed bitstring| be a compressed status list
 bitstring.
         </li>
         <li>
-Generate an <strong>uncompressed bitstring</strong> by using the
+Generate an |uncompressed bitstring| by using the
 base64-decoding [[RFC4648]] algorithm on the
-<strong>compressed bitstring</strong> and then expanding the output using
+|compressed bitstring| and then expanding the output using
 the GZIP decompression algorithm [[RFC1952]].
         </li>
         <li>
-Return the <strong>uncompressed bitstring</strong>.
+Return the |uncompressed bitstring|.
         </li>
       </ol>
     </section>
@@ -807,9 +806,9 @@ Return the <strong>uncompressed bitstring</strong>.
       verifiable credential with one or more proofs.
     </p>
     <p>
-      For example, a verifiable credential secured with 
+      For example, a verifiable credential secured with
       Data Integrity Proofs might have content type <code>application/vc+ld+json</code>,
-      whereas a verifiable credential secured with 
+      whereas a verifiable credential secured with
       SD-JWT might have content-type <code>application/sd-jwt</code>.
     </p>
     <p>
@@ -817,10 +816,10 @@ Return the <strong>uncompressed bitstring</strong>.
       <code>application/ld+json</code> or <code>application/json</code>.
     </p>
     <p>
-      When dereferencing over HTTP, 
-      the use of the <a data-cite="rfc7231#section-5.3.2">accept</a> 
-      and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, 
-      might allow some implementations to negotiate for the proof format 
+      When dereferencing over HTTP,
+      the use of the <a data-cite="rfc7231#section-5.3.2">accept</a>
+      and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers,
+      might allow some implementations to negotiate for the proof format
       used to secure the <code>statusListCredential</code>.
     </p>
     <p>
@@ -948,7 +947,7 @@ proper layout for an uncompressed bitstring.
 For example, if a bitstring is 131,072 bits in size (16KB), the first index will be 0, and the last index will be 131,071.
       </p>
       <p>
-Implementations SHOULD consume and/or assign indexes randomly. 
+Implementations SHOULD consume and/or assign indexes randomly.
       </p>
     </section>
 
