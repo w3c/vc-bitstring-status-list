@@ -742,7 +742,10 @@ Generate a |revocation bitstring| by passing
         </li>
         <li>
 Let |status| be the value at the position indicated by the
-|credentialIndex| times the |size| in the |bitstring|.
+|credentialIndex| times the |size| in the |bitstring|. If the |credentialIndex|
+is a value outside of the range of the |bitstring|, a
+<a data-cite="VC-DATA-MODEL-2.0#RANGE_ERROR">RANGE_ERROR</a> MUST be
+raised.
         </li>
         <li>
 For `statusPurpose` of `revocation` or `suspension`,
