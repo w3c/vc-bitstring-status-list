@@ -229,32 +229,32 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
         <h3>Conceptual Framework</h3>
 
         <p>
-  This section outlines the core concept utilized by the status list
-  mechanism described in this document. At the most basic level, status
-  information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
-  are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
-  list of all <a>verifiable credentials</a> it has issued. Each
-  <a>verifiable credential</a> is associated with a position in the list. If
-  the binary value of the position in the list is 1 (one), the
-  <a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
+This section outlines the core concept utilized by the status list
+mechanism described in this document. At the most basic level, status
+information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
+are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
+list of all <a>verifiable credentials</a> it has issued. Each
+<a>verifiable credential</a> is associated with a position in the list. If
+the binary value of the position in the list is 1 (one), the
+<a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
         </p>
 
         <p>
-  One of the benefits of using a bitstring is that it is a highly compressible
-  data format since, in the average case, large numbers of credentials will
-  remain unrevoked. This will ensure long sections of bits that are the same
-  value and thus highly compressible using run-length compression techniques
-  such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
-  and when only a handful of <a>verifiable credentials</a> are revoked, the
-  compressed bitstring size is reduced down to a few hundred bytes.
+One of the benefits of using a bitstring is that it is a highly compressible
+data format since, in the average case, large numbers of credentials will
+remain unrevoked. This will ensure long sections of bits that are the same
+value and thus highly compressible using run-length compression techniques
+such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
+and when only a handful of <a>verifiable credentials</a> are revoked, the
+compressed bitstring size is reduced down to a few hundred bytes.
         </p>
 
         <p>
-  Another benefit of using a bitstring is that it enables large numbers of
-  <a>verifiable credential</a> statuses to be placed in the same  list.
-  This specification utilizes a minimum bitstring length of 131,072 (16KB). This
-  population size ensures an adequate amount of herd  privacy in the average case.
-  If better herd privacy is required, the bitstring can be made to be larger.
+Another benefit of using a bitstring is that it enables large numbers of
+<a>verifiable credential</a> statuses to be placed in the same  list.
+This specification utilizes a minimum bitstring length of 131,072 (16KB). This
+population size ensures an adequate amount of herd  privacy in the average case.
+If better herd privacy is required, the bitstring can be made to be larger.
         </p>
 
         <figure id="bitstring">
@@ -310,15 +310,15 @@ property that uses the data model described in this specification.
             <tr>
               <td>id</td>
               <td>
-An optional identifier for the status list entry. The constraints on the
-`id` property are listed in the Verifiable Credentials Data Model
-specification [[VC-DATA-MODEL]]. If present, the value is expected to be a URL
-that identifies the status information associated with the <a>verifiable
-credential</a>. It MUST NOT be the URL for the status list. The value is
-not used during the verification or validation process, and does not need to be
-related to the `statusListCredential` value. If necessary, the value can be
-used to uniquely identify the `BitstringStatusListEntry` object, such as when it is
-stored in a database.
+An optional identifier for the status list entry. The constraints on the `id`
+property are listed in the Verifiable Credentials Data Model specification
+[[VC-DATA-MODEL]]. If present, the value is expected to be a URL that identifies
+the status information associated with the <a>verifiable credential</a>. It MUST
+NOT be the URL for the status list. The value is not used during the
+verification or validation process, and does not need to be related to the
+`statusListCredential` value. If necessary, the value can be used to uniquely
+identify the `BitstringStatusListEntry` object, such as when it is stored in a
+database.
               </td>
             </tr>
             <tr>
@@ -503,9 +503,10 @@ This status is reversible.
                     <tr>
                       <td>`status`</td>
                       <td>
-Used to indicate a status message associated with a <a>verifiable credential</a>.
-The status message descriptions MUST be defined in `credentialSubject.statusMessages`.
-`credentialSubject.size` MUST be defined with this `statusPurpose`.
+Used to indicate a status message associated with a <a>verifiable
+credential</a>. The status message descriptions MUST be defined in
+`credentialSubject.statusMessages`. `credentialSubject.size` MUST be defined
+with this `statusPurpose`.
                       </td>
                     </tr>
                   </tbody>
@@ -528,33 +529,26 @@ bitstring. Further information on bitstring encoding can be found in Section
               </td>
             </tr>
             <tr>
+              <td>credentialSubject.ttl</td>
               <td>
-                credentialSubject.ttl
-              </td>
-              <td>
-                The `ttl` indicates the "time to live" in milliseconds.
-                This property MAY be present. If not present, implementers MUST
-                use a value of `300000` for this property.  A verifier
-                MUST NOT use a cached `BitstringStatusListCredential` that was
-                cached for more than the `ttl` duration prior to the
-                start of verification operation on a <a>verifiable credential</a>.
-                Implementations that publish the status list SHOULD align
-                any protocol-specific caching information, such as the
-                HTTP `Cache-Control` header, with the value in this field.
+The `ttl` indicates the "time to live" in milliseconds. This property MAY be
+present. If not present, implementers MUST use a value of `300000` for this
+property.  A verifier MUST NOT use a cached `BitstringStatusListCredential` that
+was cached for more than the `ttl` duration prior to the start of verification
+operation on a <a>verifiable credential</a>. Implementations that publish the
+status list SHOULD align any protocol-specific caching information, such as the
+HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
             <tr>
+              <td>credentialSubject.size</td>
               <td>
-                credentialSubject.size
-              </td>
-              <td>
-                The `size` indicates the size of the status entry in bits.
-                `size` MAY be provided. If `size` is not present
-                as a property of the `credentialStatus`, then `size`
-                MUST be processed as `1`.  `size` MUST be an integer greater than zero.
-                If `size` is provided and is greater than `1`, then the property
-                `credentialStatus.statusMessages` MUST be present, and the number of
-                status messages must equal the number of possible values.
+The `size` indicates the size of the status entry in bits. `size` MAY be
+provided. If `size` is not present as a property of the `credentialStatus`, then
+`size` MUST be processed as `1`.  `size` MUST be an integer greater than zero.
+If `size` is provided and is greater than `1`, then the property
+`credentialStatus.statusMessages` MUST be present, and the number of status
+messages must equal the number of possible values.
               </td>
             </tr>
             <tr>
@@ -562,43 +556,43 @@ bitstring. Further information on bitstring encoding can be found in Section
                 credentialSubject.statusMessages
               </td>
               <td>
-                The `statusMessages` property MUST be an array. If present,
-                the length of the array must equal the number of possible status states
-                indicated by `size`. `statusMessages` MAY be present if
-                `size` is `1`. `statusMessages` MUST be present if
-                `size` is greater than `1`.  If not present, the message value
-                associated with the bit value of `0` is "unset" and the bit
-                value of `1` is "set".
-                If present, elements in the `statusMessages` array MUST contain at
-                minimum two properties:
+The `statusMessages` property MUST be an array. If present,
+the length of the array must equal the number of possible status states
+indicated by `size`. `statusMessages` MAY be present if
+`size` is `1`. `statusMessages` MUST be present if
+`size` is greater than `1`.  If not present, the message value
+associated with the bit value of `0` is "unset" and the bit
+value of `1` is "set".
+If present, elements in the `statusMessages` array MUST contain at
+minimum two properties:
                 <ul>
-                  <li>`status`, being a string of the hex value of the status</li>
-                  <li>`value`, being a string containing the associated message</li>
+                  <li>
+`status`, being a string of the hex value of the status
+                  </li>
+                  <li>
+`value`, being a string containing the associated message
+                  </li>
                 </ul>
-                Implementers MAY add additional values to objects in the `statusMessages`
-                array.
-                Implementers MAY use the string value of `undefined` in the value
-                to indicate that a corresponding status is not defined for the associated
-                status value, but that it may be defined in the future.
-                Rules for how to handle various status messages are outside the scope of
-                normative requirements in this document, but it is assumed that implementers
-                will document rules for processing various status codes.
+Implementers MAY add additional values to objects in the `statusMessages` array.
+Implementers MAY use the string value of `undefined` in the value to indicate
+that a corresponding status is not defined for the associated status value, but
+that it may be defined in the future. Rules for how to handle various status
+messages are outside the scope of normative requirements in this document, but
+it is assumed that implementers will document rules for processing various
+status codes.
               </td>
             </tr>
             <tr>
+              <td>credentialSubject.reference</td>
               <td>
-                credentialSubject.reference
-              </td>
-              <td>
-                The `reference` property provides a point for implementers to
-                include a [[URL]] to material related to the status. An implementer MAY include
-                the `reference` property, and if they do, the value MUST be a
-                [[URL]] or an array of URLs. Implementers using a `statusPurpose` of `status`
-                are strongly encouraged to provide a `reference`.
+The `reference` property provides a point for implementers to include a [[URL]]
+to material related to the status. An implementer MAY include the `reference`
+property, and if they do, the value MUST be a [[URL]] or an array of URLs.
+Implementers using a `statusPurpose` of `status` are strongly encouraged to
+provide a `reference`.
                 <p class="note" title="Details around reference">
-                  `reference` is especially important when interpertation of the
-                  status for a credential may involve some understanding of the business case
-                  involved.
+`reference` is especially important when interpretation of the status for a
+credential may involve some understanding of the business case involved.
                 </p>
               </td>
             </tr>
@@ -623,34 +617,38 @@ bitstring. Further information on bitstring encoding can be found in Section
   "proof": { ... }
 }
         </pre>
-                <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
-The Working Group is still discussing the unification of a design between status lists with a single state (such as "revoked" or "suspended") and status lists with multiple states (exposed via a series of status messages). We are seeking implementer feedback on what a unified design should look like from an ease of implementation, privacy, and security standpoint.
-                </p>
-                <pre class="example nohighlight" title="Example BitstringStatusListCredential">
-          {
-            "@context": [
-              "https://www.w3.org/ns/credentials/v2"
-            ],
-            "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-            "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
-            "issuer": "did:example:12345",
-            "validFrom": "2021-04-05T14:27:40Z",
-            "credentialSubject": {
-              "id": "https://example.com/status/3#list",
-              "type": "<span class="highlight">BitstringStatusList</span>",
-              "ttl": 500,
-              "statusPurpose": "<span class="highlight">status</span>",
-              "reference": "https://example.org/status-dictionary/",
-              "size": 2,
-              "statusMessages": [
-                  {"status":"0x0", "value":"valid"},
-                  {"status":"0x1", "value":"invalid"},
-                  {"status":"0x2", "value":"pending_review"},
-                  ...
-              ],
-              "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
-            }
-          }
+        <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
+The Working Group is still discussing the unification of a design between status
+lists with a single state (such as "revoked" or "suspended") and status lists
+with multiple states (exposed via a series of status messages). We are seeking
+implementer feedback on what a unified design should look like from an ease of
+implementation, privacy, and security standpoint.
+        </p>
+        <pre class="example nohighlight" title="Example BitstringStatusListCredential">
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2"
+  ],
+  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
+  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "<span class="highlight">BitstringStatusList</span>",
+    "ttl": 500,
+    "statusPurpose": "<span class="highlight">status</span>",
+    "reference": "https://example.org/status-dictionary/",
+    "size": 2,
+    "statusMessages": [
+        {"status":"0x0", "value":"valid"},
+        {"status":"0x1", "value":"invalid"},
+        {"status":"0x2", "value":"pending_review"},
+        ...
+    ],
+    "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+  }
+}
         </pre>
       </section>
 
@@ -820,31 +818,30 @@ Return the |uncompressed bitstring|.
   <section class="informative">
     <h2>Media Types</h2>
     <p>
-      When dereferencing `statusListCredential`,
-      the content type of the `statusListCredential` might
-      be any media type registered for the purpose of expressing a
-      verifiable credential with one or more proofs.
+  When dereferencing `statusListCredential`, the content type of the
+  `statusListCredential` might be any media type registered for the purpose of
+  expressing a verifiable credential with one or more proofs.
     </p>
     <p>
-      For example, a verifiable credential secured with
-      Data Integrity Proofs might have content type `application/vc+ld+json`,
-      whereas a verifiable credential secured with
-      SD-JWT might have content-type `application/sd-jwt`.
+  For example, a verifiable credential secured with Data Integrity Proofs might
+  have content type `application/vc+ld+json`, whereas a verifiable credential
+  secured with SD-JWT might have content-type `application/sd-jwt`.
     </p>
     <p>
-      Some implementations might choose to support less specific media types such as
-      `application/ld+json` or `application/json`.
+Some implementations might choose to support less specific media types such as
+`application/ld+json` or `application/json`.
     </p>
     <p>
-      When dereferencing over HTTP,
-      the use of the <a data-cite="rfc7231#section-5.3.2">accept</a>
-      and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers,
-      might allow some implementations to negotiate for the proof format
-      used to secure the `statusListCredential`.
+When dereferencing over HTTP, the use of the <a
+data-cite="rfc7231#section-5.3.2">accept</a>
+and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, might allow
+some implementations to negotiate for the proof format used to secure the
+`statusListCredential`.
     </p>
     <p>
-      Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415 Unsupported Media Type</a>
-      status code to signal that they do not support the requested media type.
+Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415
+Unsupported Media Type</a> status code to signal that they do not support the
+requested media type.
     </p>
   </section>
 
@@ -896,24 +893,27 @@ from <a>issuers</a>.
       </p>
     </section>
 
-<section class="informative">
-<h3>Malicious Issuers and Verifiers</h3>
-<p>
-In general, the herd privacy protections offered by this specification can be circumvented by malicious <a>issuers</a> and <a>verifiers</a>. Its privacy benefits can only be realized when issuers and verifiers intend to avoid tracking or sharing the presentation of particular credentials.
-</p>
-<p>
+    <section class="informative">
+      <h3>Malicious Issuers and Verifiers</h3>
+      <p>
+In general, the herd privacy protections offered by this specification can be
+circumvented by malicious <a>issuers</a> and <a>verifiers</a>. Its privacy
+benefits can only be realized when issuers and verifiers intend to avoid
+tracking or sharing the presentation of particular credentials.
+      </p>
+      <p>
 A malicious <a>issuer</a> might intentionally attack herd privacy by creating a
 unique status list per credential issued in order to establish a 1-1 mapping to track
 when a <a>verifier</a> processes a specific credential. Similarly, they could establish
 another a 1-1 mapping by using a different cryptographic key for every credential
 issued that is tracked in a status list.
-</p>
-<p>
+      </p>
+      <p>
 A malicious <a>verifier</a> might intentionally attack herd privacy by sharing
 information from presented credentials with a malicious <a>issuer</a>.
-</p>
-<p class="issue" data-number="6"></p>
-</section>
+      </p>
+      <p class="issue" data-number="6"></p>
+    </section>
 
   </section>
 
@@ -964,7 +964,8 @@ proper layout for an uncompressed bitstring.
       </figure>
 
       <p>
-For example, if a bitstring is 131,072 bits in size (16KB), the first index will be 0, and the last index will be 131,071.
+For example, if a bitstring is 131,072 bits in size (16KB), the first index will
+be 0, and the last index will be 131,071.
       </p>
       <p>
 Implementations SHOULD consume and/or assign indexes randomly.
