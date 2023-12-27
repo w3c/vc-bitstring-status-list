@@ -279,6 +279,21 @@ If better herd privacy is required, the bitstring can be made to be larger.
       </section>
 
       <section id="conformance" class="normative">
+
+        <p>
+A <dfn>conforming document</dfn> is any concrete expression of the
+data model that follows the relevant normative requirements in Section
+<a href="#data-model"></a>.
+        </p>
+
+        <p>
+A <dfn>conforming processor</dfn> is any algorithm realized
+as software and/or hardware that generates and/or consumes a
+<a>conforming document</a> according to the relevant normative statements in
+Section <a href="#algorithms"></a>. Conforming processors MUST produce errors
+when non-conforming documents are consumed.
+        </p>
+
       </section>
 
     </section>
@@ -287,7 +302,7 @@ If better herd privacy is required, the bitstring can be made to be larger.
       <h2>Data Model</h2>
 
       <p>
-The following sections outlines the data model for this document.
+The following sections outline the data model for this document.
       </p>
 
       <section>
@@ -296,7 +311,9 @@ The following sections outlines the data model for this document.
         <p>
 When an <a>issuer</a> desires to enable status information for a
 <a>verifiable credential</a>, they MAY add a `credentialStatus`
-property that uses the data model described in this specification.
+property that uses the data model described in this section. Any
+expression of the data model in this section MUST be expressed in a
+conforming <a>verifiable credential</a> as defined in [[VC-DATA-MODEL-2.0]].
         </p>
 
         <table class="simple">
@@ -312,13 +329,13 @@ property that uses the data model described in this specification.
               <td>
 An optional identifier for the status list entry. The constraints on the `id`
 property are listed in the Verifiable Credentials Data Model specification
-[[VC-DATA-MODEL]]. If present, the value is expected to be a URL that identifies
-the status information associated with the <a>verifiable credential</a>. It MUST
-NOT be the URL for the status list. The value is not used during the
-verification or validation process, and does not need to be related to the
-`statusListCredential` value. If necessary, the value can be used to uniquely
-identify the `BitstringStatusListEntry` object, such as when it is stored in a
-database.
+[[VC-DATA-MODEL-2.0]]. If present, the value is expected to be a URL that
+identifies the status information associated with the <a>verifiable
+credential</a>. It MUST NOT be the URL for the status list. The value is not
+used during the verification or validation process, and does not need to be
+related to the `statusListCredential` value. If necessary, the value can be used
+to uniquely identify the `BitstringStatusListEntry` object, such as when it is
+stored in a database.
               </td>
             </tr>
             <tr>
@@ -416,10 +433,10 @@ includes the `BitstringStatusListCredential` value.
         <h3>BitstringStatusListCredential</h3>
 
         <p>
-When a status list is published, the result is a  <a>verifiable
-credential</a> that encapsulates the status list. The following section
-describes the format of the <a>verifiable credential</a> that encapsulates the
-status list:
+When a status list is published, the document MUST be a conforming
+<a>verifiable credential</a> as defined in [[VC-DATA-MODEL-2.0]] that expresses
+the data model in this section. The following section describes the format of
+the <a>verifiable credential</a> that encapsulates the status list:
         </p>
 
         <table class="simple">
