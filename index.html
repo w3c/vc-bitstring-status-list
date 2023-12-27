@@ -810,11 +810,11 @@ Return the <strong>uncompressed bitstring</strong>.
       For example, a verifiable credential secured with 
       Data Integrity Proofs might have content type <code>application/vc+ld+json</code>,
       whereas a verifiable credential secured with 
-      SD-JWT might have content-type <code>application/vc+ld+json+sd-jwt</code>.
+      SD-JWT might have content-type <code>application/sd-jwt</code>.
     </p>
     <p>
-      Some implementations might choose to support less specific media types, for example:
-      <code>application/ld+json</code>, <code>application/json</code> or <code>application/sd-jwt</code>.
+      Some implementations might choose to support less specific media types such as
+      <code>application/ld+json</code> or <code>application/json</code>.
     </p>
     <p>
       When dereferencing over HTTP, 
@@ -825,7 +825,7 @@ Return the <strong>uncompressed bitstring</strong>.
     </p>
     <p>
       Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415 Unsupported Media Type</a>
-      status code to signal if they do not support the requested media type.
+      status code to signal that they do not support the requested media type.
     </p>
   </section>
 
@@ -948,7 +948,7 @@ proper layout for an uncompressed bitstring.
 For example, if a bitstring is 131,072 bits in size (16KB), the first index will be 0, and the last index will be 131,071.
       </p>
       <p>
-Implementations SHOULD consume / assign indexes randomly. 
+Implementations SHOULD consume and/or assign indexes randomly. 
       </p>
     </section>
 
