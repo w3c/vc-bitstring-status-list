@@ -440,7 +440,7 @@ includes the `BitstringStatusListCredential` value.
         <h3>BitstringStatusListCredential</h3>
 
         <p>
-When a status list <a>verifiable credential</a> is published, it MUST be a 
+When a status list <a>verifiable credential</a> is published, it MUST be a
 conforming document, as defined in [[VC-DATA-MODEL-2.0]], that expresses the
 data model in this section. The following section describes the format of
 the <a>verifiable credential</a> that encapsulates the status list:
@@ -491,13 +491,13 @@ Section 4.6: Validity Period</a>.
             </tr>
             <tr>
               <td>credentialSubject.type</td>
-              <td>
+              <td id="BitstringStatusList">
 The `type` of the credential <a>subject</a>, which is the
 status list, MUST be `BitstringStatusList`.
               </td>
             </tr>
             <tr>
-              <td>credentialSubject.statusPurpose</td>
+              <td id="statusPurpose">credentialSubject.statusPurpose</td>
               <td>
 The purpose of the status entry MUST be a string. While the value of the
 string is arbitrary, the following values MUST be used for their intended
@@ -538,7 +538,7 @@ when this `statusPurpose` value is used.
               </td>
             </tr>
             <tr>
-                <td>credentialSubject.encodedList</td>
+              <td id="encodedList">credentialSubject.encodedList</td>
               <td>
 The `encodedList` property of the credential <a>subject</a> MUST be
 the GZIP-compressed [[RFC1952]], base-64 encoded [[RFC4648]] bitstring values
@@ -553,7 +553,7 @@ bitstring. Further information on bitstring encoding can be found in Section
               </td>
             </tr>
             <tr>
-              <td>credentialSubject.ttl</td>
+              <td id="ttl">credentialSubject.ttl</td>
               <td>
 The `ttl` indicates the "time to live" in milliseconds. This property MAY be
 present. If not present, implementers MUST use a value of `300000` for this
@@ -565,39 +565,37 @@ HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
             <tr>
-              <td>credentialSubject.size</td>
+              <td id="size">credentialSubject.size</td>
               <td>
 The `size` indicates the size of the status entry in bits. `size` MAY be
 provided. If `size` is not present as a property of the `credentialStatus`, then
 `size` MUST be processed as `1`.  `size` MUST be an integer greater than zero.
 If `size` is provided and is greater than `1`, then the property
-`credentialStatus.statusMessages` MUST be present, and the number of status
+`credentialStatus.statusMessage` MUST be present, and the number of status
 messages must equal the number of possible values.
               </td>
             </tr>
             <tr>
+              <td id="statusMessage">credentialSubject.statusMessage</td>
               <td>
-                credentialSubject.statusMessages
-              </td>
-              <td>
-The `statusMessages` property MUST be an array. If present,
+The `statusMessage` property MUST be an array. If present,
 the length of the array must equal the number of possible status states
-indicated by `size`. `statusMessages` MAY be present if
-`size` is `1`. `statusMessages` MUST be present if
+indicated by `size`. `statusMessage` MAY be present if
+`size` is `1`. `statusMessage` MUST be present if
 `size` is greater than `1`.  If not present, the message value
 associated with the bit value of `0` is "unset" and the bit
 value of `1` is "set".
-If present, elements in the `statusMessages` array MUST contain at
+If present, elements in the `statusMessage` array MUST contain at
 minimum two properties:
                 <ul>
-                  <li>
+                  <li id="status">
 `status`, being a string of the hex value of the status
                   </li>
-                  <li>
-`value`, being a string containing the associated message
+                  <li id="message">
+`message`, being a string containing the associated message
                   </li>
                 </ul>
-Implementers MAY add additional values to objects in the `statusMessages` array.
+Implementers MAY add additional values to objects in the `statusMessage` array.
 Implementers MAY use the string value of `undefined` in the value to indicate
 that a corresponding status is not defined for the associated status value, but
 that it may be defined in the future. Rules for how to handle various status
@@ -607,7 +605,7 @@ status codes.
               </td>
             </tr>
             <tr>
-              <td>credentialSubject.reference</td>
+              <td id="reference">credentialSubject.reference</td>
               <td>
 The `reference` property provides a point for implementers to include a [[URL]]
 to material related to the status. An implementer MAY include the `reference`
@@ -664,10 +662,10 @@ implementation, privacy, and security standpoint.
     "statusPurpose": "<span class="highlight">status</span>",
     "reference": "https://example.org/status-dictionary/",
     "size": 2,
-    "statusMessages": [
-        {"status":"0x0", "value":"valid"},
-        {"status":"0x1", "value":"invalid"},
-        {"status":"0x2", "value":"pending_review"},
+    "statusMessage": [
+        {"status":"0x0", "message":"valid"},
+        {"status":"0x1", "message":"invalid"},
+        {"status":"0x2", "message":"pending_review"},
         ...
     ],
     "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
