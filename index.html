@@ -230,13 +230,14 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
 
         <p>
 This section outlines the core concept utilized by the status list
-mechanism described in this document. At the most basic level, status
+mechanism described in this specification. At the most basic level, status
 information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
-are expressed as simple binary values. The <a>issuer</a> keeps a bitstring
-list of all <a>verifiable credentials</a> it has issued. Each
-<a>verifiable credential</a> is associated with a position in the list. If
-the binary value of the position in the list is 1 (one), the
-<a>verifiable credential</a> is revoked, if it is 0 (zero) it is not revoked.
+are expressed as items in a list. The <a>issuer</a> manages a list
+list of all <a>verifiable credentials</a> that it has issued. Each
+<a>verifiable credential</a> is associated with an item in the list. In
+the case where a single bit specifies a status, such as "revocation" or
+"suspension", if the bit is set, then the associated status, such as "revoked",
+is assumed to be true.
         </p>
 
         <p>
@@ -269,6 +270,17 @@ If better herd privacy is required, the bitstring can be made to be larger.
             A visual depiction of the concepts outlined in this section.
           </figcaption>
         </figure>
+
+        <p class="note"
+           title="Status information is about the verifiable credential">
+Ultimately, the status information associated with a particular
+<a>verifiable credential</a> is about the verifiable credential itself and
+might not always be about the underlying credential, such as
+an educational degree. For example, in the case of an educational degree,
+it is possible for the associated <a>verifiable credential</a> to be revoked
+because the mechanism used to create the digital signature has been compromised,
+while the underlying educational degree remains valid.
+        </p>
 
       </section>
 
