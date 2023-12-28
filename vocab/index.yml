@@ -74,9 +74,9 @@ property:
     domain: sl:BitstringStatusList
     range: xsd:string
 
-  - id: value
-    label: Hexadecimal value of a message
-    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#value
+  - id: status
+    label: Hexadecimal value of a status message
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#status
     range: xsd:string
 
   - id: message
