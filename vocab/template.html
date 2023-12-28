@@ -1,0 +1,226 @@
+<html lang="en">
+  <head>
+    <meta charset='utf-8'/>
+    <title></title>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+    <script>
+      function remove_status_remark() {
+          const sotd = document.getElementById("sotd");
+          const p = sotd.getElementsByTagName('p')[0];
+          sotd.removeChild(p);
+      }
+    // Note: The vocabulary URL must be adapted for the given environment!!!!
+      function massageSVGLinks(utils, content, url) {
+        const retval = content
+          .replace('<svg', '<svg aria-details="#vocabulary-diagram-alt" ')
+          .replace(/xlink:href/g, 'href')
+          .replace(/href="https:\/\/www.w3.org\/ns\/credentials\/status-list#/g, 'href="#');
+        return retval;
+      }
+
+    </script>
+    <script class="remove">
+      var respecConfig = {
+        specStatus:  "base",
+        shortName:   "ns/credentials/status-list",
+        thisVersion: "https://www.w3.org/ns/credentials/status-list/",
+        doJsonLd:    true,
+        editors: [{
+          name:       "Ivan Herman",
+          url:        "https://www.w3.org/People/Ivan/",
+          company:    "W3C",
+          w3cid:      7382,
+          orcid:      "0000-0003-0782-2704",
+          companyURL: "https://www.w3.org",
+          note:       "v2.0"
+        },{
+          name:       "Manu Sporny",
+          url:        "http://manu.sporny.org/",
+          company:    "Digital Bazaar",
+          companyURL: "http://digitalbazaar.com/",
+          w3cid:      41758,
+          note:       "v1.0, v2.0"
+        }],
+        alternateFormats: [
+          {uri: "vocabulary.ttl", label: "Turtle"},
+          {uri: "vocabulary.jsonld", label: "JSON-LD"}
+        ],
+        postProcess : [remove_status_remark],
+        inlineCSS: true,
+        doRDFa: false,
+        noIDLIn: true,
+        noLegacyStyle: false
+      };
+    </script>
+    <style type="text/css">
+      dl.terms dt {
+        float: left;
+        clear: left;
+        width: 10vw;
+      }
+
+      dl.terms dd {
+        margin-left: 15vw;
+      }
+
+      dl.terms dd:after {
+          content: '';
+          display: block;
+          clear: both;
+          margin-bottom: 5px;
+      }
+      table.rdfs-definition td {
+        vertical-align: top;
+        margin-right: 2em;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      /* code {
+        color: red;
+      } */
+
+      .term_definitions section {
+        border-bottom-style: solid ;
+        border-bottom-width: 1px;
+        border-bottom-color: darkgrey;
+      }
+
+      .annoy {
+        background: hsla(40,100%,50%,0.95);
+		    color: black;
+		    padding: .75em 1em;
+		    border: red;
+		    border-style: solid none;
+		    box-shadow: 0 2px 8px black;
+		    text-align: center;
+      }
+
+      /* This is a bug in the base css setting at W3C. There is an open PR raised for it in the
+      relevant github repo; if and when that is merged, this statement may become
+      superfluous.
+      See https://github.com/w3c/tr-design/pull/336
+      */
+      figure svg {
+          max-width: 100%;
+          margin: auto;
+          height: auto;
+      }
+    </style>
+  </head>
+  <body  typeof="owl:Ontology">
+    <section id="abstract">
+      <p>This document describes the <span property="dc:title" id="title"></span>, i.e.,
+         the <span property="dc:description" id="description"></span>.
+      </p>
+      <p>Alternate versions of the vocabulary definition exist in
+        <a rel="alternate" href="vocabulary.ttl">Turtle</a> and
+        <a rel="alternate" href="vocabulary.jsonld">JSON-LD</a>.
+      </p>
+      <dl>
+        <dt>Published:</dt><dd><time property="dc:date" id="time"></time></dd>
+        <dt>Version Info:</dt>
+        <dd>1.0</dd>
+        <dt id="see_also">See Also: </dt>
+       </dl>
+    </section>
+    <section id="sotd">
+      <p>
+This vocabulary has been defined by the
+<a href="https://www.w3.org/2017/vc/WG/">
+W3C Verifiable Credentials Working Group</a> and provides the official RDFS
+vocabulary for
+<a href="https://www.w3.org/TR/vc-bitstring-status-list/">
+Bitstring Status Lists</a>. Comments regarding this document are welcome.
+Please file issues directly on
+<a href="https://github.com/w3c/vc-bitstring-status-list/issues/">GitHub</a>, or
+send them to
+<a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
+(<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">
+subscribe</a>,
+<a href="https://lists.w3.org/Archives/Public/public-vc-comments/">
+archives</a>).
+      </p>
+    </section>
+    <section>
+      <h2>Specification of terms</h2>
+      <p>
+In general, the terms &mdash; i.e., the properties and classes &mdash; used in
+the VCDM are formally specified in Recommendation Track documents published by
+the <a href="https://www.w3.org/groups/wg/vc">W3C Verifiable Credentials Working
+Group</a> or, for some deprecated or reserved terms, in Reports published by the
+<a href="https://www.w3.org/groups/cg/credentials">W3C Credentials Community
+Group</a>. In each case of such external definition, the term's description in
+this document contains a link to the relevant specification. Additionally, the
+`rdfs:definedBy` property in the RDFS representation(s) refers to the formal
+specification.
+      </p>
+      <p>
+In some cases, a local explanation is necessary to complement, or to replace,
+the definition found in an external specification. For instance, this is so when
+the term is needed to provide a consistent structure to the RDFS vocabulary,
+such as when the term defines a common supertype for class instances that are
+used as objects of specific properties, or when
+<a href="https://www.w3.org/TR/rdf12-concepts/#section-rdf-graph">RDF Graphs</a>
+are involved. For such cases, the extra definition is included in the current
+document (and the `rdfs:comment` property is used to include them in the RDFS
+representations).
+      </p>
+    </section>
+    <section>
+      <h2>Namespaces</h2>
+      <p>This specification makes use of the following namespaces:</p>
+      <dl class="terms" id="namespaces">
+      </dl>
+    </section>
+
+    <section id="term_definitions">
+      <h1>Regular terms</h1>
+
+      <section id="class_definitions" class="term_definitions">
+        <h2>Class definitions</h2>
+      </section>
+
+      <section id="property_definitions" class="term_definitions">
+        <h2>Property definitions</h2>
+      </section>
+
+      <section id="datatype_definitions" class="term_definitions">
+        <h2>Datatype definitions</h2>
+      </section>
+
+      <section id="individual_definitions" class="term_definitions">
+        <h2>Definitions for individuals</h2>
+      </section>
+    </section>
+
+    <section id="deprecated_term_definitions">
+      <h1>Deprecated terms</h1>
+
+      <p class="annoy">
+All terms in this section are <em><strong>deprecated</strong></em>, and are only
+kept in this vocabulary for backward compatibility.
+      </p>
+      <p>
+New applications should not use them.
+      </p>
+
+      <section id="deprecated_class_definitions" class="term_definitions">
+        <h2>Deprecated classes</h2>
+      </section>
+
+      <section id="deprecated_property_definitions" class="term_definitions">
+        <h2>Deprecated properties</h2>
+      </section>
+
+      <section id="deprecated_property_definitions" class="term_definitions">
+        <h2>Deprecated properties</h2>
+      </section>
+
+      <section id="deprecated_individual_definitions" class="term_definitions">
+        <h2>Deprecated individuals</h2>
+      </section>
+    </section>
+
+</body>
+</html>
