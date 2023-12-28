@@ -83,6 +83,13 @@ var ccg = {
       status: 'CG-DRAFT',
       publisher: 'Credentials Community Group'
     },
+    'OHTTP': {
+      title: 'Oblivious HTTP ',
+      href: 'https://datatracker.ietf.org/doc/html/draft-ietf-ohai-ohttp',
+      authors: ['Martin Thomson', 'Christopher A. Wood'],
+      status: 'Working Group Draft',
+      publisher: 'IETF Oblivious HTTP Application Intermediation'
+    },
     'IPFS': {
       title: 'InterPlanetary File System (IPFS)',
       href: 'https://en.wikipedia.org/wiki/InterPlanetary_File_System',
