@@ -752,12 +752,15 @@ in the `credentialStatus` entry in the
         </li>
         <li>
 Dereference the `statusListCredential` URL, and ensure that all
-proofs verify successfully. If the dereference fails, or if any of the proof
-verifications fail, return a validation error.
+proofs verify successfully. If the dereference fails, raise a
+<a href="#STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR</a>. If any of the
+proof verifications fail, raise a
+<a href="#STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR</a>.
         </li>
         <li>
-Verify that the |status purpose| matches the
-`statusPurpose` value in the |statusListCredential|.
+Verify that the |status purpose| is equal to the
+`statusPurpose` value in the |statusListCredential|. If the values are not
+equal, raise a <a href="#STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR</a>.
         </li>
         <li>
 Let |compressed bitstring| be the value of the
@@ -872,6 +875,54 @@ Return the |uncompressed bitstring|.
       </ol>
     </section>
 
+    <section class="normative">
+      <h3>Processing Errors</h3>
+
+      <p>
+The algorithms described in this specification throw specific types of errors.
+Implementers might find it useful to convey these errors to other libraries or
+software systems. This section provides specific URLs, descriptions, and error
+codes for the errors, such that an ecosystem implementing technologies described
+by this specification might interoperate more effectively when errors occur.
+      </p>
+
+      <p>
+When exposing these errors through an HTTP interface, implementers SHOULD use
+[[RFC9457]] to encode the error data structure. If [[RFC9457]] is used:
+      </p>
+
+      <ul>
+        <li>
+The `type` value of the error object MUST be a URL that starts with the value
+`https://www.w3.org/ns/credentials/status-list#` and ends with the value in the
+section listed below.
+        </li>
+        <li>
+The `code` value MUST be the integer code described in the table below
+(in parentheses, beside the type name).
+        </li>
+        <li>
+The `title` value SHOULD provide a short but specific human-readable string for
+the error.
+        </li>
+        <li>
+The `detail` value SHOULD provide a longer human-readable string for the error.
+        </li>
+      </ul>
+
+      <dl>
+        <dt id="STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR (-128)</dt>
+        <dd>
+Retrieval of the status list failed. See Section
+<a href="#validate-algorithm"></a>.
+        </dd>
+        <dt id="STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR (-129)</dt>
+        <dd>
+Validation of the status entry failed. See Section
+<a href="#validate-algorithm"></a>.
+        </dd>
+      </dl>
+    </section>
   </section>
 
   <section class="normative">
