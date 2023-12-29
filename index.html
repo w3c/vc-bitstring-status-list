@@ -973,6 +973,24 @@ herd privacy. See Section <a href="#validate-algorithm"></a>.
         </dd>
       </dl>
     </section>
+    <section class="normative">
+      <h3>Securing Algorithms</h3>
+      <p>
+There are multiple ways that the information in Section
+<a href="#data-model"></a> can be secured. These mechanisms are elaborated
+upon in the
+<a data-cite="VC-DATA-MODEL-2.0#securing-mechanisms">Securing Mechanisms</a>
+section of the [[[VC-DATA-MODEL-2.0]]].
+      </p>
+      <p>
+When securing a <a>verifiable credential</a> that contains a reference to
+a <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>,
+implementers SHOULD use the same securing mechanism with the same
+cryptographic parameters and the same media type for both
+<a>verifiable credentials</a>.
+      </p>
+    </section>
+
   </section>
 
   <section class="normative">
@@ -1101,8 +1119,8 @@ progresses through a business process, or what percentage of the population
 is likely to be associated with a certain status, provides additional
 information to an attacker. Given such information, a phishing operation could
 predict what the next step of a business process is and then preemptively
-contact an entity whose current status is known. Then, based on that 
-information, they could attempt to phish more lucrative information from 
+contact an entity whose current status is known. Then, based on that
+information, they could attempt to phish more lucrative information from
 the target using data gleaned from the status list over time.
       </p>
       <p>
