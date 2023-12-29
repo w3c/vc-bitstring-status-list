@@ -765,9 +765,9 @@ Generate a |revocation bitstring| by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-Let |status| be the value at the position indicated by the
-|credentialIndex| times the |size| in the |bitstring|. If the |credentialIndex|
-is a value outside of the range of the |bitstring|, a
+Let |status| be the value in the |bitstring| at the position indicated
+by the |credentialIndex| times the |size|. If the |credentialIndex|
+times the |size| is a value outside of the range of the |bitstring|, a
 <a data-cite="VC-DATA-MODEL-2.0#RANGE_ERROR">RANGE_ERROR</a> MUST be
 raised.
         </li>
