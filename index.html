@@ -697,6 +697,13 @@ The following section outlines the algorithms that are used to generate
 and validate status lists as described by this document.
     </p>
 
+    <p>
+If any of the algorithms in this section process a property defined in Section
+<a href="#data-model"></a> whose value is malformed, a
+<a data-cite="VC-DATA-MODEL-2.0#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>
+MUST be raised.
+    </p>
+
     <section class="normative">
       <h3>Generate Algorithm</h3>
 
