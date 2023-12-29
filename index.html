@@ -786,7 +786,7 @@ Generate a |revocation bitstring| by passing
         <li>
 If the length of the |revocation bitstring| divided by
 <a href="#statusSize">`statusSize`</a> is less than |minimumNumberOfEntries|,
-raise a <a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>
+raise a <a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
         </li>
         <li>
 Let |status| be the value in the |bitstring| at the position indicated
@@ -803,12 +803,13 @@ Set the `status` key in |result| to |status|, and set the `purpose` key in
 |result| to the value of `statusPurpose`.
         </li>
         <li>
-If |status| is `0`, set the `valid` key in |result| to `true`; otherwise, set it to
-`false`.
+If |status| is `0`, set the `valid` key in |result| to `true`; otherwise, set it
+to `false`.
         </li>
         <li>
-If the `statusPurpose` is `message`, set the `message` key in |result| to
-the corresponding `message` of the `value` as indicated in the `statusMessages` array.
+If the `statusPurpose` is `message`, set the `message` key in |result| to the
+corresponding `message` of the `value` as indicated in the `statusMessages`
+array.
         </li>
         <li>
 Return |result|.
