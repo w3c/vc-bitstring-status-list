@@ -1083,6 +1083,35 @@ information from presented credentials with a malicious <a>issuer</a>.
       </p>
     </section>
 
+    <section class="informative">
+      <h3>Multistatus Correlation</h3>
+      <p>
+This specification provides a means by which multiple status messages can be
+provided for a particular entry in a status list. While this mechanism can
+provide more detailed information for a particular entry in the status list,
+that information can provide further correlation data.
+      </p>
+      <p>
+For example, if each status message is associated with a step in a particular
+process, or more detailed information for why a credential was revoked or
+suspended, then an attacker that observes the changes in the list might be
+able to correlate information about the population of entities in the list
+that could lead to privacy violations. Understanding how a population
+progresses through a business process, or what percentage of the population
+is likely to be associated with a certain status, provides additional
+information to an attacker. Given such information, a phishing operation could
+predict what the next step of a business process is and then preemptively
+contact an entity based on that information, whose current status is known, in
+an attempt to phish more lucrative information from them using data gleaned
+from the status list over time.
+      </p>
+      <p>
+For these reasons, issuers are urged to evaluate the potential ramifications of
+publishing detailed status information about a particular entity, or a
+population, in a public manner.
+      </p>
+    </section>
+
   </section>
 
   <section class="informative">
