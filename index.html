@@ -752,10 +752,22 @@ Let |status| be the value at the position indicated by the
 |credentialIndex| times the |size| in the |bitstring|.
         </li>
         <li>
-For `statusPurpose` of `revocation` or `suspension`, return `true` if |status|
-is `1`, and return `false` if |status| has any other value. If the
-`statusPurpose` is `message`, return the corresponding `message` of the `value`
-as indicated in the `statusMessages` array.
+        </li>
+Let |result| be an empty [=map=].
+        <li>
+Set the `status` key in |result| to |status|, and set the `purpose` key in
+|result| to the value of `statusPurpose`.
+        </li>
+        <li>
+If |status| is `0`, set the `valid` key in |result| to `true`; otherwise, set it to
+`false`.
+        </li>
+        <li>
+If the `statusPurpose` is `message`, set the `message` key in |result| to
+the corresponding `message` of the `value` as indicated in the `statusMessages` array.
+        </li>
+        <li>
+Return |result|.
         </li>
       </ol>
     </section>
