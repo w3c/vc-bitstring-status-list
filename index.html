@@ -245,15 +245,16 @@ One of the benefits of using a bitstring is that it is a highly compressible
 data format since, in the average case, large numbers of credentials will
 remain unrevoked. This will ensure long sections of bits that are the same
 value and thus highly compressible using run-length compression techniques
-such as GZIP [[RFC1952]]. The default bitstring size is 16KB (131,072 entries),
-and when only a handful of <a>verifiable credentials</a> are revoked, the
-compressed bitstring size is reduced down to a few hundred bytes.
+such as GZIP [[RFC1952]]. The default status list size is 131,072 entries,
+equivalent to 16KB of single bit values. When only a handful of <a>verifiable
+credentials</a> are revoked, the compressed bitstring size is reduced down to a
+few hundred bytes.
         </p>
 
         <p>
 Another benefit of using a bitstring is that it enables large numbers of
-<a>verifiable credential</a> statuses to be placed in the same  list.
-This specification utilizes a minimum bitstring length of 131,072 (16KB). This
+<a>verifiable credential</a> statuses to be placed in the same list.
+This specification utilizes a minimum list length of 131,072. This
 population size ensures an adequate amount of herd  privacy in the average case.
 If better herd privacy is required, the bitstring can be made to be larger.
         </p>
@@ -779,6 +780,11 @@ Generate a |revocation bitstring| by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
+If the length of the |revocation bitstring| divided by
+<a href="#size">`size`</a> is less than 131,072, raise a
+<a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
+        </li>
+        <li>
 Let |status| be the value in the |bitstring| at the position indicated
 by the |credentialIndex| multiplied by the |size|. If the |credentialIndex|
 multiplied by the |size| is a value outside of the range of the |bitstring|, a
@@ -929,7 +935,9 @@ The `detail` value SHOULD provide a longer human-readable string for the error.
       </ul>
 
       <dl>
-        <dt id="STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR (-128)</dt>
+        <dt id="STATUS_RETRIEVAL_ERROR">
+STATUS_RETRIEVAL_ERROR (-128)
+        </dt>
         <dd>
 Retrieval of the status list failed. See Section
 <a href="#validate-algorithm"></a>.
@@ -938,6 +946,13 @@ Retrieval of the status list failed. See Section
         <dd>
 Validation of the status entry failed. See Section
 <a href="#validate-algorithm"></a>.
+        </dd>
+        <dt id="STATUS_LIST_LENGTH_ERROR">
+STATUS_LIST_LENGTH_ERROR (-130)
+        </dt>
+        <dd>
+The status list does not meet the minimum herd privacy length requirements.
+See Section <a href="#validate-algorithm"></a>.
         </dd>
       </dl>
     </section>
