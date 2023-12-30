@@ -878,22 +878,22 @@ Return the |uncompressed bitstring|.
     <h2>Media Types</h2>
 
     <p>
-When publishing status list information, issuers SHOULD publish the status list
-using an HTTPS URL and in a way that makes it not possible to correlate usage
-patterns related to the list. When retrieving status list information, verifiers
-SHOULD retrieve the status list over protocols that guard against access
+<a>Issuers</a> SHOULD publish status list information
+using HTTPS URLs and in ways that minimize possible correlation of usage
+patterns related to the list. <a>Verifiers</a>
+SHOULD retrieve status list information using protocols that guard against access
 pattern correlation, such as Oblivious HTTP [[?OHTTP]].
     </p>
 
     <p>
-When dereferencing `statusListCredential`, the content type of the
+When dereferencing `statusListCredential`, the content of the returned
 `statusListCredential` might be any media type registered for the purpose of
 expressing a verifiable credential with one or more proofs.
     </p>
     <p>
 For example, a verifiable credential secured with Data Integrity Proofs might
-have content type `application/vc+ld+json`, whereas a verifiable credential
-secured with SD-JWT might have content-type `application/sd-jwt`.
+have media type `application/vc+ld+json`, while a verifiable credential
+secured with SD-JWT might have media type `application/sd-jwt`.
     </p>
     <p>
 Some implementations might choose to support less specific media types such as
