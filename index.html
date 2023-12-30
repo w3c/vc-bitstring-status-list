@@ -232,12 +232,12 @@ few hundred bytes while providing privacy in a herd of 100,000 individuals.
 This section outlines the core concept utilized by the status list
 mechanism described in this specification. At the most basic level, status
 information for all <a>verifiable credentials</a> issued by an <a>issuer</a>
-are expressed as items in a list. The <a>issuer</a> manages a list
-list of all <a>verifiable credentials</a> that it has issued. Each
-<a>verifiable credential</a> is associated with an item in the list. In
-the case where a single bit specifies a status, such as "revocation" or
-"suspension", if the bit is set, then the associated status, such as "revoked",
-is assumed to be true.
+is expressed as items in a list. Each <a>issuer</a> manages a list
+of all <a>verifiable credentials</a> that it has issued. Each
+<a>verifiable credential</a> is associated with an item in its list.
+When a single bit specifies a status, such as "revoked" or "suspended",
+then that status is expected to be true when the bit is set (`1`) and
+false when unset (`0`).
         </p>
 
         <p>
@@ -273,13 +273,13 @@ If better herd privacy is required, the bitstring can be made to be larger.
 
         <p class="note"
            title="Status information is about the verifiable credential">
-Ultimately, the status information associated with a particular
-<a>verifiable credential</a> is about the verifiable credential itself and
-might not always be about the underlying credential, such as
-an educational degree. For example, in the case of an educational degree,
-it is possible for the associated <a>verifiable credential</a> to be revoked
-because the mechanism used to create the digital signature has been compromised,
-while the underlying educational degree remains valid.
+The status information associated with a particular <a>verifiable credential</a>
+is about the <a>verifiable credential</a> itself and might not apply to any
+underlying or backing <a>credential</a>, such as an educational degree. For
+example, in the case of such an educational degree, it is possible for a
+<a>verifiable credential</a> to be revoked because the mechanism used to
+create its digital signature has been compromised, while the backing educational
+degree remains valid.
         </p>
 
       </section>
