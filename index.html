@@ -246,17 +246,17 @@ data format since, in the average case, large numbers of credentials will
 remain unrevoked. This will ensure long sections of bits that are the same
 value and thus highly compressible using run-length compression techniques
 such as GZIP [[RFC1952]]. The default status list size is 131,072 entries,
-equivalent to 16KB of single bit values. When only a handful of <a>verifiable
-credentials</a> are revoked, the compressed bitstring size is reduced down to a
-few hundred bytes.
+equivalent to 16&nbsp;KB of single bit values. When only a handful of
+<a>verifiable credentials</a> are revoked, GZIP compresses the bitstring
+to a few hundred bytes.
         </p>
 
         <p>
 Another benefit of using a bitstring is that it enables large numbers of
 <a>verifiable credential</a> statuses to be placed in the same list.
-This specification utilizes a minimum list length of 131,072. This
-population size ensures an adequate amount of herd  privacy in the average case.
-If better herd privacy is required, the bitstring can be made to be larger.
+This specification uses a minimum list length of 131,072. This
+size ensures an adequate amount of herd privacy in the average case.
+If better herd privacy is required, the bitstring can be made larger.
         </p>
 
         <figure id="bitstring">
@@ -951,8 +951,8 @@ Validation of the status entry failed. See Section
 STATUS_LIST_LENGTH_ERROR (-130)
         </dt>
         <dd>
-The status list does not meet the minimum herd privacy length requirements.
-See Section <a href="#validate-algorithm"></a>.
+The status list length does not satisfy the minimum length required for
+herd privacy. See Section <a href="#validate-algorithm"></a>.
         </dd>
       </dl>
     </section>
