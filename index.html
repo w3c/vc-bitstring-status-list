@@ -207,7 +207,7 @@ status lists. One such consideration is where the list is published and the
 burden it places from a bandwidth and processing perspective, both on the server
 and the client fetching the information. In order to meet privacy expectations,
 it is useful to bundle the status of large sets of credentials into a single
-list to help with herd privacy. However, doing so can place an impossible
+list to help with group privacy. However, doing so can place an impossible
 burden on both the server and client if the status information is as much as a
 few hundred bytes in size per credential across a population of
 hundreds of millions of <a>holders</a>.
@@ -222,7 +222,7 @@ performance goals, it is possible to create a status list that can be
 constructed for 100,000 <a>verifiable credentials</a> that is roughly
 12,500 bytes in size in the worst case. In a case where a few hundred
 credentials have been revoked, the size of the list is less than a
-few hundred bytes while providing privacy in a herd of 100,000 individuals.
+few hundred bytes while providing privacy in a group of 100,000 individuals.
       </p>
 
       <section class="informative">
@@ -255,8 +255,8 @@ to a few hundred bytes.
 Another benefit of using a bitstring is that it enables large numbers of
 <a>verifiable credential</a> statuses to be placed in the same list.
 This specification uses a minimum list length of 131,072. This
-size ensures an adequate amount of herd privacy in the average case.
-If better herd privacy is required, the bitstring can be made larger.
+size ensures an adequate amount of group privacy in the average case.
+If better group privacy is required, the bitstring can be made larger.
         </p>
 
         <figure id="bitstring">
@@ -1061,7 +1061,7 @@ implications of deploying this specification into production environments.
       <p>
 This document specifies a minimum revocation bitstring length of 131,072, or
 16KB uncompressed. This is enough to give <a>holders</a> an adequate amount of
-herd privacy if the number of verifiable credentials issued is large enough.
+group privacy if the number of verifiable credentials issued is large enough.
 However, if the number of issued verifiable credentials is a small population,
 the ability to correlate an individual increases because the number of allocated
 slots in the bitstring is small. Correlating this information with, for example,
@@ -1098,20 +1098,20 @@ from <a>issuers</a>.
     <section class="informative">
       <h3>Malicious Issuers and Verifiers</h3>
       <p>
-In general, the herd privacy protections offered by this specification can be
+In general, the group privacy protections offered by this specification can be
 circumvented by malicious <a>issuers</a> and <a>verifiers</a>. Its privacy
 benefits can only be realized when issuers and verifiers intend to avoid
 tracking or sharing the presentation of particular credentials.
       </p>
       <p>
-A malicious <a>issuer</a> might intentionally attack herd privacy by creating a
+A malicious <a>issuer</a> might intentionally attack group privacy by creating a
 unique status list per credential issued in order to establish a 1-1 mapping to track
 when a <a>verifier</a> processes a specific credential. Similarly, they could establish
 another a 1-1 mapping by using a different cryptographic key for every credential
 issued that is tracked in a status list.
       </p>
       <p>
-A malicious <a>verifier</a> might intentionally attack herd privacy by sharing
+A malicious <a>verifier</a> might intentionally attack group privacy by sharing
 information from presented credentials with a malicious <a>issuer</a>.
       </p>
     </section>
