@@ -512,8 +512,8 @@ status list, MUST be `BitstringStatusList`.
             <tr>
               <td id="statusPurpose">credentialSubject.statusPurpose</td>
               <td>
-The purpose of the status entry MUST be a string. While the value of the
-string is arbitrary, the following values MUST be used for their intended
+The purpose of the status entry MUST be one or more strings. While the value of
+each string is arbitrary, the following values MUST be used for their intended
 purpose:
                 <table class="simple">
                   <thead>
@@ -790,8 +790,9 @@ proof verifications fail, raise a
 <a href="#STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR</a>.
         </li>
         <li>
-Verify that the |status purpose| is equal to the
-`statusPurpose` value in the |statusListCredential|. If the values are not
+Verify that the |status purpose| is equal to a `statusPurpose` value in the
+|statusListCredential|. Note: The |statusListCredential| might contain multiple
+status purposes in a single list. If the values are not
 equal, raise a
 <a href="#STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR</a>.
         </li>
