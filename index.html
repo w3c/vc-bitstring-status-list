@@ -553,7 +553,7 @@ specified when this `statusPurpose` value is used.
               <td id="encodedList">credentialSubject.encodedList</td>
               <td>
 The `encodedList` property of the credential <a>subject</a> MUST be
-the GZIP-compressed [[RFC1952]], base64url-encoded [[RFC4648]] bitstring values
+the GZIP-compressed [[RFC1952]], base64url-encoded (with no padding) [[RFC4648]] bitstring values
 for the associated range of <a>verifiable credential</a> status values. The
 uncompressed bitstring MUST be at least 16KB in size. The bitstring MUST be
 encoded such that the first index, with a value of zero
@@ -837,7 +837,7 @@ times the `statusSize`.
         <li>
 Generate a |compressed bitstring| by using the GZIP
 compression algorithm [[RFC1952]] on the |bitstring|
-and then base64url-encoding [[RFC4648]] the result.
+and then base64url-encoding (with no padding) [[RFC4648]] the result.
         </li>
         <li>
 Return the |compressed bitstring|.
@@ -862,7 +862,7 @@ bitstring.
         </li>
         <li>
 Generate an |uncompressed bitstring| by using the
-base64url-decoding [[RFC4648]] algorithm on the
+base64url-decoding (with no padding) [[RFC4648]] algorithm on the
 |compressed bitstring| and then expanding the output using
 the GZIP decompression algorithm [[RFC1952]].
         </li>
