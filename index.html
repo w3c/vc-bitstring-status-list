@@ -303,7 +303,8 @@ data model that follows the relevant normative requirements in Section
 A <dfn>conforming processor</dfn> is any algorithm realized
 as software and/or hardware that generates and/or consumes a
 <a>conforming document</a> according to the relevant normative statements in
-Section <a href="#algorithms"></a>. Conforming processors MUST produce errors
+Section <a href="#algorithms"></a>. Conforming processors MAY choose to only
+support bitstring entry sizes of 1. Conforming processors MUST produce errors
 when non-conforming documents are consumed.
         </p>
 
@@ -457,6 +458,17 @@ When a status list <a>verifiable credential</a> is published, it MUST be a
 conforming document, as defined in [[VC-DATA-MODEL-2.0]], that expresses the
 data model in this section. The following section describes the format of
 the <a>verifiable credential</a> that encapsulates the status list:
+        </p>
+
+        <p class="issue atrisk"
+           title="Bitstring entry sizes greater than 1 are at risk.">
+The Working Group is currently seeking implementer feedback with respect to the
+usefulness of bitstring entries that have sizes greater than one. The
+approach adds complexity to the solution and its not clear if there is
+enough of an implementation community to support the feature. The WG is
+considering three options 1) keep the feature, 2) allow the feature to be
+optionally supported, and 3) remove the feature. At present, the specification
+implements the second option.
         </p>
 
         <table class="simple">
