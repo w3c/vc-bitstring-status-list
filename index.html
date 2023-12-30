@@ -806,13 +806,13 @@ Return |result|.
       </ol>
 
       <p>
-When dereferencing a `statusListCredential` URL, implementations MAY provide a
-mechanism to query the status list at a particular point in time. If such a
+When a `statusListCredential` URL is dereferenced, server implementations MAY provide a
+mechanism to dereference the status list as of a particular point in time. If such a
 feature is supported, and if query parameters are supported by the URL scheme,
 then the name of the query parameter MUST be `timestamp` and the value MUST be
 a valid URL-encoded [[XMLSCHEMA11-2]] dateTimeStamp string value. The resulting
 status list credential SHOULD be the status list as it existed at the given
-date and time.
+point in time.
       </p>
 
 
