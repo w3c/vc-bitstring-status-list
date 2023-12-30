@@ -1256,6 +1256,7 @@ Write i18n considerations.
     <h2>Appendix</h2>
     <section>
       <h2>Examples</h2>
+
       <section>
         <h2>Revocable Verifiable Credential</h2>
 <pre class="example nohighlight vc" title="A Revocable Verifiable Credential"
@@ -1284,6 +1285,7 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
 </pre>
 
       </section>
+
       <section>
         <h2>Status List Verifiable Credential</h2>
 <pre class="example nohighlight vc" title="A Status List Verifiable Credential"
@@ -1306,6 +1308,47 @@ data-vc-vm='https://example.edu/issuers/565049/keys/1'>
 }
 </pre>
       </section>
+
+      <section>
+        <h2>Multiple Status Lists in One Verifiable Credential</h2>
+
+        <pre class="example nohighlight vc"
+             title="Associating multiple status lists with a single Verifiable Credential"
+             data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": ["VerifiableCredential"],
+  "issuer": "did:example:12345",
+  "issuanceDate": "2021-04-05T14:27:42Z",
+  <span class="comment">// note the use of an array to represent the set of
+  // status entries</span>
+  "credentialStatus": <span class="highlight">[{
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }, {
+    "id": "https://example.com/credentials/status/4#12345",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "suspension",
+    "statusListIndex": "12345",
+    "statusListCredential": "https://example.com/credentials/status/4"
+  }]</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  }
+}
+        </pre>
+      </section>
+
+
+
     </section>
   </section>
 
