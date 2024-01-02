@@ -9,9 +9,9 @@ in the relevant W3C Working Group or make a non-member patent licensing
 commitment.
 
 If you are not the sole contributor to a contribution (pull request), please
-identify all  contributors in the pull request comment.
+identify all contributors in the pull request comment.
 
-To add a contributor (other than yourself, that's automatic), mark them one per
+To add a contributor (other than yourself; that's automatic), mark them one per
 line as follows:
 
 ```
