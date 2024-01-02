@@ -96,16 +96,6 @@
 		    text-align: center;
       }
 
-      /* This is a bug in the base css setting at W3C. There is an open PR raised for it in the
-      relevant github repo; if and when that is merged, this statement may become
-      superfluous.
-      See https://github.com/w3c/tr-design/pull/336
-      */
-      figure svg {
-          max-width: 100%;
-          margin: auto;
-          height: auto;
-      }
     </style>
   </head>
   <body  typeof="owl:Ontology">
@@ -160,9 +150,8 @@ In some cases, a local explanation is necessary to complement, or to replace,
 the definition found in an external specification. For instance, this is so when
 the term is needed to provide a consistent structure to the RDFS vocabulary,
 such as when the term defines a common supertype for class instances that are
-used as objects of specific properties, or when
-<a href="https://www.w3.org/TR/rdf12-concepts/#section-rdf-graph">RDF Graphs</a>
-are involved. For such cases, the extra definition is included in the current
+used as objects of specific properties. For such cases, 
+the extra definition is included in the current
 document (and the `rdfs:comment` property is used to include them in the RDFS
 representations).
       </p>
