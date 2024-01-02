@@ -810,8 +810,9 @@ When a `statusListCredential` URL is dereferenced, server implementations MAY pr
 mechanism to dereference the status list as of a particular point in time. If such a
 feature is supported, and if query parameters are supported by the URL scheme,
 then the name of the query parameter MUST be `timestamp` and the value MUST be
-a valid URL-encoded [[XMLSCHEMA11-2]] dateTimeStamp string value. The resulting
-status list credential SHOULD be the status list as it existed at the given
+a valid URL-encoded [[XMLSCHEMA11-2]] dateTimeStamp string value. The result of
+dereferencing such a timestamped URL MUST be a status list credential containing
+either the status list as it existed at the given point in time, or an error.
 point in time.
       </p>
 
