@@ -17,8 +17,10 @@
         "encodedList":
           "https://www.w3.org/ns/credentials/status-list#encodedList",
         "ttl": "https://www.w3.org/ns/credentials/status-list#ttl",
-        "reference": "https://www.w3.org/ns/credentials/status-list#reference",
-        "size": "https://www.w3.org/ns/credentials/status-list#size",
+        "statusReference":
+          "https://www.w3.org/ns/credentials/status-list#statusReference",
+        "statusSize":
+          "https://www.w3.org/ns/credentials/status-list#statusSize",
         "statusMessage": {
           "@id": "https://www.w3.org/ns/credentials/status-list#statusMessage",
           "@context": {

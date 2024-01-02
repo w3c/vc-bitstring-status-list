@@ -541,8 +541,8 @@ This status is reversible.
                       <td>
 Used to indicate a status message associated with a <a>verifiable
 credential</a>. The status message descriptions MUST be defined in
-`credentialSubject.statusMessages`. `credentialSubject.size` MUST be specified
-when this `statusPurpose` value is used.
+`credentialSubject.statusMessages`. `credentialSubject.statusSize` MUST be
+specified when this `statusPurpose` value is used.
                       </td>
                     </tr>
                   </tbody>
@@ -577,14 +577,14 @@ HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
             <tr>
-              <td id="size">credentialSubject.size</td>
+              <td>credentialSubject.statusSize</td>
               <td>
-The `size` indicates the size of the status entry in bits. `size` MAY be
-provided. If `size` is not present as a property of the `credentialStatus`, then
-`size` MUST be processed as `1`.  `size` MUST be an integer greater than zero.
-If `size` is provided and is greater than `1`, then the property
-`credentialStatus.statusMessage` MUST be present, and the number of status
-messages must equal the number of possible values.
+The `statusSize` indicates the size of the status entry in bits. `statusSize`
+MAY be provided. If `statusSize` is not present as a property of the
+`credentialStatus`, then `statusSize` MUST be processed as `1`.  `statusSize`
+MUST be an integer greater than zero. If `statusSize` is provided and is greater
+than `1`, then the property `credentialStatus.statusMessage` MUST be present,
+and the number of status messages must equal the number of possible values.
               </td>
             </tr>
             <tr>
@@ -592,9 +592,9 @@ messages must equal the number of possible values.
               <td>
 The `statusMessage` property MUST be an array. If present,
 the length of the array must equal the number of possible status states
-indicated by `size`. `statusMessage` MAY be present if
-`size` is `1`. `statusMessage` MUST be present if
-`size` is greater than `1`.  If not present, the message value
+indicated by `statusSize`. `statusMessages` MAY be present if
+`statusSize` is `1`. `statusMessages` MUST be present if
+`statusSize` is greater than `1`.  If not present, the message value
 associated with the bit value of `0` is "unset" and the bit
 value of `1` is "set".
 If present, elements in the `statusMessage` array MUST contain at
@@ -617,16 +617,16 @@ status codes.
               </td>
             </tr>
             <tr>
-              <td id="reference">credentialSubject.reference</td>
+              <td id="statusReference">credentialSubject.statusReference</td>
               <td>
-The `reference` property provides a point for implementers to include a [[URL]]
-to material related to the status. An implementer MAY include the `reference`
-property, and if they do, the value MUST be a [[URL]] or an array of URLs.
-Implementers using a `statusPurpose` of `status` are strongly encouraged to
-provide a `reference`.
+The `statusReference` property provides a point for implementers to include a
+[[URL]] to material related to the status. An implementer MAY include the
+`statusReference` property, and if they do, the value MUST be a [[URL]] or an
+array of URLs. Implementers using a `statusPurpose` of `status` are strongly
+encouraged to provide a `statusReference`.
                 <p class="note" title="Details around reference">
-`reference` is especially important when interpretation of the status for a
-credential may involve some understanding of the business case involved.
+`statusReference` is especially important when interpretation of the status for
+a credential may involve some understanding of the business case involved.
                 </p>
               </td>
             </tr>
@@ -832,7 +832,7 @@ For each value in `bitstring`, if there is a
 corresponding `statusListIndex` value in
 a credential in `issuedCredentials`, set the value to the
 appropriate status. The position of the value is computed as `statusListIndex`
-times the `size`.
+times the `statusSize`.
         </li>
         <li>
 Generate a |compressed bitstring| by using the GZIP
