@@ -2,9 +2,9 @@
   "@context": {
     "@protected": true,
 
-    "StatusList2021Credential": {
+    "BitstringStatusListCredential": {
       "@id":
-        "https://w3id.org/vc/status-list#StatusList2021Credential",
+        "https://w3id.org/vc/status-list#BitstringStatusListCredential",
       "@context": {
         "@protected": true,
 
@@ -16,9 +16,9 @@
       }
     },
 
-    "StatusList2021": {
+    "BitstringStatusList": {
       "@id":
-        "https://w3id.org/vc/status-list#StatusList2021",
+        "https://w3id.org/vc/status-list#BitstringStatusList",
       "@context": {
         "@protected": true,
 
@@ -31,9 +31,9 @@
       }
     },
 
-    "StatusList2021Entry": {
+    "BitstringStatusListEntry": {
       "@id":
-        "https://w3id.org/vc/status-list#StatusList2021Entry",
+        "https://w3id.org/vc/status-list#BitstringStatusListEntry",
       "@context": {
         "@protected": true,
 
