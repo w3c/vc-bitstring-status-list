@@ -814,10 +814,10 @@ issuer, such as hourly, daily, or weekly. If such a feature is supported, and if
 query parameters are supported by the URL scheme, then the name of the query
 parameter MUST be `timestamp` and the value MUST be a valid URL-encoded
 [[XMLSCHEMA11-2]] dateTimeStamp string value. The result of dereferencing such a
-timestamped URL MUST be a status list credential containing either the status
-list as it existed at the given point in time, or a <a
-href="#STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR</a>. If the result is an
-error, implementations MAY attempt the retrieval again with a different
+timestamp-parameterized URL MUST be either a status list credential containing
+the status list as it existed at the given point in time, or a
+<a href="#STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR</a>. If the result is
+an error, implementations MAY attempt the retrieval again with a different
 timestamp value, or without a timestamp value, as long as the <a>verifier</a>'s
 validation rules permit such an action.
       </p>
