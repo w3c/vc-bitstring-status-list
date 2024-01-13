@@ -11,7 +11,7 @@ ontology:
     value: Verifiable Credentials Bitstring Status List v1.0
 
   - property: dc:description
-    value: RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST]]] [[VC-BITSTRING-STATUS-LIST]]
+    value: RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST]]] [[VC-BITSTRING-STATUS-LIST]]
 
   - property: rdfs:seeAlso
     value: https://www.w3.org/TR/vc-bitstring-status-list/
@@ -64,7 +64,7 @@ property:
 
   - id: size
     label: Bitstring entry size in bits
-    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#size
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusSize
     domain: cs:BitstringStatusList
     range: xsd:string
 
@@ -86,6 +86,6 @@ property:
 
   - id: reference
     label: Reference documentation for status messages
-    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#reference
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusReference
     domain: cs:BitstringStatusList
     range: xsd:string
