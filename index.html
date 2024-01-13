@@ -747,6 +747,10 @@ containing a `credentialStatus` entry that is a
 <a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
         </li>
         <li>
+Let |minimumNumberOfEntries| be 131,072 unless a different lower bound is
+established by a specific ecosystem specification.
+        </li>
+        <li>
 Let |status purpose| be the value of `statusPurpose`
 in the `credentialStatus` entry in the
 |credentialToValidate|.
@@ -781,8 +785,8 @@ Generate a |revocation bitstring| by passing
         </li>
         <li>
 If the length of the |revocation bitstring| divided by
-<a href="#size">`size`</a> is less than 131,072, raise a
-<a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
+<a href="#statusSize">`statusSize`</a> is less than |minimumNumberOfEntries|,
+raise a <a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>
         </li>
         <li>
 Let |status| be the value in the |bitstring| at the position indicated
@@ -792,8 +796,8 @@ multiplied by the |size| is a value outside of the range of the |bitstring|, a
 raised.
         </li>
         <li>
-        </li>
 Let |result| be an empty [=map=].
+        </li>
         <li>
 Set the `status` key in |result| to |status|, and set the `purpose` key in
 |result| to the value of `statusPurpose`.
