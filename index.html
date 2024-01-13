@@ -711,7 +711,9 @@ MUST be raised.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when producing a
-<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
+The algorithm takes a list of |issued credentials| as input and either throws
+an error or returns a status list credential as output.
       </p>
 
       <ol class="algorithm">
@@ -745,7 +747,9 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when validating a <a>verifiable credential</a> that is contained in a
-<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>:
+<a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
+The algorithm takes a status list <a>verifiable credential</a> as input
+and either throws an error or returns a status list credential as output.
       </p>
 
       <ol class="algorithm">
@@ -857,8 +861,8 @@ credential might differ, such as when the original issuer of the
       <h3>Bitstring Generation Algorithm</h3>
       <p>
 The following process, or one generating the exact output, MUST be followed
-when generating a status list bitstring. The algorithm takes a
-|issuedCredentials| list as input and returns a
+when generating a status list bitstring. The algorithm takes an
+|issuedCredentials| list as input and either throws an error or returns a
 |compressed bitstring| as output.
       </p>
 
@@ -891,7 +895,7 @@ Return the |compressed bitstring|.
       <p>
 The following process, or one generating the exact output, MUST be followed
 when expanding a compressed status list bitstring. The algorithm takes a
-|compressed bitstring| as input and returns a
+|compressed bitstring| as input and either throws an error or returns a
 |uncompressed bitstring| as output.
       </p>
 
