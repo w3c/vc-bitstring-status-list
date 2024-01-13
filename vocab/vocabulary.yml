@@ -1,6 +1,6 @@
 vocab:
-  - id: sl
-    value: https://www.w3.org/ns/credentials/status-list#
+  - id: cs
+    value: https://www.w3.org/ns/credentials/status#
 
 prefix:
   - id: cred
@@ -34,44 +34,44 @@ property:
     label: Status purpose
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusPurpose
     domain:
-      - sl:BitstringStatusList
-      - sl:BitstringStatusListEntry
+      - cs:BitstringStatusList
+      - cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: statusListIndex
     label: Status list index
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListIndex
-    domain: sl:BitstringStatusListEntry
+    domain: cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: statusListCredential
     label: Status list credential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential
-    domain: sl:BitstringStatusListEntry
+    domain: cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: encodedList
     label: Encoded list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
-    domain: sl:BitstringStatusList
+    domain: cs:BitstringStatusList
     range: xsd:base64Binary
 
   - id: ttl
     label: Time to live in milliseconds
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#ttl
-    domain: sl:BitstringStatusList
+    domain: cs:BitstringStatusList
     range: xsd:string
 
   - id: size
     label: Bitstring entry size in bits
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#size
-    domain: sl:BitstringStatusList
+    domain: cs:BitstringStatusList
     range: xsd:string
 
   - id: statusMessage
     label: Status messages
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
-    domain: sl:BitstringStatusList
+    domain: cs:BitstringStatusList
     range: xsd:string
 
   - id: status
@@ -87,5 +87,5 @@ property:
   - id: reference
     label: Reference documentation for status messages
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#reference
-    domain: sl:BitstringStatusList
+    domain: cs:BitstringStatusList
     range: xsd:string
