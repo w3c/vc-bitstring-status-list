@@ -14,7 +14,7 @@
         const retval = content
           .replace('<svg', '<svg aria-details="#vocabulary-diagram-alt" ')
           .replace(/xlink:href/g, 'href')
-          .replace(/href="https:\/\/www.w3.org\/ns\/credentials\/status-list#/g, 'href="#');
+          .replace(/href="https:\/\/www.w3.org\/ns\/credentials\/status#/g, 'href="#');
         return retval;
       }
 
@@ -22,8 +22,8 @@
     <script class="remove">
       var respecConfig = {
         specStatus:  "base",
-        shortName:   "ns/credentials/status-list",
-        thisVersion: "https://www.w3.org/ns/credentials/status-list/",
+        shortName:   "ns/credentials/status",
+        thisVersion: "https://www.w3.org/ns/credentials/status/",
         doJsonLd:    true,
         editors: [{
           name:       "Ivan Herman",
@@ -150,7 +150,7 @@ In some cases, a local explanation is necessary to complement, or to replace,
 the definition found in an external specification. For instance, this is so when
 the term is needed to provide a consistent structure to the RDFS vocabulary,
 such as when the term defines a common supertype for class instances that are
-used as objects of specific properties. For such cases, 
+used as objects of specific properties. For such cases,
 the extra definition is included in the current
 document (and the `rdfs:comment` property is used to include them in the RDFS
 representations).
