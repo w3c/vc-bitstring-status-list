@@ -755,12 +755,13 @@ Dereference the `statusListCredential` URL, and ensure that all
 proofs verify successfully. If the dereference fails, raise a
 <a href="#STATUS_RETRIEVAL_ERROR">STATUS_RETRIEVAL_ERROR</a>. If any of the
 proof verifications fail, raise a
-<a href="#STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR</a>.
+<a href="#STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR</a>.
         </li>
         <li>
 Verify that the |status purpose| is equal to the
 `statusPurpose` value in the |statusListCredential|. If the values are not
-equal, raise a <a href="#STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR</a>.
+equal, raise a
+<a href="#STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR</a>.
         </li>
         <li>
 Let |compressed bitstring| be the value of the
@@ -916,7 +917,7 @@ The `detail` value SHOULD provide a longer human-readable string for the error.
 Retrieval of the status list failed. See Section
 <a href="#validate-algorithm"></a>.
         </dd>
-        <dt id="STATUS_VALIDATION_ERROR">STATUS_VALIDATION_ERROR (-129)</dt>
+        <dt id="STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR (-129)</dt>
         <dd>
 Validation of the status entry failed. See Section
 <a href="#validate-algorithm"></a>.
