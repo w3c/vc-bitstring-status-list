@@ -1363,24 +1363,24 @@ than fetching multiple status lists.
         </p>
 
         <p class="issue atrisk" title="Efficiency argument is weak">
-The "space efficiency" argument for this feature is weak. Fetching one list
-with two types of status entries must, presumably, be twice as long to ensure
-proper privacy protections. One privacy benefit of doing so is that bit flips
-cannot be known to be associated with a particular status unless one is also in
-control of the VC that the status is about. Therefore, mixing "revocation" and
-"suspension" in a single list that is twice as large has positive privacy
-implications.<br><br>
+The "space efficiency" argument for this feature is weak. One list with two types
+of status entries must, presumably, be twice as long as a list with one type of
+status entries, to ensure proper privacy protections. One privacy benefit of
+doing so is that bit flips cannot be known to be associated with a particular
+status unless one is also in control of the VC that the status is about.
+Therefore, mixing "revocation" and "suspension" in a single list that is twice
+as large has positive privacy implications.<br><br>
 The "retrieval efficiency" argument is also weak. Performing two HTTP retrievals
-instead of one is probably not significant. Performing upwards of five to six,
-on a list that is five to six times larger, might result in fairly meager
+instead of one is probably not significant. Performing upwards of five or six,
+on a list that is five or six times larger, might result in fairly meager
 savings over modern versions of HTTP that bundle requests over a single channel
-(such as HTTP/2 or HTTP/3). The requests themselves would be a handful of bytes
-that are saved with no significant improvement in retrieval speed.<br><br>
+(such as HTTP/2 or HTTP/3). The requests themselves would save a handful of
+bytes with no significant improvement in retrieval speed.<br><br>
 The Working Group is looking for feedback from implementers and is considering
-striking this feature during the Candidate Recommendation period since it would
+striking this feature during the Candidate Recommendation period, since it would
 simplify the specification for implementations to not have to support sets of
-`statusPurpose` values in the status list credentials (again, a meager savings in
-space efficiency vs. retrieval efficiency).
+`statusPurpose` values in the status list credentials (again, a meager savings
+in space efficiency at a small cost to retrieval efficiency).
         </p>
 
         <pre class="example nohighlight vc"
