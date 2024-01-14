@@ -587,16 +587,16 @@ specified when this `statusPurpose` value is used.
             <tr>
               <td id="encodedList">credentialSubject.encodedList</td>
               <td>
-The `encodedList` property of the credential <a>subject</a> MUST be
-the GZIP-compressed [[RFC1952]], base64url-encoded (with no padding) [[RFC4648]] bitstring values
-for the associated range of <a>verifiable credential</a> status values. The
-uncompressed bitstring MUST be at least 16KB in size. The bitstring MUST be
-encoded such that the first index, with a value of zero
-(`0`), is located at the left-most bit in the bitstring and the
-last index, with a value of one less than the length of the bitstring
-(`bitstring_length - 1`), is located at the right-most bit in the
-bitstring. Further information on bitstring encoding can be found in Section
-<a href="#bitstring-encoding"></a>.
+The `encodedList` property of the credential <a>subject</a> MUST be a
+<a data-cite="VC-DATA-INTEGRITY#multibase-0">Multibase-encoded base64url (with
+no padding)</a> [[RFC4648]] representation of the GZIP-compressed [[RFC1952]]
+bitstring values for the associated range of <a>verifiable credential</a>
+status values. The uncompressed bitstring MUST be at least 16KB in size. The
+bitstring MUST be encoded such that the first index, with a value of zero (`0`),
+is located at the left-most bit in the bitstring and the last index, with a
+value of one less than the length of the bitstring (`bitstring_length - 1`), is
+located at the right-most bit in the bitstring. Further information on bitstring
+encoding can be found in Section <a href="#bitstring-encoding"></a>.
               </td>
             </tr>
             <tr>
@@ -681,7 +681,7 @@ a credential may involve some understanding of the business case involved.
     "id": "https://example.com/status/3#list",
     "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
-    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+    "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
 }
         </pre>
@@ -715,7 +715,7 @@ implementation, privacy, and security standpoint.
         {"status":"0x2", "message":"pending_review"},
         ...
     ],
-    "encodedList": "H4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
   }
 }
         </pre>
@@ -1326,7 +1326,7 @@ data-vc-vm="https://example.edu/issuers/565049/keys/1">
     "id": "https://example.com/status/3#list",
     "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
-    "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+    "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
 }
 </pre>
