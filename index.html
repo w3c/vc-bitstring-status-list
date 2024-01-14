@@ -699,6 +699,17 @@ implementation, privacy, and security standpoint.
         </pre>
       </section>
 
+      <p>
+<a>Issuers</a> and <a>verifiers</a> are advised that the `issuer` of a
+<a>verifiable credential</a> and the issuer of an associated
+`BitstringStatusListCredential` might not be the same. There can be technical,
+legal, institutional, and political reasons to separate the authority over the
+original credential from the authority to revoke such a credential. Therefore,
+the `issuer` value of a <a>verifiable credential</a> containing a
+`BitstringStatusListEntry` MAY be different from the `issuer` value of a
+`BitstringStatusListCredential`.
+      </p>
+
     </section>
 
   <section class="normative">
