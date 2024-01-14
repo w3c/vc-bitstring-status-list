@@ -444,8 +444,7 @@ includes the `BitstringStatusListCredential` value.
   "credentialSubject": {
     "id": "did:example:6789",
     "type": "Person"
-  },
-  "proof": { <span class="comment">...</span> }
+  }
 }
         </pre>
       </section>
@@ -469,6 +468,25 @@ is enough of an implementation community to support the feature. The WG is
 considering three options: (1) require conforming implementations to support
 the feature; (2) allow implementations to optionally support the feature; or
 (3) remove the feature. At present, the specification implements option (2).
+        </p>
+
+
+        <p class="issue atrisk" title="TTL conflicts with `validUntil`">
+The Working Group is considering the removal of the `ttl` feature because it
+conflicts with the semantics of the `validFrom` feature in a
+<a>verifiable credential</a>. When a <a>verifier</a> performs validation, and
+evaluates a `BitstringStatusListCredential` that contains a `ttl` property and a
+`validUntil` property, it is not clear which property can be ignored from a
+validation standpoint if both fields do not "expire" the credential at the
+same point in time. In other words, if a `ttl` value specifies an expiration
+datetime that ends at midnight, but the `validUntil` property specifies an
+expiration datetime that ends at the end of the week, then what is a
+<a>verifier</a> expected to do? Fundamentally, `ttl` and `validUntil` have
+conflicting semantics. The alternative is to remove `ttl` and specify that
+caching behavior can be expressed using protocol mechanisms, such as the
+`expires` header in HTTP and that any caching performed MUST align with the
+`validUntil` value for the <a>verifiable credential</a>. The Working Group is
+seeking feedback from the implementer community regarding this feature.
         </p>
 
         <table class="simple">
@@ -660,8 +678,7 @@ a credential may involve some understanding of the business case involved.
     "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">H4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
-  },
-  "proof": { ... }
+  }
 }
         </pre>
         <p class="issue" data-number="73" title="Design of multiple status messages is not finalized.">
@@ -671,6 +688,7 @@ with multiple states (exposed via a series of status messages). We are seeking
 implementer feedback on what a unified design should look like from an ease of
 implementation, privacy, and security standpoint.
         </p>
+
         <pre class="example nohighlight" title="Example BitstringStatusListCredential">
 {
   "@context": [
