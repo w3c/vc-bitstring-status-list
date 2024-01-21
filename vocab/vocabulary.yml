@@ -6,6 +6,9 @@ prefix:
   - id: cred
     value: https://w3.org/2018/credentials#
 
+  - id: sec
+    value: https://w3id.org/security#
+
 ontology:
   - property: dc:title
     value: Verifiable Credentials Bitstring Status List v1.0
@@ -54,7 +57,7 @@ property:
     label: Encoded list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
     domain: cs:BitstringStatusList
-    range: xsd:base64Binary
+    range: sec:multibase
 
   - id: ttl
     label: Time to live in milliseconds
