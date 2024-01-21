@@ -472,19 +472,20 @@ the feature; (2) allow implementations to optionally support the feature; or
 
 
         <p class="issue atrisk" title="TTL conflicts with `validUntil`">
-The Working Group is considering the removal of the `ttl` feature because it
-conflicts with the semantics of the `validUntil` feature in a
-<a>verifiable credential</a>. When a <a>verifier</a> performs validation, and
-evaluates a `BitstringStatusListCredential` that contains a `ttl` property and a
-`validUntil` property, it is not clear which property can be ignored from a
-validation standpoint if both fields do not "expire" the credential at the
-same point in time. In other words, if a `ttl` value specifies an expiration
-datetime that ends at midnight, but the `validUntil` property specifies an
-expiration datetime that ends at the end of the week, then what is a
-<a>verifier</a> expected to do? Fundamentally, `ttl` and `validUntil` have
-conflicting semantics. The alternative is to remove `ttl` and specify that
-caching behavior can be expressed using protocol mechanisms, such as the
-`expires` header in HTTP and that any caching performed MUST align with the
+The Working Group is considering the removal of the `ttl` ("time to live")
+feature because its semantics conflict with the semantics of the `validUntil`
+feature of <a>verifiable credentials</a>. When a <a>verifier</a> performs
+validation and evaluates a `BitstringStatusListCredential` that contains both
+a `ttl` property and a `validUntil` property, each with a different value
+(i.e., each indicating a different point in time when the credential is to
+"expire"), it is not clear which (if either) property a validator can be
+expected to ignore. In other words, if a `ttl` value specifies an expiration
+datetime of midnight today, but the `validUntil` property specifies an
+expiration datetime of midnight tomorrow, then what is a <a>verifier</a>
+expected to do? Fundamentally, `ttl` and `validUntil` have conflicting
+semantics. One way to resolve this conflict is to remove `ttl` and specify
+that caching behavior can be expressed using protocol mechanisms (such as the
+`expires` header in HTTP), and that any caching performed MUST align with the
 `validUntil` value for the <a>verifiable credential</a>. The Working Group is
 seeking feedback from the implementer community regarding this feature.
         </p>
