@@ -402,7 +402,8 @@ Used to convey an arbitrary message related to the status of the
               <td>
 The `statusListIndex` property MUST be an arbitrary size integer
 greater than or equal to 0, expressed as a string. The value identifies the
-position of the status of the <a>verifiable credential</a>.
+position of the status of the <a>verifiable credential</a>. Implementations
+SHOULD assign indexes randomly.
               </td>
             </tr>
             <tr>
@@ -1209,9 +1210,6 @@ proper layout for an uncompressed bitstring.
       <p>
 For example, if a bitstring is 131,072 bits in size (16KB), the first index will
 be 0, and the last index will be 131,071.
-      </p>
-      <p>
-Implementations SHOULD consume and/or assign indexes randomly.
       </p>
     </section>
 
