@@ -707,8 +707,8 @@ implementation, privacy, and security standpoint.
     "type": "<span class="highlight">BitstringStatusList</span>",
     "ttl": 500,
     "statusPurpose": "<span class="highlight">status</span>",
-    "reference": "https://example.org/status-dictionary/",
-    "size": 2,
+    "statusReference": "https://example.org/status-dictionary/",
+    "statusSize": 2,
     "statusMessage": [
         {"status":"0x0", "message":"valid"},
         {"status":"0x1", "message":"invalid"},
@@ -1356,7 +1356,7 @@ This specification enables an <a>issuer</a> to associate multiple status lists
 with a single <a>verifiable credential</a>.
         </p>
 
-        <pre class="example nohighlight vc"
+        <pre class="example nohighlight"
              title="Associating multiple status lists with a single Verifiable Credential"
              data-vc-vm='https://example.edu/issuers/565049/keys/1'>
 {
@@ -1421,7 +1421,7 @@ simplify the specification for implementations to not have to support sets of
 in space efficiency at a small cost to retrieval efficiency).
         </p>
 
-        <pre class="example nohighlight vc"
+        <pre class="example nohighlight"
              title="Associating multiple status entries in a single status list"
              data-vc-vm='https://example.edu/issuers/565049/keys/1'>
 {
