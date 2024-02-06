@@ -636,10 +636,10 @@ If present, elements in the `statusMessage` array MUST contain at
 minimum two properties:
                 <ul>
                   <li id="status">
-`status`, being a string of the hex value of the status
+`status`, being a machine readable string of the hex value of the status
                   </li>
                   <li id="message">
-`message`, being a string containing the associated message
+`message`, being a human readable string containing the associated message
                   </li>
                 </ul>
 Implementers MAY add additional values to objects in the `statusMessage` array.
@@ -710,9 +710,9 @@ implementation, privacy, and security standpoint.
     "statusReference": "https://example.org/status-dictionary/",
     "statusSize": 2,
     "statusMessage": [
-        {"status":"0x0", "message":"valid"},
-        {"status":"0x1", "message":"invalid"},
-        {"status":"0x2", "message":"pending_review"},
+        {"status":"0x0", "message":"Valid"},
+        {"status":"0x1", "message":"Invalid"},
+        {"status":"0x2", "message":"Pending review"},
         ...
     ],
     "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
