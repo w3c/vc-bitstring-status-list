@@ -1,6 +1,7 @@
 vocab:
   - id: cs
     value: https://www.w3.org/ns/credentials/status#
+    context: https://www.w3.org/ns/credentials/v2
 
 prefix:
   - id: cred
@@ -21,20 +22,16 @@ ontology:
 
 class:
   - id: BitstringStatusList
-    label: Bitstring status list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslist
 
   - id: BitstringStatusListEntry
-    label: Bitstring status list entry
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistentry
 
   - id: BitstringStatusListCredential
-    label: Bitstring status list credential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistcredential
 
 property:
   - id: statusPurpose
-    label: Status purpose
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusPurpose
     domain:
       - cs:BitstringStatusList
@@ -42,19 +39,16 @@ property:
     range: xsd:string
 
   - id: statusListIndex
-    label: Status list index
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListIndex
     domain: cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: statusListCredential
-    label: Status list credential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential
     domain: cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: encodedList
-    label: Encoded list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
     domain: cs:BitstringStatusList
     range: sec:multibase
@@ -65,14 +59,13 @@ property:
     domain: cs:BitstringStatusList
     range: xsd:string
 
-  - id: size
+  - id: statusSize
     label: Bitstring entry size in bits
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusSize
     domain: cs:BitstringStatusList
     range: xsd:string
 
   - id: statusMessage
-    label: Status messages
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
     domain: cs:BitstringStatusList
     range: xsd:string
@@ -87,7 +80,7 @@ property:
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#message
     range: xsd:string
 
-  - id: reference
+  - id: statusReference
     label: Reference documentation for status messages
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusReference
     domain: cs:BitstringStatusList
