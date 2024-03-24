@@ -990,7 +990,8 @@ by this specification might interoperate more effectively when errors occur.
 
       <p>
 When exposing these errors through an HTTP interface, implementers SHOULD use
-[[RFC9457]] to encode the error data structure. If [[RFC9457]] is used:
+[[[RFC9457]]] [[RFC9457]] to encode the error data structure. If [[RFC9457]] is
+used:
       </p>
 
       <ul>
@@ -1009,6 +1010,11 @@ the error.
         </li>
         <li>
 The `detail` value SHOULD provide a longer human-readable string for the error.
+        </li>
+        <li>
+All human-readable strings SHOULD support internationalization using
+the `Accept-Language` HTTP header field as described in Section 1 of
+[[[RFC9457]]].
         </li>
       </ul>
 
