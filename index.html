@@ -1171,6 +1171,35 @@ information from presented credentials with a malicious <a>issuer</a>.
     </section>
 
     <section class="informative">
+      <h3>Status List Monitoring</h3>
+
+      <p>
+Once a <a>verifier</a> knows of a status list and entry index that is
+associated with a specific <a>holder</a>, it becomes possible for that
+<a>verifier</a> to see updates to that status entry as long as the
+status list continues to be updated. This is useful to a <a>verifier</a> that
+needs to understand when a particular <a>verifiable credential</a> has changed
+status without asking the <a>issuer</a> directly for status information on
+the specific <a>holder</a> or when interacting with the <a>holder</a> to get
+the latest status information is not possible. The feature can also cause a
+privacy violation if the <a>holder</a> is unaware of the ability for the
+<a>verifier</a> to perform near-real-time checks on the status of the
+<a>verifiable credential</a>.
+      </p>
+
+      <p>
+<a>Issuers</a> can provide a level of reprieve from this privacy concern to
+<a>holders</a> by revoking and re-issuing effectively the same
+<a>verifiable credential</a> on a timeline that is relatively short in nature.
+For example, an <a>issuer</a> could automatically re-issue a
+<a>verifiable credential</a> every three months to break any sort of long-term
+monitoring of a <a>verifiable credential</a> as it changes status and assign
+a new status entry index when the re-issuance occurs.
+      </p>
+
+    </section>
+
+    <section class="informative">
       <h3>Multistatus Correlation</h3>
       <p>
 This specification provides a means by which multiple status messages can be
