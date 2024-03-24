@@ -1200,7 +1200,7 @@ a new status entry index when the re-issuance occurs.
     </section>
 
     <section class="informative">
-      <h3>Multistatus Correlation</h3>
+      <h3>Status Message Correlation</h3>
       <p>
 This specification provides a means by which multiple status messages can be
 provided for a particular entry in a status list. While this mechanism can
@@ -1225,6 +1225,35 @@ the target using data gleaned from the status list over time.
 For these reasons, issuers are urged to evaluate the potential ramifications of
 publishing detailed status information about a particular entity, or a
 population, in a public manner.
+      </p>
+    </section>
+
+    <section class="informative">
+      <h3>Status Message Alterations</h3>
+
+      <p>
+When a status list uses the status messages feature, it becomes possible for
+the <a>issuer</a> to increase the type of messages that are associated with
+the <a>verifiable credentials</a> it issues over time.
+      </p>
+
+      <p>
+This feature creates a potential privacy violation where <a>holder</a> of the
+<a>verifiable credential</a> might be associated with additional status
+information that was not present when the original <a>verifiable credential</a>
+was issued. For example, initial status messages might convey "delayed" and
+"canceled", but additional status messages might be added by the <a>issuer</a>
+to convey "delayed due to non-payment" and "canceled due to illegal activity",
+which would not be apparent to the <a>holder</a> unless there was monitoring
+software operating on behalf of the holder that would warn them that the
+<a>issuer</a> intends to expose additional information about their activity.
+      </p>
+
+      <p>
+Holder software can provide features to <a>holders</a> that warn them about
+their level of information exposure when using <a>verifiable credentials</a>
+that are associated with status messages and warn them when the level of
+information exposure changes.
       </p>
     </section>
 
