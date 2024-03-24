@@ -1078,14 +1078,6 @@ cryptographic parameters and the same media type for both
     <h2>Media Types</h2>
 
     <p>
-<a>Issuers</a> SHOULD publish status list information
-using HTTPS URLs and in ways that minimize possible correlation of usage
-patterns related to the list. <a>Verifiers</a>
-SHOULD retrieve status list information using protocols that guard against access
-pattern correlation, such as Oblivious HTTP [[?OHTTP]].
-    </p>
-
-    <p>
 When dereferencing `statusListCredential`, the content of the returned
 `statusListCredential` might be any media type registered for the purpose of
 expressing a verifiable credential with one or more proofs.
