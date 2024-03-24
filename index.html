@@ -799,6 +799,15 @@ Generate a proof for the |statusListCredential| and publish it to the
 endpoint listed in the <a>verifiable credential</a>.
         </li>
       </ol>
+
+      <p>
+[=Issuers=] SHOULD publish status list credentials in a way that can be cached
+and that does not track who retrieves the status list credential, such as
+through [[[?OHTTP]]], a content distribution network that is not operated by the
+[=issuer=], or by using business processes such that the access logs are not
+accessible to data analysts or systems administrators.
+      </p>
+
     </section>
 
     <section class="normative">
@@ -904,6 +913,11 @@ the status list as it existed at the given point in time, or a
 an error, implementations MAY attempt the retrieval again with a different
 timestamp value, or without a timestamp value, as long as the <a>verifier</a>'s
 validation rules permit such an action.
+      </p>
+
+      <p>
+[=Verifiers=] SHOULD cache the retrieval of the status list and SHOULD use
+proxies that hide retrieval behavior from the [=issuer=] such as [[[?OHTTP]]].
       </p>
 
       <p class="note" title="Issuer validation is use case dependent">
