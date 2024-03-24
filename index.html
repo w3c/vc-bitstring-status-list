@@ -1159,6 +1159,26 @@ from [=issuers=].
     </section>
 
     <section class="informative">
+      <h3>Decoy Values</h3>
+
+      <p>
+The use of decoy values in status lists by <a>issuers</a> can increase the
+privacy of <a>holders</a> by further hiding the size of the group associated
+with a status list as well as when values in the list change. When employing
+decoy values, it is important to ensure that the decoys behave like real
+entries in the group. For example, if a decoy is used for revocation, it would
+be strange to flip the decoy value to "unrevoked" when that is not how the
+rest of the revocation values associated with real entries behave. Similarly,
+changing the decoy values at times and numbers that do not align with the way
+real entries behave can enable statistical analysis to separate the real
+entries from the decoy entries. While algorithms for employing decoy values
+are out of scope for this specification, the usage of decoy values is an
+important part of an <a>issuer's</a> privacy protections for their
+<a>holders</a>.
+      </p>
+    </section>
+
+    <section class="informative">
       <h3>Malicious Issuers and Verifiers</h3>
       <p>
 In general, the group privacy protections offered by this specification can be
