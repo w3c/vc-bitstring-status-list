@@ -1012,9 +1012,9 @@ the error.
 The `detail` value SHOULD provide a longer human-readable string for the error.
         </li>
         <li>
-All human-readable strings SHOULD support internationalization using
-the `Accept-Language` HTTP header field as described in Section 1 of
-[[[RFC9457]]].
+All human-readable strings SHOULD be localized as described in Section 1 of
+[[[RFC9457]]], using [=language negotiation=] on the `Accept-Language` HTTP
+header field to select the most appropriate resources.
         </li>
       </ul>
 
