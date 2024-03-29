@@ -12,7 +12,7 @@ prefix:
 
 ontology:
   - property: dc:title
-    value: Verifiable Credentials Bitstring Status List v1.0
+    value: Bitstring Status List Vocabulary
 
   - property: dc:description
     value: RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST]]] [[VC-BITSTRING-STATUS-LIST]]
@@ -25,10 +25,15 @@ class:
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslist
 
   - id: BitstringStatusListEntry
+    upper_value: cred:CredentialStatus
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistentry
 
   - id: BitstringStatusListCredential
+    upper_value: cred:VerifiableCredential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistcredential
+
+  - id: BitstringStatusMessage
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
 
 property:
   - id: statusPurpose
@@ -46,7 +51,7 @@ property:
   - id: statusListCredential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential
     domain: cs:BitstringStatusListEntry
-    range: xsd:string
+    range: cs:BitstringStatusListCredential
 
   - id: encodedList
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
@@ -63,25 +68,27 @@ property:
     label: Bitstring entry size in bits
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusSize
     domain: cs:BitstringStatusList
-    range: xsd:string
+    range: xsd:positiveInteger
 
   - id: statusMessage
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
     domain: cs:BitstringStatusList
-    range: xsd:string
+    range: cs:BitstringStatusMessage
 
   - id: status
     label: Hexadecimal value of a status message
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#status
     range: xsd:string
+    domain: cs:BitstringStatusMessage
 
   - id: message
     label: Human-readable message of a status value
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#message
     range: xsd:string
+    domain: cs:BitstringStatusMessage
 
   - id: statusReference
     label: Reference documentation for status messages
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusReference
     domain: cs:BitstringStatusList
-    range: xsd:string
+    range: URL
