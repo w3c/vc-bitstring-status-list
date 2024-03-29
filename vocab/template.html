@@ -157,6 +157,16 @@ archives</a>).
         document (and the `rdfs:comment` property is used to include them in the RDFS
         representations).
       </p>
+      <figure id="vocabulary-diagram" style="text-align:center">
+        <div data-include="vocabulary.svg" data-include-replace="true" data-oninclude="massageSVGLinks"></div>
+        <figcaption>Overview diagram of the vocabulary (without the`xsd`
+          datatypes). The terms prefixed by <code>cred:</code> or <code>sec:</code> are not defined in this vocabulary;
+          they have only been added to the diagram for the sake of clarity.<br />
+          A separate, stand-alone <a href="vocabulary.svg" target="_blank">SVG version</a> of the diagram, as well as a <a
+            href="#vocabulary-diagram-alt">textual description</a>,
+          are also available.
+        </figcaption>
+      </figure>
     </section>
     <section>
       <h2>Namespaces</h2>
@@ -215,6 +225,105 @@ archives</a>).
         <h2>Deprecated individuals</h2>
       </section>
     </section>
+
+    <section class="appendix" id="vocabulary-diagram-alt">
+      <h2>Diagram description</h2>
+      <details>
+        <summary>Overview diagram of the vocabulary (without the `xsd` datatypes). The terms prefixed by <code>cred:</code> or
+        <code>sec:</code> are not defined in this vocabulary; they have only been added to the diagram for the sake of clarity.</summary>
+        <p>
+          The diagram uses boxes, ellipses, and connecting lines with different "styles"
+          (border color, end marker, line type) to differentiate their semantic meaning:
+          "Property", "Class", and "Datatype" are identified by the shape of the
+          graph node (e.g., an ellipse signifies a "Class"); "Superclass", "Domain Of", or "Range" relationships 
+          are identified by the style of the connecting line.
+          These style names are used in the explanation text that follows, below.
+        </p>
+        <p>
+          The diagram is roughly divided into three sections — left, middle, and right.
+          To make this description easier to understand, these sections will be respectively referred to
+          as the "Classes", "Properties", and "Values" sections.
+          Shapes in the three sections are connected by lines of different styles.
+        </p>
+        <section>
+          <h3>Classes Section</h3>
+
+          <p>
+            The section contains three ellipses, labeled as "cred:CredentialStatus",
+            "BitstringStatusListEntry", and "BitstringStatusList". It also contains
+            a box, styled as "Property" and labeled as "cred:credentialStatus".
+          </p>
+
+          <p>
+            The "cred:CredentialStatus" ellipse, is connected to the ellipse, 
+            labeled as "cred:CredentialStatus", with a line styled "Range". 
+            The ellipse labeled as "BitstringStatusListEntry" is connected to the 
+            ellipse, labeled as "cred:CredentialStatus", with a line styled as 
+            "Superclass".
+          </p>
+
+          <p>
+            The ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are 
+            also connected to a number of boxes, all styled as "Property", with lines styled as
+            "Domain Of"; see the "Properties" section below for further details.
+          </p>
+        </section>
+        <section>
+          <h3>Properties Section</h3>
+
+          <p>
+            The section contains a number of boxes, each styles as "Property". The labels of 
+            these boxes are "statusListIndex", "statusListCredential", "statusPurpose", 
+            "statusMessage", "ttl", "statusReference", "statusSize", and "encodedList".
+            There is also a small, unlabeled circle, which serves as an intersection point for connector
+            lines.
+          </p>
+
+          <p>
+            The ellipse labeled as "BitstringStatusListEntry", described in the previous section, is 
+            connected to the "statusListIndex", and "statusListCredential" boxes with lines styled as "Domain Of". 
+            The ellipse labeled as "BitstringStatusList", also described in the previous section, 
+            is connected to the "statusMessage", "ttl", "statusReference", "statusSize", 
+            and "encodedList" boxes, also with lines styled as "Domain Of".
+          </p>
+
+          <p>
+            Both the ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are connected to the 
+            intersection point with a line styled as "Domain Of", and the intersection point is connected to the 
+            box labeled as "statusPurpose with a line styled as "Domain Of".
+          </p>
+        </section>
+        <section>
+          <h3>Values Section</h3>
+
+          <p>
+            The section contains and ellipse, labeled as "BitstringStatusListCredential", which is connected to 
+            another ellipse, labeled as "cred:VerifiableCredential", with a line styled as "Superclass". 
+            The box labeled as "statusListCredential", described in the previous section, is connected to the ellipse, 
+            labeled as "BitstringStatusListCredential", with a line styled as "Range".
+          </p>
+
+          <p>
+            Another ellipse, labeled as "BistringStatusMessage", is connected to two boxes with lines styled 
+            as "Domain Of". The boxes are styled as "Property" and are labeled with "status" and "message". 
+            The box labeled as "statusMessage", described in the previous section, is connected to the ellipse,
+            labeled as "BistringStatusMessage", with a line styled as "Range".
+          </p>
+
+          <p>
+            The box labeled as "statusSize", described in the previous section, is connected to a box, styled 
+            as "Datatype", and labeled as "xsd:positiveInteger", with a line styled as "Range".
+          </p>
+
+          <p>
+            The box labeled as "encodedList", described in the previous section, is connected to a box, styled
+            as "Datatype", and labeled as "sec:multibase", with a line styled as "Range".
+          </p>
+        </section>
+     </details>
+    </section>
+
+
 
 </body>
 </html>
