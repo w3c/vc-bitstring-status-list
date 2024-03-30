@@ -100,10 +100,11 @@
         }],
         // turn off unused defns warning since we have restrictRefs
         lint: {
-          "no-unused-dfns": false
+          "no-unused-dfns": false,
+          "informative-dfn": false
         },
 
-        xref: ["INFRA", "VC-DATA-MODEL-2.0"],
+        xref: ["INFRA", "I18N-GLOSSARY", "VC-DATA-MODEL-2.0"],
 
         // post process
         postProcess: [restrictRefs, window.respecVc.createVcExamples],
