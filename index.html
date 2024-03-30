@@ -1134,6 +1134,55 @@ that have received a credential from the same geographic region.
     </section>
 
     <section class="informative">
+      <h3>Unnecessary Correlation</h3>
+
+      <p>
+There are a number of global identifiers used in a status list entry, defined in
+Section [[[#bitstringstatuslistentry]]], that can be used across [=verifiers=]
+to correlate [=subjects=]. Some of these properties include `id`,
+`statusListIndex`, and `statusListCredential`.
+      </p>
+
+      <p>
+In some cases, when [=presenting=] a [=verifiable credential=] that contains
+other global identifiers (such as a driver's license identification number),
+using other global identifiers for the status list information does not cause
+further correlation harms since the only thing required for correlation is a
+single globally unique identifier.
+      </p>
+
+      <p>
+When these global identifiers are used in [=presentations=] that utilize
+[=selective disclosure=] or [=unlinkable disclosure=], they can violate privacy
+expectations. [=Issuers=] are urged to enable status information to be
+selectively disclosable when there is an expectation that a particular
+[=verifiable credential=] can be disclosed in a way that avoids
+correlation, such as proving that an individual is above a certain age.
+[=Verifiers=] can require that status information is revealed in situations that
+require them to know the current status of a credential, and the holder might
+then consent to revealing that information or might refuse to do so for a given
+transaction. In all cases, both [=issuers=] and [=verifiers=] are urged to
+ensure that the use of global identifiers is avoided when a particular exchange
+does not require correlation.
+      </p>
+
+      <p>
+For more information on other types of correlation that is possible,
+readers are urged to read the Privacy Considerations section
+in the [[[VC-DATA-MODEL-2.0]]] specification, specifically the
+sections on <a data-cite="VC-DATA-MODEL-2.0#identifier-based-correlation">
+Identifier-Based Correlation</a>,
+<a data-cite="VC-DATA-MODEL-2.0#signature-based-correlation">
+Signature-Based Correlation</a>,
+<a data-cite="VC-DATA-MODEL-2.0#long-lived-identifier-based-correlation">
+Long-Lived Identifier-Based Correlation</a>, and
+<a data-cite="VC-DATA-MODEL-2.0#metadata-based-correlation">
+Metadata-Based Correlation</a>.
+      </p>
+
+    </section>
+
+    <section class="informative">
       <h3>Verifier Caching</h3>
 
       <p>
