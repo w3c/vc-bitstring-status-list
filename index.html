@@ -1186,7 +1186,7 @@ information from presented credentials with a malicious <a>issuer</a>.
     </section>
 
     <section class="informative">
-      <h3>Status List Monitoring</h3>
+      <h3>Monitoring Status Lists</h3>
 
       <p>
 Once a <a>verifier</a> knows of a status list and entry index that is
@@ -1195,27 +1195,27 @@ associated with a specific <a>holder</a>, it becomes possible for that
 status list continues to be updated. This is useful to a <a>verifier</a> that
 needs to understand when a particular <a>verifiable credential</a> has changed
 status without asking the <a>issuer</a> directly for status information on
-the specific <a>holder</a> or when interacting with the <a>holder</a> to get
+the specific <a>verifiable credential</a> or when interacting with the <a>holder</a> to get
 the latest status information is not possible. The feature can also cause a
-privacy violation if the <a>holder</a> is unaware of the ability for the
-<a>verifier</a> to perform near-real-time checks on the status of the
+privacy violation for the <a>holder</a> and/or <a>subject(s)</a> if the
+<a>verifier</a> is able to perform near-real-time checks on the status of the
 <a>verifiable credential</a>.
       </p>
 
       <p>
-<a>Issuers</a> can provide a level of reprieve from this privacy concern to
-<a>holders</a> by revoking and re-issuing effectively the same
+<a>Issuers</a> can provide a level of reprieve from this privacy concern
+<a>holders</a> by revoking and reissuing effectively the same
 <a>verifiable credential</a> on a timeline that is relatively short in nature.
-For example, an <a>issuer</a> could automatically re-issue a
-<a>verifiable credential</a> every three months to break any sort of long-term
-monitoring of a <a>verifiable credential</a> as it changes status and assign
-a new status entry index when the re-issuance occurs.
+For example, an <a>issuer</a> could automatically reissue a
+<a>verifiable credential</a> every three months and assign a new status entry
+index when the reissuance occurs to break any sort of long-term monitoring
+of a <a>verifiable credential</a> as it changes status.
       </p>
 
     </section>
 
     <section class="informative">
-      <h3>Status Message Correlation</h3>
+      <h3>Correlation of Status Messages</h3>
       <p>
 This specification provides a means by which multiple status messages can be
 provided for a particular entry in a status list. While this mechanism can
@@ -1244,30 +1244,31 @@ population, in a public manner.
     </section>
 
     <section class="informative">
-      <h3>Status Message Alterations</h3>
+      <h3>Alteration of Status Messages</h3>
 
       <p>
 When a status list uses the status messages feature, it becomes possible for
-the <a>issuer</a> to increase the type of messages that are associated with
+the <a>issuer</a> to increase the types of messages that are associated with
 the <a>verifiable credentials</a> it issues over time.
       </p>
 
       <p>
-This feature creates a potential privacy violation where <a>holder</a> of the
+This feature creates a potential privacy violation where a <a>holder</a> or
+<a>subject</a> of the
 <a>verifiable credential</a> might be associated with additional status
 information that was not present when the original <a>verifiable credential</a>
 was issued. For example, initial status messages might convey "delayed" and
 "canceled", but additional status messages might be added by the <a>issuer</a>
-to convey "delayed due to non-payment" and "canceled due to illegal activity",
-which would not be apparent to the <a>holder</a> unless there was monitoring
-software operating on behalf of the holder that would warn them that the
-<a>issuer</a> intends to expose additional information about their activity.
+to convey "delayed due to non-payment" and "canceled due to illegal activity".
+This change would not be apparent to the <a>holder</a> unless there was
+monitoring software operating on their behalf that would warn them that
+the <a>issuer</a> intends to expose additional information about their activity.
       </p>
 
       <p>
 Holder software can provide features to <a>holders</a> that warn them about
-their level of information exposure when using <a>verifiable credentials</a>
-that are associated with status messages and warn them when the level of
+the level of <a>holder</a> and/or <a>subject</a> information exposure when using <a>verifiable credentials</a>
+that are associated with status messages, and warn them when the level of
 information exposure changes.
       </p>
     </section>
