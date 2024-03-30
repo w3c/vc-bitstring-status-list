@@ -803,9 +803,9 @@ endpoint listed in the <a>verifiable credential</a>.
       <p>
 [=Issuers=] SHOULD publish status list credentials in a way that can be cached
 and that does not track who retrieves the status list credential, such as
-through [[[?OHTTP]]], a content distribution network that is not operated by the
-[=issuer=], or by using business processes such that the access logs are not
-accessible to data analysts or systems administrators.
+through [[[RFC9458]]], a content distribution network that is not operated by
+the [=issuer=], or business processes for which the access logs are not
+accessible by data analysts or systems administrators.
       </p>
 
     </section>
@@ -916,8 +916,9 @@ validation rules permit such an action.
       </p>
 
       <p>
-[=Verifiers=] SHOULD cache the retrieval of the status list and SHOULD use
-proxies that hide retrieval behavior from the [=issuer=] such as [[[?OHTTP]]].
+[=Verifiers=] SHOULD cache the retrieved status list and SHOULD use proxies
+or other mechanisms, such as [[[RFC9458]]], that hide retrieval behavior from
+the [=issuer=].
       </p>
 
       <p class="note" title="Issuer validation is use case dependent">
