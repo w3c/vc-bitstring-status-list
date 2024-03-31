@@ -9,7 +9,6 @@
       out in the same tree and use relative links so that they'll work offline,
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
-    <script src="./common.js" class="remove"></script>
     <script class="remove"
       src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@2.0.1/dist/main.js"></script>
     <script type="text/javascript" class="remove">
@@ -37,7 +36,14 @@
         // previousMaturity:  "WD",
 
         // extend the bibliography entries
-        localBiblio: ccg.localBiblio,
+        localBiblio: {
+          ALLOSAUR: {
+            title: "ALLOSAUR: Accumulator with Low-Latency Oblivious Sublinear Anonymous credential Updates with Revocations",
+            href: "https://eprint.iacr.org/2022/1362.pdf",
+            date: "January 5th, 2024",
+            publisher: "Cryptology ePrint Archive"
+          }
+        },
         doJsonLd: true,
 
         github: "https://github.com/w3c/vc-bitstring-status-list",
@@ -107,7 +113,7 @@
         xref: ["INFRA", "I18N-GLOSSARY", "VC-DATA-MODEL-2.0"],
 
         // post process
-        postProcess: [restrictRefs, window.respecVc.createVcExamples],
+        postProcess: [window.respecVc.createVcExamples],
 
         // URI of the patent status for this WG, for Rec-track documents
         // !!!! IMPORTANT !!!!
@@ -170,6 +176,12 @@ ol.algorithm li:before {
   font-weight: bold;
   counter-increment: numsection;
   content: counters(numsection, ".") ") ";
+}
+.supported {
+  background-color: #93c47d;
+}
+.missing {
+  background-color: #e06666;
 }
     </style>
   </head>
@@ -319,8 +331,128 @@ when non-conforming documents are consumed.
       <h2>Data Model</h2>
 
       <p>
-The following sections outline the data model for this document.
+There are numerous ways to express status information associated with digital
+credentials. Some of these mechanisms include Certificate Revocation Lists (CRL)
+[[?RFC5280]], the Online Certificate Status Protocol (OCSP) [[?RFC2560]], Bloom
+Filters [[?RFC8932]], and cryptographic accumulators [[?ALLOSAUR]]. This
+specification optimizes for a variety of requirements that are different from
+other mechanisms. These requirements include:
       </p>
+
+      <table class="simple" id="#pfatable">
+        <thead>
+        <tr>
+            <th style="text-align: center;">Technology</th>
+            <th style="text-align: center;">CRL</th>
+            <th style="text-align: center;">OCSP</th>
+            <th style="text-align: center;">Bloom</th>
+            <th style="text-align: center;">Accumulator</th>
+            <th style="text-align: center;">Bitstring</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+Provides tunable group privacy
+            </td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Does not require signed assertion for each credential
+            </td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Resistant to [=issuer=] tracking when fetched by [=verifier=]
+            </td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Caching is space efficient with many revocations
+            </td>
+            <td class="missing">✗</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Highly compressible (>90% average compression)
+            </td>
+            <td class="missing">✗</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Updates are efficient (fast and entire population does not need to update)
+            </td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Uses cryptographic primitives approved by IETF
+            </td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+No false positives
+            </td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Can be delivered by [=holder=] (stapling)
+            </td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+            <td class="supported">✓</td>
+          </tr>
+          <tr>
+            <td>
+Easily profiled for usage with [=verifiable credentials=]
+            </td>
+            <td class="missing">✗</td>
+            <td class="missing">✗</td>
+            <td class="missing">✗</td>
+            <td class="missing">✗</td>
+            <td class="supported">✓</td>
+          </tr>
+        </tbody>
+      </table>
 
       <section>
         <h3>BitstringStatusListEntry</h3>
