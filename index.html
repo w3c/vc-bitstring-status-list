@@ -803,6 +803,13 @@ a credential may involve some understanding of the business case involved.
           </tbody>
         </table>
 
+        <p>
+The example below demonstrates how the `BitstringStatusListEntry` is used
+with a `BitstringStatusListCredential` to provide the [=verifier=] with
+the information necessary to determine the status of a particular
+[=verifiable credential=].
+        </p>
+
         <pre class="example nohighlight" title="Example BitstringStatusListCredential">
 {
   "@context": [
@@ -820,6 +827,16 @@ a credential may involve some understanding of the business case involved.
   }
 }
         </pre>
+
+        <p>
+The status list is expressed inside a [=verifiable credential=] in order to
+enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
+sometimes called "certificate stapling", increases privacy for the [=holder=] by
+ensuring that the [=verifier=] does not need to contact the [=issuer=] to
+retrieve the status list. A [=verifier=] might choose to ignore the
+[=holder=]-provided status list, whose authenticity is verifiable, if it desires
+a more recent version of a status list.
+        </p>
 
         <pre class="example nohighlight" title="Example BitstringStatusListCredential">
 {
