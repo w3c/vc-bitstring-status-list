@@ -1139,8 +1139,9 @@ that have received a credential from the same geographic region.
       <p>
 There are a number of global identifiers used in a status list entry, defined in
 Section [[[#bitstringstatuslistentry]]], that can be used across [=verifiers=]
-to correlate [=subjects=]. Some of these properties include `id`,
-`statusListIndex`, and `statusListCredential`.
+to correlate [=subjects=]. Some of the properties that can 
+express these values are `id`, `statusListIndex`, and 
+`statusListCredential`.
       </p>
 
       <p>
@@ -1156,7 +1157,7 @@ When global identifiers are used in [=presentations=] that use
 [=selective disclosure=] or [=unlinkable disclosure=], they can violate privacy
 expectations. [=Issuers=] are urged to enable status information to be
 selectively disclosable/concealable when a particular [=verifiable credential=]
-is expected to be disclosed in a way that doesn't need correlation, such as when
+is expected to be disclosed in a way that does not need correlation, such as when
 proving that an individual is above a certain age. [=Verifiers=] can require
 that status information be revealed in situations that require them to know the
 current status of a credential, and the holder might then consent or refuse to
@@ -1167,7 +1168,7 @@ prevent correlation, unless it is required for or by a particular exchange.
 
       <p>
 For information on other types of potential correlation,
-readers are urged to digest the Privacy Considerations section of the
+readers are urged to study the Privacy Considerations section of the
 [[[VC-DATA-MODEL-2.0]]] specification, particularly the subsections on
 <a data-cite="VC-DATA-MODEL-2.0#identifier-based-correlation">
 Identifier-Based Correlation</a>,
