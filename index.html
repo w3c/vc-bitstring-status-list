@@ -833,9 +833,9 @@ The status list is expressed inside a [=verifiable credential=] in order to
 enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
 sometimes called "certificate stapling", increases privacy for the [=holder=] by
 ensuring that the [=verifier=] does not need to contact the [=issuer=] to
-retrieve the status list. A [=verifier=] might choose to ignore the
-[=holder=]-provided status list, whose authenticity is verifiable, if it desires
-a more recent version of a status list.
+retrieve the status list. Still, a [=verifier=] might choose to ignore the
+[=holder=]-provided status list, even when its authenticity is verifiable,
+if it desires a more recent version of a status list, for instance.
         </p>
 
         <pre class="example nohighlight" title="Example BitstringStatusListCredential">
