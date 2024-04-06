@@ -1395,20 +1395,25 @@ tracking or sharing the presentation of particular credentials.
       <p>
 A malicious [=verifier=] might intentionally attack group privacy by sharing
 information from presented credentials with a malicious [=issuer=]. This
-sort of collusion is difficult to detect as it is typically performed in a
+sort of collusion is difficult to detect as it is typically performed via a
 secure communication channel between the [=issuer=] and the [=verifier=].
       </p>
       <p>
 A malicious [=issuer=] might intentionally attack group privacy by creating a
-unique status list per credential issued in order to establish a one-to-one
-mapping to track when a [=verifier=] processes a specific credential. Similarly,
-they could establish another a one-to-one mapping by using a different
-cryptographic key for every credential issued that is tracked in a status list.
-This sort of collusion can be detected by [=holder=] software by detecting
-if the global identifiers used within a [=verifiable credential=] are shared
-by other credentials. [=Holders=] could then be warned when presenting a
-[=verifiable credential=] that contains global identifiers that are unique to
-that credential.
+unique status list per issued credential, in order to establish a one-to-one
+mapping to track when a [=verifier=] processes each mapped credential. Similarly,
+they could establish a one-to-one mapping by using a different
+cryptographic key for each credential issued that is tracked by a given status list.
+This sort of collusion can be detected by [=holder=] software that serves
+multiple [=holders=] (e.g., a [=holder=] app that runs on a server) if it
+has, for example, an opt-in process that finds that some global identifier(s) 
+used within a [=verifiable credential=] are shared by other credentials.
+[=Holders=] could then be warned when presenting a [=verifiable credential=]
+that contains some global identifier(s) that are unique to that credential.
+Such an opt-in service could represent some additional privacy concerns;
+whether this potential exposure via the [=holder=] software is justified by
+the awareness of possible global identifier correlation can only be evaluated
+by the users of such a system.
       </p>
     </section>
 
