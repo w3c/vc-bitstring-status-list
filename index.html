@@ -1162,46 +1162,25 @@ from [=issuers=].
       <h3>Decoy Values</h3>
 
       <p>
-[=Issuer=] use of decoy values in status lists has been explored as
-a mechanism to increase the privacy of [=subjects=] by further hiding both
-the size of the group associated with a status list and when values in the
-list change. While algorithms for employing decoy values are out of scope for
-this specification, implementers are advised to heed the guidance in this
-section when considering the use of decoy values.
+[=Issuer=] use of decoy values in status lists has been explored as a mechanism
+to increase the privacy of [=subjects=]. While algorithms for employing decoy
+values are out of scope for this specification, implementers are advised that
+the use of decoy values do not provide privacy gains and can harm privacy in
+most cases.
       </p>
       <p>
-Decoys might help privacy in some cases, but harm privacy in others. For
-example, if status list entry indexes are allocated in a random fashion,
-adding decoys harms privacy because it reduces the group privacy size by the
-number of decoys added to the group. A random allocation of indexes inherently
-hides the true group size, ensuring that decoys are not necessary unless a bulk
-operation, such as setting every credential in a list to the same status
-(such as "revoked"), could reveal the true size of the group to an adversary
-that also knew that the bulk update was to be applied to all non-decoy indexes.```
+When status list entry indexes are allocated in a random fashion, which is the
+suggested mode of operation for this specification, adding decoys harms privacy
+because it reduces the group privacy size by the number of decoys added to the
+group. A random allocation of indexes inherently hides the true group size,
+ensuring that decoys are not necessary.
       </p>
       <p>
-If decoys are used, the proper number of decoys to use is a function of
-at least the desired group privacy size, the randomness of the
-distribution of entries in the set, and whether entities watching the list
-can determine which entries are real and which are decoys as they change
-through time. These variables often change based on the use case and
-implementers are encouraged to carefully evaluate whether decoys would
-help or harm privacy for their particular deployment scenario.
-      </p>
-      <p>
-When using decoy values, it is important to ensure that the decoys
-behave like real entries in the group. For example, if a decoy is used for
-revocation, it would be strange to flip the decoy value to "unrevoked" when that
-is not how the revocation values associated with real entries
-behave. Similarly, changing the decoy values at times and to values that do not
-mimic the behavior of real entries can allow the real entries to be separated
-from the decoy entries through statistical analysis.
-      </p>
-      <p>
-The use of decoys is discouraged for most use cases, as random allocation
-of status list entry indexes provides adequate protection.
-Decoy are only to be considered in deployments where bulk
-operations that would reveal the group size can be performed on a status list.
+There might be use cases where decoy values provide benefits. Implementers are
+cautioned that no such use cases were clearly identified by the group that
+created this specification. As a result, the use of decoys is discouraged for
+most use cases, as random allocation of status list entry indexes provides
+adequate protection.
       </p>
     </section>
 
