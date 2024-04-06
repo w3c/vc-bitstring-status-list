@@ -771,11 +771,12 @@ If present, elements in the `statusMessage` array MUST contain at
 minimum two properties:
                 <ul>
                   <li id="status">
-`status`, being a machine-readable string of the hex value of the status
+`status`, a string representing the hexadecimal value of the status prefixed
+with `0x`
                   </li>
                   <li id="message">
-`message`, being an informative string used by software developers to 
-assist with debugging which SHOULD NOT be displayed to end users.
+`message`, a string used by software developers to assist with debugging
+which SHOULD NOT be displayed to end users.
                   </li>
                 </ul>
 Implementers MAY add additional values to objects in the `statusMessage` array.
@@ -1289,8 +1290,8 @@ that have received a credential from the same geographic region.
       <p>
 There are a number of global identifiers used in a status list entry, defined in
 Section [[[#bitstringstatuslistentry]]], that can be used across [=verifiers=]
-to correlate [=subjects=]. Some of the properties that can 
-express these values are `id`, `statusListIndex`, and 
+to correlate [=subjects=]. Some of the properties that can
+express these values are `id`, `statusListIndex`, and
 `statusListCredential`.
       </p>
 
