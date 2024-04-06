@@ -1144,33 +1144,32 @@ to correlate [=subjects=]. Some of these properties include `id`,
       </p>
 
       <p>
-In some cases, when [=presenting=] a [=verifiable credential=] that contains
-other global identifiers (such as a driver's license identification number),
-using other global identifiers for the status list information does not cause
-further correlation harms since the only thing required for correlation is a
-single globally unique identifier.
+In some cases, such as when [=presenting=] a [=verifiable credential=] that
+contains any other global identifier (such as a driver's license identification
+number), adding one or more global identifier(s) for the status list information
+does not increase correlation harm, since a single globally unique identifier is
+all that is required for correlation.
       </p>
 
       <p>
-When these global identifiers are used in [=presentations=] that utilize
+When global identifiers are used in [=presentations=] that use
 [=selective disclosure=] or [=unlinkable disclosure=], they can violate privacy
 expectations. [=Issuers=] are urged to enable status information to be
-selectively disclosable when there is an expectation that a particular
-[=verifiable credential=] can be disclosed in a way that avoids
-correlation, such as proving that an individual is above a certain age.
-[=Verifiers=] can require that status information is revealed in situations that
-require them to know the current status of a credential, and the holder might
-then consent to revealing that information or might refuse to do so for a given
-transaction. In all cases, both [=issuers=] and [=verifiers=] are urged to
-ensure that the use of global identifiers is avoided when a particular exchange
-does not require correlation.
+selectively disclosable/concealable when a particular [=verifiable credential=]
+is expected to be disclosed in a way that doesn't need correlation, such as when
+proving that an individual is above a certain age. [=Verifiers=] can require
+that status information be revealed in situations that require them to know the
+current status of a credential, and the holder might then consent or refuse to
+reveal that information for a given transaction. In all cases, both [=issuers=]
+and [=verifiers=] are urged to avoid the use of global identifiers in order to
+prevent correlation, unless it is required for or by a particular exchange.
       </p>
 
       <p>
-For more information on other types of correlation that is possible,
-readers are urged to read the Privacy Considerations section
-in the [[[VC-DATA-MODEL-2.0]]] specification, specifically the
-sections on <a data-cite="VC-DATA-MODEL-2.0#identifier-based-correlation">
+For information on other types of potential correlation,
+readers are urged to digest the Privacy Considerations section of the
+[[[VC-DATA-MODEL-2.0]]] specification, particularly the subsections on
+<a data-cite="VC-DATA-MODEL-2.0#identifier-based-correlation">
 Identifier-Based Correlation</a>,
 <a data-cite="VC-DATA-MODEL-2.0#signature-based-correlation">
 Signature-Based Correlation</a>,
