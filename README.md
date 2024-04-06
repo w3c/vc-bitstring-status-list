@@ -1,4 +1,4 @@
-# Verifiable Credential Bit String Status List
+# Verifiable Credential Bitstring Status List
 
 This specification describes a privacy-preserving, space-efficient, and
 high-performance mechanism for publishing the status information
