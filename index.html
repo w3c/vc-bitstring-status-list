@@ -465,6 +465,17 @@ expression of the data model in this section MUST be expressed in a
 conforming [=verifiable credential=] as defined in [[VC-DATA-MODEL-2.0]].
         </p>
 
+        <p class="issue atrisk"
+           title="Bitstring entry sizes greater than 1 are at risk.">
+The Working Group is currently seeking implementer feedback regarding the
+utility of bitstring entries that have sizes greater than one. Supporting
+such entries adds complexity to the solution, and it's not clear whether there
+is enough of an implementation community to support the feature. The WG is
+considering three options: (1) require conforming implementations to support
+the feature; (2) allow implementations to optionally support the feature; or
+(3) remove the feature. At present, the specification implements option (2).
+        </p>
+
         <table class="simple">
           <thead>
             <tr>
@@ -552,39 +563,150 @@ The `statusListCredential` property MUST be a URL to a
 includes the `BitstringStatusListCredential` value.
               </td>
             </tr>
+            <tr>
+              <td id="statusSize">statusSize</td>
+              <td>
+The `statusSize` indicates the size of the status entry in bits. `statusSize`
+MAY be provided. If `statusSize` is not present as a property of the
+`credentialStatus`, then `statusSize` MUST be processed as `1`.  `statusSize`
+MUST be an integer greater than zero. If `statusSize` is provided and is greater
+than `1`, then the property `credentialStatus.statusMessage` MUST be present,
+and the number of status messages must equal the number of possible values.
+              </td>
+            </tr>
+            <tr>
+              <td id="statusMessage">statusMessage</td>
+              <td>
+The `statusMessage` property MUST be an array. If present,
+the length of the array must equal the number of possible status states
+indicated by `statusSize`. `statusMessages` MAY be present if
+`statusSize` is `1`. `statusMessages` MUST be present if
+`statusSize` is greater than `1`.  If not present, the message value
+associated with the bit value of `0` is "unset" and the bit
+value of `1` is "set".
+If present, elements in the `statusMessage` array MUST contain at
+minimum two properties:
+                <ul>
+                  <li id="status">
+`status`, a string representing the hexadecimal value of the status prefixed
+with `0x`
+                  </li>
+                  <li id="message">
+`message`, a string used by software developers to assist with debugging
+which SHOULD NOT be displayed to end users.
+                  </li>
+                </ul>
+Implementers MAY add additional values to objects in the `statusMessage` array.
+Implementers MAY use the string value of `undefined` in the value to indicate
+that a corresponding status is not defined for the associated status value, but
+that it may be defined in the future. Rules for how to handle various status
+messages are outside the scope of normative requirements in this document, but
+it is assumed that implementers will document rules for processing various
+status codes.
+              </td>
+            </tr>
+            <tr>
+              <td id="statusReference">statusReference</td>
+              <td>
+The `statusReference` property provides a point for implementers to include a
+[[URL]] to material related to the status. An implementer MAY include the
+`statusReference` property, and if they do, the value MUST be a [[URL]] or an
+array of URLs. Implementers using a `statusPurpose` of `status` are strongly
+encouraged to provide a `statusReference`.
+                <p class="note" title="Details around reference">
+`statusReference` is especially important when interpretation of the status for
+a credential may involve some understanding of the business case involved.
+                </p>
+              </td>
+            </tr>
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example StatusListCredential">
+
+        <p>
+Status list entries can be used to associate a single status type,
+such as `revocation` or `suspension`, with a [=verifiable credential=] by using
+the `statusPurpose` property. The example below demonstrates the association
+of simple status list entries:
+        </p>
+
+        <pre class="example nohighlight"
+             title="Example StatusListCredential using simple entries">
 {
   "@context": [
-    "https://www.w3.org/ns/credentials/v2"
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
   ],
   "id": "https://example.com/credentials/23894672394",
-  "type": ["VerifiableCredential"],
+  "type": ["VerifiableCredential", "EmployeeIdCredential"],
   "issuer": "did:example:12345",
-  "validFrom": "2021-04-05T14:27:42Z",
-  <span class="highlight">"credentialStatus": [
-    {
-      "id": "https://example.com/credentials/status/3#94567",
-      "type": "BitstringStatusListEntry",
-      "statusPurpose": "revocation",
-      "statusListIndex": "94567",
-      "statusListCredential": "https://example.com/credentials/status/3"
-    }, {
-      "id": "https://example.com/credentials/status/4#23452",
-      "type": "BitstringStatusListEntry",
-      "statusPurpose": "suspension",
-      "statusListIndex": "23452",
-      "statusListCredential": "https://example.com/credentials/status/4"
-    }
-  ]</span>,
+  "validFrom": "2024-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": [{
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }, {
+    "id": "https://example.com/credentials/status/4#23452",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "suspension",
+    "statusListIndex": "23452",
+    "statusListCredential": "https://example.com/credentials/status/4"
+  }]</span>,
   "credentialSubject": {
     "id": "did:example:6789",
-    "type": "Person"
+    "type": "Person",
+    "employeeId": "A-123456"
   }
 }
         </pre>
+
+        <p>
+Status list entries can be used to associate many status types with a
+[=verifiable credential=] by using the `message` status purpose. The set of
+messages associated with a particular entry is committed to by the [=issuer=]
+by using the `statusSize`, `statusMessage`, and optional `statusReference`
+properties. This commitment is done at the time of issuance to ensure that
+the [=holder=] knows what sort of information might be associated with a
+particular [=verifiable credential=] that is in their possession, and would
+then be discoverable by a [=verifier=] that receives that credential.
+        </p>
+
+        <pre class="example nohighlight"
+             title="Example StatusListCredential using more complex entries">
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/2947478373",
+  "type": ["VerifiableCredential", "BillOfLadingExampleCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2024-04-05T03:52:31Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://example.com/credentials/status/8#492847",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "message",
+    "statusListIndex": "492847",
+    "statusSize": 2,
+    "statusListCredential": "https://example.com/credentials/status/8",
+    "statusMessage": [
+        {"status":"0x0", "message":"pending_review"},
+        {"status":"0x1", "message":"accepted"},
+        {"status":"0x2", "message":"rejected"},
+        ...
+    ],
+    "statusReference": "https://example.org/status-dictionary/"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "BillOfLading",
+    ...
+  }
+}
+        </pre>
+
       </section>
 
       <section>
@@ -594,20 +716,29 @@ includes the `BitstringStatusListCredential` value.
 When a status list [=verifiable credential=] is published, it MUST be a
 conforming document, as defined in [[VC-DATA-MODEL-2.0]], that expresses the
 data model in this section. The following section describes the format of
-the [=verifiable credential=] that encapsulates the status list:
+the [=verifiable credential=] that encapsulates the status list.
         </p>
 
-        <p class="issue atrisk"
-           title="Bitstring entry sizes greater than 1 are at risk.">
-The Working Group is currently seeking implementer feedback regarding the
-utility of bitstring entries that have sizes greater than one. Supporting
-such entries adds complexity to the solution, and it's not clear whether there
-is enough of an implementation community to support the feature. The WG is
-considering three options: (1) require conforming implementations to support
-the feature; (2) allow implementations to optionally support the feature; or
-(3) remove the feature. At present, the specification implements option (2).
+        <p>
+The status list is expressed inside a [=verifiable credential=] in order to
+enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
+sometimes called "certificate stapling", increases privacy for the [=holder=] by
+ensuring that the [=verifier=] does not need to contact the [=issuer=] to
+retrieve the status list. Still, a [=verifier=] might choose to ignore the
+[=holder=]-provided status list, even when its authenticity is verifiable,
+if it desires a more recent version of a status list, for instance.
         </p>
 
+        <p>
+[=Issuers=] and [=verifiers=] are advised that the [=issuer=] of a
+[=verifiable credential=] and the [=issuer=] of an associated
+`BitstringStatusListCredential` might not be the same. There are technical,
+legal, institutional, and political reasons that might make it appropriate
+to separate the authority over the original credential from the authority to
+revoke such a credential. Therefore, the `issuer` value of a <a>verifiable
+credential</a> containing a `BitstringStatusListEntry` MAY be different from
+the `issuer` value of a `BitstringStatusListCredential`.
+        </p>
 
         <p class="issue atrisk" title="TTL conflicts with `validUntil`">
 The Working Group is considering the removal of the `ttl` ("time to live")
@@ -746,62 +877,6 @@ status list SHOULD align any protocol-specific caching information, such as the
 HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
-            <tr>
-              <td id="statusSize">credentialSubject.statusSize</td>
-              <td>
-The `statusSize` indicates the size of the status entry in bits. `statusSize`
-MAY be provided. If `statusSize` is not present as a property of the
-`credentialStatus`, then `statusSize` MUST be processed as `1`.  `statusSize`
-MUST be an integer greater than zero. If `statusSize` is provided and is greater
-than `1`, then the property `credentialStatus.statusMessage` MUST be present,
-and the number of status messages must equal the number of possible values.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusMessage">credentialSubject.statusMessage</td>
-              <td>
-The `statusMessage` property MUST be an array. If present,
-the length of the array must equal the number of possible status states
-indicated by `statusSize`. `statusMessages` MAY be present if
-`statusSize` is `1`. `statusMessages` MUST be present if
-`statusSize` is greater than `1`.  If not present, the message value
-associated with the bit value of `0` is "unset" and the bit
-value of `1` is "set".
-If present, elements in the `statusMessage` array MUST contain at
-minimum two properties:
-                <ul>
-                  <li id="status">
-`status`, a string representing the hexadecimal value of the status prefixed
-with `0x`
-                  </li>
-                  <li id="message">
-`message`, a string used by software developers to assist with debugging
-which SHOULD NOT be displayed to end users.
-                  </li>
-                </ul>
-Implementers MAY add additional values to objects in the `statusMessage` array.
-Implementers MAY use the string value of `undefined` in the value to indicate
-that a corresponding status is not defined for the associated status value, but
-that it may be defined in the future. Rules for how to handle various status
-messages are outside the scope of normative requirements in this document, but
-it is assumed that implementers will document rules for processing various
-status codes.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusReference">credentialSubject.statusReference</td>
-              <td>
-The `statusReference` property provides a point for implementers to include a
-[[URL]] to material related to the status. An implementer MAY include the
-`statusReference` property, and if they do, the value MUST be a [[URL]] or an
-array of URLs. Implementers using a `statusPurpose` of `status` are strongly
-encouraged to provide a `statusReference`.
-                <p class="note" title="Details around reference">
-`statusReference` is especially important when interpretation of the status for
-a credential may involve some understanding of the business case involved.
-                </p>
-              </td>
-            </tr>
           </tbody>
         </table>
 
@@ -830,56 +905,9 @@ the information necessary to determine the status of a particular
 }
         </pre>
 
-        <p>
-The status list is expressed inside a [=verifiable credential=] in order to
-enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
-sometimes called "certificate stapling", increases privacy for the [=holder=] by
-ensuring that the [=verifier=] does not need to contact the [=issuer=] to
-retrieve the status list. Still, a [=verifier=] might choose to ignore the
-[=holder=]-provided status list, even when its authenticity is verifiable,
-if it desires a more recent version of a status list, for instance.
-        </p>
-
-        <pre class="example nohighlight" title="Example BitstringStatusListCredential">
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2"
-  ],
-  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
-  "issuer": "did:example:12345",
-  "validFrom": "2021-04-05T14:27:40Z",
-  "credentialSubject": {
-    "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">BitstringStatusList</span>",
-    "ttl": 500,
-    "statusPurpose": "<span class="highlight">status</span>",
-    "statusReference": "https://example.org/status-dictionary/",
-    "statusSize": 2,
-    "statusMessage": [
-        {"status":"0x0", "message":"valid"},
-        {"status":"0x1", "message":"invalid"},
-        {"status":"0x2", "message":"pending_review"},
-        ...
-    ],
-    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
-  }
-}
-        </pre>
       </section>
-
-      <p>
-[=Issuers=] and [=verifiers=] are advised that the `issuer` of a
-[=verifiable credential=] and the `issuer` of an associated
-`BitstringStatusListCredential` might not be the same. There are technical,
-legal, institutional, and political reasons that might make it appropriate
-to separate the authority over the original credential from the authority to
-revoke such a credential. Therefore, the `issuer` value of a <a>verifiable
-credential</a> containing a `BitstringStatusListEntry` MAY be different from
-the `issuer` value of a `BitstringStatusListCredential`.
-      </p>
-
     </section>
+  </section>
 
   <section class="normative">
     <h2>Algorithms</h2>
