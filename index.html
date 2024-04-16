@@ -1174,10 +1174,12 @@ secure communication channel between the [=issuer=] and the [=verifier=].
       </p>
       <p>
 A malicious [=issuer=] might intentionally attack group privacy by creating a
-unique status list per issued credential, in order to establish a one-to-one
+unique status list for each issued credential, in order to establish a one-to-one
 mapping to track when a [=verifier=] processes each mapped credential. Similarly,
 they could establish a one-to-one mapping by using a different
-cryptographic key for each credential issued that is tracked by a given status list.
+cryptographic key for each issued credential that is tracked by a given status list.
+      </p>
+      <p>
 This sort of collusion can be detected by [=holder=] software that serves
 multiple [=holders=] (e.g., a [=holder=] app that runs on a server) if it
 has, for example, an opt-in process that finds that some global identifier(s) 
