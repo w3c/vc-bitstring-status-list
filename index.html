@@ -663,14 +663,17 @@ of simple status list entries:
         </pre>
 
         <p>
-Status list entries can be used to associate many status types with a
-[=verifiable credential=] by using the `message` status purpose. The set of
-messages associated with a particular entry is committed to by the [=issuer=]
-by using the `statusSize`, `statusMessage`, and optional `statusReference`
-properties. This commitment is done at the time of issuance to ensure that
+The use of `message` as the status purpose enables an issuer to
+define an arbitrary number of custom, descriptive messages about
+the status of the [=verifiable credential=]. The [=issuer=] commits to
+the set of messages that may be associated with a particular entry
+(i.e., with a particular [=verifiable credential=]) through the
+`statusSize`, `statusMessage`, and optional `statusReference` properties,
+at the time of [=verifiable credential=] issuance. This is to ensure that
 the [=holder=] knows what sort of information might be associated with a
-particular [=verifiable credential=] that is in their possession, and would
-then be discoverable by a [=verifier=] that receives that credential.
+particular [=verifiable credential=] they keep in their possession, that
+could then be discoverable by a [=verifier=] that later receives that
+credential.
         </p>
 
         <pre class="example nohighlight"
