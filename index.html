@@ -734,7 +734,7 @@ the [=verifiable credential=] that encapsulates the status list.
 
         <p>
 The status list is expressed inside a [=verifiable credential=] in order to
-enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
+enable a [=holder=] to provide it directly to a [=verifier=]. This mechanism,
 sometimes called "certificate stapling", increases privacy for the [=holder=] by
 ensuring that the [=verifier=] does not need to contact the [=issuer=] to
 retrieve the status list. Still, a [=verifier=] might choose to ignore the
@@ -746,11 +746,12 @@ if it desires a more recent version of a status list, for instance.
 [=Issuers=] and [=verifiers=] are advised that the [=issuer=] of a
 [=verifiable credential=] and the [=issuer=] of an associated
 `BitstringStatusListCredential` might not be the same. There are technical,
-legal, institutional, and political reasons that might make it appropriate
-to separate the authority over the original credential from the authority to
-revoke such a credential. Therefore, the `issuer` value of a <a>verifiable
-credential</a> containing a `BitstringStatusListEntry` MAY be different from
-the `issuer` value of a `BitstringStatusListCredential`.
+legal, institutional, political, and other reasons that might make it
+appropriate to separate the authority over the original credential from the
+authority to revoke, or otherwise change the status of, such a credential.
+Therefore, the `issuer` value of a [=verifiable credential=] containing a
+`BitstringStatusListEntry` MAY be different from the `issuer` value of a
+`BitstringStatusListCredential`.
         </p>
 
         <p class="issue atrisk" title="TTL conflicts with `validUntil`">
