@@ -578,15 +578,17 @@ number of possible values.
             <tr>
               <td id="statusMessage">statusMessage</td>
               <td>
-The `statusMessage` property MUST be an array. If present,
-the length of the array must equal the number of possible status states
-indicated by `statusSize`. `statusMessages` MAY be present if
-`statusSize` is `1`. `statusMessages` MUST be present if
-`statusSize` is greater than `1`.  If not present, the message value
-associated with the bit value of `0` is "unset" and the bit
-value of `1` is "set".
-If present, elements in the `statusMessage` array MUST contain at
-minimum two properties:
+If present, the `statusMessage` property MUST be an array, the length
+of which MUST equal the number of possible status messages indicated
+by `statusSize` (e.g., `statusMessage` array MUST have 2 elements if
+`statusSize` has 1 bit, 4 elements if `statusSize` has 2 bits, 8
+elements if `statusSize` has 3 bits, etc.). `statusMessage` MAY be
+present if `statusSize` is `1`, and MUST be present if `statusSize` is
+greater than `1`.  If the `statusMessage` array is not present, the
+message values associated with the `status` bit values of `1` and `0`
+are "set" and "unset", respectively. If the `statusMessage` array is
+present, each element MUST contain the two properties described below,
+and MAY contain additional properties.
                 <ul>
                   <li id="status">
 `status`, a string representing the hexadecimal value of the status prefixed
