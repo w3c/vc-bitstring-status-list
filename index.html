@@ -608,11 +608,10 @@ status codes.
             <tr>
               <td id="statusReference">statusReference</td>
               <td>
-The `statusReference` property provides a point for implementers to include a
-[[URL]] to material related to the status. An implementer MAY include the
-`statusReference` property, and if they do, the value MUST be a [[URL]] or an
-array of URLs. Implementers using a `statusPurpose` of `status` are strongly
-encouraged to provide a `statusReference`.
+An implementer MAY include the `statusReference` property. If present, its
+value MUST be a [[URL]] or an array of [[URLs]] which dereference to material
+related to the status. Implementers using a `statusPurpose` of `message` are
+strongly encouraged to provide a `statusReference`.
                 <p class="note" title="Details around reference">
 `statusReference` is especially important when interpretation of the status for
 a credential may involve some understanding of the business case involved.
