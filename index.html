@@ -624,10 +624,18 @@ a credential may involve some understanding of the business case involved.
 
 
         <p>
-Status list entries can be used to associate a single status type,
-such as `revocation` or `suspension`, with a [=verifiable credential=] by using
-the `statusPurpose` property. The example below demonstrates the association
-of simple status list entries:
+Status list entries can be used to express the purpose of a
+status associated with a [=verifiable credential=] by using the
+`statusPurpose` property.
+        </p>
+        <p>
+The use of `revocation` or `suspension` as the status purpose
+includes the semantics of the status, with `revocation`
+indicating that a status bit expresses whether a
+[=verifiable credential=] has been revoked and `suspension`
+indicating that a status bit expresses whether a
+[=verifiable credential=] has been suspended. The example below
+demonstrates the use of these status purposes:
         </p>
 
         <pre class="example nohighlight"
