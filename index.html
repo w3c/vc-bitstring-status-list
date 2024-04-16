@@ -612,7 +612,7 @@ status codes.
               <td id="statusReference">statusReference</td>
               <td>
 An implementer MAY include the `statusReference` property. If present, its
-value MUST be a [[URL]] or an array of [[URLs]] which dereference to material
+value MUST be a URL or an array of URLs [[URL]] which dereference to material
 related to the status. Implementers using a `statusPurpose` of `message` are
 strongly encouraged to provide a `statusReference`.
                 <p class="note" title="Details around reference">
@@ -1283,13 +1283,13 @@ Some implementations might choose to support less specific media types such as
     </p>
     <p>
 When dereferencing over HTTP, the use of the <a
-data-cite="rfc7231#section-5.3.2">accept</a>
-and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, might allow
+data-cite="?RFC7231#section-5.3.2">accept</a>
+and <a data-cite="?RFC7231#section-3.1.1.5">content-type</a> headers, might allow
 some implementations to negotiate for the proof format used to secure the
 `statusListCredential`.
     </p>
     <p>
-Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415
+Some implementations might use the <a data-cite="?RFC7231#section-6.5.13">415
 Unsupported Media Type</a> status code to signal that they do not support the
 requested media type.
     </p>
