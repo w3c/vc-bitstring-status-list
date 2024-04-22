@@ -11,10 +11,10 @@
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class="remove"
       src="https://cdn.jsdelivr.net/gh/digitalbazaar/respec-vc@2.0.1/dist/main.js"></script>
-    <script type="text/javascript" class="remove">
+    <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-        specStatus: "ED",
+        specStatus: "CR",
         group: "vc",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -24,9 +24,9 @@
         subtitle: "Privacy-preserving status information for Verifiable Credentials",
 
         // if you wish the publication date to be other than today, set this
-        //publishDate: "2023-04-27",
-        //crEnd: "2019-04-23",
-        //implementationReportURI: "https://w3c.github.io/sdh-test-suite",
+        publishDate: "2024-05-09",
+        crEnd: "2024-06-06",
+        implementationReportURI: "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
         //previousMaturity: "CG-FINAL",
         //previousPublishDate: "2021-03-18",
 
@@ -52,14 +52,11 @@
         // if there a publicly available Editor's Draft, this is the link
         edDraftURI: "https://w3c.github.io/vc-bitstring-status-list/",
 
-        // if this is a LCWD, uncomment and set the end of its review period
-        // lcEnd: "2009-08-05",
-
         // editors, add as many as you like
         // only "name" is required
         editors: [{
           name: "Manu Sporny",
-          url: "http://manu.sporny.org/",
+          url: "https://www.linkedin.com/in/manusporny/",
           company: "Digital Bazaar",
           companyURL: "https://www.digitalbazaar.com/",
           w3cid: 41758
@@ -71,9 +68,9 @@
           w3cid: 48025
         }, {
           name: 'Mike Prorock',
-          url: 'https://mesur.io/',
+          url: 'https://www.mesur.io/',
           company: 'mesur.io',
-          companyURL: 'https://mesur.io/',
+          companyURL: 'https://www.mesur.io/',
           w3cid: 130636
         }, {
           name: 'Mahmoud Alkhraishi',
@@ -126,7 +123,7 @@
         otherLinks: [{
           key: "Related Documents",
           data: [{
-            value: "Verifiable Credentials Data Model",
+            value: "Verifiable Credentials Data Model v2.0",
             href: "https://www.w3.org/TR/vc-data-model-2.0/"
           }]
         }]
@@ -194,7 +191,18 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.
       </p>
     </section>
 
-    <section id='sotd'></section>
+    <section id='sotd'>
+
+      <p>
+The Working Group is actively seeking implementation feedback for this
+specification. In order to exit the Candidate Recommendation phase, the
+Working Group has set the requirement of at least two independent
+implementations for each mandatory feature in the specification. For details
+on the conformance testing process, see the
+<a href="https://w3c.github.io/vc-bitstring-status-list-test-suite/">
+implementation report</a>.
+      </p>
+    </section>
 
     <section class="informative">
       <h2>Introduction</h2>
@@ -276,12 +284,12 @@ If better group privacy is required, the bitstring can be made larger.
 
         <figure id="bitstring">
           <img style="margin: auto; display: block; width: 75%;"
-               src="diagrams/StatusList2021.svg" alt="diagram showing a
-               list of boxes at the top of the image with two of them in
-               red depicting revoked credentials. Text beside the boxes to the
-               right reads 16 kilobytes. An depiction of the boxes being
-               GZIP compressed into a cylinder on the bottom of the page shows
-               that compression has resulted in a final size of 135 bytes.">
+            src="diagrams/BitstringStatusListConcept.svg" alt="
+          diagram showing a list of boxes at the top of the image with two of
+          them in red depicting revoked credentials. Text beside the boxes to
+          the right reads 16 kilobytes. An depiction of the boxes being GZIP
+          compressed into a cylinder on the bottom of the page shows that
+          compression has resulted in a final size of 135 bytes.">
           <figcaption style="text-align: center;">
             A visual depiction of the concepts outlined in this section.
           </figcaption>
@@ -303,7 +311,11 @@ degree remains valid.
       <section class="informative">
         <h3>Terminology</h3>
 
-        <div data-include="https://w3c.github.io/vc-data-model/terms.html"></div>
+        <p>
+Terminology used throughout this document is defined in the
+<a data-cite="VC-DATA-MODEL-2.0#terminology">Terminology</a> section of the
+[[[VC-DATA-MODEL-2.0]]] specification.
+        </p>
       </section>
 
       <section id="conformance" class="normative">
@@ -465,6 +477,17 @@ expression of the data model in this section MUST be expressed in a
 conforming [=verifiable credential=] as defined in [[VC-DATA-MODEL-2.0]].
         </p>
 
+        <p class="issue atrisk"
+           title="Bitstring entry sizes greater than 1 are at risk.">
+The Working Group is currently seeking implementer feedback regarding the
+utility of bitstring entries that have sizes greater than one. Supporting
+such entries adds complexity to the solution, and it's not clear whether there
+is enough of an implementation community to support the feature. The WG is
+considering three options: (1) require conforming implementations to support
+the feature; (2) allow implementations to optionally support the feature; or
+(3) remove the feature. At present, the specification implements option (2).
+        </p>
+
         <table class="simple">
           <thead>
             <tr>
@@ -552,39 +575,163 @@ The `statusListCredential` property MUST be a URL to a
 includes the `BitstringStatusListCredential` value.
               </td>
             </tr>
+            <tr>
+              <td id="statusSize">statusSize</td>
+              <td>
+The `statusSize` indicates the size of the status entry in bits. `statusSize`
+MAY be provided. If `statusSize` is not present as a property of the
+`credentialStatus`, then `statusSize` MUST be processed as `1`.  If present,
+`statusSize` MUST be an integer greater than zero. If `statusSize` is provided
+and is greater than `1`, then the property `credentialStatus.statusMessage`
+MUST be present, and the number of status messages MUST equal the
+number of possible values.
+              </td>
+            </tr>
+            <tr>
+              <td id="statusMessage">statusMessage</td>
+              <td>
+If present, the `statusMessage` property MUST be an array, the length
+of which MUST equal the number of possible status messages indicated
+by `statusSize` (e.g., `statusMessage` array MUST have 2 elements if
+`statusSize` has 1 bit, 4 elements if `statusSize` has 2 bits, 8
+elements if `statusSize` has 3 bits, etc.). `statusMessage` MAY be
+present if `statusSize` is `1`, and MUST be present if `statusSize` is
+greater than `1`.  If the `statusMessage` array is not present, the
+message values associated with the `status` bit values of `1` and `0`
+are "set" and "unset", respectively. If the `statusMessage` array is
+present, each element MUST contain the two properties described below,
+and MAY contain additional properties.
+                <ul>
+                  <li id="status">
+`status`, a string representing the hexadecimal value of the status prefixed
+with `0x`
+                  </li>
+                  <li id="message">
+`message`, a string used by software developers to assist with debugging
+which SHOULD NOT be displayed to end users.
+                  </li>
+                </ul>
+Implementers MAY add additional values to objects in the `statusMessage` array.
+Implementers MAY use the string value of `undefined` in the value to indicate
+that a corresponding status is not defined for the associated status value, but
+that it may be defined in the future. Rules for how to handle various status
+messages are outside the scope of normative requirements in this document, but
+it is assumed that implementers will document rules for processing various
+status codes.
+              </td>
+            </tr>
+            <tr>
+              <td id="statusReference">statusReference</td>
+              <td>
+An implementer MAY include the `statusReference` property. If present, its
+value MUST be a URL or an array of URLs [[URL]] which dereference to material
+related to the status. Implementers using a `statusPurpose` of `message` are
+strongly encouraged to provide a `statusReference`.
+                <p class="note" title="Details around reference">
+`statusReference` is especially important when interpretation of the status for
+a credential may involve some understanding of the business case involved.
+                </p>
+              </td>
+            </tr>
           </tbody>
         </table>
 
-        <pre class="example nohighlight" title="Example StatusListCredential">
+
+        <p>
+Status list entries can be used to express the purpose of a
+status associated with a [=verifiable credential=] by using the
+`statusPurpose` property.
+        </p>
+        <p>
+The use of `revocation` or `suspension` as the status purpose
+includes the semantics of the status, with `revocation`
+indicating that a status bit expresses whether a
+[=verifiable credential=] has been revoked and `suspension`
+indicating that a status bit expresses whether a
+[=verifiable credential=] has been suspended. The example below
+demonstrates the use of these status purposes:
+        </p>
+
+        <pre class="example nohighlight"
+             title="Example StatusListCredential using simple entries">
 {
   "@context": [
-    "https://www.w3.org/ns/credentials/v2"
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
   ],
   "id": "https://example.com/credentials/23894672394",
-  "type": ["VerifiableCredential"],
+  "type": ["VerifiableCredential", "EmployeeIdCredential"],
   "issuer": "did:example:12345",
-  "validFrom": "2021-04-05T14:27:42Z",
-  <span class="highlight">"credentialStatus": [
-    {
-      "id": "https://example.com/credentials/status/3#94567",
-      "type": "BitstringStatusListEntry",
-      "statusPurpose": "revocation",
-      "statusListIndex": "94567",
-      "statusListCredential": "https://example.com/credentials/status/3"
-    }, {
-      "id": "https://example.com/credentials/status/4#23452",
-      "type": "BitstringStatusListEntry",
-      "statusPurpose": "suspension",
-      "statusListIndex": "23452",
-      "statusListCredential": "https://example.com/credentials/status/4"
-    }
-  ]</span>,
+  "validFrom": "2024-04-05T14:27:42Z",
+  <span class="highlight">"credentialStatus": [{
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  }, {
+    "id": "https://example.com/credentials/status/4#23452",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "suspension",
+    "statusListIndex": "23452",
+    "statusListCredential": "https://example.com/credentials/status/4"
+  }]</span>,
   "credentialSubject": {
     "id": "did:example:6789",
-    "type": "Person"
+    "type": "Person",
+    "employeeId": "A-123456"
   }
 }
         </pre>
+
+        <p>
+The use of `message` as the status purpose enables an issuer to
+define an arbitrary number of custom, descriptive messages about
+the status of the [=verifiable credential=]. The [=issuer=] commits to
+the set of messages that may be associated with a particular entry
+(i.e., with a particular [=verifiable credential=]) through the
+`statusSize`, `statusMessage`, and optional `statusReference` properties,
+at the time of [=verifiable credential=] issuance. This is to ensure that
+the [=holder=] knows what sort of information might be associated with a
+particular [=verifiable credential=] they keep in their possession, that
+could then be discoverable by a [=verifier=] that later receives that
+credential.
+        </p>
+
+        <pre class="example nohighlight"
+             title="Example StatusListCredential using more complex entries">
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/2947478373",
+  "type": ["VerifiableCredential", "BillOfLadingExampleCredential"],
+  "issuer": "did:example:12345",
+  "validFrom": "2024-04-05T03:52:31Z",
+  <span class="highlight">"credentialStatus": {
+    "id": "https://example.com/credentials/status/8#492847",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "message",
+    "statusListIndex": "492847",
+    "statusSize": 2,
+    "statusListCredential": "https://example.com/credentials/status/8",
+    "statusMessage": [
+        {"status":"0x0", "message":"pending_review"},
+        {"status":"0x1", "message":"accepted"},
+        {"status":"0x2", "message":"rejected"},
+        ...
+    ],
+    "statusReference": "https://example.org/status-dictionary/"
+  }</span>,
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "BillOfLading",
+    ...
+  }
+}
+        </pre>
+
       </section>
 
       <section>
@@ -594,20 +741,30 @@ includes the `BitstringStatusListCredential` value.
 When a status list [=verifiable credential=] is published, it MUST be a
 conforming document, as defined in [[VC-DATA-MODEL-2.0]], that expresses the
 data model in this section. The following section describes the format of
-the [=verifiable credential=] that encapsulates the status list:
+the [=verifiable credential=] that encapsulates the status list.
         </p>
 
-        <p class="issue atrisk"
-           title="Bitstring entry sizes greater than 1 are at risk.">
-The Working Group is currently seeking implementer feedback regarding the
-utility of bitstring entries that have sizes greater than one. Supporting
-such entries adds complexity to the solution, and it's not clear whether there
-is enough of an implementation community to support the feature. The WG is
-considering three options: (1) require conforming implementations to support
-the feature; (2) allow implementations to optionally support the feature; or
-(3) remove the feature. At present, the specification implements option (2).
+        <p>
+The status list is expressed inside a [=verifiable credential=] in order to
+enable a [=holder=] to provide it directly to a [=verifier=]. This mechanism,
+sometimes called "certificate stapling", increases privacy for the [=holder=] by
+ensuring that the [=verifier=] does not need to contact the [=issuer=] to
+retrieve the status list. Still, a [=verifier=] might choose to ignore the
+[=holder=]-provided status list, even when its authenticity is verifiable,
+if it desires a more recent version of a status list, for instance.
         </p>
 
+        <p>
+[=Issuers=] and [=verifiers=] are advised that the [=issuer=] of a
+[=verifiable credential=] and the [=issuer=] of an associated
+`BitstringStatusListCredential` might not be the same. There are technical,
+legal, institutional, political, and other reasons that might make it
+appropriate to separate the authority over the original credential from the
+authority to revoke, or otherwise change the status of, such a credential.
+Therefore, the `issuer` value of a [=verifiable credential=] containing a
+`BitstringStatusListEntry` MAY be different from the `issuer` value of a
+`BitstringStatusListCredential`.
+        </p>
 
         <p class="issue atrisk" title="TTL conflicts with `validUntil`">
 The Working Group is considering the removal of the `ttl` ("time to live")
@@ -746,62 +903,6 @@ status list SHOULD align any protocol-specific caching information, such as the
 HTTP `Cache-Control` header, with the value in this field.
               </td>
             </tr>
-            <tr>
-              <td id="statusSize">credentialSubject.statusSize</td>
-              <td>
-The `statusSize` indicates the size of the status entry in bits. `statusSize`
-MAY be provided. If `statusSize` is not present as a property of the
-`credentialStatus`, then `statusSize` MUST be processed as `1`.  `statusSize`
-MUST be an integer greater than zero. If `statusSize` is provided and is greater
-than `1`, then the property `credentialStatus.statusMessage` MUST be present,
-and the number of status messages must equal the number of possible values.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusMessage">credentialSubject.statusMessage</td>
-              <td>
-The `statusMessage` property MUST be an array. If present,
-the length of the array must equal the number of possible status states
-indicated by `statusSize`. `statusMessages` MAY be present if
-`statusSize` is `1`. `statusMessages` MUST be present if
-`statusSize` is greater than `1`.  If not present, the message value
-associated with the bit value of `0` is "unset" and the bit
-value of `1` is "set".
-If present, elements in the `statusMessage` array MUST contain at
-minimum two properties:
-                <ul>
-                  <li id="status">
-`status`, a string representing the hexadecimal value of the status prefixed
-with `0x`
-                  </li>
-                  <li id="message">
-`message`, a string used by software developers to assist with debugging
-which SHOULD NOT be displayed to end users.
-                  </li>
-                </ul>
-Implementers MAY add additional values to objects in the `statusMessage` array.
-Implementers MAY use the string value of `undefined` in the value to indicate
-that a corresponding status is not defined for the associated status value, but
-that it may be defined in the future. Rules for how to handle various status
-messages are outside the scope of normative requirements in this document, but
-it is assumed that implementers will document rules for processing various
-status codes.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusReference">credentialSubject.statusReference</td>
-              <td>
-The `statusReference` property provides a point for implementers to include a
-[[URL]] to material related to the status. An implementer MAY include the
-`statusReference` property, and if they do, the value MUST be a [[URL]] or an
-array of URLs. Implementers using a `statusPurpose` of `status` are strongly
-encouraged to provide a `statusReference`.
-                <p class="note" title="Details around reference">
-`statusReference` is especially important when interpretation of the status for
-a credential may involve some understanding of the business case involved.
-                </p>
-              </td>
-            </tr>
           </tbody>
         </table>
 
@@ -830,56 +931,9 @@ the information necessary to determine the status of a particular
 }
         </pre>
 
-        <p>
-The status list is expressed inside a [=verifiable credential=] in order to
-enable a [=holder=] to provide it to a [=verifier=] directly. This mechanism,
-sometimes called "certificate stapling", increases privacy for the [=holder=] by
-ensuring that the [=verifier=] does not need to contact the [=issuer=] to
-retrieve the status list. Still, a [=verifier=] might choose to ignore the
-[=holder=]-provided status list, even when its authenticity is verifiable,
-if it desires a more recent version of a status list, for instance.
-        </p>
-
-        <pre class="example nohighlight" title="Example BitstringStatusListCredential">
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2"
-  ],
-  "id": "<span class="highlight">https://example.com/credentials/status/3</span>",
-  "type": ["VerifiableCredential", "<span class="highlight">BitstringStatusListCredential</span>"],
-  "issuer": "did:example:12345",
-  "validFrom": "2021-04-05T14:27:40Z",
-  "credentialSubject": {
-    "id": "https://example.com/status/3#list",
-    "type": "<span class="highlight">BitstringStatusList</span>",
-    "ttl": 500,
-    "statusPurpose": "<span class="highlight">status</span>",
-    "statusReference": "https://example.org/status-dictionary/",
-    "statusSize": 2,
-    "statusMessage": [
-        {"status":"0x0", "message":"valid"},
-        {"status":"0x1", "message":"invalid"},
-        {"status":"0x2", "message":"pending_review"},
-        ...
-    ],
-    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
-  }
-}
-        </pre>
       </section>
-
-      <p>
-[=Issuers=] and [=verifiers=] are advised that the `issuer` of a
-[=verifiable credential=] and the `issuer` of an associated
-`BitstringStatusListCredential` might not be the same. There are technical,
-legal, institutional, and political reasons that might make it appropriate
-to separate the authority over the original credential from the authority to
-revoke such a credential. Therefore, the `issuer` value of a <a>verifiable
-credential</a> containing a `BitstringStatusListEntry` MAY be different from
-the `issuer` value of a `BitstringStatusListCredential`.
-      </p>
-
     </section>
+  </section>
 
   <section class="normative">
     <h2>Algorithms</h2>
@@ -1241,13 +1295,13 @@ Some implementations might choose to support less specific media types such as
     </p>
     <p>
 When dereferencing over HTTP, the use of the <a
-data-cite="rfc7231#section-5.3.2">accept</a>
-and <a data-cite="rfc7231#section-3.1.1.5">content-type</a> headers, might allow
+data-cite="?RFC7231#section-5.3.2">accept</a>
+and <a data-cite="?RFC7231#section-3.1.1.5">content-type</a> headers, might allow
 some implementations to negotiate for the proof format used to secure the
 `statusListCredential`.
     </p>
     <p>
-Some implementations might use the <a data-cite="rfc7231#section-6.5.13">415
+Some implementations might use the <a data-cite="?RFC7231#section-6.5.13">415
 Unsupported Media Type</a> status code to signal that they do not support the
 requested media type.
     </p>
@@ -1297,10 +1351,10 @@ express these values are `id`, `statusListIndex`, and
 
       <p>
 In some cases, such as when [=presenting=] a [=verifiable credential=] that
-contains any other global identifier (such as a driver's license identification
-number), adding one or more global identifier(s) for the status list information
-does not increase correlation harm, since a single globally unique identifier is
-all that is required for correlation.
+contains a global identifier (such as a driver's license identification number),
+adding one or more global identifier(s) for status list information does not
+increase correlation harm, since a single globally unique identifier is all that
+is required for correlation.
       </p>
 
       <p>
@@ -1326,7 +1380,7 @@ Identifier-Based Correlation</a>,
 <a data-cite="VC-DATA-MODEL-2.0#signature-based-correlation">
 Signature-Based Correlation</a>,
 <a data-cite="VC-DATA-MODEL-2.0#long-lived-identifier-based-correlation">
-Long-Lived Identifier-Based Correlation</a>, and
+Long-Lived-Identifier-Based Correlation</a>, and
 <a data-cite="VC-DATA-MODEL-2.0#metadata-based-correlation">
 Metadata-Based Correlation</a>.
       </p>
@@ -1365,22 +1419,22 @@ from [=issuers=].
 [=Issuer=] use of decoy values in status lists has been explored as a mechanism
 to increase the privacy of [=subjects=]. While algorithms for employing decoy
 values are out of scope for this specification, implementers are advised that
-the use of decoy values do not provide privacy gains and can harm privacy in
+the use of decoy values does not improve privacy and can harm privacy in
 most cases.
       </p>
       <p>
-When status list entry indexes are allocated in a random fashion, which is the
-suggested mode of operation for this specification, adding decoys harms privacy
-because it reduces the group privacy size by the number of decoys added to the
-group. A random allocation of indexes inherently hides the true group size,
-ensuring that decoys are not necessary.
+When indexes of status list entries are allocated in a random fashion, which is
+the suggested mode of operation for this specification, adding decoys harms
+privacy because it reduces the true group size by the number of decoys added
+to the group. A random allocation of indexes inherently hides the true size of
+the group without reducing it, ensuring that decoys are not necessary.
       </p>
       <p>
 There might be use cases where decoy values provide benefits. Implementers are
-cautioned that no such use cases were clearly identified by the group that
-created this specification. As a result, the use of decoys is discouraged for
-most use cases, as random allocation of status list entry indexes provides
-adequate protection.
+cautioned that no such use cases were clearly identifiable by the group that
+created this specification. Therefore, the use of decoys is discouraged for
+most if not all use cases, as random allocation of status list entry indexes
+provides adequate protection.
       </p>
     </section>
 
@@ -1393,15 +1447,30 @@ benefits can only be realized when issuers and verifiers intend to avoid
 tracking or sharing the presentation of particular credentials.
       </p>
       <p>
-A malicious [=issuer=] might intentionally attack group privacy by creating a
-unique status list per credential issued in order to establish a one-to-one mapping to track
-when a [=verifier=] processes a specific credential. Similarly, they could establish
-another a one-to-one mapping by using a different cryptographic key for every credential
-issued that is tracked in a status list.
+A malicious [=verifier=] might intentionally attack group privacy by sharing
+information from presented credentials with a malicious [=issuer=]. This
+sort of collusion is difficult to detect as it is typically performed via a
+secure communication channel between the [=issuer=] and the [=verifier=].
       </p>
       <p>
-A malicious [=verifier=] might intentionally attack group privacy by sharing
-information from presented credentials with a malicious [=issuer=].
+A malicious [=issuer=] might intentionally attack group privacy by creating a
+unique status list for each issued credential, in order to establish a one-to-one
+mapping to track when a [=verifier=] processes each mapped credential. Similarly,
+they could establish a one-to-one mapping by using a different
+cryptographic key for each issued credential that is tracked by a given status list.
+      </p>
+      <p>
+This sort of collusion can be detected by [=holder=] software that serves
+multiple [=holders=] (e.g., a [=holder=] app that runs on a server) if it
+has, for example, an opt-in process that finds that some global identifier(s)
+used within a [=verifiable credential=] are not adequately shared by other
+credentials.
+[=Holders=] could then be warned when presenting a [=verifiable credential=]
+that contains some global identifier(s) that are unique to that credential.
+Such an opt-in service could represent some additional privacy concerns;
+whether this potential exposure via the [=holder=] software is justified by
+the awareness of possible global identifier correlation can only be evaluated
+by the users of such a system.
       </p>
     </section>
 
