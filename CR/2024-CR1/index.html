@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<meta name="generator" content="ReSpec 35.0.0">
+<meta name="generator" content="ReSpec 35.0.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -149,6 +149,7 @@ ol.algorithm li:before {
     
 </style>
   
+<meta name="color-scheme" content="light">
 <meta name="description" content="This specification describes a privacy-preserving, space-efficient, and
 high-performance mechanism for publishing status information such as
 suspension or revocation of Verifiable Credentials through use of bitstrings.">
@@ -826,7 +827,7 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.
 The Working Group is actively seeking implementation feedback for this
 specification. In order to exit the Candidate Recommendation phase, the
 Working Group has set the requirement of at least two independent
-implementations for each mandatory feature in the specification. For details
+implementations for each mandatory or optional feature in the specification. For details
 on the conformance testing process, see the
 <a href="https://w3c.github.io/vc-bitstring-status-list-test-suite/">
 implementation report</a>.
@@ -1145,7 +1146,7 @@ expression of the data model in this section <em class="rfc2119">MUST</em> be ex
 conforming <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a> as defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-vc-data-model-2.0" title="Verifiable Credentials Data Model v2.0">VC-DATA-MODEL-2.0</a></cite>].
         </p>
 
-        <div class="issue atrisk" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><span>(Feature at Risk) Issue 1</span><span class="issue-label">: Bitstring entry sizes greater than 1 are at risk.</span></div><p class="atrisk">
+        <div class="issue atrisk" id="issue-container-generatedID-0"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><span>(Feature at Risk) Issue</span><span class="issue-label">: Bitstring entry sizes greater than 1 are at risk.</span></div><p class="atrisk">
 The Working Group is currently seeking implementer feedback regarding the
 utility of bitstring entries that have sizes greater than one. Supporting
 such entries adds complexity to the solution, and it's not clear whether there
@@ -1294,7 +1295,7 @@ An implementer <em class="rfc2119">MAY</em> include the <code>statusReference</c
 value <em class="rfc2119">MUST</em> be a URL or an array of URLs [<cite><a class="bibref" data-link-type="biblio" href="#bib-url" title="URL Standard">URL</a></cite>] which dereference to material
 related to the status. Implementers using a <code>statusPurpose</code> of <code>message</code> are
 strongly encouraged to provide a <code>statusReference</code>.
-                <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: Details around reference</span></div><p class="">
+                <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: Details around reference</span></div><p class="">
 <code>statusReference</code> is especially important when interpretation of the status for
 a credential may involve some understanding of the business case involved.
                 </p></div>
@@ -1435,7 +1436,7 @@ Therefore, the <code>issuer</code> value of a <a data-link-type="dfn|abstract-op
 <code>BitstringStatusListCredential</code>.
         </p>
 
-        <div class="issue atrisk" id="issue-container-number-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>(Feature at Risk) Issue 2</span><span class="issue-label">: TTL conflicts with `validUntil`</span></div><p class="atrisk">
+        <div class="issue atrisk" id="issue-container-generatedID-2"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>(Feature at Risk) Issue</span><span class="issue-label">: TTL conflicts with `validUntil`</span></div><p class="atrisk">
 The Working Group is considering the removal of the <code>ttl</code> ("time to live")
 feature because its semantics conflict with the semantics of the <code>validUntil</code>
 feature of <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credentials</a>. When a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifier">verifier</a> performs
@@ -1622,7 +1623,7 @@ not complying with associated "<em class="rfc2119">MUST</em>" statements, a
 <em class="rfc2119">MUST</em> be raised.
     </p>
 
-    <div class="issue atrisk" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><span>(Feature at Risk) Issue 3</span><span class="issue-label">: Attempting alignment with IETF Token Status List specification</span></div><p class="atrisk">
+    <div class="issue atrisk" id="issue-container-generatedID-3"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="3"><span>(Feature at Risk) Issue</span><span class="issue-label">: Attempting alignment with IETF Token Status List specification</span></div><p class="atrisk">
 The Working Group is seeking feedback related to implementer desire to align
 with the IETF OAuth Working Group
 <a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/">
@@ -1792,7 +1793,7 @@ or other mechanisms, such as <cite><a data-matched-text="[[[RFC9458]]]" href="ht
 the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-issuers">issuer</a>.
       </p>
 
-      <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Note</span><span class="issue-label">: Issuer validation is use case dependent</span></div><p class="">
+      <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Note</span><span class="issue-label">: Issuer validation is use case dependent</span></div><p class="">
 It is expected that a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifier">verifier</a> will ensure that it trusts the issuer
 of a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a>, as well as the issuer of the associated
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>,
@@ -2019,11 +2020,10 @@ express these values are <code>id</code>, <code>statusListIndex</code>, and
       </p>
 
       <p>
-In some cases, such as when <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-present">presenting</a> a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a> that
-contains a global identifier (such as a driver's license identification number),
-adding one or more global identifier(s) for status list information does not
-increase correlation harm, since a single globally unique identifier is all that
-is required for correlation.
+In some cases, such as when <a data-link-type="dfn|abstract-op" data-lt="presentations" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-presentation">presenting</a> a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a> that contains a global identifier (such as a driver's license
+identification number), adding one or more global identifier(s) for status list
+information does not increase correlation harm, since a single globally unique
+identifier is all that is required for correlation.
       </p>
 
       <p>
@@ -2087,24 +2087,21 @@ from <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.or
       <p>
 <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-issuers">Issuer</a> use of decoy values in status lists has been explored as a mechanism
 to increase the privacy of <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-subjects">subjects</a>. While algorithms for employing decoy
-values are out of scope for this specification, implementers are advised that
-the use of decoy values does not improve privacy and can harm privacy in
-most cases.
+values are out of scope for this specification, implementers are advised that...
       </p>
-      <p>
-When indexes of status list entries are allocated in a random fashion, which is
-the suggested mode of operation for this specification, adding decoys harms
-privacy because it reduces the true group size by the number of decoys added
-to the group. A random allocation of indexes inherently hides the true size of
-the group without reducing it, ensuring that decoys are not necessary.
-      </p>
-      <p>
-There might be use cases where decoy values provide benefits. Implementers are
-cautioned that no such use cases were clearly identifiable by the group that
-created this specification. Therefore, the use of decoys is discouraged for
-most if not all use cases, as random allocation of status list entry indexes
-provides adequate protection.
-      </p>
+
+      <div class="issue" id="issue-container-number-150"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><a href="https://github.com/w3c/vc-bitstring-status-list/issues/150"><span class="issue-number">Issue 150</span></a><span class="issue-label">: Describe decoy entries as a privacy mitigation <a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22before-CR%22" style="background-color: rgb(221, 188, 20); color: rgb(0, 0, 0);" aria-label="GitHub label: before-CR">before-CR</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22pr+exists%22" style="background-color: rgb(14, 138, 22); color: rgb(0, 0, 0);" aria-label="GitHub label: pr exists">pr exists</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22privacy-needs-resolution%22" style="background-color: rgb(212, 175, 55); color: rgb(0, 0, 0);" aria-label="GitHub label: privacy-needs-resolution">privacy-needs-resolution</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22editorial%22" style="background-color: rgb(83, 207, 95); color: rgb(0, 0, 0);" aria-label="GitHub label: editorial">editorial</a></span></div><p class="">
+The Working Group is currently discussing what sort of guidance to provide
+for decoy values. It has been suggested that decoy values are, in general,
+harmful to this specification's privacy characteristics. However, the group
+has not provided a complete analysis and thorough review for that assertion.
+The analysis might result in some use cases where decoy values are helpful, or
+might conclude that decoy values are, in general, harmful. Further
+thought is currently being put into the language around decoy values and
+it is expected that this language will be finalized during the Candidate
+Recommendation phase.
+      </p></div>
+        
     </section>
 
     <section class="informative" id="malicious-issuers-and-verifiers"><div class="header-wrapper"><h3 id="x5-6-malicious-issuers-and-verifiers"><bdi class="secno">5.6 </bdi>Malicious Issuers and Verifiers</h3><a class="self-link" href="#malicious-issuers-and-verifiers" aria-label="Permalink for Section 5.6"></a></div><p><em>This section is non-normative.</em></p>
@@ -2352,7 +2349,7 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
     "id": "did:example:6789",
     "type": "Person"
   }
-}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/23894672394",<br>  "type": [<br>    "VerifiableCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:42Z",<br>  "credentialStatus": {<br>    "id": "https://example.com/credentials/status/3#94567",<br>    "type": "BitstringStatusListEntry",<br>    "statusPurpose": "revocation",<br>    "statusListIndex": "94567",<br>    "statusListCredential": "https://example.com/credentials/status/3"<br>  },<br>  "credentialSubject": {<br>    "id": "did:example:6789",<br>    "type": "Person"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-04-20T15:49:47Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z2NBTQdRHrjbUCX6N5WcU7K56NwvjMiNPMquRuNXfvCMHccSZQs8mfMn<br>a4Zz1G8K3BRnTqHd97uvbhWiBSQ19yGG9"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/23894672394",<br>    "type": [<br>      "VerifiableCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:42Z",<br>    "credentialStatus": {<br>      "id": "https://example.com/credentials/status/3#94567",<br>      "type": "BitstringStatusListEntry",<br>      "statusPurpose": "revocation",<br>      "statusListIndex": "94567",<br>      "statusListCredential": "https://example.com/credentials/status/3"<br>    },<br>    "credentialSubject": {<br>      "id": "did:example:6789",<br>      "type": "Person"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/23894672394",<br>  "sub": "did:example:6789"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXI<br>iOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIi<br>wiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhb<br>HMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3Rh<br>dHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR<br>1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dX<br>MvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlI<br>joiUGVyc29uIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhh<br>bXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiLCJzdWIiOiJkaWQ6ZXhhbXBsZTo2Nzg<br>5In0.a3yRcMXxl_SSh1DoJbZzH6HPvAGeptrFj41bAu6dWmumHKPhwEWVw8sFqE_ECFWqDJPME1<br>kX8E1--o1dS0x-CA</pre>
+}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/23894672394",<br>  "type": [<br>    "VerifiableCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:42Z",<br>  "credentialStatus": {<br>    "id": "https://example.com/credentials/status/3#94567",<br>    "type": "BitstringStatusListEntry",<br>    "statusPurpose": "revocation",<br>    "statusListIndex": "94567",<br>    "statusListCredential": "https://example.com/credentials/status/3"<br>  },<br>  "credentialSubject": {<br>    "id": "did:example:6789",<br>    "type": "Person"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-05-11T12:20:31Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z3ZUuq4iy9cYZJ1Zmmv4rrXJf8ttp73mdVd3QgwU6eAVEEEe2rpojaBc<br>wzkFTYrzhC5EFhRqzpWDn3QFx2iLAbhXW"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/23894672394",<br>    "type": [<br>      "VerifiableCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:42Z",<br>    "credentialStatus": {<br>      "id": "https://example.com/credentials/status/3#94567",<br>      "type": "BitstringStatusListEntry",<br>      "statusPurpose": "revocation",<br>      "statusListIndex": "94567",<br>      "statusListCredential": "https://example.com/credentials/status/3"<br>    },<br>    "credentialSubject": {<br>      "id": "did:example:6789",<br>      "type": "Person"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/23894672394",<br>  "sub": "did:example:6789"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXI<br>iOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIi<br>wiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhb<br>HMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3Rh<br>dHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR<br>1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dX<br>MvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlI<br>joiUGVyc29uIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhh<br>bXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiLCJzdWIiOiJkaWQ6ZXhhbXBsZTo2Nzg<br>5In0.at-2QGPJT9c8IEdsTzMcravY5bnrdwNz1BQrdCnPXBLMOOZVQuocV6A_nUGqq3K69RMUnL<br>JbD3z_76YkyQgvuQ</pre>
       </div>
 
       </section>
@@ -2377,7 +2374,7 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
-}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/status/3",<br>  "type": [<br>    "VerifiableCredential",<br>    "BitstringStatusListCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:40Z",<br>  "credentialSubject": {<br>    "id": "https://example.com/status/3#list",<br>    "type": "BitstringStatusList",<br>    "statusPurpose": "revocation",<br>    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAI<br>C3AYbSVKsAQAAA"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-04-20T15:49:47Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "zSgqQMuWeXNRx3CMspFX37P3SAFsEph9EKSA6D9SxYapyt5DVRobBCwp<br>Xd4Vjda7UDSZENBLodQdoA4eiuGBoTxw"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/status/3",<br>    "type": [<br>      "VerifiableCredential",<br>      "BitstringStatusListCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:40Z",<br>    "credentialSubject": {<br>      "id": "https://example.com/status/3#list",<br>      "type": "BitstringStatusList",<br>      "statusPurpose": "revocation",<br>      "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAA<br>AIC3AYbSVKsAQAAA"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/status/3",<br>  "sub": "https://example.com/status/3#list"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N<br>0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaW<br>RGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6I<br>mh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0<br>dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHN<br>JQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYl<br>NWS3NBUUFBQSJ9fSwiaXNzIjoiZGlkOmV4YW1wbGU6MTIzNDUiLCJqdGkiOiJodHRwczovL2V4Y<br>W1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwic3ViIjoiaHR0cHM6Ly9leGFtcGxlLmNv<br>bS9zdGF0dXMvMyNsaXN0In0.LAUWGhsFqYL3qH-79Qf9pifG1T0vpeVLWYb_7q4aTjj2TZ_ZycC<br>bZ8OgyFNY4Gbj4ZILhp2xhLlieAdXjxndMQ</pre>
+}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/status/3",<br>  "type": [<br>    "VerifiableCredential",<br>    "BitstringStatusListCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:40Z",<br>  "credentialSubject": {<br>    "id": "https://example.com/status/3#list",<br>    "type": "BitstringStatusList",<br>    "statusPurpose": "revocation",<br>    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAI<br>C3AYbSVKsAQAAA"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-05-11T12:20:31Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z4Kbj5vRnN5dEXvrUdS5sMA7pqA2Zriakqyt91EU9jr7CUQ7vHcG3Zgd<br>s8k91iPPfWesScbgxiqZfztAJJTjsoPLG"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/status/3",<br>    "type": [<br>      "VerifiableCredential",<br>      "BitstringStatusListCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:40Z",<br>    "credentialSubject": {<br>      "id": "https://example.com/status/3#list",<br>      "type": "BitstringStatusList",<br>      "statusPurpose": "revocation",<br>      "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAA<br>AIC3AYbSVKsAQAAA"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/status/3",<br>  "sub": "https://example.com/status/3#list"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N<br>0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaW<br>RGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6I<br>mh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0<br>dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHN<br>JQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYl<br>NWS3NBUUFBQSJ9fSwiaXNzIjoiZGlkOmV4YW1wbGU6MTIzNDUiLCJqdGkiOiJodHRwczovL2V4Y<br>W1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwic3ViIjoiaHR0cHM6Ly9leGFtcGxlLmNv<br>bS9zdGF0dXMvMyNsaXN0In0.sje00J6ePHr3Mf72RIVpFIC6hQSV_GYPZ5tYD7-yh3EQT6BPf6o<br>nROZGaEQVJKPHSp3CLdV3vk79VU5Jz4vtRQ</pre>
       </div>
       </section>
 
@@ -2433,7 +2430,7 @@ purposes. Doing so can make the retrieval of a list slightly more efficient
 than fetching multiple status lists.
         </p>
 
-        <div class="issue atrisk" id="issue-container-number-4"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><span>(Feature at Risk) Issue 4</span><span class="issue-label">: Efficiency argument is weak</span></div><p class="atrisk">
+        <div class="issue atrisk" id="issue-container-generatedID-5"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="5"><span>(Feature at Risk) Issue</span><span class="issue-label">: Efficiency argument is weak</span></div><p class="atrisk">
 The "space efficiency" argument for this feature is weak. One list with two types
 of status entries must, presumably, be twice as long as a list with one type of
 status entries, to ensure proper privacy protections. One privacy benefit of
@@ -2513,9 +2510,9 @@ in space efficiency at a small cost to retrieval efficiency).
     </dd><dt id="bib-url">[URL]</dt><dd>
       <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
     </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Manu Sporny; Dave Longley; Greg Bernstein; Dmitri Zagidulin; Sebastian Crane.  W3C. 15 March 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
+      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Manu Sporny; Dave Longley; Greg Bernstein; Dmitri Zagidulin; Sebastian Crane.  W3C. 28 April 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
     </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 16 April 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 7 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
       <a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a>
     </dd></dl>
