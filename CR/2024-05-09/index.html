@@ -184,7 +184,7 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.">
   "name": "Bitstring Status List v1.0",
   "inLanguage": "en",
   "license": "https://www.w3.org/copyright/software-license-2023/",
-  "datePublished": "2024-05-09",
+  "datePublished": "2024-05-21",
   "copyrightHolder": {
     "name": "World Wide Web Consortium",
     "url": "https://www.w3.org/"
@@ -579,60 +579,66 @@ var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6p
 var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
 var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 </style>
-<script type="text/javascript">
-  /**
-   * Displays a Verifiable Credential example given an element that contains
-   * PRE tags and an elementClass to match against and display.
-   */
-  function displayVcExample(element, elementClass) {
-    // find all SPAN.tab sibling elements in an example block
-    const tabs = element.parentElement.querySelectorAll('.tab');
-    // highlight the currently clicked on tab
-    for(tab of tabs) {
-      tab.classList.remove('selected');
-    }
-    element.classList.add('selected');
-
-    // find all PRE sibling elements in an example block
-    const examples = element.parentElement.querySelectorAll('pre');
-    // display the provided elementClass, hide all other PRE blocks
-    for(example of examples) {
-      if(example.classList.contains(elementClass)) {
-        example.style.display = 'block';
-      } else {
-        example.style.display = 'none';
-      }
-    }
-  }
-
-  window.displayVcExample = displayVcExample;
-  </script>
 <style>
 
-  .example .tab {
-    background-color: rgba(0, 0, 0, 0.05);
-    border: solid gray thin;
-    border-radius: 4px 4px 0px 0px;
-    border-color: #574b0f;
-    padding: 4px;
-    cursor: default;
-    margin: 4px;
+  .vc-tabbed {
+    overflow-x: hidden;
+    margin: 0 0;
   }
 
-  .example .tab.selected {
-    background-color: inherit;
-    border-bottom: solid #fcfaee thin;
+  .vc-tabbed [type="radio"] {
+    display: none;
   }
 
-  .example .tab:hover {
-    color: #034575;
-    background-color: #e0cb52;
+  .vc-tabs {
+    display: flex;
+    align-items: stretch;
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
   }
 
-  .example .tab-separator {
-    background: gray;
-    height: 1px;
-    border: 1px;
+  li.vc-tab {
+    margin: unset;
+  }
+
+  .vc-tab > label {
+    display: block;
+    margin-bottom: -1px;
+    padding: .4em .5em;
+    border: 1px solid #ccc;
+    border-top-right-radius: .4em;
+    border-top-left-radius: .4em;
+    background: #eee;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .vc-tab:hover label {
+    border-left-color: #333;
+    border-top-color: #333;
+    border-right-color: #333;
+    color: #333;
+  }
+
+  .vc-tab-content {
+    display: none;
+  }
+
+  .vc-tabbed [type="radio"]:nth-of-type(1):checked ~ .vc-tabs .vc-tab:nth-of-type(1) label,
+  .vc-tabbed [type="radio"]:nth-of-type(2):checked ~ .vc-tabs .vc-tab:nth-of-type(2) label,
+  .vc-tabbed [type="radio"]:nth-of-type(3):checked ~ .vc-tabs .vc-tab:nth-of-type(3) label,
+  .vc-tabbed [type="radio"]:nth-of-type(4):checked ~ .vc-tabs .vc-tab:nth-of-type(4) label {
+    border-bottom-color: #fff;
+    background: #fff;
+    color: #222;
+  }
+
+  .vc-tabbed [type="radio"]:nth-of-type(1):checked ~ .vc-tab-content:nth-of-type(1),
+  .vc-tabbed [type="radio"]:nth-of-type(2):checked ~ .vc-tab-content:nth-of-type(2),
+  .vc-tabbed [type="radio"]:nth-of-type(3):checked ~ .vc-tab-content:nth-of-type(3),
+  .vc-tabbed [type="radio"]:nth-of-type(4):checked ~ .vc-tab-content:nth-of-type(4) {
+    display: block;
   }
 </style>
 <script id="initialUserConfig" type="application/json">{
@@ -640,8 +646,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "group": "vc",
   "shortName": "vc-bitstring-status-list",
   "subtitle": "Privacy-preserving status information for Verifiable Credentials",
-  "publishDate": "2024-05-09",
-  "crEnd": "2024-06-06",
+  "publishDate": "2024-05-21",
+  "crEnd": "2024-06-21",
   "implementationReportURI": "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
   "localBiblio": {
     "ALLOSAUR": {
@@ -734,20 +740,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       ]
     }
   ],
-  "publishISODate": "2024-05-09T00:00:00.000Z",
-  "generatedSubtitle": "W3C Candidate Recommendation Snapshot 09 May 2024"
+  "publishISODate": "2024-05-21T00:00:00.000Z",
+  "generatedSubtitle": "W3C Candidate Recommendation Snapshot 21 May 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-CR"></head>
   <body class="h-entry" data-cite="INFRA I18N-GLOSSARY VC-DATA-MODEL-2.0"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Bitstring Status List v1.0</h1> <h2 id="subtitle" class="subtitle">Privacy-preserving status information for Verifiable Credentials</h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#CR">W3C Candidate Recommendation Snapshot</a> <time class="dt-published" datetime="2024-05-09">09 May 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#CR">W3C Candidate Recommendation Snapshot</a> <time class="dt-published" datetime="2024-05-21">21 May 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://www.w3.org/TR/2024/CR-vc-bitstring-status-list-20240509/">https://www.w3.org/TR/2024/CR-vc-bitstring-status-list-20240509/</a>
+                <a class="u-url" href="https://www.w3.org/TR/2024/CR-vc-bitstring-status-list-20240521/">https://www.w3.org/TR/2024/CR-vc-bitstring-status-list-20240521/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
                 <a href="https://www.w3.org/TR/vc-bitstring-status-list/">https://www.w3.org/TR/vc-bitstring-status-list/</a>
@@ -845,7 +851,7 @@ implementation report</a>.
         <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Requirements">royalty-free licensing</a>
         for implementations.</p><p>
           This Candidate Recommendation is not expected to advance to Proposed
-          Recommendation any earlier than 06 June 2024.
+          Recommendation any earlier than 21 June 2024.
         </p><p>
     
         This document was produced by a group
@@ -2090,7 +2096,7 @@ to increase the privacy of <a data-link-type="dfn|abstract-op" data-type="dfn" h
 values are out of scope for this specification, implementers are advised that...
       </p>
 
-      <div class="issue" id="issue-container-number-150"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><a href="https://github.com/w3c/vc-bitstring-status-list/issues/150"><span class="issue-number">Issue 150</span></a><span class="issue-label">: Describe decoy entries as a privacy mitigation <a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22before-CR%22" style="background-color: rgb(221, 188, 20); color: rgb(0, 0, 0);" aria-label="GitHub label: before-CR">before-CR</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22pr+exists%22" style="background-color: rgb(14, 138, 22); color: rgb(0, 0, 0);" aria-label="GitHub label: pr exists">pr exists</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22privacy-needs-resolution%22" style="background-color: rgb(212, 175, 55); color: rgb(0, 0, 0);" aria-label="GitHub label: privacy-needs-resolution">privacy-needs-resolution</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22editorial%22" style="background-color: rgb(83, 207, 95); color: rgb(0, 0, 0);" aria-label="GitHub label: editorial">editorial</a></span></div><p class="">
+      <div class="issue" id="issue-container-number-150"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><a href="https://github.com/w3c/vc-bitstring-status-list/issues/150"><span class="issue-number">Issue 150</span></a><span class="issue-label">: Describe decoy entries as a privacy mitigation <a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22during-CR%22" style="background-color: rgb(143, 41, 71); color: rgb(255, 255, 255);" aria-label="GitHub label: during-CR">during-CR</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22pr+exists%22" style="background-color: rgb(14, 138, 22); color: rgb(0, 0, 0);" aria-label="GitHub label: pr exists">pr exists</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22privacy-needs-resolution%22" style="background-color: rgb(212, 175, 55); color: rgb(0, 0, 0);" aria-label="GitHub label: privacy-needs-resolution">privacy-needs-resolution</a><a class="respec-gh-label" href="https://github.com/w3c/vc-bitstring-status-list/issues/?q=is%3Aissue+is%3Aopen+label%3A%22editorial%22" style="background-color: rgb(83, 207, 95); color: rgb(0, 0, 0);" aria-label="GitHub label: editorial">editorial</a></span></div><p class="">
 The Working Group is currently discussing what sort of guidance to provide
 for decoy values. It has been suggested that decoy values are, in general,
 harmful to this specification's privacy characteristics. However, the group
@@ -2329,7 +2335,8 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
 <div class="example" id="example-a-revocable-verifiable-credential">
         <div class="marker">
     <a class="self-link" href="#example-a-revocable-verifiable-credential">Example<bdi> 4</bdi></a><span class="example-title">: A Revocable Verifiable Credential</span>
-  </div> <div style="padding: 5px;"></div><span style="" class="tab selected" onclick="window.displayVcExample(this, 'credential');">Verifiable Credential</span><span style="" class="tab" onclick="window.displayVcExample(this, 'vc-proof');">Secured with Data Integrity</span><span class="tab" style="" onclick="window.displayVcExample(this, 'vc-jwt');">Secured with VC-JWT</span><div class="tab-separator"></div><pre class="nohighlight credential" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
+  </div> 
+      <div class="vc-tabbed"><input type="radio" id="vc-tab1unsigned" name="vc-tabs1" checked=""><input type="radio" id="vc-tab1Ed25519Signature2020" name="vc-tabs1"><input type="radio" id="vc-tab1eddsa-rdfc-2022" name="vc-tabs1"><input type="radio" id="vc-tab1vc-jwt" name="vc-tabs1"><ul class="vc-tabs"><li class="vc-tab"><label for="vc-tab1unsigned">Verifiable Credential</label></li><li class="vc-tab"><label for="vc-tab1Ed25519Signature2020">Secured with Data Integrity (Ed25519Signature2020)</label></li><li class="vc-tab"><label for="vc-tab1eddsa-rdfc-2022">Secured with Data Integrity (eddsa-rdfc-2022)</label></li><li class="vc-tab"><label for="vc-tab1vc-jwt">Secured with VC-JWT</label></li></ul><div class="vc-tab-content"><pre class="nohighlight vc" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://www.w3.org/ns/credentials/examples/v2"
@@ -2349,8 +2356,120 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
     "id": "did:example:6789",
     "type": "Person"
   }
-}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/23894672394",<br>  "type": [<br>    "VerifiableCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:42Z",<br>  "credentialStatus": {<br>    "id": "https://example.com/credentials/status/3#94567",<br>    "type": "BitstringStatusListEntry",<br>    "statusPurpose": "revocation",<br>    "statusListIndex": "94567",<br>    "statusListCredential": "https://example.com/credentials/status/3"<br>  },<br>  "credentialSubject": {<br>    "id": "did:example:6789",<br>    "type": "Person"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-05-11T12:20:31Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z3ZUuq4iy9cYZJ1Zmmv4rrXJf8ttp73mdVd3QgwU6eAVEEEe2rpojaBc<br>wzkFTYrzhC5EFhRqzpWDn3QFx2iLAbhXW"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/23894672394",<br>    "type": [<br>      "VerifiableCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:42Z",<br>    "credentialStatus": {<br>      "id": "https://example.com/credentials/status/3#94567",<br>      "type": "BitstringStatusListEntry",<br>      "statusPurpose": "revocation",<br>      "statusListIndex": "94567",<br>      "statusListCredential": "https://example.com/credentials/status/3"<br>    },<br>    "credentialSubject": {<br>      "id": "did:example:6789",<br>      "type": "Person"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/23894672394",<br>  "sub": "did:example:6789"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXI<br>iOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIi<br>wiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhb<br>HMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3Rh<br>dHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR<br>1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dX<br>MvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlI<br>joiUGVyc29uIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhh<br>bXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiLCJzdWIiOiJkaWQ6ZXhhbXBsZTo2Nzg<br>5In0.at-2QGPJT9c8IEdsTzMcravY5bnrdwNz1BQrdCnPXBLMOOZVQuocV6A_nUGqq3K69RMUnL<br>JbD3z_76YkyQgvuQ</pre>
-      </div>
+}</pre></div><div class="vc-tab-content"><pre>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  "credentialStatus": {
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  },
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  },
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2024-05-14T13:01:34Z",
+    "verificationMethod": "https://example.edu/issuers/565049/keys/1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z7MxneaTgLeecfDEapo8kfX2bxpM8gpGDX4389Zna5pZLeQhin4aKkPC
+52NeW1hyaAmsVHEwmt6Fm19H9GA3eaci"
+  }
+}</pre></div><div class="vc-tab-content"><pre>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/23894672394",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:42Z",
+  "credentialStatus": {
+    "id": "https://example.com/credentials/status/3#94567",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "94567",
+    "statusListCredential": "https://example.com/credentials/status/3"
+  },
+  "credentialSubject": {
+    "id": "did:example:6789",
+    "type": "Person"
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "created": "2024-05-14T13:01:34Z",
+    "verificationMethod": "https://example.edu/issuers/565049/keys/1",
+    "cryptosuite": "eddsa-rdfc-2022",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z4A9fK3hEfEJrukzRGqgCrQCFL8r3A6UbcAWDWndqzLtC6LYx2aiPdBb
+WyMFJA3kiPjA2HotQefZfzVksS4aQqBpd"
+  }
+}</pre></div><div class="vc-tab-content"><pre>---------------- JWT header ---------------
+{
+  "alg": "ES256",
+  "typ": "JWT"
+}
+--------------- JWT payload ---------------
+// NOTE: The example below uses a valid VC-JWT serialization
+//       that duplicates the iss, nbf, jti, and sub fields in the
+//       Verifiable Credential (vc) field.
+{
+  "vc": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://www.w3.org/ns/credentials/examples/v2"
+    ],
+    "id": "https://example.com/credentials/23894672394",
+    "type": [
+      "VerifiableCredential"
+    ],
+    "issuer": "did:example:12345",
+    "validFrom": "2021-04-05T14:27:42Z",
+    "credentialStatus": {
+      "id": "https://example.com/credentials/status/3#94567",
+      "type": "BitstringStatusListEntry",
+      "statusPurpose": "revocation",
+      "statusListIndex": "94567",
+      "statusListCredential": "https://example.com/credentials/status/3"
+    },
+    "credentialSubject": {
+      "id": "did:example:6789",
+      "type": "Person"
+    }
+  },
+  "iss": "did:example:12345",
+  "jti": "https://example.com/credentials/23894672394",
+  "sub": "did:example:6789"
+}
+--------------- JWT ---------------
+eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3
+d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ
+GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp
+YWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXI
+iOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIi
+wiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhb
+HMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3Rh
+dHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR
+1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dX
+MvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlI
+joiUGVyc29uIn19LCJpc3MiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsImp0aSI6Imh0dHBzOi8vZXhh
+bXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiLCJzdWIiOiJkaWQ6ZXhhbXBsZTo2Nzg
+5In0.wDbjun1yyxXI4tiYspIXdpWiMzgk3ML9lbFYRyx4J2S2XsEKJfEJce-r_ViuhgMTPAtqhr
+TIxRERrKURpxbYrQ</pre></div></div></div>
 
       </section>
 
@@ -2359,7 +2478,8 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
 <div class="example" id="example-a-status-list-verifiable-credential">
         <div class="marker">
     <a class="self-link" href="#example-a-status-list-verifiable-credential">Example<bdi> 5</bdi></a><span class="example-title">: A Status List Verifiable Credential</span>
-  </div> <div style="padding: 5px;"></div><span style="" class="tab selected" onclick="window.displayVcExample(this, 'credential');">Verifiable Credential</span><span style="" class="tab" onclick="window.displayVcExample(this, 'vc-proof');">Secured with Data Integrity</span><span class="tab" style="" onclick="window.displayVcExample(this, 'vc-jwt');">Secured with VC-JWT</span><div class="tab-separator"></div><pre class="nohighlight credential" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
+  </div> 
+      <div class="vc-tabbed"><input type="radio" id="vc-tab2unsigned" name="vc-tabs2" checked=""><input type="radio" id="vc-tab2Ed25519Signature2020" name="vc-tabs2"><input type="radio" id="vc-tab2eddsa-rdfc-2022" name="vc-tabs2"><input type="radio" id="vc-tab2vc-jwt" name="vc-tabs2"><ul class="vc-tabs"><li class="vc-tab"><label for="vc-tab2unsigned">Verifiable Credential</label></li><li class="vc-tab"><label for="vc-tab2Ed25519Signature2020">Secured with Data Integrity (Ed25519Signature2020)</label></li><li class="vc-tab"><label for="vc-tab2eddsa-rdfc-2022">Secured with Data Integrity (eddsa-rdfc-2022)</label></li><li class="vc-tab"><label for="vc-tab2vc-jwt">Secured with VC-JWT</label></li></ul><div class="vc-tab-content"><pre class="nohighlight vc" data-vc-vm="https://example.edu/issuers/565049/keys/1">{
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://www.w3.org/ns/credentials/examples/v2"
@@ -2374,8 +2494,110 @@ the general advice for all <a data-link-type="dfn|abstract-op" data-type="dfn" h
     "statusPurpose": "<span class="highlight">revocation</span>",
     "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
-}</pre><pre class="vc-proof" style="display: none;">{<br>  "@context": [<br>    "https://www.w3.org/ns/credentials/v2",<br>    "https://www.w3.org/ns/credentials/examples/v2",<br>    "https://w3id.org/security/suites/ed25519-2020/v1"<br>  ],<br>  "id": "https://example.com/credentials/status/3",<br>  "type": [<br>    "VerifiableCredential",<br>    "BitstringStatusListCredential"<br>  ],<br>  "issuer": "did:example:12345",<br>  "validFrom": "2021-04-05T14:27:40Z",<br>  "credentialSubject": {<br>    "id": "https://example.com/status/3#list",<br>    "type": "BitstringStatusList",<br>    "statusPurpose": "revocation",<br>    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAI<br>C3AYbSVKsAQAAA"<br>  },<br>  "proof": {<br>    "type": "Ed25519Signature2020",<br>    "created": "2024-05-11T12:20:31Z",<br>    "verificationMethod": "https://example.edu/issuers/565049/keys/1",<br>    "proofPurpose": "assertionMethod",<br>    "proofValue": "z4Kbj5vRnN5dEXvrUdS5sMA7pqA2Zriakqyt91EU9jr7CUQ7vHcG3Zgd<br>s8k91iPPfWesScbgxiqZfztAJJTjsoPLG"<br>  }<br>}</pre><pre class="vc-jwt" style="display: none;">---------------- JWT header ---------------<br>{<br>  "alg": "ES256",<br>  "typ": "JWT"<br>}<br>--------------- JWT payload ---------------<br>// NOTE: The example below uses a valid VC-JWT serialization<br>//       that duplicates the iss, nbf, jti, and sub fields in the<br>//       Verifiable Credential (vc) field.<br>{<br>  "vc": {<br>    "@context": [<br>      "https://www.w3.org/ns/credentials/v2",<br>      "https://www.w3.org/ns/credentials/examples/v2"<br>    ],<br>    "id": "https://example.com/credentials/status/3",<br>    "type": [<br>      "VerifiableCredential",<br>      "BitstringStatusListCredential"<br>    ],<br>    "issuer": "did:example:12345",<br>    "validFrom": "2021-04-05T14:27:40Z",<br>    "credentialSubject": {<br>      "id": "https://example.com/status/3#list",<br>      "type": "BitstringStatusList",<br>      "statusPurpose": "revocation",<br>      "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAA<br>AIC3AYbSVKsAQAAA"<br>    }<br>  },<br>  "iss": "did:example:12345",<br>  "jti": "https://example.com/credentials/status/3",<br>  "sub": "https://example.com/status/3#list"<br>}<br>--------------- JWT ---------------<br>eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3<br>d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ<br>GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp<br>YWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N<br>0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaW<br>RGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6I<br>mh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0<br>dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHN<br>JQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYl<br>NWS3NBUUFBQSJ9fSwiaXNzIjoiZGlkOmV4YW1wbGU6MTIzNDUiLCJqdGkiOiJodHRwczovL2V4Y<br>W1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwic3ViIjoiaHR0cHM6Ly9leGFtcGxlLmNv<br>bS9zdGF0dXMvMyNsaXN0In0.sje00J6ePHr3Mf72RIVpFIC6hQSV_GYPZ5tYD7-yh3EQT6BPf6o<br>nROZGaEQVJKPHSp3CLdV3vk79VU5Jz4vtRQ</pre>
-      </div>
+}</pre></div><div class="vc-tab-content"><pre>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "https://example.com/credentials/status/3",
+  "type": [
+    "VerifiableCredential",
+    "BitstringStatusListCredential"
+  ],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "BitstringStatusList",
+    "statusPurpose": "revocation",
+    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAI
+C3AYbSVKsAQAAA"
+  },
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2024-05-14T13:01:34Z",
+    "verificationMethod": "https://example.edu/issuers/565049/keys/1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z3NxfNdYohF1EqGM5YXsa3mCssFHjrscvSz3WPsPWjNmXAc1XdeSufrc
+sgXprqkzaAGKJQyedm5znhCuywq8ms1vN"
+  }
+}</pre></div><div class="vc-tab-content"><pre>{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://www.w3.org/ns/credentials/examples/v2"
+  ],
+  "id": "https://example.com/credentials/status/3",
+  "type": [
+    "VerifiableCredential",
+    "BitstringStatusListCredential"
+  ],
+  "issuer": "did:example:12345",
+  "validFrom": "2021-04-05T14:27:40Z",
+  "credentialSubject": {
+    "id": "https://example.com/status/3#list",
+    "type": "BitstringStatusList",
+    "statusPurpose": "revocation",
+    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAI
+C3AYbSVKsAQAAA"
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "created": "2024-05-14T13:01:34Z",
+    "verificationMethod": "https://example.edu/issuers/565049/keys/1",
+    "cryptosuite": "eddsa-rdfc-2022",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "z3tSG3pNtn6ao7o5ueBCLhfFKKUThafgjgYjEc2hLRxRVsTdnyGwJCkm
+x7NBAxts8KxFNz5GXBZZARygLF3Arepsd"
+  }
+}</pre></div><div class="vc-tab-content"><pre>---------------- JWT header ---------------
+{
+  "alg": "ES256",
+  "typ": "JWT"
+}
+--------------- JWT payload ---------------
+// NOTE: The example below uses a valid VC-JWT serialization
+//       that duplicates the iss, nbf, jti, and sub fields in the
+//       Verifiable Credential (vc) field.
+{
+  "vc": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://www.w3.org/ns/credentials/examples/v2"
+    ],
+    "id": "https://example.com/credentials/status/3",
+    "type": [
+      "VerifiableCredential",
+      "BitstringStatusListCredential"
+    ],
+    "issuer": "did:example:12345",
+    "validFrom": "2021-04-05T14:27:40Z",
+    "credentialSubject": {
+      "id": "https://example.com/status/3#list",
+      "type": "BitstringStatusList",
+      "statusPurpose": "revocation",
+      "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAA
+AIC3AYbSVKsAQAAA"
+    }
+  },
+  "iss": "did:example:12345",
+  "jti": "https://example.com/credentials/status/3",
+  "sub": "https://example.com/status/3#list"
+}
+--------------- JWT ---------------
+eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3
+d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZ
+GVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRp
+YWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N
+0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaW
+RGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6I
+mh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0
+dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHN
+JQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYl
+NWS3NBUUFBQSJ9fSwiaXNzIjoiZGlkOmV4YW1wbGU6MTIzNDUiLCJqdGkiOiJodHRwczovL2V4Y
+W1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwic3ViIjoiaHR0cHM6Ly9leGFtcGxlLmNv
+bS9zdGF0dXMvMyNsaXN0In0.IC-ahilmzzn2fMwtH10ToLWEt8E6fbkfYbX0ayfYdMfiDjzJj2T
+ZIS7mXIB7vi2lwvlY0GqJ1L7nP6npPNZ77A</pre></div></div></div>
       </section>
 
       <section id="multiple-status-lists-in-one-verifiable-credential"><div class="header-wrapper"><h4 id="x9-1-3-multiple-status-lists-in-one-verifiable-credential"><bdi class="secno">9.1.3 </bdi>Multiple Status Lists in One Verifiable Credential</h4><a class="self-link" href="#multiple-status-lists-in-one-verifiable-credential" aria-label="Permalink for Section 9.1.3"></a></div>
@@ -2512,7 +2734,7 @@ in space efficiency at a small cost to retrieval efficiency).
     </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
       <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Manu Sporny; Dave Longley; Greg Bernstein; Dmitri Zagidulin; Sebastian Crane.  W3C. 28 April 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
     </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 7 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
+      <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Michael Jones; Gabe Cohen.  W3C. 13 May 2024. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
       <a href="https://www.w3.org/TR/xmlschema11-2/"><cite>W3C XML Schema Definition Language (XSD) 1.1 Part 2: Datatypes</cite></a>. David Peterson; Sandy Gao; Ashok Malhotra; Michael Sperberg-McQueen; Henry Thompson; Paul V. Biron et al.  W3C. 5 April 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xmlschema11-2/">https://www.w3.org/TR/xmlschema11-2/</a>
     </dd></dl>
