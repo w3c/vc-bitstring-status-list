@@ -10,11 +10,11 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class="remove"
-      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.0.0/dist/main.js"></script>
+      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.1.0/dist/main.js"></script>
     <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-        specStatus: "CR",
+        specStatus: "CRD",
         group: "vc",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -179,6 +179,32 @@ ol.algorithm li:before {
 }
 .missing {
   background-color: #e06666;
+}
+table.simple {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+    border: 1px solid #dddddd;
+}
+table.simple thead tr {
+    background-color: #005a9c;
+    color: #ffffff;
+    text-align: left;
+}
+table.simple th,
+table.simple td {
+    padding: 12px 15px;
+    vertical-align: top;
+    text-align: left;
+}
+table.simple tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+table.simple tbody tr:nth-of-type(even) {
+    background-color: #00000008;
+}
+table.simple tbody tr:last-of-type {
+    border-bottom: 2px solid #005a9c;
 }
     </style>
   </head>
