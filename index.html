@@ -1184,7 +1184,7 @@ times the `statusSize`.
         <li>
 Generate a |compressed bitstring| by using the GZIP
 compression algorithm [[RFC1952]] on the |bitstring|
-and then base64url-encoding (with no padding) [[RFC4648]] the result.
+and then Multibase-encode the result using base64url (with no padding) [RFC4648].
         </li>
         <li>
 Return the |compressed bitstring|.
@@ -1209,7 +1209,7 @@ bitstring.
         </li>
         <li>
 Generate an |uncompressed bitstring| by using the
-base64url-decoding (with no padding) [[RFC4648]] algorithm on the
+Multibase-decode algorithm on the
 |compressed bitstring| and then expanding the output using
 the GZIP decompression algorithm [[RFC1952]].
         </li>
