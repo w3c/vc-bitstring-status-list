@@ -1243,10 +1243,6 @@ The `type` value of the error object MUST be a URL that starts with the value
 section listed below.
         </li>
         <li>
-The `code` value MUST be the integer code described in the table below
-(in parentheses, beside the type name).
-        </li>
-        <li>
 The `title` value SHOULD provide a short but specific human-readable string for
 the error.
         </li>
@@ -1262,19 +1258,19 @@ HTTP header field to select the most appropriate resources.
 
       <dl>
         <dt id="STATUS_RETRIEVAL_ERROR">
-STATUS_RETRIEVAL_ERROR (-128)
+STATUS_RETRIEVAL_ERROR
         </dt>
         <dd>
 Retrieval of the status list failed. See Section
 <a href="#validate-algorithm"></a>.
         </dd>
-        <dt id="STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR (-129)</dt>
+        <dt id="STATUS_VERIFICATION_ERROR">STATUS_VERIFICATION_ERROR</dt>
         <dd>
 Validation of the status entry failed. See Section
 <a href="#validate-algorithm"></a>.
         </dd>
         <dt id="STATUS_LIST_LENGTH_ERROR">
-STATUS_LIST_LENGTH_ERROR (-130)
+STATUS_LIST_LENGTH_ERROR
         </dt>
         <dd>
 The status list length does not satisfy the minimum length required for
