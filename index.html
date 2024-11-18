@@ -1184,7 +1184,7 @@ times the `statusSize`.
         <li>
 Generate a |compressed bitstring| by using the GZIP
 compression algorithm [[RFC1952]] on the |bitstring|
-and then Multibase-encode the result using base64url (with no padding) [RFC4648].
+and then <a data-cite="?CONTROLLER-DOCUMENT#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
         </li>
         <li>
 Return the |compressed bitstring|.
@@ -1209,7 +1209,7 @@ bitstring.
         </li>
         <li>
 Generate an |uncompressed bitstring| by using the
-Multibase-decode algorithm on the
+<a data-cite="?CONTROLLER-DOCUMENT#multibase-0">Multibase-decode</a> algorithm on the
 |compressed bitstring| and then expanding the output using
 the GZIP decompression algorithm [[RFC1952]].
         </li>
