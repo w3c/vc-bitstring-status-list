@@ -1346,6 +1346,139 @@ requested media type.
     </p>
   </section>
 
+  <section>
+    <h2>Contexts and Vocabularies</h2>
+
+    <p class="issue" title="(AT RISK) Hash values might change during Candidate Recommendation">
+This section lists cryptographic hash values that might change during the
+Candidate Recommendation phase based on implementer feedback that requires
+the referenced files to be modified.
+    </p>
+
+    <section>
+      <h2>Vocabulary</h2>
+      <p>
+The terms defined in this specification are also part of the RDF <a
+data-cite="RDF-CONCEPTS#vocabularies">vocabulary namespace</a>
+<a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a>. For any
+`TERM`, the relevant URL is of the form `https://www.w3.org/ns/credentials/status#TERM`.
+Implementations that use RDF processing and rely on this specification MUST use
+these URLs.
+      </p>
+
+      <p>
+When dereferencing the
+<a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a> URL, the
+media type of the data that is returned depends on HTTP content negotiation.
+These are as follows:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>Media Type</th>
+            <th>Description and Hash</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+application/ld+json
+            </td>
+            <td>
+The vocabulary in JSON-LD format [[?JSON-LD11]].<br>
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.jsonld"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/turtle
+            </td>
+            <td>
+The vocabulary in Turtle format [[?TURTLE]].<br>
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.ttl"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/html
+            </td>
+            <td>
+The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br>
+
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.html"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+It is possible to confirm the cryptographic digests above by running a command
+like the following (replacing `&lt;MEDIA_TYPE>` and `&lt;DOCUMENT_URL>` with the
+appropriate values) through a modern UNIX-like OS command line interface:
+`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`
+      </p>
+    </section>
+
+    <section>
+      <h3>JSON-LD context</h3>
+      <p>
+Implementations that perform JSON-LD processing MUST treat the following JSON-LD
+context URL as already resolved, where the resolved document matches the
+corresponding hash value below:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <th>Context URL and Hash</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="white-space: nowrap;">
+<strong>URL:</strong> https://www.w3.org/ns/credentials/status/v1<br>
+<strong>SHA2-256 Digest:</strong><br>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/contexts/v1.jsonld"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+It is possible to confirm the cryptographic digests listed above by running a
+command like the following through a modern UNIX-like OS command line interface:
+`curl -sL -H "Accept: application/ld+json" https://www.w3.org/ns/credentials/status/v1 | openssl dgst -sha256`
+      </p>
+
+      <p>
+The vocabulary terms that the JSON-LD contexts resolve to
+are in the <a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a>
+namespace. See Section [[[#vocabulary]]] for further details.
+      </p>
+
+      <p class="note">
+Applications or specifications may define mappings to the vocabulary URLs using
+their own JSON-LD contexts. For example, the JSON-LD context definitions
+referred to in this section are also a part of the
+`https://www.w3.org/ns/credentials/v2` context, defined by the
+[[[?VC-DATA-MODEL-2.0]]] specification.
+      </p>
+    </section>
+  </section>
+
   <section class="informative">
     <h2>Privacy Considerations</h2>
 
