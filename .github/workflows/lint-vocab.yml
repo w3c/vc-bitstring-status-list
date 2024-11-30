@@ -1,4 +1,4 @@
-name: Lint VC Vocabulary
+name: Lint the RDF vocabulary
 on:
   pull_request:
     paths:
