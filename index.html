@@ -1457,39 +1457,22 @@ from [=issuers=].
       <p>
 [=Issuer=] use of decoy values in status lists has been explored as a mechanism
 to increase the privacy of [=subjects=]. While algorithms for employing decoy
-values are out of scope for this specification, implementers are advised that...
-      </p>
-
-      <p class="issue" data-number="150">
-The Working Group is currently discussing what sort of guidance to provide
-for decoy values. It has been suggested that decoy values are, in general,
-harmful to this specification's privacy characteristics. However, the group
-has not provided a complete analysis and thorough review for that assertion.
-The analysis might result in some use cases where decoy values are helpful, or
-might conclude that decoy values are, in general, harmful. Further
-thought is currently being put into the language around decoy values and
-it is expected that this language will be finalized during the Candidate
-Recommendation phase.
-      </p>
-        <!-- TEXT BELOW NEEDS TO BE FURTHER ANALYZED AND JUSTIFIED
-the use of decoy values does not improve privacy and can harm privacy in
-most cases.
+values are out of scope for this specification, implementers are advised that
+the use of decoy values can harm privacy if the decoy values do not accurately
+simulate the population associated with the status list. If decoy values are not
+accurately simulated, it can reduce the anonymity provided in the set by the
+number of decoy values that are detectably not a part of the status list
+population. The most privacy-preserving status list is one that never changes
+since the behavior of the population cannot be determined if no observable
+events happen.
       </p>
       <p>
-When indexes of status list entries are allocated in a random fashion, which is
-the suggested mode of operation for this specification, adding decoys harms
-privacy because it reduces the true group size by the number of decoys added
-to the group. A random allocation of indexes inherently hides the true size of
-the group without reducing it, ensuring that decoys are not necessary.
+Given how difficult it is to statistically simulate a population when it comes
+to status entries, and that general advice cannot be given since [=verifiable
+credentials=] serve a broad set of use cases, implementers are advised to
+allocate status list entry indexes randomly and strive to eliminate the rate at
+which status entries are changed.
       </p>
-      <p>
-There might be use cases where decoy values provide benefits. Implementers are
-cautioned that no such use cases were clearly identifiable by the group that
-created this specification. Therefore, the use of decoys is discouraged for
-most if not all use cases, as random allocation of status list entry indexes
-provides adequate protection.
-      </p>
-      -->
     </section>
 
     <section class="informative">
