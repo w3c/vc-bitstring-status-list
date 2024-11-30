@@ -10,7 +10,7 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class="remove"
-      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.1.0/dist/main.js"></script>
+      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.3.5/dist/main.js"></script>
     <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -556,6 +556,15 @@ purpose:
                     </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                      <td>`refresh`</td>
+                      <td>
+Used to signal that an updated [=verifiable credential=] is available via the
+credential's <a data-cite="VC-DATA-MODEL-2.0#refreshing">refresh service</a>
+feature. This status does not invalidate the [=verifiable credential=] and is
+not reversible.
+                      </td>
+                    </tr>
                     <tr>
                       <td>`revocation`</td>
                       <td>
