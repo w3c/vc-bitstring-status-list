@@ -1,7 +1,6 @@
 vocab:
   - id: cs
     value: https://www.w3.org/ns/credentials/status#
-    context: https://www.w3.org/ns/credentials/v2
 
 prefix:
   - id: cred
@@ -22,21 +21,26 @@ ontology:
 
 class:
   - id: BitstringStatusList
+    label: Bitstring status list class
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslist
 
   - id: BitstringStatusListEntry
+    label: Bitstring status list entry class
     upper_value: cred:CredentialStatus
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistentry
 
   - id: BitstringStatusListCredential
+    label: Bitstring status list credential class
     upper_value: cred:VerifiableCredential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistcredential
 
   - id: BitstringStatusMessage
+    label: Bitstring status message class
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
 
 property:
   - id: statusPurpose
+    label: The purpose of the status list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusPurpose
     domain:
       - cs:BitstringStatusList
@@ -44,16 +48,19 @@ property:
     range: xsd:string
 
   - id: statusListIndex
+    label: The position of the entry in the status list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListIndex
     domain: cs:BitstringStatusListEntry
     range: xsd:string
 
   - id: statusListCredential
+    label: The location of the status list credential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential
     domain: cs:BitstringStatusListEntry
     range: cs:BitstringStatusListCredential
 
   - id: encodedList
+    label: The encoded status list bitstring
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
     domain: cs:BitstringStatusList
     range: sec:multibase
@@ -71,6 +78,7 @@ property:
     range: xsd:positiveInteger
 
   - id: statusMessage
+    label: Status message
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
     domain: cs:BitstringStatusList
     range: cs:BitstringStatusMessage
