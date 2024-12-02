@@ -1682,12 +1682,13 @@ be 0, and the last index will be 131,071.
       <h3>Validity Periods</h3>
 
       <p>
-The <a data-cite="?VC-DATA-MODEL-2.0#validity-period">validity period</a> of a
-status list is dependent on a variety of factors including:
+The <a data-cite="?VC-DATA-MODEL-2.0#validity-period">validity period</a> that
+an issuer might choose to express in a status list is dependent on a variety of
+factors including:
       </p>
       <ul>
         <li>
-How often do status values change? In real-time? Daily? Weekly? Monthly?
+How often do status values change? In real-time? Daily? Weekly? Monthly? Other?
         </li>
         <li>
 Is there a regulatory requirement that compels an [=issuer=] to notify a
@@ -1698,23 +1699,23 @@ Is there a period of time after which an [=issuer=] would incur reputational
 damage by not notifying a [=verifier=] of a status change?
         </li>
         <li>
-Is there an expectation by a [=verifier=] to not accept a
-[=verifiable credential=] with a status list that does not expire for an
-excessive period of time?
+Is there any expectation that a [=verifier=] will not accept a
+[=verifiable credential=] with a status list that does not expire for a
+period of time it deems excessive?
         </li>
         <li>
-Is there an excessive network bandwidth or computing burden placed upon an
-[=issuer=] or a [=verifier=] if a validity period is too short for a
-status list?
+Will a short validity period for a status list cause a significant network
+bandwidth or computing burden for an [=issuer=] or a [=verifier=]? Might
+this burden be mitigated by a longer validity period?
         </li>
       </ul>
 
       <p>
-Since these factors vary based on ecosystem and credential type, there is no
-minimum or maximum validity period that is suggested for a status list.
-[=Issuers=] will need to take various considerations into account that are
-specific to their [=verifiable credential=] types and pick validity periods that
-will strike the right balance in their ecosystem.
+Since these factors vary with the ecosystem and credential type, there is no
+minimum or maximum validity period that is suggested for all status lists.
+[=Issuers=] will need to consider various factors that are specific to their
+[=verifiable credential=] types and choose validity periods that will strike
+the right balance in their ecosystem.
       </p>
     </section>
 
