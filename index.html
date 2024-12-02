@@ -1592,19 +1592,19 @@ from [=issuers=].
 to increase the privacy of [=subjects=]. While algorithms for employing decoy
 values are out of scope for this specification, implementers are advised that
 the use of decoy values can harm privacy if the decoy values do not accurately
-simulate the population associated with the status list. If decoy values are not
-accurately simulated, it can reduce the anonymity provided in the set by the
-number of decoy values that are detectably not a part of the status list
-population. The most privacy-preserving status list is one that never changes
-since the behavior of the population cannot be determined if no observable
-events happen.
+simulate the population associated with the status list. If decoy values can
+be distinguished from real values, the anonymity provided in the set will be
+reduced by the number of decoy values that are detectable as such. The most
+privacy-preserving status list is one that never changes, since the behavior
+of the population cannot be determined if no observable events occur.
       </p>
       <p>
 Given how difficult it is to statistically simulate a population when it comes
 to status entries, and that general advice cannot be given since [=verifiable
 credentials=] serve a broad set of use cases, implementers are advised to
 allocate status list entry indexes randomly and strive to eliminate the rate at
-which status entries are changed.
+which status entries are changed. Status list entry allocation is most privacy
+preserving when it does not trigger any observable change to a status list.
       </p>
     </section>
 
