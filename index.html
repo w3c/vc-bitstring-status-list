@@ -1599,12 +1599,13 @@ privacy-preserving status list is one that never changes, since the behavior
 of the population cannot be determined if no observable events occur.
       </p>
       <p>
-Given how difficult it is to statistically simulate a population when it comes
-to status entries, and that general advice cannot be given since [=verifiable
-credentials=] serve a broad set of use cases, implementers are advised to
-allocate status list entry indexes randomly and strive to eliminate the rate at
-which status entries are changed. Status list entry allocation is most privacy
-preserving when it does not trigger any observable change to a status list.
+Given how difficult it is to statistically simulate status entries for 
+a population, and that general advice cannot be given since
+[=verifiable credentials=] serve a broad set of use cases, implementers
+are advised to allocate status list entry indexes randomly, and to minimize —
+optimally to never — the rate at which status entries are changed. Allocation
+of status list entries preserves privacy best when it does not trigger any
+observable change of a status list.
       </p>
     </section>
 
