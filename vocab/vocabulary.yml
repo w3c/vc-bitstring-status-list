@@ -22,25 +22,30 @@ ontology:
 
 class:
   - id: BitstringStatusList
+    label: Bitstring status list class
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslist
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: BitstringStatusListEntry
+    label: Bitstring status list entry class
     upper_value: cred:CredentialStatus
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistentry
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: BitstringStatusListCredential
+    label: Bitstring status list credential class
     upper_value: cred:VerifiableCredential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#bitstringstatuslistcredential
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: BitstringStatusMessage
+    label: Bitstring status message class
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
 property:
   - id: statusPurpose
+    label: The purpose of the status list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusPurpose
     domain:
       - cs:BitstringStatusList
@@ -49,18 +54,21 @@ property:
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: statusListIndex
+    label: The position of the entry in the status list
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListIndex
     domain: cs:BitstringStatusListEntry
     range: xsd:string
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: statusListCredential
+    label: The location of the status list credential
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusListCredential
     domain: cs:BitstringStatusListEntry
     range: cs:BitstringStatusListCredential
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: encodedList
+    label: The encoded status list bitstring
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#encodedList
     domain: cs:BitstringStatusList
     range: sec:multibase
@@ -81,6 +89,7 @@ property:
     context: [vocab,https://www.w3.org/ns/credentials/v2]
 
   - id: statusMessage
+    label: Status message
     defined_by: https://www.w3.org/TR/vc-bitstring-status-list/#statusMessage
     domain: cs:BitstringStatusList
     range: cs:BitstringStatusMessage

@@ -10,7 +10,7 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class="remove"
-      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.1.0/dist/main.js"></script>
+      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.3.5/dist/main.js"></script>
     <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -24,7 +24,7 @@
         subtitle: "Privacy-preserving status information for Verifiable Credentials",
 
         // if you wish the publication date to be other than today, set this
-        publishDate: "2024-05-21",
+        //publishDate: "2024-05-21",
         crEnd: "2024-06-21",
         implementationReportURI: "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
         //previousMaturity: "CG-FINAL",
@@ -557,6 +557,15 @@ purpose:
                   </thead>
                   <tbody>
                     <tr>
+                      <td>`refresh`</td>
+                      <td>
+Used to signal that an updated [=verifiable credential=] is available via the
+credential's <a data-cite="VC-DATA-MODEL-2.0#refreshing">refresh service</a>
+feature. This status does not invalidate the [=verifiable credential=] and is
+not reversible.
+                      </td>
+                    </tr>
+                    <tr>
                       <td>`revocation`</td>
                       <td>
 Used to cancel the validity of a [=verifiable credential=]. This status is
@@ -876,6 +885,14 @@ values MUST be used for their intended purpose:
                   </thead>
                   <tbody>
                     <tr>
+                      <td>`refresh`</td>
+                      <td>
+Used to signal that an updated [=verifiable credential=] is available via the
+credential's <a data-cite="VC-DATA-MODEL-2.0#refreshing">refresh service</a>
+feature. This status does not invalidate the [=verifiable credential=] and is not reversible.
+                      </td>
+                    </tr>
+                    <tr>
                       <td>`revocation`</td>
                       <td>
 Used to cancel the validity of a [=verifiable credential=]. This status is
@@ -920,13 +937,13 @@ encoding can be found in Section <a href="#bitstring-encoding"></a>.
             <tr>
               <td id="ttl">credentialSubject.ttl</td>
               <td>
-The `ttl` indicates the "time to live" in milliseconds. This property MAY be
-present. If not present, implementers MUST use a value of `300000` for this
-property.  A verifier MUST NOT use a cached `BitstringStatusListCredential` that
-was cached for more than the `ttl` duration prior to the start of verification
-operation on a [=verifiable credential=]. Implementations that publish the
-status list SHOULD align any protocol-specific caching information, such as the
-HTTP `Cache-Control` header, with the value in this field.
+The `ttl` is an OPTIONAL property that indicates the "time to live" in
+milliseconds before a refresh SHOULD be attempted. If not present, no default
+value is assumed. The value does not override or replace the
+<a data-cite="VC-DATA-MODEL-2.0#validity-period">validity period</a>
+of the `BitstringStatusList`. Implementations that publish the status list
+SHOULD align any protocol-specific caching information, such as the HTTP
+`Cache-Control` header, with the value in this field.
               </td>
             </tr>
           </tbody>
@@ -1308,7 +1325,7 @@ expressing a verifiable credential with one or more proofs.
     </p>
     <p>
 For example, a verifiable credential secured with Data Integrity Proofs might
-have media type `application/vc+ld+json`, while a verifiable credential
+have media type `application/vc`, while a verifiable credential
 secured with SD-JWT might have media type `application/sd-jwt`.
     </p>
     <p>
@@ -1327,6 +1344,139 @@ Some implementations might use the <a data-cite="?RFC7231#section-6.5.13">415
 Unsupported Media Type</a> status code to signal that they do not support the
 requested media type.
     </p>
+  </section>
+
+  <section>
+    <h2>Contexts and Vocabularies</h2>
+
+    <p class="issue" title="(AT RISK) Hash values might change during Candidate Recommendation">
+This section lists cryptographic hash values that might change during the
+Candidate Recommendation phase based on implementer feedback that requires
+the referenced files to be modified.
+    </p>
+
+    <section>
+      <h2>Vocabulary</h2>
+      <p>
+The terms defined in this specification are also part of the RDF <a
+data-cite="RDF-CONCEPTS#vocabularies">vocabulary namespace</a>
+<a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a>. For any
+`TERM`, the relevant URL is of the form `https://www.w3.org/ns/credentials/status#TERM`.
+Implementations that use RDF processing and rely on this specification MUST use
+these URLs.
+      </p>
+
+      <p>
+When dereferencing the
+<a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a> URL, the
+media type of the data that is returned depends on HTTP content negotiation.
+These are as follows:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>Media Type</th>
+            <th>Description and Hash</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+application/ld+json
+            </td>
+            <td>
+The vocabulary in JSON-LD format [[?JSON-LD11]].<br>
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.jsonld"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/turtle
+            </td>
+            <td>
+The vocabulary in Turtle format [[?TURTLE]].<br>
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.ttl"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+text/html
+            </td>
+            <td>
+The vocabulary in HTML+RDFa Format [[?HTML-RDFA]].<br>
+
+
+<strong>SHA2-256 Digest:</strong>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.html"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+It is possible to confirm the cryptographic digests above by running a command
+like the following (replacing `&lt;MEDIA_TYPE>` and `&lt;DOCUMENT_URL>` with the
+appropriate values) through a modern UNIX-like OS command line interface:
+`curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -sha256`
+      </p>
+    </section>
+
+    <section>
+      <h3>JSON-LD context</h3>
+      <p>
+Implementations that perform JSON-LD processing MUST treat the following JSON-LD
+context URL as already resolved, where the resolved document matches the
+corresponding hash value below:
+      </p>
+
+      <table class="simple">
+        <thead>
+          <th>Context URL and Hash</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="white-space: nowrap;">
+<strong>URL:</strong> https://www.w3.org/ns/credentials/status/v1<br>
+<strong>SHA2-256 Digest:</strong><br>
+<code><span class="vc-hash"
+  data-hash-url="https://w3c.github.io/vc-bitstring-status-list/contexts/v1.jsonld"
+  data-hash-format="openssl dgst -sha256" /></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+It is possible to confirm the cryptographic digests listed above by running a
+command like the following through a modern UNIX-like OS command line interface:
+`curl -sL -H "Accept: application/ld+json" https://www.w3.org/ns/credentials/status/v1 | openssl dgst -sha256`
+      </p>
+
+      <p>
+The vocabulary terms that the JSON-LD contexts resolve to
+are in the <a href="https://www.w3.org/ns/credentials/status">https://www.w3.org/ns/credentials/status#</a>
+namespace. See Section [[[#vocabulary]]] for further details.
+      </p>
+
+      <p class="note">
+Applications or specifications may define mappings to the vocabulary URLs using
+their own JSON-LD contexts. For example, the JSON-LD context definitions
+referred to in this section are also a part of the
+`https://www.w3.org/ns/credentials/v2` context, defined by the
+[[[?VC-DATA-MODEL-2.0]]] specification.
+      </p>
+    </section>
   </section>
 
   <section class="informative">
@@ -1440,39 +1590,23 @@ from [=issuers=].
       <p>
 [=Issuer=] use of decoy values in status lists has been explored as a mechanism
 to increase the privacy of [=subjects=]. While algorithms for employing decoy
-values are out of scope for this specification, implementers are advised that...
-      </p>
-
-      <p class="issue" data-number="150">
-The Working Group is currently discussing what sort of guidance to provide
-for decoy values. It has been suggested that decoy values are, in general,
-harmful to this specification's privacy characteristics. However, the group
-has not provided a complete analysis and thorough review for that assertion.
-The analysis might result in some use cases where decoy values are helpful, or
-might conclude that decoy values are, in general, harmful. Further
-thought is currently being put into the language around decoy values and
-it is expected that this language will be finalized during the Candidate
-Recommendation phase.
-      </p>
-        <!-- TEXT BELOW NEEDS TO BE FURTHER ANALYZED AND JUSTIFIED
-the use of decoy values does not improve privacy and can harm privacy in
-most cases.
+values are out of scope for this specification, implementers are advised that
+the use of decoy values can harm privacy if the decoy values do not accurately
+simulate the population associated with the status list. If decoy values can
+be distinguished from real values, the anonymity provided in the set will be
+reduced by the number of decoy values that are detectable as such. The most
+privacy-preserving status list is one that never changes, since the behavior
+of the population cannot be determined if no observable events occur.
       </p>
       <p>
-When indexes of status list entries are allocated in a random fashion, which is
-the suggested mode of operation for this specification, adding decoys harms
-privacy because it reduces the true group size by the number of decoys added
-to the group. A random allocation of indexes inherently hides the true size of
-the group without reducing it, ensuring that decoys are not necessary.
+Given how difficult it is to statistically simulate status entries for 
+a population, and that general advice cannot be given since
+[=verifiable credentials=] serve a broad set of use cases, implementers
+are advised to allocate status list entry indexes randomly, and to minimize —
+optimally to never — the rate at which status entries are changed. Allocation
+of status list entries preserves privacy best when it does not trigger any
+observable change of a status list.
       </p>
-      <p>
-There might be use cases where decoy values provide benefits. Implementers are
-cautioned that no such use cases were clearly identifiable by the group that
-created this specification. Therefore, the use of decoys is discouraged for
-most if not all use cases, as random allocation of status list entry indexes
-provides adequate protection.
-      </p>
-      -->
     </section>
 
     <section class="informative">
@@ -1658,6 +1792,47 @@ proper layout for an uncompressed bitstring.
       <p>
 For example, if a bitstring is 131,072 bits in size (16KB), the first index will
 be 0, and the last index will be 131,071.
+      </p>
+    </section>
+
+    <section class="informative">
+      <h3>Validity Periods</h3>
+
+      <p>
+The <a data-cite="?VC-DATA-MODEL-2.0#validity-period">validity period</a> that
+an issuer might choose to express in a status list is dependent on a variety of
+factors including:
+      </p>
+      <ul>
+        <li>
+How often do status values change? In real-time? Daily? Weekly? Monthly? Other?
+        </li>
+        <li>
+Is there a regulatory requirement that compels an [=issuer=] to notify a
+[=verifier=] that the status of a [=verifiable credential=] has changed?
+        </li>
+        <li>
+Is there a period of time after which an [=issuer=] would incur reputational
+damage by not notifying a [=verifier=] of a status change?
+        </li>
+        <li>
+Is there any expectation that a [=verifier=] will not accept a
+[=verifiable credential=] with a status list that does not expire for a
+period of time it deems excessive?
+        </li>
+        <li>
+Will a short validity period for a status list cause a significant network
+bandwidth or computing burden for an [=issuer=] or a [=verifier=]? Might
+this burden be mitigated by a longer validity period?
+        </li>
+      </ul>
+
+      <p>
+Since these factors vary with the ecosystem and credential type, there is no
+minimum or maximum validity period that is suggested for all status lists.
+[=Issuers=] will need to consider various factors that are specific to their
+[=verifiable credential=] types and choose validity periods that will strike
+the right balance in their ecosystem.
       </p>
     </section>
 
