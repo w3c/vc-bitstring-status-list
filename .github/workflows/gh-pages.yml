@@ -25,13 +25,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout/@v4
-      - name: Setup Node 18
+      - name: Setup Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: 18
       - name: Generate vocabulary
         run: |
-          npm install yml2vocab
+          npm info yml2vocab
+          npm install --verbose yml2vocab
           ./node_modules/.bin/yml2vocab -v vocab/vocabulary.yml -t vocab/template.html
           rm -rf node_modules
       - name: Setup Github Pages
