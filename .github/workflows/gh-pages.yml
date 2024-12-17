@@ -32,7 +32,6 @@ jobs:
       - name: Generate vocabulary
         run: |
           npm install yml2vocab
-          npm update yml2vocab
           ./node_modules/.bin/yml2vocab -v vocab/vocabulary.yml -t vocab/template.html
           rm -rf node_modules
       - name: Setup Github Pages
