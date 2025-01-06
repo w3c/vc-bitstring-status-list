@@ -733,6 +733,12 @@ could then be discoverable by a [=verifier=] that later receives that
 credential.
         </p>
 
+        <p class="note">
+It is important to note that the statusListIndex is the only link between
+the [=Verifiable credential=] and its status in the list. The
+```credentialSubject.id``` is not used when checking status. 
+        </p>
+
         <pre class="example nohighlight"
              title="Example StatusListCredential using more complex entries">
 {
