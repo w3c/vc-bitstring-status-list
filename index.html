@@ -808,25 +808,6 @@ Therefore, the `issuer` value of a [=verifiable credential=] containing a
 `BitstringStatusListCredential`.
         </p>
 
-        <p class="issue atrisk" title="TTL conflicts with `validUntil`">
-The Working Group is considering the removal of the `ttl` ("time to live")
-feature because its semantics conflict with the semantics of the `validUntil`
-feature of [=verifiable credentials=]. When a [=verifier=] performs
-validation and evaluates a `BitstringStatusListCredential` that contains both
-a `ttl` property and a `validUntil` property, each with a different value
-(i.e., each indicating a different point in time when the credential is to
-"expire"), it is not clear which (if either) property a validator can be
-expected to ignore. In other words, if a `ttl` value specifies an expiration
-datetime of midnight today, but the `validUntil` property specifies an
-expiration datetime of midnight tomorrow, then what is a [=verifier=]
-expected to do? Fundamentally, `ttl` and `validUntil` have conflicting
-semantics. One way to resolve this conflict is to remove `ttl` and specify
-that caching behavior can be expressed using protocol mechanisms (such as the
-`expires` header in HTTP), and that any caching performed MUST align with the
-`validUntil` value for the [=verifiable credential=]. The Working Group is
-seeking feedback from the implementer community regarding this feature.
-        </p>
-
         <table class="simple">
           <thead>
             <tr>
@@ -999,21 +980,6 @@ defined in Section <a href="#data-model"></a> whose value is malformed due to
 not complying with associated "MUST" statements, a
 <a data-cite="VC-DATA-MODEL-2.0#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>
 MUST be raised.
-    </p>
-
-    <p class="issue atrisk"
-       title="Attempting alignment with IETF Token Status List specification">
-The Working Group is seeking feedback related to implementer desire to align
-with the IETF OAuth Working Group
-<a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/">
-Token Status List</a> specification (formerly titled <i>OAuth Status List</i>, and
-<a href="https://datatracker.ietf.org/doc/draft-looker-oauth-jwt-cwt-status-list/01/">
-<i>JWT and CWT Status List</i></a>). If there is interest,
-and to the extent possible, this specification might align
-more closely with the Token Status List bitstring format, as it could be
-beneficial to have one code base able to process bitstring values from
-both lists. If there is implementer support for such changes, they
-might be made during the Candidate Recommendation phase.
     </p>
 
     <section class="normative">
