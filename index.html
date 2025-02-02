@@ -14,7 +14,7 @@
     <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
-        specStatus: "CRD",
+        specStatus: "PR",
         group: "vc",
 
         // the specification's short name, as in http://www.w3.org/TR/short-name/
@@ -24,8 +24,10 @@
         subtitle: "Privacy-preserving status information for Verifiable Credentials",
 
         // if you wish the publication date to be other than today, set this
-        //publishDate: "2024-05-21",
+        publishDate: "2025-03-06",
         crEnd: "2024-06-21",
+        prEnd: "2024-04-03",
+
         implementationReportURI: "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
         //previousMaturity: "CG-FINAL",
         //previousPublishDate: "2021-03-18",
@@ -218,16 +220,6 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.
     </section>
 
     <section id='sotd'>
-
-      <p>
-The Working Group is actively seeking implementation feedback for this
-specification. In order to exit the Candidate Recommendation phase, the
-Working Group has set the requirement of at least two independent
-implementations for each mandatory or optional feature in the specification. For details
-on the conformance testing process, see the
-<a href="https://w3c.github.io/vc-bitstring-status-list-test-suite/">
-implementation report</a>.
-      </p>
     </section>
 
     <section class="informative">
@@ -501,17 +493,6 @@ When an [=issuer=] desires to enable status information for a
 property that uses the data model described in this section. Any
 expression of the data model in this section MUST be expressed in a
 conforming [=verifiable credential=] as defined in [[VC-DATA-MODEL-2.0]].
-        </p>
-
-        <p class="issue atrisk"
-           title="Bitstring entry sizes greater than 1 are at risk.">
-The Working Group is currently seeking implementer feedback regarding the
-utility of bitstring entries that have sizes greater than one. Supporting
-such entries adds complexity to the solution, and it's not clear whether there
-is enough of an implementation community to support the feature. The WG is
-considering three options: (1) require conforming implementations to support
-the feature; (2) allow implementations to optionally support the feature; or
-(3) remove the feature. At present, the specification implements option (2).
         </p>
 
         <table class="simple">
@@ -1321,12 +1302,6 @@ requested media type.
 
   <section>
     <h2>Contexts and Vocabularies</h2>
-
-    <p class="issue" title="(AT RISK) Hash values might change during Candidate Recommendation">
-This section lists cryptographic hash values that might change during the
-Candidate Recommendation phase based on implementer feedback that requires
-the referenced files to be modified.
-    </p>
 
     <section>
       <h2>Vocabulary</h2>
