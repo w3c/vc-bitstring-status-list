@@ -210,7 +210,7 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.">
   "name": "Bitstring Status List v1.0",
   "inLanguage": "en",
   "license": "https://www.w3.org/copyright/software-license-2023/",
-  "datePublished": "2025-03-06",
+  "datePublished": "2025-03-20",
   "copyrightHolder": {
     "name": "World Wide Web Consortium",
     "url": "https://www.w3.org/"
@@ -648,10 +648,10 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.">
       }
     },
     {
-      "id": "https://www.w3.org/TR/controller-document/",
+      "id": "https://www.w3.org/TR/cid-1.0/",
       "type": "TechArticle",
-      "name": "Controlled Identifiers (CIDs) v1.0",
-      "url": "https://www.w3.org/TR/controller-document/",
+      "name": "Controlled Identifiers v1.0",
+      "url": "https://www.w3.org/TR/cid-1.0/",
       "creator": [
         {
           "name": "Manu Sporny"
@@ -908,9 +908,9 @@ li.sd-jwt-tab {
   "group": "vc",
   "shortName": "vc-bitstring-status-list",
   "subtitle": "Privacy-preserving status information for Verifiable Credentials",
-  "publishDate": "2025-03-06",
+  "publishDate": "2025-3-20",
   "crEnd": "2024-06-21",
-  "prEnd": "2024-04-03",
+  "prEnd": "2025-4-17",
   "implementationReportURI": "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
   "localBiblio": {
     "ALLOSAUR": {
@@ -1003,20 +1003,20 @@ li.sd-jwt-tab {
       ]
     }
   ],
-  "publishISODate": "2025-03-06T00:00:00.000Z",
-  "generatedSubtitle": "W3C Proposed Recommendation 06 March 2025"
+  "publishISODate": "2025-03-20T00:00:00.000Z",
+  "generatedSubtitle": "W3C Proposed Recommendation 20 March 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-PR"></head>
   <body class="h-entry" data-cite="INFRA I18N-GLOSSARY VC-DATA-MODEL-2.0"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Bitstring Status List v1.0</h1> <h2 id="subtitle" class="subtitle">Privacy-preserving status information for Verifiable Credentials</h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#PR">W3C Proposed Recommendation</a> <time class="dt-published" datetime="2025-03-06">06 March 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#PR">W3C Proposed Recommendation</a> <time class="dt-published" datetime="2025-03-20">20 March 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://www.w3.org/TR/2025/PR-vc-bitstring-status-list-20250306/">https://www.w3.org/TR/2025/PR-vc-bitstring-status-list-20250306/</a>
+                <a class="u-url" href="https://www.w3.org/TR/2025/PR-vc-bitstring-status-list-20250320/">https://www.w3.org/TR/2025/PR-vc-bitstring-status-list-20250320/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
                 <a href="https://www.w3.org/TR/vc-bitstring-status-list/">https://www.w3.org/TR/vc-bitstring-status-list/</a>
@@ -1103,7 +1103,7 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.
     
   </p><p>
         The <abbr title="World Wide Web Consortium">W3C</abbr> Membership and other interested parties are invited to review
-        the document and send comments through 03 April 2024.
+        the document and send comments through 17 April 2025.
         Advisory Committee Representatives should consult their
         <a href="https://www.w3.org/2002/09/wbs/myQuestionnaires">WBS questionnaires</a>. Note that substantive technical comments were expected during the
         Candidate Recommendation review period that ended
@@ -2072,7 +2072,7 @@ times the <code>statusSize</code>.
         <li>
 Generate a <var>compressed bitstring</var> by using the GZIP
 compression algorithm [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>] on the <var>bitstring</var>
-and then <a href="https://www.w3.org/TR/controller-document/#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
+and then <a href="https://www.w3.org/TR/cid-1.0/#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
         </li>
         <li>
 Return the <var>compressed bitstring</var>.
@@ -2097,7 +2097,7 @@ bitstring.
         </li>
         <li>
 Generate an <var>uncompressed bitstring</var> by using the
-<a href="https://www.w3.org/TR/controller-document/#multibase-0">Multibase-decode</a> algorithm on the
+<a href="https://www.w3.org/TR/cid-1.0/#multibase-0">Multibase-decode</a> algorithm on the
 <var>compressed bitstring</var> and then expanding the output using
 the GZIP decompression algorithm [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>].
         </li>
@@ -2252,7 +2252,7 @@ application/ld+json
 The vocabulary in JSON-LD format [<cite><a class="bibref" data-link-type="biblio" href="#bib-json-ld11" title="JSON-LD 1.1">JSON-LD11</a></cite>].<br>
 
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.jsonld" data-hash-format="openssl dgst -sha256">fd1eb95f26c9a895ed781f2ec457d09c065e79b01051d98e4aeacceaeb98366a</span></code>
+<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.jsonld" data-hash-format="openssl dgst -sha256">3c72104fd129ba6f36314b4316370099cfc630ba169d90eadd9c61dbf02ce8ee</span></code>
             </td>
           </tr>
           <tr>
@@ -2263,7 +2263,7 @@ text/turtle
 The vocabulary in Turtle format [<cite><a class="bibref" data-link-type="biblio" href="#bib-turtle" title="RDF 1.1 Turtle">TURTLE</a></cite>].<br>
 
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.ttl" data-hash-format="openssl dgst -sha256">33565e3c11aa03a65cbeffd475a4493f7fb127aeb349727d4626be8407888e43</span></code>
+<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.ttl" data-hash-format="openssl dgst -sha256">b774873d9c586b70f6444478d9c2a440af9d4a898ab5a8ff2265bb17a0d860dd</span></code>
             </td>
           </tr>
           <tr>
@@ -2275,7 +2275,7 @@ The vocabulary in HTML+RDFa Format [<cite><a class="bibref" data-link-type="bibl
 
 
 <strong>SHA2-256 Digest:</strong>
-<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.html" data-hash-format="openssl dgst -sha256">4e3844fcc66e65b6bfcab1f35e65d66f2806786e9d9591df1921a4b4c226c6bc</span></code>
+<code><span class="vc-hash" data-hash-url="https://w3c.github.io/vc-bitstring-status-list/vocab/vocabulary.html" data-hash-format="openssl dgst -sha256">26ff6cd144c19e103e0be09dad867772e5d7d4affcdc4b555e25a3cb5f177c88</span></code>
             </td>
           </tr>
         </tbody>
@@ -2773,13 +2773,13 @@ the general advice for all <a data-link-type="dfn" href="https://www.w3.org/TR/v
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:38Z",
-    "verificationMethod": "did:key:zDnaecTJqyyqs1NAw3fiFc7X77Jnk8PCWf44TtHk
-dWULToPvL",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:zDnaeiD7R5XphPUw6HWAkYDX9tTkjs67Fvn7bVMQ
+gAr1EbnVi",
     "cryptosuite": "ecdsa-rdfc-2019",
     "proofPurpose": "assertionMethod",
-    "proofValue": "zRt2SejDRTZWjAk9SCwaFa5DQFYEg44xKADE6ksW4quphGwTtqeDrUV1
-2o4pxqkywb1Df8ka7N7CJqFSspWyzTdZ"
+    "proofValue": "z5A6BEaUe1pVN4gXHsYJBhAxAp33Npxtpymyp6B8K5umqGtxuM4bMRhY
+8oPhZZ3DUJY6eJzcZH1Extj1hYYFWoGbZ"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;"><strong>application/vc</strong>
             <pre>{
@@ -2806,13 +2806,13 @@ dWULToPvL",
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:38Z",
-    "verificationMethod": "did:key:z6MkowWkZY8JeU6926ngbNTk7eqjQMkULGCmqNg3
-2d8YPTfq",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:z6MketYR8nDohERtmVirrJ7haRo43JiiGYnmajed
+YeYRgMVA",
     "cryptosuite": "eddsa-rdfc-2022",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z4RQSCteVdXNetpvKfzAEdCaB9Mwgr6edSAtwJYU9nPsYyDtP3dNgvba
-NdPdWVQTXeMuwYVCDq6pD2LpY3RBXoLv9"
+    "proofValue": "z4KYahhCGHL4Ejp3hQMwyJ6xUMYpCrNi1AP7hweg9LAGLvAr1UT6RVq8
+edS1hzWLwaQS2mJt6RVNpM8n1bfcZayCZ"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;"><strong>application/vc</strong>
             <pre>{
@@ -2839,24 +2839,24 @@ NdPdWVQTXeMuwYVCDq6pD2LpY3RBXoLv9"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:38Z",
-    "verificationMethod": "did:key:zDnaesCrJUP6qVRMp7cSHBc1qaY2fdBWZTyxxyAn
-Y6brtRvk5",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:zDnaevFFH1mo9gMFpsGPZTjHApkuHL65eTXBeFRH
+sjUdCmFjC",
     "cryptosuite": "ecdsa-sd-2023",
     "proofPurpose": "assertionMethod",
-    "proofValue": "u2V0AhVhAXgA4jKlqSkgrRNfYy9jnTgmCULyErsoSxC547ztbGm_Is03
-yKwAZCSF34MfJQrK8dVamOhNoYMTDIrtJR6LqxFgjgCQDWeZsb00qFhue5oukNEXX3BHW8YMwO9
-1Lydg8RItJ_YRYIN2gpkaxiBQJX9QEV6EpbDkgZw-50KbWkXvb9ZwcYvCoiFhAha7VASDG3sEV9
-ljgTHxqZyWe4e_N3trapwwez__scW1Jm45-2pGntw3mebl4Ga0CRJtAhE7wnPdcWrG-zrYvRVhA
-eTrBbc7tM9OtCIaIEn8X4_Dsr9ktto3ooWODT8a8YZ7RS9zDYiP6C6ahOAKoaY6hGV4XF5b63iU
-m0GUDcp64n1hAchw-oaKQ1paUwXf7XpXIc8aBcogGlMXF2rv0ekxqVK8VERgH4GK7760sdgA06S
-24uM-Ysz9KU5pU6uUKmixvC1hAQIU5epRDh8IaerqSlZFdLrHQJW97h8phOHOGytGI8OgRLrzB5
-BXeIGUvNy2Y6cKbpme9242TP0h4bPOS3jCSDFhARSA7kB_8q0HG3QL5ulzOjito80jkdBaVwueE
-3G2erPTT1jb336CVWrgpoBHK4NEPUQ5JDFZqriE6NFG6ro6AFFhA7UekjA4HzDxukz1SKo54_EO
-t77ARHtyylLa2DzM09gIMW3pd-sDKc2Dn9sGmiyTQVaCOaNfXJMtvtdbdtutWM1hAE02nb2ZbwM
-c4SdEm9Y8tgtvCzbyu-QcbtXuZjTOmmItyu8HMixmHKx_eUhKes7hzX1q5qXjjhBS1qh9BdWINl
-1hAFSQOh2HXsLke9d1E98EQ93CVYNoljdfQpd4zeJEP2ZbaBUtftzOtA9oU_aAKg7kOuij7Bf36
-uBdXY0p-rIdK5oFnL2lzc3Vlcg"
+    "proofValue": "u2V0AhVhAhOXUEuuscy0x9yWGAtIfTAO3sxrngcWjs2GlGPhFJite9kK
+_QhtCMRTwBaVHGgXc5JnGaw92VTFdNJPP94XK8lgjgCQCmPfXoUpcM8mQvj3u9UaOmLP7AfE0eY
+Yc5Td8MhWGjfxYIMl7zprBWpnSCq_fxP1u8YV_67TYBuZTe0MNxnpE_H4LiFhAmcm9wbcmWd_El
+RSgPM2njyRwAjze-AbpJeOgXib6-kjjrhKlLSMKgo8gya87Dquy8QEaOHZsNMuPP3XjNzVgv1hA
+BIdwpiQ9XRphpP8EzUm4r79MiulQxTmCbTEOKxC4SqsRgPxSCR9GhlzagJaL9KBTNpAvvt2Akoj
+OU151wmklZlhANtJLFFeloonWVOshVVvn0g5yUBmYHFDmHC_dfeTNGQfwFq9BiysL4_U0iUhp2-
+bde9wq1LyyByaLH3nBI3eGRlhAlh90Q2Milu-uJNhihK_2ZiEVmKsACGtef9N2cqOOV2nY0H3GW
+mNcc7xCAfzUrFmrCA3j4R6aZdugg6XAhlwKxlhA7hGtLiLcEW4wwCVK2pdfxY2iR-gf3hRrAFI-
+_lvjWYyJVL_kJdJx6dZhiV6_RuZ4QDeVBweUCMDoEUVFTOvmjVhAged0U3LZhqgezCERjyrDg8P
+XNosSUhIKX9fa6iRTLq0BqMF9jOH5vGDbAeaK6LyuSD2itbrD5RHcGsP9cMqValhAQhoL6iRcNd
+jOfcz9yD_aWSYUPUX0F8GplkD8RXbDJP6z3IowOzB-a7ghwzwRAoQxDxs_ljOKMR0pNU5DpFo9L
+lhAI4gAuy2Rz7r7S_AXFq3YHSetkjDCKz-d8RSXW7QwDZR4xpWEkQK5DeGqTShiOyxIpO-Vq_6I
+u7rbwBYk9OkBeoFnL2lzc3Vlcg"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;"><strong>application/vc</strong>
             <pre>{
@@ -2883,17 +2883,17 @@ uBdXY0p-rIdK5oFnL2lzc3Vlcg"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "verificationMethod": "did:key:zUC7Jj9ndbZNF84T5TWaZT9n6kqQ7S8jdATDoqNo
-7NX73pH6nzbGbguTdxgmeCpkJaaGG4qctvzbpfKGQm38k74wssREc1HahTc7deBT6uA37vZXBMQ
-uxxc9pZ2bQqenu3n7RUG",
+    "verificationMethod": "did:key:zUC76eegoHXPFDbsiMz3fCNSnrSkm2XBkTkRQ7g5
+i9BUt5BamJ5sMhMVjRRTMVtJsUVWzomp4ahBLF6zSQcpazFTaXhGcQWW8Qm3EbhM56ihn1p2WgB
+jq2Z4BE1tNN87BjhzcwD",
     "cryptosuite": "bbs-2023",
     "proofPurpose": "assertionMethod",
-    "proofValue": "u2V0ChVhQhqymQ_Yrf-oGhs8FU0xZDDUGESxhBPabDQ2FqAGLC0aNW0-
-kQIJ_d9ezfpAtiFzvJM8cQdFOVvqujp9nCgLl7eobggfK-IvKprebck5FqClYQGiQskOBGnp9Bh
-luuBrWiKCKIzXba_vWVBNlJONbPvOAuImZqNvGmN4HE7M00RQcmcMMZ6SNHpxB8yqw7hCUHt5YY
-LOp8zJlBfga-Fisk7eS5wl56KophrfTJ-DnPiEOfvZHG7-G09rVQskILUtVAL1ZmgeRyMhvAYec
-Z6wFP3cKvMIocuFd0ox1vrTBl8SW6ZiTNcDgQkORkPu0GD7VHdK0DVgguJ0wdJJXlnTtDqE11Xq
-TEGgnVl_yw3n_peAWxu6rgM6BZy9pc3N1ZXI"
+    "proofValue": "u2V0ChVhQhwbZdl2UxJGoyI_6BNFraRf4xByoHjvHhh6prS99VULLESZ
+VKOcqssLKz0dKQJvhXiQZj-uMSlRwydgpE1mXQhYzNtIOZ_BhqjRGvuxiEx1YQGXfGhYXDpaPkN
+_GLMalo_b7Q825vDHjPrppTAdnRO2DuImZqNvGmN4HE7M00RQcmcMMZ6SNHpxB8yqw7hCUHt5YY
+JCaWMbQs16j39cO0Vw6yc1-X1qAVfAYQ2EMA8c3sVGVCBg5ow3TVssjXOGC8_fRohIi-0TrgDH8
+ZvwVqadUB4A84q0f9BxB44sx3AtxzbXjbn7Kpe4Yqe0FXwkWD7HUXFggL5K6pCsMUjRIxcqFz9E
+sRctBlKIsFTKhar9VAogFaw-BZy9pc3N1ZXI"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;">
 <div class="vc-jose-cose-jwt-tabbed">
@@ -2934,7 +2934,7 @@ TEGgnVl_yw3n_peAWxu6rgM6BZy9pc3N1ZXI"
 <div class="jwt-compact">
 <span class="jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
 .<span class="jwt-payload">eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIiwiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dXMvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlIjoiUGVyc29uIn19</span>
-.<span class="jwt-signature">JuGvR4pQXMh011b5uXQePt7i-fxR0svNgCFg83Wnxo06pZx-NrQH7itPRzyLfDiWHNX-jLIedPJ2q3Pb0UIOxg</span>
+.<span class="jwt-signature">Fhvddo0ZJ4BYdl9Vj4Czcyt5yYfPvVNfZER5Rb8y08GeY_H8RTYWSIlQttrhXAEpzgZQHpU_FGqMWGiRRrSpdw</span>
 </div>
 </div>
     </div>
@@ -2975,91 +2975,91 @@ TEGgnVl_yw3n_peAWxu6rgM6BZy9pc3N1ZXI"
   / unprotected / {
   },
   / payload / h'7b224063...6e227d7d',
-  / signature / h'7c193cba...e576745e'
+  / signature / h'bc5af14d...0c50fb33'
 ])</code></pre>
 </div>
 <strong>application/vc-ld+cose</strong>
 <div class="cose-text">
-d28444a1013822a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f3233383934363732333934222c2274797065223a5b2256657269666961626c6543726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34325a222c2263726564656e7469616c537461747573223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33233934353637222c2274797065223a22426974737472696e675374617475734c697374456e747279222c22737461747573507572706f7365223a227265766f636174696f6e222c227374617475734c697374496e646578223a223934353637222c227374617475734c69737443726564656e7469616c223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33227d2c2263726564656e7469616c5375626a656374223a7b226964223a226469643a6578616d706c653a36373839222c2274797065223a22506572736f6e227d7d58407c193cba6e89e4ed826ba817e669e13aa4c39395eda6fa98ba6d71a148792d94ff4db72c2a468806f9c2e631304731a9d4eedb5bb4f343db8896de7ce576745e
+d28444a1013822a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f3233383934363732333934222c2274797065223a5b2256657269666961626c6543726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34325a222c2263726564656e7469616c537461747573223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33233934353637222c2274797065223a22426974737472696e675374617475734c697374456e747279222c22737461747573507572706f7365223a227265766f636174696f6e222c227374617475734c697374496e646578223a223934353637222c227374617475734c69737443726564656e7469616c223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33227d2c2263726564656e7469616c5375626a656374223a7b226964223a226469643a6578616d706c653a36373839222c2274797065223a22506572736f6e227d7d5840bc5af14d8c57a52288a67d43e56e4092224bf1ba17807f660590a4f07c2f79bb125099ab7786c8265a3a403b39e617ca267e33ce037042821e42af6c0c50fb33
 </div>
     </div>
 </div></div><div class="vc-tab-content" style="min-height: 454px;"><div>
 
 <div class="sd-jwt-tabbed">
-    <input type="radio" id="sd-jwt-1-f31zkrn-encoded" name="sd-jwt-1-f31zkrn-tabs" checked="checked" tabindex="0">
-    <input type="radio" id="sd-jwt-1-f31zkrn-decoded" name="sd-jwt-1-f31zkrn-tabs" tabindex="0">
-    <input type="radio" id="sd-jwt-1-f31zkrn-disclosures" name="sd-jwt-1-f31zkrn-tabs" tabindex="0">
+    <input type="radio" id="sd-jwt-1-m6brilm-encoded" name="sd-jwt-1-m6brilm-tabs" checked="checked" tabindex="0">
+    <input type="radio" id="sd-jwt-1-m6brilm-decoded" name="sd-jwt-1-m6brilm-tabs" tabindex="0">
+    <input type="radio" id="sd-jwt-1-m6brilm-disclosures" name="sd-jwt-1-m6brilm-tabs" tabindex="0">
     <ul class="sd-jwt-tabs">
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-1-f31zkrn-encoded">Encoded</label>
+        <label for="sd-jwt-1-m6brilm-encoded">Encoded</label>
       </li>
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-1-f31zkrn-decoded">Decoded</label>
+        <label for="sd-jwt-1-m6brilm-decoded">Decoded</label>
       </li>
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-1-f31zkrn-disclosures">Issuer Disclosures</label>
+        <label for="sd-jwt-1-m6brilm-disclosures">Issuer Disclosures</label>
       </li>
     </ul>
-    <div class="sd-jwt-tab-content" id="sd-jwt-1-f31zkrn-content-encoded">
+    <div class="sd-jwt-tab-content" id="sd-jwt-1-m6brilm-content-encoded">
       
 <div class="sd-jwt-compact">
 <span class="sd-jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
-.<span class="sd-jwt-payload">eyJfc2RfYWxnIjoic2hhLTI1NiIsIkBjb250ZXh0IjpbImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy92MiIsImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy9leGFtcGxlcy92MiJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIiwiY3JlZGVudGlhbFN0YXR1cyI6eyJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwiX3NkIjpbIkVpNFRmek1WbHM3X29Ec2RRZmlzVGF2TWt5UWswSU5ERXktWGZnakxlVVEiLCJqZVNWZmpvVXZUWWxoOE95cW03b3dyUG1rX29oNWpNcS16REZxYndaQ1RRIl19LCJjcmVkZW50aWFsU3ViamVjdCI6eyJfc2QiOlsiaUU3dTloSUoteWllenZ5Rmt0OU5pWUFvM2F0bTQzU2dXRjZzaVNxcERVWSIsImxMQkQtWVZhVFZOQ2U0TjJwckRPRmFVUGlFTmhqM0JJNnRSSXUtNmI0TnciXX0sIl9zZCI6WyJjRGdmcDJzWDgtUWRkNWNzVHZOR3dYRFVseTVnTDNNcHJmZnhPdFc3cV9FIiwid3pSWmZTNzJ5bzdQVUZFLUJpYTI3Q3lKQjVOM21LdVZHX2ZqanNlcmh4TSJdfQ</span>
-.<span class="sd-jwt-signature">meyFSwmeMe82AaHdx6vgI0fP_D166E9LR77leFK6mu3Dew3-cJlqIumw0sKn7PSVhx76W9wt1tDH9gZyQ4sGvg</span>
-~<span class="sd-jwt-disclosure">WyJnVDV1cWNmOV9HX0wxSXBteUo0czNBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiXQ</span>~<span class="sd-jwt-disclosure">WyJmbkJOOWYxME1MSllKb0lmN1dqd19nIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIl1d</span>~<span class="sd-jwt-disclosure">WyJPZ3FNNGoydzFfLVg5emdXTnpDOURBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciXQ</span>~<span class="sd-jwt-disclosure">WyIxSGdlMHZlamdLaHF6LTYyUVgtdzRRIiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Il0</span>~<span class="sd-jwt-disclosure">WyI2SkZtbWhBbnpKUzdNdC12dy1zYzBRIiwgImlkIiwgImRpZDpleGFtcGxlOjY3ODkiXQ</span>~<span class="sd-jwt-disclosure">WyI5Y3lYc3hVNkpXdlk3dlo5MFVzaWp3IiwgInR5cGUiLCAiUGVyc29uIl0</span>
+.<span class="sd-jwt-payload">eyJfc2RfYWxnIjoic2hhLTI1NiIsIkBjb250ZXh0IjpbImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy92MiIsImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy9leGFtcGxlcy92MiJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIiwiY3JlZGVudGlhbFN0YXR1cyI6eyJzdGF0dXNQdXJwb3NlIjoicmV2b2NhdGlvbiIsInN0YXR1c0xpc3RJbmRleCI6Ijk0NTY3Iiwic3RhdHVzTGlzdENyZWRlbnRpYWwiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwiX3NkIjpbImNTQXVoTkpReVNfcjdZR0t0Uk5HOWczcEsxQkFzZUlIWXptX2o4cFdhd1EiLCJkSjZTOE5sNUtnamVqbC1xTW9sc052MmJXallqYUJ6WmU5RnJ3SGV2VU9jIl19LCJjcmVkZW50aWFsU3ViamVjdCI6eyJfc2QiOlsiam5LZ3ktaUk2eHFLNFNjWUVuWlVfa0d1LXlqQnVrRE84MllfV0VNcXdPNCIsInZ2eHNZTTlDX1R1ZGFuZXVvcHJoTkptSWxXZVZKMTlVSGtpR1dWaVNuU1EiXX0sIl9zZCI6WyJjeUNacWZ5NFJtNmJCd1drTWFaSGptZndIblNiYXRtUWxCcl9uNE5ybXFRIiwic2lJODNMbUtzamozOEZnY0tpWmtfbGFlbkg0SE9yWXVXb0dDMnJxUnRIcyJdfQ</span>
+.<span class="sd-jwt-signature">IgUz5VJm-Pzjfm9cQPOudgM-Zm4UN-kdlCx1w08xl0t-ef5vQgMq8LkbsF5cOLKnelW9ryTbEJKTu_z3s9hj0w</span>
+~<span class="sd-jwt-disclosure">WyJUdDc5Q1FUYXZETUZMZko5OFE2WEFBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiXQ</span>~<span class="sd-jwt-disclosure">WyI5VkFLNERzVWYxcG04b09hWV83Z1p3IiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIl1d</span>~<span class="sd-jwt-disclosure">WyI5T0xpZW5wN2x1WnpMeUVMaDdMWWZ3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciXQ</span>~<span class="sd-jwt-disclosure">WyJNdmI1eGJJajJxckhoeDU4ZzFFTklRIiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Il0</span>~<span class="sd-jwt-disclosure">WyJWVmhLQVBSckxUalpxenF5dzZCMm1BIiwgImlkIiwgImRpZDpleGFtcGxlOjY3ODkiXQ</span>~<span class="sd-jwt-disclosure">WyJYYkhLVnMtYjdQNkFhOFEyT0Z5emtBIiwgInR5cGUiLCAiUGVyc29uIl0</span>
 </div>
     </div>
-    <div class="sd-jwt-tab-content" id="sd-jwt-1-f31zkrn-content-decoded">
+    <div class="sd-jwt-tab-content" id="sd-jwt-1-m6brilm-content-decoded">
       <pre class="header-value">{<br>&nbsp;&nbsp;"kid":&nbsp;"ExHkBMW9fmbkvV266mRpuP2sUY_N_EWIN1lapUzO8ro",<br>&nbsp;&nbsp;"alg":&nbsp;"ES256"<br>}</pre>
-      <pre class="header-value">{<br>&nbsp;&nbsp;"_sd_alg":&nbsp;"sha-256",<br>&nbsp;&nbsp;"@context":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/v2",<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/examples/v2"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"issuer":&nbsp;"did:example:12345",<br>&nbsp;&nbsp;"validFrom":&nbsp;"2021-04-05T14:27:42Z",<br>&nbsp;&nbsp;"credentialStatus":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusPurpose":&nbsp;"revocation",<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusListIndex":&nbsp;"94567",<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusListCredential":&nbsp;"https://example.com/credentials/status/3",<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Ei4TfzMVls7_oDsdQfisTavMkyQk0INDEy-XfgjLeUQ",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"jeSVfjoUvTYlh8Oyqm7owrPmk_oh5jMq-zDFqbwZCTQ"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"credentialSubject":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"iE7u9hIJ-yiezvyFkt9NiYAo3atm43SgWF6siSqpDUY",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lLBD-YVaTVNCe4N2prDOFaUPiENhj3BI6tRIu-6b4Nw"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"cDgfp2sX8-Qdd5csTvNGwXDUly5gL3MprffxOtW7q_E",<br>&nbsp;&nbsp;&nbsp;&nbsp;"wzRZfS72yo7PUFE-Bia27CyJB5N3mKuVG_fjjserhxM"<br>&nbsp;&nbsp;]<br>}</pre>
+      <pre class="header-value">{<br>&nbsp;&nbsp;"_sd_alg":&nbsp;"sha-256",<br>&nbsp;&nbsp;"@context":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/v2",<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/examples/v2"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"issuer":&nbsp;"did:example:12345",<br>&nbsp;&nbsp;"validFrom":&nbsp;"2021-04-05T14:27:42Z",<br>&nbsp;&nbsp;"credentialStatus":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusPurpose":&nbsp;"revocation",<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusListIndex":&nbsp;"94567",<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusListCredential":&nbsp;"https://example.com/credentials/status/3",<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cSAuhNJQyS_r7YGKtRNG9g3pK1BAseIHYzm_j8pWawQ",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"dJ6S8Nl5Kgjejl-qMolsNv2bWjYjaBzZe9FrwHevUOc"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"credentialSubject":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"jnKgy-iI6xqK4ScYEnZU_kGu-yjBukDO82Y_WEMqwO4",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"vvxsYM9C_TudaneuoprhNJmIlWeVJ19UHkiGWViSnSQ"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"cyCZqfy4Rm6bBwWkMaZHjmfwHnSbatmQlBr_n4NrmqQ",<br>&nbsp;&nbsp;&nbsp;&nbsp;"siI83LmKsjj38FgcKiZk_laenH4HOrYuWoGC2rqRtHs"<br>&nbsp;&nbsp;]<br>}</pre>
     </div>
-    <div class="sd-jwt-tab-content" id="sd-jwt-1-f31zkrn-content-disclosures">
+    <div class="sd-jwt-tab-content" id="sd-jwt-1-m6brilm-content-disclosures">
       <div class="disclosures">
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-wzRZfS72yo7PUFE-Bia27CyJB5N3mKuVG_fjjserhxM">Claim: <span class="claim-name">id</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">wzRZfS72yo7PUFE-Bia27CyJB5N3mKuVG_fjjserhxM</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJnVDV1cWNmOV9HX0wxSXBteUo0czNBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiXQ</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"gT5uqcf9_G_L1IpmyJ4s3A",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/23894672394"<br>]</span></p>
+    <h3 id="sd-jwt-claim-cyCZqfy4Rm6bBwWkMaZHjmfwHnSbatmQlBr_n4NrmqQ">Claim: <span class="claim-name">id</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">cyCZqfy4Rm6bBwWkMaZHjmfwHnSbatmQlBr_n4NrmqQ</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJUdDc5Q1FUYXZETUZMZko5OFE2WEFBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvMjM4OTQ2NzIzOTQiXQ</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"Tt79CQTavDMFLfJ98Q6XAA",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/23894672394"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-cDgfp2sX8-Qdd5csTvNGwXDUly5gL3MprffxOtW7q_E">Claim: <span class="claim-name">type</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">cDgfp2sX8-Qdd5csTvNGwXDUly5gL3MprffxOtW7q_E</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJmbkJOOWYxME1MSllKb0lmN1dqd19nIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIl1d</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"fnBN9f10MLJYJoIf7Wjw_g",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"VerifiableCredential"<br>&nbsp;&nbsp;]<br>]</span></p>
+    <h3 id="sd-jwt-claim-siI83LmKsjj38FgcKiZk_laenH4HOrYuWoGC2rqRtHs">Claim: <span class="claim-name">type</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">siI83LmKsjj38FgcKiZk_laenH4HOrYuWoGC2rqRtHs</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI5VkFLNERzVWYxcG04b09hWV83Z1p3IiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIl1d</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"9VAK4DsUf1pm8oOaY_7gZw",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"VerifiableCredential"<br>&nbsp;&nbsp;]<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-jeSVfjoUvTYlh8Oyqm7owrPmk_oh5jMq-zDFqbwZCTQ">Claim: <span class="claim-name">id</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">jeSVfjoUvTYlh8Oyqm7owrPmk_oh5jMq-zDFqbwZCTQ</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJPZ3FNNGoydzFfLVg5emdXTnpDOURBIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciXQ</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"OgqM4j2w1_-X9zgWNzC9DA",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/status/3#94567"<br>]</span></p>
+    <h3 id="sd-jwt-claim-cSAuhNJQyS_r7YGKtRNG9g3pK1BAseIHYzm_j8pWawQ">Claim: <span class="claim-name">id</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">cSAuhNJQyS_r7YGKtRNG9g3pK1BAseIHYzm_j8pWawQ</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI5T0xpZW5wN2x1WnpMeUVMaDdMWWZ3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciXQ</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"9OLienp7luZzLyELh7LYfw",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/status/3#94567"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-Ei4TfzMVls7_oDsdQfisTavMkyQk0INDEy-XfgjLeUQ">Claim: <span class="claim-name">type</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">Ei4TfzMVls7_oDsdQfisTavMkyQk0INDEy-XfgjLeUQ</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyIxSGdlMHZlamdLaHF6LTYyUVgtdzRRIiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Il0</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"1Hge0vejgKhqz-62QX-w4Q",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"BitstringStatusListEntry"<br>]</span></p>
+    <h3 id="sd-jwt-claim-dJ6S8Nl5Kgjejl-qMolsNv2bWjYjaBzZe9FrwHevUOc">Claim: <span class="claim-name">type</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">dJ6S8Nl5Kgjejl-qMolsNv2bWjYjaBzZe9FrwHevUOc</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJNdmI1eGJJajJxckhoeDU4ZzFFTklRIiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Il0</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"Mvb5xbIj2qrHhx58g1ENIQ",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"BitstringStatusListEntry"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-iE7u9hIJ-yiezvyFkt9NiYAo3atm43SgWF6siSqpDUY">Claim: <span class="claim-name">id</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">iE7u9hIJ-yiezvyFkt9NiYAo3atm43SgWF6siSqpDUY</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI2SkZtbWhBbnpKUzdNdC12dy1zYzBRIiwgImlkIiwgImRpZDpleGFtcGxlOjY3ODkiXQ</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"6JFmmhAnzJS7Mt-vw-sc0Q",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"did:example:6789"<br>]</span></p>
+    <h3 id="sd-jwt-claim-vvxsYM9C_TudaneuoprhNJmIlWeVJ19UHkiGWViSnSQ">Claim: <span class="claim-name">id</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">vvxsYM9C_TudaneuoprhNJmIlWeVJ19UHkiGWViSnSQ</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJWVmhLQVBSckxUalpxenF5dzZCMm1BIiwgImlkIiwgImRpZDpleGFtcGxlOjY3ODkiXQ</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"VVhKAPRrLTjZqzqyw6B2mA",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"did:example:6789"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-lLBD-YVaTVNCe4N2prDOFaUPiENhj3BI6tRIu-6b4Nw">Claim: <span class="claim-name">type</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">lLBD-YVaTVNCe4N2prDOFaUPiENhj3BI6tRIu-6b4Nw</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI5Y3lYc3hVNkpXdlk3dlo5MFVzaWp3IiwgInR5cGUiLCAiUGVyc29uIl0</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"9cyXsxU6JWvY7vZ90Usijw",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"Person"<br>]</span></p>
+    <h3 id="sd-jwt-claim-jnKgy-iI6xqK4ScYEnZU_kGu-yjBukDO82Y_WEMqwO4">Claim: <span class="claim-name">type</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">jnKgy-iI6xqK4ScYEnZU_kGu-yjBukDO82Y_WEMqwO4</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJYYkhLVnMtYjdQNkFhOFEyT0Z5emtBIiwgInR5cGUiLCAiUGVyc29uIl0</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"XbHKVs-b7P6Aa8Q2OFyzkA",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"Person"<br>]</span></p>
 </div>
 </div>
     </div>
@@ -3112,13 +3112,13 @@ C3AYbSVKsAQAAA"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:39Z",
-    "verificationMethod": "did:key:zDnaecTJqyyqs1NAw3fiFc7X77Jnk8PCWf44TtHk
-dWULToPvL",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:zDnaeiD7R5XphPUw6HWAkYDX9tTkjs67Fvn7bVMQ
+gAr1EbnVi",
     "cryptosuite": "ecdsa-rdfc-2019",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z2CZ8p6rCdcaPn1wSqprWL2weNdikzNaX2ekjkwwnMH65LVZRQ4JgkYu
-c3BzTEbQG5xBGzFd2rmFVL5mH1atghHeS"
+    "proofValue": "z515ARV9om2TUw6gqcavfSqsNi2EiFNk4TUnVp1yUyZxvRFREgeKQS1t
+uPyUqXEMSHjQZnb911gKy2H9ibaesffEz"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;"><strong>application/vc</strong>
             <pre>{
@@ -3142,13 +3142,13 @@ C3AYbSVKsAQAAA"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:39Z",
-    "verificationMethod": "did:key:z6MkowWkZY8JeU6926ngbNTk7eqjQMkULGCmqNg3
-2d8YPTfq",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:z6MketYR8nDohERtmVirrJ7haRo43JiiGYnmajed
+YeYRgMVA",
     "cryptosuite": "eddsa-rdfc-2022",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z48fwK7cKANF9Rwc5suRSUsTdAiNKCZqgNsKLg3fcZzgZDn5Hxud15BC
-6JBNkXPgb4SBmCbhT6awHynh1Dthu7p7g"
+    "proofValue": "z2GhF7cSEXxe5hLswQQWUm8SE5XCh9aSJJj1k3d6mg4uWDwvM8CQBiNJ
+xfbBB8BzJKzNdCq2mRi4aEEpdcuCjP9a4"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;"><strong>application/vc</strong>
             <pre>{
@@ -3172,20 +3172,20 @@ C3AYbSVKsAQAAA"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2025-02-02T23:59:39Z",
-    "verificationMethod": "did:key:zDnaesCrJUP6qVRMp7cSHBc1qaY2fdBWZTyxxyAn
-Y6brtRvk5",
+    "created": "2025-02-17T22:48:33Z",
+    "verificationMethod": "did:key:zDnaevFFH1mo9gMFpsGPZTjHApkuHL65eTXBeFRH
+sjUdCmFjC",
     "cryptosuite": "ecdsa-sd-2023",
     "proofPurpose": "assertionMethod",
-    "proofValue": "u2V0AhVhAUuOokFxlqI9Dat1UAa7Zn9VOJQOvc1au8ldo7Re2bsU0_wp
-J8ZQtMviWQ1iduu9K8fD3wCYuyfbaiSPRA9AK81gjgCQCTSWPrgTqqWHnS-knyZOyUUwNxyuUNI
-WEWzQfT1zP72FYIBL5vUU_h-krz8CvQt-lfA1w_Sz-Vod9g3gDjTyQ8maGhVhAbOtmsEEDshUtp
-7Ejv-tWqWOSc7Wo2ER1VqVAPlhhqLQNvnVWTvB5K6nKgGd_L2xhR5dyDTKu0B-td4Fe1_lLK1hA
-6fQFeYuLPT2P3895eAyn8meuona8kFBzhPsjSfWQjfuncCMt6VsD50SKBtEr6-K0ny1o1xHbD7w
-LXpiVjA6w1VhAtPlon1hHBO2pHFEZ4bGh05lKMzKJ6Svu_BadmtCkokDvUMoSToXKsqHm7tWKjF
-5PkWLCUoHLSPQj5lBQVTy3ylhAmkjX4ejI7v_dHSgtJy2ONQkUVgn4wZYK1dZBDHQGoGXBEA0kZ
-E5nwjb7WYLRMVnObYoHXGzPbvKmQgApaFd8zlhAc8p2VXrqO17RoW3EQQpzFXZNdy8IL7BcnBU0
-QgN7VRKOorMuY4CBOvsUjX3c2TvFAwEbMYW6LZH3VKJO55GXuIFnL2lzc3Vlcg"
+    "proofValue": "u2V0AhVhAaGr0dmAYaxPN6ILJX-yfoUjpRcuqE0ISOUNT9nVeO7hC_zq
+8EWjP0HE-yBFd7LUZpWKwFKftPMfFjxzSRpCyPlgjgCQDM20kfCimEOmF0Ud-VtYdhp41IP8QmH
+ThvKqrTDI4_-VYIMcpTr7iKOvCY95FkQ8-vLZJZaq5LaLVEwFXnPKJ0rdthVhAQVB0dsjjECjhS
+_ifmAgvQCYrij4jaYN25zSYup2Iu5DEP4UcYT-zv0Y5TXeVY65NHti5qmxQDHmZfwl43OtAeFhA
+tNUqW10kQvU342p2WPlJsnTHCGyAsNv8fTM0ldwr9vhJhxEonj9vkV4XFBXKCWF2C5jX8HXlcfi
+XTGiCRLfBzlhAv4OLTNk3v_Y4kVYZLUL_bfMUN17lDbsjxe2zk5vyVfCOAEkUHSIIKt_ESyyLg-
+EPF9UmDSdAsRSvO-siPaKKU1hArjjxolwW8UXuOts16GSnNGFJoWUh3SS1zKA7JziVcnKQ1w74J
+QJo6pUkEtixM_NNPatsdXyWXlBB5cSOZhbSclhAUA0seT1ijX79rvumtRkXSRFdSf2HDEyaH9yA
+YpY7CH9FCb8mIxysIpQ8WapbTQZHId0-0186iQhtZdfl3eT1x4FnL2lzc3Vlcg"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;"><strong>application/vc</strong>
             <pre>{
@@ -3209,17 +3209,17 @@ C3AYbSVKsAQAAA"
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "verificationMethod": "did:key:zUC7Jj9ndbZNF84T5TWaZT9n6kqQ7S8jdATDoqNo
-7NX73pH6nzbGbguTdxgmeCpkJaaGG4qctvzbpfKGQm38k74wssREc1HahTc7deBT6uA37vZXBMQ
-uxxc9pZ2bQqenu3n7RUG",
+    "verificationMethod": "did:key:zUC76eegoHXPFDbsiMz3fCNSnrSkm2XBkTkRQ7g5
+i9BUt5BamJ5sMhMVjRRTMVtJsUVWzomp4ahBLF6zSQcpazFTaXhGcQWW8Qm3EbhM56ihn1p2WgB
+jq2Z4BE1tNN87BjhzcwD",
     "cryptosuite": "bbs-2023",
     "proofPurpose": "assertionMethod",
-    "proofValue": "u2V0ChVhQqGGN79sb7gZUgPvmIRbbJZc90Z02KNkztVlqnXkiAaefSI_
-Ms9kHmoQVHMBy0jVaTjnNDmwQd5tdpKAaRuGBSUNUIWroz8y2gHcYdJP8Ao5YQGiQskOBGnp9Bh
-luuBrWiKCKIzXba_vWVBNlJONbPvOAUVZBPpGcaFvsP9VMlJbZ4Bt7A11Ou17U2ioW6gxK8JNYY
-LOp8zJlBfga-Fisk7eS5wl56KophrfTJ-DnPiEOfvZHG7-G09rVQskILUtVAL1ZmgeRyMhvAYec
-Z6wFP3cKvMIocuFd0ox1vrTBl8SW6ZiTNcDgQkORkPu0GD7VHdK0DVggdCh52Bdf9NcYpcZSMma
-A3On3G7Kd3fOHaFBLt5brLV2BZy9pc3N1ZXI"
+    "proofValue": "u2V0ChVhQjT9iPQmARL8QJITwBYbmVPFF7Mh0cePGOW4CK1gR-kjvJ7F
+MJA4h4QfRMGBB67v3JVPc8y-9pa89I-FqAXmU4w_FfYZWtL3VW_tqnsPRTPZYQGXfGhYXDpaPkN
+_GLMalo_b7Q825vDHjPrppTAdnRO2DUVZBPpGcaFvsP9VMlJbZ4Bt7A11Ou17U2ioW6gxK8JNYY
+JCaWMbQs16j39cO0Vw6yc1-X1qAVfAYQ2EMA8c3sVGVCBg5ow3TVssjXOGC8_fRohIi-0TrgDH8
+ZvwVqadUB4A84q0f9BxB44sx3AtxzbXjbn7Kpe4Yqe0FXwkWD7HUXFggxeAZv8Ort-BCEhju9Vg
+NR2jt8mxaTm5mk1MVtpSjDy6BZy9pc3N1ZXI"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;">
 <div class="vc-jose-cose-jwt-tabbed">
@@ -3256,7 +3256,7 @@ A3On3G7Kd3fOHaFBLt5brLV2BZy9pc3N1ZXI"
 <div class="jwt-compact">
 <span class="jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
 .<span class="jwt-payload">eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaWRGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ</span>
-.<span class="jwt-signature">zVZSh9NaM9Bp7QiMK83letPOK-295iCeBhE51RNWFK4mvso3wiJ9MA_ekinRR0z3BhcGH5QkS1L4Wyc-Wnujhg</span>
+.<span class="jwt-signature">XpRTGuqqi9bttgqNoaj5YG9iZkdHekuOz5-k0i4QRbgOpPzjsWmu1bMrA9lVorlm-nYXtrJwBql7njFYuwXweg</span>
 </div>
 </div>
     </div>
@@ -3293,75 +3293,75 @@ A3On3G7Kd3fOHaFBLt5brLV2BZy9pc3N1ZXI"
   / unprotected / {
   },
   / payload / h'7b224063...41227d7d',
-  / signature / h'e3516bd6...bac0dc98'
+  / signature / h'57807659...a5e92042'
 ])</code></pre>
 </div>
 <strong>application/vc-ld+cose</strong>
 <div class="cose-text">
-d28444a1013822a05901e47b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33222c2274797065223a5b2256657269666961626c6543726564656e7469616c222c22426974737472696e675374617475734c69737443726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34305a222c2263726564656e7469616c5375626a656374223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f7374617475732f33236c697374222c2274797065223a22426974737472696e675374617475734c697374222c22737461747573507572706f7365223a227265766f636174696f6e222c22656e636f6465644c697374223a2275483473494141414141414141412d33424d514541414144436f505650625177666f414141414141414141414141414141414141414149433341596253564b734151414141227d7d5840e3516bd6ce3c9190b91285bf4ab36b8d32d5c33f23f2a426a7af7ecc13dbd9519808ce45727006381391de43d0ffd5377cdd90a662dabe9baf20703cbac0dc98
+d28444a1013822a05901e47b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33222c2274797065223a5b2256657269666961626c6543726564656e7469616c222c22426974737472696e675374617475734c69737443726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34305a222c2263726564656e7469616c5375626a656374223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f7374617475732f33236c697374222c2274797065223a22426974737472696e675374617475734c697374222c22737461747573507572706f7365223a227265766f636174696f6e222c22656e636f6465644c697374223a2275483473494141414141414141412d33424d514541414144436f505650625177666f414141414141414141414141414141414141414149433341596253564b734151414141227d7d584057807659fc205da00d4fbe6d2ce259505040433ae222ce92460dc56b6caef97fbb3e6c1b5fd2c8983c13efb1ff1796a0f8611fbb482f0cca082bb6c2a5e92042
 </div>
     </div>
 </div></div><div class="vc-tab-content" style="min-height: 367px;"><div>
 
 <div class="sd-jwt-tabbed">
-    <input type="radio" id="sd-jwt-2-sai9cc0-encoded" name="sd-jwt-2-sai9cc0-tabs" checked="checked" tabindex="0">
-    <input type="radio" id="sd-jwt-2-sai9cc0-decoded" name="sd-jwt-2-sai9cc0-tabs" tabindex="0">
-    <input type="radio" id="sd-jwt-2-sai9cc0-disclosures" name="sd-jwt-2-sai9cc0-tabs" tabindex="0">
+    <input type="radio" id="sd-jwt-2-7ke462f-encoded" name="sd-jwt-2-7ke462f-tabs" checked="checked" tabindex="0">
+    <input type="radio" id="sd-jwt-2-7ke462f-decoded" name="sd-jwt-2-7ke462f-tabs" tabindex="0">
+    <input type="radio" id="sd-jwt-2-7ke462f-disclosures" name="sd-jwt-2-7ke462f-tabs" tabindex="0">
     <ul class="sd-jwt-tabs">
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-2-sai9cc0-encoded">Encoded</label>
+        <label for="sd-jwt-2-7ke462f-encoded">Encoded</label>
       </li>
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-2-sai9cc0-decoded">Decoded</label>
+        <label for="sd-jwt-2-7ke462f-decoded">Decoded</label>
       </li>
       <li class="sd-jwt-tab">
-        <label for="sd-jwt-2-sai9cc0-disclosures">Issuer Disclosures</label>
+        <label for="sd-jwt-2-7ke462f-disclosures">Issuer Disclosures</label>
       </li>
     </ul>
-    <div class="sd-jwt-tab-content" id="sd-jwt-2-sai9cc0-content-encoded">
+    <div class="sd-jwt-tab-content" id="sd-jwt-2-7ke462f-content-encoded">
       
 <div class="sd-jwt-compact">
 <span class="sd-jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
-.<span class="sd-jwt-payload">eyJfc2RfYWxnIjoic2hhLTI1NiIsIkBjb250ZXh0IjpbImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy92MiIsImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy9leGFtcGxlcy92MiJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSIsIl9zZCI6WyJMVW9xSTRGV3dDbXhMQmV0UnZaNVVydEVQcTZkX3hpVVQtWVFDbzEzTVkwIiwiWjZDellyM2RoeThtdjQ1bVV5c29VV0g1OEZfSzBBeXpDT21KMUdyLVdKbyJdfSwiX3NkIjpbIjZreXByUVdUYXR4OWVsLWMtWlVac0ViSmF3dENsTU9BNGp1QjNKTlpOeUEiLCJSWHdPRTkyMnd1QmNQU0dLb0haU255aWNWSGI1R05wNWhQNjVxdk1nbGw4Il19</span>
-.<span class="sd-jwt-signature">y2JBIvBoYb7lyL6CgM27-Ho6zTDZKyWaNt223x563vGZc5ooDFWlJm9JB35W_3Vc14KdpVfN74rHc8eP9g_McQ</span>
-~<span class="sd-jwt-disclosure">WyIzZmlKa3dNMTZBNlhJbFk3YlhyQnN3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMiXQ</span>~<span class="sd-jwt-disclosure">WyJiamJCY0U3UVdEazNkQW5TVnY5OXlRIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwgIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl1d</span>~<span class="sd-jwt-disclosure">WyJrT3FINWpqVzAzQkFQSGdMRFJnVERnIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCJd</span>~<span class="sd-jwt-disclosure">WyJEV3N3NWlPWnNrMXRPOXRwYmQ3eGV3IiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdCJd</span>
+.<span class="sd-jwt-payload">eyJfc2RfYWxnIjoic2hhLTI1NiIsIkBjb250ZXh0IjpbImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy92MiIsImh0dHBzOi8vd3d3LnczLm9yZy9ucy9jcmVkZW50aWFscy9leGFtcGxlcy92MiJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDBaIiwiY3JlZGVudGlhbFN1YmplY3QiOnsic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSIsIl9zZCI6WyJWVnJWNERkMUZ3NE40dUdVSVVKSnRRbjZEdXhhUXBNejVfdTF5UHNjMDJjIiwid3gwS3BtYVB2ekxLaDViSXNReVBaUDRCUHNqQ2U4ejVvdmZxbkdFRWZfVSJdfSwiX3NkIjpbIlZEd3dyNHc4b0tkXzJnb0JNSEh4cVFieVdWX010MWNBTmZXOGJsbWVkSnMiLCJjZkc1WkdZQWw3MTJDSXJlNERPcUU3bnZtVVZVWnVQeWlaTFlTU0U2Ukw4Il19</span>
+.<span class="sd-jwt-signature">hGtlp0FHxurkLbISPBDH_QDxRW4uX7mCtI_z1t6k089aVP-yZrY17JOxOT4EaPtC6vhF3L2cjEX23mY4W43-UA</span>
+~<span class="sd-jwt-disclosure">WyJMVUlUM1hTVWNvNzlWMlhLNEtCSDd3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMiXQ</span>~<span class="sd-jwt-disclosure">WyI4eVlIS1hHMVBQM2xsWXFYU3plM1RBIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwgIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl1d</span>~<span class="sd-jwt-disclosure">WyJIeGEteXRwOFVIWVFRUXZRSUhkTGR3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCJd</span>~<span class="sd-jwt-disclosure">WyI3S1ZWbldCTnozbUpOTTV3YTVHWHR3IiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdCJd</span>
 </div>
     </div>
-    <div class="sd-jwt-tab-content" id="sd-jwt-2-sai9cc0-content-decoded">
+    <div class="sd-jwt-tab-content" id="sd-jwt-2-7ke462f-content-decoded">
       <pre class="header-value">{<br>&nbsp;&nbsp;"kid":&nbsp;"ExHkBMW9fmbkvV266mRpuP2sUY_N_EWIN1lapUzO8ro",<br>&nbsp;&nbsp;"alg":&nbsp;"ES256"<br>}</pre>
-      <pre class="header-value">{<br>&nbsp;&nbsp;"_sd_alg":&nbsp;"sha-256",<br>&nbsp;&nbsp;"@context":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/v2",<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/examples/v2"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"issuer":&nbsp;"did:example:12345",<br>&nbsp;&nbsp;"validFrom":&nbsp;"2021-04-05T14:27:40Z",<br>&nbsp;&nbsp;"credentialSubject":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusPurpose":&nbsp;"revocation",<br>&nbsp;&nbsp;&nbsp;&nbsp;"encodedList":&nbsp;"uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA",<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"LUoqI4FWwCmxLBetRvZ5UrtEPq6d_xiUT-YQCo13MY0",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Z6CzYr3dhy8mv45mUysoUWH58F_K0AyzCOmJ1Gr-WJo"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"6kyprQWTatx9el-c-ZUZsEbJawtClMOA4juB3JNZNyA",<br>&nbsp;&nbsp;&nbsp;&nbsp;"RXwOE922wuBcPSGKoHZSnyicVHb5GNp5hP65qvMgll8"<br>&nbsp;&nbsp;]<br>}</pre>
+      <pre class="header-value">{<br>&nbsp;&nbsp;"_sd_alg":&nbsp;"sha-256",<br>&nbsp;&nbsp;"@context":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/v2",<br>&nbsp;&nbsp;&nbsp;&nbsp;"https://www.w3.org/ns/credentials/examples/v2"<br>&nbsp;&nbsp;],<br>&nbsp;&nbsp;"issuer":&nbsp;"did:example:12345",<br>&nbsp;&nbsp;"validFrom":&nbsp;"2021-04-05T14:27:40Z",<br>&nbsp;&nbsp;"credentialSubject":&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"statusPurpose":&nbsp;"revocation",<br>&nbsp;&nbsp;&nbsp;&nbsp;"encodedList":&nbsp;"uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA",<br>&nbsp;&nbsp;&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"VVrV4Dd1Fw4N4uGUIUJJtQn6DuxaQpMz5_u1yPsc02c",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"wx0KpmaPvzLKh5bIsQyPZP4BPsjCe8z5ovfqnGEEf_U"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"_sd":&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"VDwwr4w8oKd_2goBMHHxqQbyWV_Mt1cANfW8blmedJs",<br>&nbsp;&nbsp;&nbsp;&nbsp;"cfG5ZGYAl712CIre4DOqE7nvmUVUZuPyiZLYSSE6RL8"<br>&nbsp;&nbsp;]<br>}</pre>
     </div>
-    <div class="sd-jwt-tab-content" id="sd-jwt-2-sai9cc0-content-disclosures">
+    <div class="sd-jwt-tab-content" id="sd-jwt-2-7ke462f-content-disclosures">
       <div class="disclosures">
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-RXwOE922wuBcPSGKoHZSnyicVHb5GNp5hP65qvMgll8">Claim: <span class="claim-name">id</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">RXwOE922wuBcPSGKoHZSnyicVHb5GNp5hP65qvMgll8</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyIzZmlKa3dNMTZBNlhJbFk3YlhyQnN3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMiXQ</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"3fiJkwM16A6XIlY7bXrBsw",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/status/3"<br>]</span></p>
+    <h3 id="sd-jwt-claim-cfG5ZGYAl712CIre4DOqE7nvmUVUZuPyiZLYSSE6RL8">Claim: <span class="claim-name">id</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">cfG5ZGYAl712CIre4DOqE7nvmUVUZuPyiZLYSSE6RL8</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJMVUlUM1hTVWNvNzlWMlhLNEtCSDd3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMiXQ</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"LUIT3XSUco79V2XK4KBH7w",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/credentials/status/3"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-6kyprQWTatx9el-c-ZUZsEbJawtClMOA4juB3JNZNyA">Claim: <span class="claim-name">type</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">6kyprQWTatx9el-c-ZUZsEbJawtClMOA4juB3JNZNyA</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJiamJCY0U3UVdEazNkQW5TVnY5OXlRIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwgIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl1d</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"bjbBcE7QWDk3dAnSVv99yQ",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"VerifiableCredential",<br>&nbsp;&nbsp;&nbsp;&nbsp;"BitstringStatusListCredential"<br>&nbsp;&nbsp;]<br>]</span></p>
+    <h3 id="sd-jwt-claim-VDwwr4w8oKd_2goBMHHxqQbyWV_Mt1cANfW8blmedJs">Claim: <span class="claim-name">type</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">VDwwr4w8oKd_2goBMHHxqQbyWV_Mt1cANfW8blmedJs</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI4eVlIS1hHMVBQM2xsWXFYU3plM1RBIiwgInR5cGUiLCBbIlZlcmlmaWFibGVDcmVkZW50aWFsIiwgIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl1d</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"8yYHKXG1PP3llYqXSze3TA",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;"VerifiableCredential",<br>&nbsp;&nbsp;&nbsp;&nbsp;"BitstringStatusListCredential"<br>&nbsp;&nbsp;]<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-Z6CzYr3dhy8mv45mUysoUWH58F_K0AyzCOmJ1Gr-WJo">Claim: <span class="claim-name">id</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">Z6CzYr3dhy8mv45mUysoUWH58F_K0AyzCOmJ1Gr-WJo</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJrT3FINWpqVzAzQkFQSGdMRFJnVERnIiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCJd</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"kOqH5jjW03BAPHgLDRgTDg",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/status/3#list"<br>]</span></p>
+    <h3 id="sd-jwt-claim-VVrV4Dd1Fw4N4uGUIUJJtQn6DuxaQpMz5_u1yPsc02c">Claim: <span class="claim-name">id</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">VVrV4Dd1Fw4N4uGUIUJJtQn6DuxaQpMz5_u1yPsc02c</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJIeGEteXRwOFVIWVFRUXZRSUhkTGR3IiwgImlkIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCJd</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"Hxa-ytp8UHYQQQvQIHdLdw",<br>&nbsp;&nbsp;"id",<br>&nbsp;&nbsp;"https://example.com/status/3#list"<br>]</span></p>
 </div>
 
 
 <div class="disclosure">
-    <h3 id="sd-jwt-claim-LUoqI4FWwCmxLBetRvZ5UrtEPq6d_xiUT-YQCo13MY0">Claim: <span class="claim-name">type</span></h3>
-    <p><strong>SHA-256 Hash:</strong> <span class="hash">LUoqI4FWwCmxLBetRvZ5UrtEPq6d_xiUT-YQCo13MY0</span></p>
-    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyJEV3N3NWlPWnNrMXRPOXRwYmQ3eGV3IiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdCJd</span></p>
-    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"DWsw5iOZsk1tO9tpbd7xew",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"BitstringStatusList"<br>]</span></p>
+    <h3 id="sd-jwt-claim-wx0KpmaPvzLKh5bIsQyPZP4BPsjCe8z5ovfqnGEEf_U">Claim: <span class="claim-name">type</span></h3>
+    <p><strong>SHA-256 Hash:</strong> <span class="hash">wx0KpmaPvzLKh5bIsQyPZP4BPsjCe8z5ovfqnGEEf_U</span></p>
+    <p><strong>Disclosure(s):</strong> <span class="disclosure-value">WyI3S1ZWbldCTnozbUpOTTV3YTVHWHR3IiwgInR5cGUiLCAiQml0c3RyaW5nU3RhdHVzTGlzdCJd</span></p>
+    <p><strong>Contents:</strong> <span class="contents">[<br>&nbsp;&nbsp;"7KVVnWBNz3mJNM5wa5GXtw",<br>&nbsp;&nbsp;"type",<br>&nbsp;&nbsp;"BitstringStatusList"<br>]</span></p>
 </div>
 </div>
     </div>
@@ -3518,7 +3518,7 @@ Remove integer error codes from problem details
     </dd><dt id="bib-url">[URL]</dt><dd>
       <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
     </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Dave Longley; Greg Bernstein.  W3C. 26 January 2025. CRD. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
+      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Dave Longley; Greg Bernstein.  W3C. 10 February 2025. CRD. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
     </dd><dt id="bib-vc-data-model-2.0">[VC-DATA-MODEL-2.0]</dt><dd>
       <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Manu Sporny; Ted Thibodeau Jr; Ivan Herman; Gabe Cohen; Michael Jones.  W3C. 27 January 2025. CRD. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
@@ -3528,8 +3528,8 @@ Remove integer error codes from problem details
     
     <dl class="bibliography"><dt id="bib-allosaur">[ALLOSAUR]</dt><dd>
       <a href="https://eprint.iacr.org/2022/1362.pdf"><cite>ALLOSAUR: Accumulator with Low-Latency Oblivious Sublinear Anonymous credential Updates with Revocations</cite></a>.  Cryptology ePrint Archive. January 5th, 2024. URL: <a href="https://eprint.iacr.org/2022/1362.pdf">https://eprint.iacr.org/2022/1362.pdf</a>
-    </dd><dt id="bib-controller-document">[CONTROLLER-DOCUMENT]</dt><dd>
-      <a href="https://www.w3.org/TR/controller-document/"><cite>Controlled Identifiers (CIDs) v1.0</cite></a>. Manu Sporny; Michael Jones.  W3C. 26 January 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/controller-document/">https://www.w3.org/TR/controller-document/</a>
+    </dd><dt id="bib-cid">[CID]</dt><dd>
+      <a href="https://www.w3.org/TR/cid-1.0/"><cite>Controlled Identifiers v1.0</cite></a>. Manu Sporny; Michael Jones.  W3C. 9 February 2025. CRD. URL: <a href="https://www.w3.org/TR/cid-1.0/">https://www.w3.org/TR/cid-1.0/</a>
     </dd><dt id="bib-html-rdfa">[HTML-RDFA]</dt><dd>
       <a href="https://www.w3.org/TR/html-rdfa/"><cite>HTML+RDFa 1.1 - Second Edition</cite></a>. Manu Sporny.  W3C. 17 March 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/html-rdfa/">https://www.w3.org/TR/html-rdfa/</a>
     </dd><dt id="bib-json-ld11">[JSON-LD11]</dt><dd>
