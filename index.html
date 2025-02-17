@@ -24,9 +24,9 @@
         subtitle: "Privacy-preserving status information for Verifiable Credentials",
 
         // if you wish the publication date to be other than today, set this
-        publishDate: "2025-03-06",
+        publishDate: "2025-3-20",
         crEnd: "2024-06-21",
-        prEnd: "2024-04-03",
+        prEnd: "2025-4-17",
 
         implementationReportURI: "https://w3c.github.io/vc-bitstring-status-list-test-suite/",
         //previousMaturity: "CG-FINAL",
@@ -1155,7 +1155,7 @@ times the `statusSize`.
         <li>
 Generate a |compressed bitstring| by using the GZIP
 compression algorithm [[RFC1952]] on the |bitstring|
-and then <a data-cite="?CONTROLLER-DOCUMENT#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
+and then <a data-cite="?CID#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
         </li>
         <li>
 Return the |compressed bitstring|.
@@ -1180,7 +1180,7 @@ bitstring.
         </li>
         <li>
 Generate an |uncompressed bitstring| by using the
-<a data-cite="?CONTROLLER-DOCUMENT#multibase-0">Multibase-decode</a> algorithm on the
+<a data-cite="?CID#multibase-0">Multibase-decode</a> algorithm on the
 |compressed bitstring| and then expanding the output using
 the GZIP decompression algorithm [[RFC1952]].
         </li>
