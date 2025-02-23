@@ -10,7 +10,7 @@
      -->
     <script src='https://www.w3.org/Tools/respec/respec-w3c' class='remove'></script>
     <script class="remove"
-      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.3.5/dist/main.js"></script>
+      src="https://cdn.jsdelivr.net/gh/w3c/respec-vc@3.4.1/dist/main.js"></script>
     <script class="remove">
       var respecConfig = {
         // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -1820,7 +1820,8 @@ the general advice for all [=verifiable credentials=].
       <section>
         <h2>Revocable Verifiable Credential</h2>
 <pre class="example nohighlight vc" title="A Revocable Verifiable Credential"
-data-vc-vm="https://example.edu/issuers/565049/keys/1">
+data-vc-vm="https://example.edu/issuers/565049/keys/1"
+data-vc-tabs="ecdsa-rdfc-2019 eddsa-rdfc-2022 jose cose">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1849,7 +1850,8 @@ data-vc-vm="https://example.edu/issuers/565049/keys/1">
       <section>
         <h2>Status List Verifiable Credential</h2>
 <pre class="example nohighlight vc" title="A Status List Verifiable Credential"
-data-vc-vm="https://example.edu/issuers/565049/keys/1">
+data-vc-vm="https://example.edu/issuers/565049/keys/1"
+data-vc-tabs="ecdsa-rdfc-2019 eddsa-rdfc-2022 jose cose">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1879,7 +1881,8 @@ with a single [=verifiable credential=].
 
         <pre class="example nohighlight"
              title="Associating multiple status lists with a single Verifiable Credential"
-             data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+             data-vc-vm='https://example.edu/issuers/565049/keys/1'
+             data-vc-tabs="ecdsa-rdfc-2019 eddsa-rdfc-2022 jose cose">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1923,7 +1926,8 @@ than fetching multiple status lists.
 
         <pre class="example nohighlight"
              title="Associating multiple status entries in a single status list"
-             data-vc-vm='https://example.edu/issuers/565049/keys/1'>
+             data-vc-vm='https://example.edu/issuers/565049/keys/1'
+             data-vc-tabs="ecdsa-rdfc-2019 eddsa-rdfc-2022 jose cose">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
