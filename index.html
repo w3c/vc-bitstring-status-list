@@ -560,13 +560,6 @@ Used to temporarily prevent the acceptance of a [=verifiable credential=].
 This status is reversible.
                       </td>
                     </tr>
-                    <tr>
-                      <td>`message`</td>
-                      <td>
-Used to convey an arbitrary message related to the status of the
-[=verifiable credential=].
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </td>
@@ -589,64 +582,6 @@ The `statusListCredential` property MUST be a URL to a
 [=verifiable credential=]. When the URL is dereferenced, the resulting
 [=verifiable credential=] MUST have `type` property that
 includes the `BitstringStatusListCredential` value.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusSize">statusSize</td>
-              <td>
-The `statusSize` indicates the size of the status entry in bits. `statusSize`
-MAY be provided. If `statusSize` is not present as a property of the
-`credentialStatus`, then `statusSize` MUST be processed as `1`.  If present,
-`statusSize` MUST be an integer greater than zero. If `statusSize` is provided
-and is greater than `1`, then the property `credentialStatus.statusMessage`
-MUST be present, and the number of status messages MUST equal the
-number of possible values.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusMessage">statusMessage</td>
-              <td>
-If present, the `statusMessage` property MUST be an array, the length
-of which MUST equal the number of possible status messages indicated
-by `statusSize` (e.g., `statusMessage` array MUST have 2 elements if
-`statusSize` has 1 bit, 4 elements if `statusSize` has 2 bits, 8
-elements if `statusSize` has 3 bits, etc.). `statusMessage` MAY be
-present if `statusSize` is `1`, and MUST be present if `statusSize` is
-greater than `1`.  If the `statusMessage` array is not present, the
-message values associated with the `status` bit values of `1` and `0`
-are "set" and "unset", respectively. If the `statusMessage` array is
-present, each element MUST contain the two properties described below,
-and MAY contain additional properties.
-                <ul>
-                  <li id="status">
-`status`, a string representing the hexadecimal value of the status prefixed
-with `0x`
-                  </li>
-                  <li id="message">
-`message`, a string used by software developers to assist with debugging
-which SHOULD NOT be displayed to end users.
-                  </li>
-                </ul>
-Implementers MAY add additional values to objects in the `statusMessage` array.
-Implementers MAY use the string value of `undefined` in the value to indicate
-that a corresponding status is not defined for the associated status value, but
-that it may be defined in the future. Rules for how to handle various status
-messages are outside the scope of normative requirements in this document, but
-it is assumed that implementers will document rules for processing various
-status codes.
-              </td>
-            </tr>
-            <tr>
-              <td id="statusReference">statusReference</td>
-              <td>
-An implementer MAY include the `statusReference` property. If present, its
-value MUST be a URL or an array of URLs [[URL]] which dereference to material
-related to the status. Implementers using a `statusPurpose` of `message` are
-strongly encouraged to provide a `statusReference`.
-                <p class="note" title="Details around reference">
-`statusReference` is especially important when interpretation of the status for
-a credential may involve some understanding of the business case involved.
-                </p>
               </td>
             </tr>
           </tbody>
@@ -700,60 +635,12 @@ demonstrates the use of these status purposes:
 }
         </pre>
 
-        <p>
-The use of `message` as the status purpose enables an issuer to
-define an arbitrary number of custom, descriptive messages about
-the status of the [=verifiable credential=]. The [=issuer=] commits to
-the set of messages that may be associated with a particular entry
-(i.e., with a particular [=verifiable credential=]) through the
-`statusSize`, `statusMessage`, and optional `statusReference` properties,
-at the time of [=verifiable credential=] issuance. This is to ensure that
-the [=holder=] knows what sort of information might be associated with a
-particular [=verifiable credential=] they keep in their possession, that
-could then be discoverable by a [=verifier=] that later receives that
-credential.
-        </p>
-
         <p class="note">
 It is important to note that `statusListIndex` is the only link between
 the [=verifiable credential=] and its status in the list. Other
 properties such as `credentialSubject.id` are not used for
 this purpose.
         </p>
-
-        <pre class="example nohighlight"
-             title="Example StatusListCredential using more complex entries">
-{
-  "@context": [
-    "https://www.w3.org/ns/credentials/v2",
-    "https://www.w3.org/ns/credentials/examples/v2"
-  ],
-  "id": "https://example.com/credentials/2947478373",
-  "type": ["VerifiableCredential", "BillOfLadingExampleCredential"],
-  "issuer": "did:example:12345",
-  "validFrom": "2024-04-05T03:52:31Z",
-  <span class="highlight">"credentialStatus": {
-    "id": "https://example.com/credentials/status/8#492847",
-    "type": "BitstringStatusListEntry",
-    "statusPurpose": "message",
-    "statusListIndex": "492847",
-    "statusSize": 2,
-    "statusListCredential": "https://example.com/credentials/status/8",
-    "statusMessage": [
-        {"status":"0x0", "message":"pending_review"},
-        {"status":"0x1", "message":"accepted"},
-        {"status":"0x2", "message":"rejected"},
-        ...
-    ],
-    "statusReference": "https://example.org/status-dictionary/"
-  }</span>,
-  "credentialSubject": {
-    "id": "did:example:6789",
-    "type": "BillOfLading",
-    ...
-  }
-}
-        </pre>
 
       </section>
 
@@ -873,15 +760,6 @@ not reversible.
                       <td>
 Used to temporarily prevent the acceptance of a [=verifiable credential=].
 This status is reversible.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>`message`</td>
-                      <td>
-Used to indicate a status message associated with a <a>verifiable
-credential</a>. The status message descriptions MUST be defined in
-`credentialSubject.statusMessages`. `credentialSubject.statusSize` MUST be
-specified when this `statusPurpose` value is used.
                       </td>
                     </tr>
                   </tbody>
@@ -1064,9 +942,9 @@ Generate a |revocation bitstring| by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-If the length of the |revocation bitstring| divided by
-<a href="#statusSize">`statusSize`</a> is less than |minimumNumberOfEntries|,
-raise a <a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
+If the length of the |revocation bitstring| is less than
+|minimumNumberOfEntries|, raise a
+<a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
         </li>
         <li>
 Let |status| be the value in the |bitstring| at the position indicated
@@ -1085,11 +963,6 @@ Set the `status` key in |result| to |status|, and set the `purpose` key in
         <li>
 If |status| is `0`, set the `valid` key in |result| to `true`; otherwise, set it
 to `false`.
-        </li>
-        <li>
-If the `statusPurpose` is `message`, set the `message` key in |result| to the
-corresponding `message` of the `value` as indicated in the `statusMessages`
-array.
         </li>
         <li>
 Return |result|.
@@ -1146,11 +1019,9 @@ Let |bitstring| be a list of bits with a minimum size of 16KB,
 where each bit is initialized to 0 (zero).
         </li>
         <li>
-For each value in `bitstring`, if there is a
-corresponding `statusListIndex` value in
-a credential in `issuedCredentials`, set the value to the
-appropriate status. The position of the value is computed as `statusListIndex`
-times the `statusSize`.
+For each value in `bitstring`, if there is a corresponding `statusListIndex`
+value in a credential in `issuedCredentials`, set the value to the appropriate
+status.
         </li>
         <li>
 Generate a |compressed bitstring| by using the GZIP
@@ -1620,65 +1491,6 @@ index when the reissuance occurs to break any sort of long-term monitoring
 of a [=verifiable credential=] as it changes status.
       </p>
 
-    </section>
-
-    <section class="informative">
-      <h3>Correlation of Status Messages</h3>
-      <p>
-This specification provides a means by which multiple status messages can be
-provided for a particular entry in a status list. While this mechanism can
-provide more detailed information for a particular entry in the status list,
-that information can provide further correlation data.
-      </p>
-      <p>
-For example, if each status message is associated with a step in a particular
-process, or more detailed information as to why a credential was revoked or
-suspended, then an attacker that observes the changes in the list might be
-able to correlate information about the population of entities in the list
-that could lead to privacy violations. Understanding how a population
-progresses through a business process, or what percentage of the population
-is likely to be associated with a certain status, provides additional
-information to an attacker. Given such information, a phishing operation could
-predict what the next step of a business process is and then preemptively
-contact an entity whose current status is known. Then, based on that
-information, they could attempt to phish more lucrative information from
-the target using data gleaned from the status list over time.
-      </p>
-      <p>
-For these reasons, issuers are urged to evaluate the potential ramifications of
-publishing detailed status information about a particular entity, or a
-population, in a public manner.
-      </p>
-    </section>
-
-    <section class="informative">
-      <h3>Alteration of Status Messages</h3>
-
-      <p>
-When a status list uses the status messages feature, it becomes possible for
-the [=issuer=] to increase the types of messages that are associated with
-the [=verifiable credentials=] it issues over time.
-      </p>
-
-      <p>
-This feature creates a potential privacy violation where the
-[=subject=] or [=holder=] of the [=verifiable credential=] might be
-associated with additional status information that was not present when the
-original [=verifiable credential=] was issued. For example, initial status
-messages might convey "delayed" and "canceled", but additional status messages
-might be added by the [=issuer=] to convey "delayed due to non-payment" and
-"canceled due to illegal activity". This change would not be apparent to the
-[=subject=] or [=holder=] unless there was monitoring software operating
-on their behalf that would warn them that the [=issuer=] intends to expose
-additional information about their activity.
-      </p>
-
-      <p>
-Holder software can provide features to [=holders=] that warn them about the
-level of [=holder=] and/or [=subject=] information exposure when using
-[=verifiable credentials=] that are associated with status messages, and warn
-them when the level of information exposure changes.
-      </p>
     </section>
 
   </section>
