@@ -12,29 +12,13 @@
         "id": "@id",
         "type": "@type",
 
-        "statusPurpose":
-          "https://www.w3.org/ns/credentials/status#statusPurpose",
         "encodedList": {
           "@id": "https://www.w3.org/ns/credentials/status#encodedList",
           "@type": "https://w3id.org/security#multibase"
         },
-        "ttl": "https://www.w3.org/ns/credentials/status#ttl",
-        "statusReference":
-          "https://www.w3.org/ns/credentials/status#statusReference",
-        "statusSize":
-          "https://www.w3.org/ns/credentials/status#statusSize",
-        "statusMessage": {
-          "@id": "https://www.w3.org/ns/credentials/status#statusMessage",
-          "@context": {
-            "@protected": true,
-
-            "id": "@id",
-            "type": "@type",
-
-            "status": "https://www.w3.org/ns/credentials/status#status",
-            "message": "https://www.w3.org/ns/credentials/status#message"
-          }
-        }
+        "statusPurpose":
+          "https://www.w3.org/ns/credentials/status#statusPurpose",
+        "ttl": "https://www.w3.org/ns/credentials/status#ttl"
       }
     },
 
@@ -47,14 +31,34 @@
         "id": "@id",
         "type": "@type",
 
-        "statusPurpose":
-          "https://www.w3.org/ns/credentials/status#statusPurpose",
-        "statusListIndex":
-          "https://www.w3.org/ns/credentials/status#statusListIndex",
         "statusListCredential": {
           "@id":
             "https://www.w3.org/ns/credentials/status#statusListCredential",
           "@type": "@id"
+        },
+        "statusListIndex":
+          "https://www.w3.org/ns/credentials/status#statusListIndex",
+        "statusPurpose":
+          "https://www.w3.org/ns/credentials/status#statusPurpose",
+        "statusMessage": {
+          "@id": "https://www.w3.org/ns/credentials/status#statusMessage",
+          "@context": {
+            "@protected": true,
+
+            "id": "@id",
+            "type": "@type",
+
+            "message": "https://www.w3.org/ns/credentials/status#message",
+            "status": "https://www.w3.org/ns/credentials/status#status"
+          }
+        },
+        "statusReference": {
+          "@id": "https://www.w3.org/ns/credentials/status#statusReference",
+          "@type": "@id"
+        },
+        "statusSize": {
+          "@id": "https://www.w3.org/ns/credentials/status#statusSize",
+          "@type": "https://www.w3.org/2001/XMLSchema#positiveInteger"
         }
       }
     }
