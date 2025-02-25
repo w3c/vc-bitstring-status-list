@@ -2,6 +2,9 @@
   "@context": {
     "@protected": true,
 
+    "id": "@id",
+    "type": "@type",
+
     "BitstringStatusListCredential": "https://www.w3.org/ns/credentials/status#BitstringStatusListCredential",
 
     "BitstringStatusList": {
@@ -58,7 +61,7 @@
         },
         "statusSize": {
           "@id": "https://www.w3.org/ns/credentials/status#statusSize",
-          "@type": "https://www.w3.org/2001/XMLSchema#positiveInteger"
+          "@type": "https://www.w3.org/2001/XMLSchema#integer"
         }
       }
     }
