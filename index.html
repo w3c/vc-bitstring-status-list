@@ -960,6 +960,44 @@ the information necessary to determine the status of a particular
         </pre>
 
       </section>
+      <section>
+        <h3>TerseBitstringStatusListEntry</h3>
+        <p>
+A `TerseBitstringStatusListEntry` is a compact representation
+of a `BitstringStatusListEntry`, intended to allow the use of Bitstring Status List based
+status technologies in space-constrained use cases.
+        </p>
+        <p>
+An object of type `TerseBitstringStatusListEntry` MUST have two additional properties:
+        </p>
+        <ul>
+          <li>
+`terseStatusListBaseUrl`, which identifies the location of the status lists associated with this credential.
+`terseStatusListBaseUrl` MUST be a URL [[URL]].
+          </li>
+          <li>
+`terseStatusListIndex`, which specifies an individual status at the above URL. `terseStatusListIndex` MUST be
+representable as a 32 bit unsigned integer.
+          </li>
+        </ul>
+        <p>
+To process a `TerseBitstringStatusListEntry`, apply the algorithm in Section
+[[[#terse-to-bitstring]]] to convert it to a `BitstringStatusListEntry`.
+        <p>
+Implementers need to set a value |listLength| for the length of an individual status list. This then yields
+a number of status lists |listCount| = 2^32 / |listLength| for a 32-bit `terseStatusListIndex`.
+|listLength| is needed to convert from a `TerseBitstringStatusListEntry` to a `BitstringStatusListEntry`.
+Noting that some values of |listLength| will harm the privacy-preserving properties of these status lists,
+implementations MUST use |listLength| = 2^26 and |listCount| = 2^6.
+        </p>
+        <pre class="example nohighlight" title="Example TerseBitstringStatusListEntry">
+"credentialStatus": {
+  "type": "TerseBitstringStatusListEntry",
+  "terseStatusListBaseUrl": <span class="highlight">"https://example.utopia.gov/statuses/12345/status-lists"</span>
+  "terseStatusListIndex": <span class="highlight">123567890</span>
+}
+        </pre>
+      </section>
     </section>
   </section>
 
