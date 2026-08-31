@@ -1244,6 +1244,118 @@ Return the |uncompressed bitstring|.
       </ol>
     </section>
 
+    <section id="convert-status-list-entries" class="normative">
+      <h3>Convert Status List Entries</h3>
+
+      <p>
+The algorithms in this section are used to convert between a
+`TerseBitstringStatusListEntry` and a `BitstringStatusListEntry`. The
+algorithm in Section [[[#bitstring-to-terse]]] is used when creating
+a [=verifiable credential=], to translate a `BitstringStatusListEntry` into a
+`TerseBitstringStatusListEntry` before the credential is signed. The
+algorithm in Section [[[#terse-to-bitstring]]] performs the inverse
+conversion and is used during the validation process. Note that typically
+the digitally signature will be over the `TerseBitstringStatusListEntry`, and
+as such signature verification ought to be performed before this conversion.
+      </p>
+
+      <section id="terse-to-bitstring">
+        <h4>`TerseBitstringStatusListEntry` to `BitstringStatusListEntry`</h4>
+
+        <p>
+This algorithm takes a [=verifiable credential=]
+([=struct=] |vc|), an integer |listLength| containing the number of entries
+in the `BitstringStatusListCredential` associated with |vc|, and a string
+|statusPurpose| (e.g., 'revocation', 'suspension'...) as input and returns
+a 'BitstringStatusListEntry' object.
+        </p>
+
+        <ol class="algorithm">
+          <li>
+Set |result| to be an empty [=map=].
+          </li>
+          <li>
+Set |listIndex| to |vc|.|credentialStatus|.|terseStatusListIndex|/|listLength| rounded down
+to the next lowest integer (i.e., apply the `floor()` operation).
+          </li>
+          <li>
+Set |statusListIndex| to |vc|.|credentialStatus|.|terseStatusListIndex| % |listLength|.
+          </li>
+          <li>
+Set |result|.|statusListCredential| to the concatenation of the following values:
+|vc|.|credentialStatus|.|terseStatusListBaseUrl|, '/', |statusPurpose|, '/', |listIndex|.
+          </li>
+          <li>
+Set |result|.|type| to 'BitstringStatusListEntry'.
+          </li>
+          <li>
+Set |result|.|statusListIndex| to |statusListIndex|.
+          </li>
+          <li>
+Set |result|.|statusPurpose| to |statusPurpose|.
+          </li>
+          <li>
+Return |result|.
+          </li>
+        </ol>
+
+        <p>
+|result| can be used as input to the
+<a href="#bitstring-validation-algorithm">Bitstring Validation Algorithm</a>.
+
+        </p>
+      </section>
+
+      <section id="bitstring-to-terse">
+        <h4>`BitstringStatusListEntry` to `TerseBitstringStatusListEntry`</h4>
+
+        <p>
+The algorithm takes a `BitstringStatusListEntry` ([=struct=]
+|statusListEntry|), whose |statusListCredential| value is expected to be a
+URL of the form |terseStatusListBaseUrl|, '/', |statusPurpose|, '/',
+|listIndex|, and an integer |listLength| containing the number of entries in
+each `BitstringStatusListCredential` published by the <a>issuer</a> as
+input, and returns a 'TerseBitstringStatusListEntry' object.
+        </p>
+
+        <ol class="algorithm">
+          <li>
+Set |result| to be an empty [=map=].
+          </li>
+          <li>
+Set |listIndex| to the integer representation of the final path segment of
+|statusListEntry|.|statusListCredential|.
+          </li>
+          <li>
+Set |terseStatusListBaseUrl| to |statusListEntry|.|statusListCredential|
+with the final two path segments (i.e., '/', |statusPurpose|, '/',
+|listIndex|) removed.
+          </li>
+          <li>
+Set |result|.|type| to 'TerseBitstringStatusListEntry'.
+          </li>
+          <li>
+Set |result|.|terseStatusListBaseUrl| to |terseStatusListBaseUrl|.
+          </li>
+          <li>
+Set |result|.|terseStatusListIndex| to |listIndex| * |listLength| + the
+integer representation of |statusListEntry|.|statusListIndex|.
+          </li>
+          <li>
+Return |result|.
+          </li>
+        </ol>
+
+        <p class="note" title="The status purpose is not carried in the terse entry">
+A `TerseBitstringStatusListEntry` does not express the |statusPurpose| of
+the original `BitstringStatusListEntry`. The |statusPurpose| is instead
+supplied by the <a>verifier</a> as an input to the algorithm in Section
+[[[#terse-to-bitstring]]], which reconstructs the
+`BitstringStatusListEntry` during validation.
+        </p>
+      </section>
+    </section>
+
     <section class="normative">
       <h3>Processing Errors</h3>
 
