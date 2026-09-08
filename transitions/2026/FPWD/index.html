@@ -440,32 +440,6 @@ suspension or revocation of Verifiable Credentials through use of bitstrings.">
       }
     },
     {
-      "id": "https://www.w3.org/TR/vc-data-integrity/",
-      "type": "TechArticle",
-      "name": "Verifiable Credential Data Integrity 1.0",
-      "url": "https://www.w3.org/TR/vc-data-integrity/",
-      "creator": [
-        {
-          "name": "Ivan Herman"
-        },
-        {
-          "name": "Manu Sporny"
-        },
-        {
-          "name": "Ted Thibodeau Jr"
-        },
-        {
-          "name": "Dave Longley"
-        },
-        {
-          "name": "Greg Bernstein"
-        }
-      ],
-      "publisher": {
-        "name": "W3C"
-      }
-    },
-    {
       "id": "https://www.rfc-editor.org/info/rfc9458/",
       "type": "TechArticle",
       "name": "Oblivious HTTP",
@@ -1849,7 +1823,7 @@ specified when this <code>statusPurpose</code> value is used.
               <td id="encodedList">credentialSubject.encodedList</td>
               <td>
 The <code>encodedList</code> property of the credential <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-subjects">subject</a> <em class="rfc2119">MUST</em> be a
-<a href="https://www.w3.org/TR/vc-data-integrity/#multibase-0">Multibase-encoded base64url (with
+<a href="https://www.w3.org/TR/cid-1.0/#multibase-0">Multibase-encoded base64url (with
 no padding)</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc4648" title="The Base16, Base32, and Base64 Data Encodings">RFC4648</a></cite>] representation of the GZIP-compressed [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc1952" title="GZIP file format specification version 4.3">RFC1952</a></cite>]
 bitstring values for the associated range of <a data-link-type="dfn" href="https://www.w3.org/TR/vc-data-model-2.0/#dfn-verifiable-credential">verifiable credential</a>
 status values. The uncompressed bitstring <em class="rfc2119">MUST</em> be at least 16KB in size. The
@@ -2968,11 +2942,11 @@ the general advice for all <a data-link-type="dfn" href="https://www.w3.org/TR/v
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2026-09-08T14:33:34Z",
-    "verificationMethod": "did:key:zDnaeQUyL5u3Ef1SuSdyzToHgcmDXsL3x9JAmBx2z9Z48kaXj",
+    "created": "2026-09-08T14:57:11Z",
+    "verificationMethod": "did:key:zDnaep3iznohKEKTL6JFcLAtKqZbwhrBsSksFGuLYhB9tHs5u",
     "cryptosuite": "ecdsa-rdfc-2019",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z55AC3QLzRuVPxoppecArHb5iBgW79hLDBeTPRzGtfb1R3kTVjCy16nCL5QaJWe4cJRu5vVNDJu1XjUdix9e1DLue"
+    "proofValue": "z3gPpRM1gvip6b5JgPZW78irUEPQcZ7RusQYyMKYjnQ16XvPRDKz35M1aXpN1NenvkJQFofzexCJXM5KcQaidC2RF"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;"><strong>application/vc</strong>
             <pre>{
@@ -2999,11 +2973,11 @@ the general advice for all <a data-link-type="dfn" href="https://www.w3.org/TR/v
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2026-09-08T14:33:34Z",
-    "verificationMethod": "did:key:z6MkjJB1C3uwr6CZWyL4qyvLmSNiVW8WE5a8eaE43qrWtj1m",
+    "created": "2026-09-08T14:57:11Z",
+    "verificationMethod": "did:key:z6MkhSgab1c7n2DZt5CHFDRWBaj1mp5gkngx1jTt9Qtg1yqs",
     "cryptosuite": "eddsa-rdfc-2022",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z2sTuupre7vz9RUAkFNLuYuEwoxLtaMtRnf3YuickqnNjzARWPNqFVhYKUmJPeM61hZA8Hk6zJGkuWyT345ZdZYc1"
+    "proofValue": "z5crrUePgd3SZp6YmhDUCZMXqgtUd97R98upnrS7tzEppXmmab4a4v89vszzVih2wNS9LzxBsb4rQk1TJ1FnG4fxn"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 454px;">
 <div class="vc-jose-cose-jwt-tabbed">
@@ -3044,7 +3018,7 @@ the general advice for all <a data-link-type="dfn" href="https://www.w3.org/TR/v
 <div class="jwt-compact">
 <span class="jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
 .<span class="jwt-payload">eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzLzIzODk0NjcyMzk0IiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCJdLCJpc3N1ZXIiOiJkaWQ6ZXhhbXBsZToxMjM0NSIsInZhbGlkRnJvbSI6IjIwMjEtMDQtMDVUMTQ6Mjc6NDJaIiwiY3JlZGVudGlhbFN0YXR1cyI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vY3JlZGVudGlhbHMvc3RhdHVzLzMjOTQ1NjciLCJ0eXBlIjoiQml0c3RyaW5nU3RhdHVzTGlzdEVudHJ5Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJzdGF0dXNMaXN0SW5kZXgiOiI5NDU2NyIsInN0YXR1c0xpc3RDcmVkZW50aWFsIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9jcmVkZW50aWFscy9zdGF0dXMvMyJ9LCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDpleGFtcGxlOjY3ODkiLCJ0eXBlIjoiUGVyc29uIn19</span>
-.<span class="jwt-signature">038QGPFk8W6tRWpud-VVseXs8ZXi-TUdrK91BJl7TvWt8CY9_0rcKpK6pUy5A6yKgFeqWgCsg-Xr8N3LZPQhnw</span>
+.<span class="jwt-signature">Jp5GtBTeolnMn7Cdmes6NDNM95kDSRSj6AICo33rDO72tTxATf6zEx_a4qXF3j4gdsYG8yEmN7BsXpYIRadl1g</span>
 </div>
 </div>
     </div>
@@ -3078,7 +3052,7 @@ the general advice for all <a data-link-type="dfn" href="https://www.w3.org/TR/v
 </pre>
 <strong>application/vc+cose</strong>
 <div class="cose-text">
-d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f3233383934363732333934222c2274797065223a5b2256657269666961626c6543726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34325a222c2263726564656e7469616c537461747573223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33233934353637222c2274797065223a22426974737472696e675374617475734c697374456e747279222c22737461747573507572706f7365223a227265766f636174696f6e222c227374617475734c697374496e646578223a223934353637222c227374617475734c69737443726564656e7469616c223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33227d2c2263726564656e7469616c5375626a656374223a7b226964223a226469643a6578616d706c653a36373839222c2274797065223a22506572736f6e227d7d58407fd91597ddc6abe994f25acabb54a2a56fea976173ccef7ff0c163f63c9f7cdb7da48604d00f4d8cfeab44da69488dd603ec8b72c52652d4e597e704bd3723be
+d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f3233383934363732333934222c2274797065223a5b2256657269666961626c6543726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34325a222c2263726564656e7469616c537461747573223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33233934353637222c2274797065223a22426974737472696e675374617475734c697374456e747279222c22737461747573507572706f7365223a227265766f636174696f6e222c227374617475734c697374496e646578223a223934353637222c227374617475734c69737443726564656e7469616c223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33227d2c2263726564656e7469616c5375626a656374223a7b226964223a226469643a6578616d706c653a36373839222c2274797065223a22506572736f6e227d7d5840a5db500001accb017cf0ec80160c2b1e794323338b80bd7cfaa7be964d56b3451530aaff4c4adc8a50f9e873ccdf2e2cd4bc2618be3d021ea64d86b338ce1c3d
 </div>
     </div>
 </div></div></div></div>
@@ -3127,11 +3101,11 @@ d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2026-09-08T14:33:34Z",
-    "verificationMethod": "did:key:zDnaeQUyL5u3Ef1SuSdyzToHgcmDXsL3x9JAmBx2z9Z48kaXj",
+    "created": "2026-09-08T14:57:11Z",
+    "verificationMethod": "did:key:zDnaep3iznohKEKTL6JFcLAtKqZbwhrBsSksFGuLYhB9tHs5u",
     "cryptosuite": "ecdsa-rdfc-2019",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z3Fz9Jf96qJj5pDLRWQUS4RsGibAnsoQCrS8w2FHn8DYKEW4UbPKCFAiXgqpssRJX1VcBTYRDt8YpuHSNbUqxvivz"
+    "proofValue": "z44ZWkB5yU97KmRguizJW7gEovoLdYj8nvW1qY542AYg4C5PQ2acwE7Dsxvd3AafXu1AEmv52zRDqFdx4hhfXfmMs"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;"><strong>application/vc</strong>
             <pre>{
@@ -3154,11 +3128,11 @@ d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f
   },
   "proof": {
     "type": "DataIntegrityProof",
-    "created": "2026-09-08T14:33:34Z",
-    "verificationMethod": "did:key:z6MkjJB1C3uwr6CZWyL4qyvLmSNiVW8WE5a8eaE43qrWtj1m",
+    "created": "2026-09-08T14:57:11Z",
+    "verificationMethod": "did:key:z6MkhSgab1c7n2DZt5CHFDRWBaj1mp5gkngx1jTt9Qtg1yqs",
     "cryptosuite": "eddsa-rdfc-2022",
     "proofPurpose": "assertionMethod",
-    "proofValue": "z3Ccwopth1H6A9phGjcS5Si5VKdMEokCWr7tn6FkiNiyphDmv3mvYzZ51vLRUwn6cZLn3b76idKnhhQikghJbjP1S"
+    "proofValue": "z5WtX8y6nyh3vWogw9yW3K6BLpquzYDfRWcBTCz3Un55kAjgBBy4vbukPxucjkaWRmExTuc7r7hHcevxTBvmooxR6"
   }
 }</pre></div><div class="vc-tab-content" style="min-height: 367px;">
 <div class="vc-jose-cose-jwt-tabbed">
@@ -3195,7 +3169,7 @@ d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f
 <div class="jwt-compact">
 <span class="jwt-header">eyJraWQiOiJFeEhrQk1XOWZtYmt2VjI2Nm1ScHVQMnNVWV9OX0VXSU4xbGFwVXpPOHJvIiwiYWxnIjoiRVMyNTYifQ</span>
 .<span class="jwt-payload">eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvdjIiLCJodHRwczovL3d3dy53My5vcmcvbnMvY3JlZGVudGlhbHMvZXhhbXBsZXMvdjIiXSwiaWQiOiJodHRwczovL2V4YW1wbGUuY29tL2NyZWRlbnRpYWxzL3N0YXR1cy8zIiwidHlwZSI6WyJWZXJpZmlhYmxlQ3JlZGVudGlhbCIsIkJpdHN0cmluZ1N0YXR1c0xpc3RDcmVkZW50aWFsIl0sImlzc3VlciI6ImRpZDpleGFtcGxlOjEyMzQ1IiwidmFsaWRGcm9tIjoiMjAyMS0wNC0wNVQxNDoyNzo0MFoiLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzLzMjbGlzdCIsInR5cGUiOiJCaXRzdHJpbmdTdGF0dXNMaXN0Iiwic3RhdHVzUHVycG9zZSI6InJldm9jYXRpb24iLCJlbmNvZGVkTGlzdCI6InVINHNJQUFBQUFBQUFBLTNCTVFFQUFBRENvUFZQYlF3Zm9BQUFBQUFBQUFBQUFBQUFBQUFBQUlDM0FZYlNWS3NBUUFBQSJ9fQ</span>
-.<span class="jwt-signature">uxjSkegcYY_bQbyzGjP5iQb_FMqU9pd5EV61LNwzLv36sDcVPMyhtv2r5G__7oZb_Vovrdm69jbTKEAmUC_1xQ</span>
+.<span class="jwt-signature">LjnvwTBwWPnvY7Ibs7wqYqxzP-FxyfmAKz9lPkuTuLJ9Cam6vmQlKI3e9diNj1_g-rBY7nztmprrqyIniuHwaw</span>
 </div>
 </div>
     </div>
@@ -3225,7 +3199,7 @@ d28443a10128a059021c7b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f
 </pre>
 <strong>application/vc+cose</strong>
 <div class="cose-text">
-d28443a10128a05901e47b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33222c2274797065223a5b2256657269666961626c6543726564656e7469616c222c22426974737472696e675374617475734c69737443726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34305a222c2263726564656e7469616c5375626a656374223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f7374617475732f33236c697374222c2274797065223a22426974737472696e675374617475734c697374222c22737461747573507572706f7365223a227265766f636174696f6e222c22656e636f6465644c697374223a2275483473494141414141414141412d33424d514541414144436f505650625177666f414141414141414141414141414141414141414149433341596253564b734151414141227d7d5840e126cfcdbb607affaaa7941899741adaa88c529537b20fe9b03f10693aae5c70ed65aa4b35c1c3ac2fa9fbca40648a7e7b5e90bc65e21f4b07e2ca36ab4b7abd
+d28443a10128a05901e47b2240636f6e74657874223a5b2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f7632222c2268747470733a2f2f7777772e77332e6f72672f6e732f63726564656e7469616c732f6578616d706c65732f7632225d2c226964223a2268747470733a2f2f6578616d706c652e636f6d2f63726564656e7469616c732f7374617475732f33222c2274797065223a5b2256657269666961626c6543726564656e7469616c222c22426974737472696e675374617475734c69737443726564656e7469616c225d2c22697373756572223a226469643a6578616d706c653a3132333435222c2276616c696446726f6d223a22323032312d30342d30355431343a32373a34305a222c2263726564656e7469616c5375626a656374223a7b226964223a2268747470733a2f2f6578616d706c652e636f6d2f7374617475732f33236c697374222c2274797065223a22426974737472696e675374617475734c697374222c22737461747573507572706f7365223a227265766f636174696f6e222c22656e636f6465644c697374223a2275483473494141414141414141412d33424d514541414144436f505650625177666f414141414141414141414141414141414141414149433341596253564b734151414141227d7d584049ad174ba2e757192af12c46e24bbaceec6be56769f066d4668b1b775fdda8060cb3e167e75dd48680151607858da9f59cc9ea64765c47d01035c7618ffb6f86
 </div>
     </div>
 </div></div></div></div>
@@ -3381,8 +3355,6 @@ Add <code>TerseBitstringStatusListEntry</code> definition and algorithms.
       <a href="https://www.rfc-editor.org/info/rfc9458/"><cite>Oblivious HTTP</cite></a>. M. Thomson; C. A. Wood.  IETF. January 2024. Proposed Standard. URL: <a href="https://www.rfc-editor.org/info/rfc9458/">https://www.rfc-editor.org/info/rfc9458/</a>
     </dd><dt id="bib-url">[URL]</dt><dd>
       <a href="https://url.spec.whatwg.org/"><cite>URL Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://url.spec.whatwg.org/">https://url.spec.whatwg.org/</a>
-    </dd><dt id="bib-vc-data-integrity">[VC-DATA-INTEGRITY]</dt><dd>
-      <a href="https://www.w3.org/TR/vc-data-integrity/"><cite>Verifiable Credential Data Integrity 1.0</cite></a>. Ivan Herman; Manu Sporny; Ted Thibodeau Jr; Dave Longley; Greg Bernstein.  W3C. 15 May 2025. W3C Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-integrity/">https://www.w3.org/TR/vc-data-integrity/</a>
     </dd><dt id="bib-vc-data-model-2-0">[VC-DATA-MODEL-2.0]</dt><dd>
       <a href="https://www.w3.org/TR/vc-data-model-2.0/"><cite>Verifiable Credentials Data Model v2.0</cite></a>. Ivan Herman; Michael Jones; Manu Sporny; Ted Thibodeau Jr; Gabe Cohen.  W3C. 15 May 2025. W3C Recommendation. URL: <a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>
     </dd><dt id="bib-xmlschema11-2">[XMLSCHEMA11-2]</dt><dd>
