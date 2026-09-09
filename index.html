@@ -985,10 +985,10 @@ To process a `TerseBitstringStatusListEntry`, apply the algorithm in Section
 [[[#terse-to-bitstring]]] to convert it to a `BitstringStatusListEntry`.
         <p>
 Implementers need to set a value |listLength| for the length of an individual status list. This then yields
-a number of status lists |listCount| = 2^32 / |listLength| for a 32-bit `terseStatusListIndex`.
+a number of status lists |listCount| = 2<sup>32</sup> / |listLength| for a 32-bit `terseStatusListIndex`.
 |listLength| is needed to convert from a `TerseBitstringStatusListEntry` to a `BitstringStatusListEntry`.
 Noting that some values of |listLength| will harm the privacy-preserving properties of these status lists,
-implementations MUST use |listLength| = 2^26 and |listCount| = 2^6.
+implementations MUST use |listLength| = 2<sup>26</sup> and |listCount| = 2<sup>6</sup>.
         </p>
         <pre class="example nohighlight" title="Example TerseBitstringStatusListEntry">
 "credentialStatus": {
