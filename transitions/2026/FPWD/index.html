@@ -1902,10 +1902,10 @@ To process a <code>TerseBitstringStatusListEntry</code>, apply the algorithm in 
 <a href="#terse-to-bitstring" data-matched-text="[[[#terse-to-bitstring]]]" class="sec-ref"><bdi class="secno">3.5.1 </bdi><code>TerseBitstringStatusListEntry</code> to <code>BitstringStatusListEntry</code></a> to convert it to a <code>BitstringStatusListEntry</code>.
         </p><p>
 Implementers need to set a value <var>listLength</var> for the length of an individual status list. This then yields
-a number of status lists <var>listCount</var> = 2^32 / <var>listLength</var> for a 32-bit <code>terseStatusListIndex</code>.
+a number of status lists <var>listCount</var> = 2<sup>32</sup> / <var>listLength</var> for a 32-bit <code>terseStatusListIndex</code>.
 <var>listLength</var> is needed to convert from a <code>TerseBitstringStatusListEntry</code> to a <code>BitstringStatusListEntry</code>.
 Noting that some values of <var>listLength</var> will harm the privacy-preserving properties of these status lists,
-implementations <em class="rfc2119">MUST</em> use <var>listLength</var> = 2^26 and <var>listCount</var> = 2^6.
+implementations <em class="rfc2119">MUST</em> use <var>listLength</var> = 2<sup>26</sup> and <var>listCount</var> = 2<sup>6</sup>.
         </p>
         <div class="example" id="example-example-tersebitstringstatuslistentry">
         <div class="marker">
