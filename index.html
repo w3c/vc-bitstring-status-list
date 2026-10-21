@@ -1229,11 +1229,35 @@ times the `statusSize`.
         </li>
         <li>
 Generate a |compressed bitstring| by using the GZIP
-compression algorithm [[RFC1952]] on the |bitstring|
-and then <a data-cite="?CID#multibase-0">Multibase-encode</a> the result using base64url (with no padding).
+compression algorithm [[RFC1952]] on the |bitstring|.
+            <ol class="algorithm">
+                <li>
+The GZIP FLG header MUST NOT have the FTEXT (0) bit set.
+                </li>
+                <li>
+The GZIP FLG header MUST NOT have the FEXTRA (2) bit set.
+                </li>
+                <li>
+The GZIP FLG header SHOULD NOT have the FNAME (3) bit set.
+                </li>
+                <li>
+The GZIP FLG header SHOULD NOT have the FCOMMENT (4) bit set.
+                </li>
+                <li>
+The GZIP MTIME header SHOULD be 0 (no time stamp is available).
+                </li>
+                <li>
+The GZIP OS header SHOULD be 255 (unknown).
+                </li>
+            </ol>
         </li>
         <li>
-Return the |compressed bitstring|.
+Generate an |encoded bitstring| by applying the
+<a data-cite="?CID#multibase-0">multibase-encoding</a> algorithm
+to the |compressed bitstring| using base64url (with no padding).
+        </li>
+        <li>
+Return the |encoded bitstring|.
         </li>
       </ol>
     </section>
@@ -1243,21 +1267,24 @@ Return the |compressed bitstring|.
 
       <p>
 The following process, or one generating the exact output, MUST be followed
-when expanding a compressed status list bitstring. The algorithm takes a
-|compressed bitstring| as input and either throws an error or returns a
+when expanding an encoded status list bitstring. The algorithm takes an
+|encoded bitstring| as input and either throws an error or returns an
 |uncompressed bitstring| as output.
       </p>
 
       <ol class="algorithm">
         <li>
-Let |compressed bitstring| be a compressed status list
+Let |encoded bitstring| be an encoded status list
 bitstring.
         </li>
         <li>
-Generate an |uncompressed bitstring| by using the
-<a data-cite="?CID#multibase-0">Multibase-decode</a> algorithm on the
-|compressed bitstring| and then expanding the output using
-the GZIP decompression algorithm [[RFC1952]].
+Generate a |compressed bitstring| by using the
+<a data-cite="?CID#multibase-0">multibase-decoding</a> algorithm on the
+|encoded bitstring|.
+        </li>
+        <li>
+Generate an |uncompressed bitstring| by expanding the |compressed bitstring|
+using the GZIP decompression algorithm [[RFC1952]].
         </li>
         <li>
 Return the |uncompressed bitstring|.
