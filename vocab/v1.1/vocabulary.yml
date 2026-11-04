@@ -1,0 +1,148 @@
+vocab:
+  - id: cs
+    value: https://www.w3.org/ns/credentials/status#
+    context: https://www.w3.org/ns/credentials/status/v1.1r1
+
+prefix:
+  - id: cred
+    value: https://w3.org/2018/credentials#
+
+  - id: sec
+    value: https://w3id.org/security#
+
+ontology:
+  - property: dc:title
+    value: Bitstring Status List Vocabulary v1.1
+
+  - property: dc:description
+    value: RDFS [[RDF-SCHEMA]] vocabulary used by the [[[VC-BITSTRING-STATUS-LIST-1.1]]] [[VC-BITSTRING-STATUS-LIST-1.1]]
+
+  - property: rdfs:seeAlso
+    value: https://www.w3.org/TR/vc-bitstring-status-list-1.1/
+
+class:
+  - id: BitstringStatusList
+    label: Bitstring status list class
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslist
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: BitstringStatusListEntry
+    label: Bitstring status list entry class
+    upper_value: cred:CredentialStatus
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslistentry
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: BitstringStatusListCredential
+    label: Bitstring status list credential class
+    upper_value: cred:VerifiableCredential
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#bitstringstatuslistcredential
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: BitstringStatusMessage
+    label: Bitstring status message class
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusMessage
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: TerseBitstringStatusListEntry
+    label: Terse bitstring status list entry
+    upper_value: cred:CredentialStatus
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+property:
+  - id: statusPurpose
+    label: The purpose of the status list
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusPurpose
+    domain:
+      - cs:BitstringStatusList
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: xsd:string
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: statusListIndex
+    label: The position of the entry in the status list
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusListIndex
+    domain:
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: xsd:nonNegativeInteger
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: statusListCredential
+    label: The location of the status list credential
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusListCredential
+    domain:
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: cs:BitstringStatusListCredential
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: encodedList
+    label: The encoded status list bitstring
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#encodedList
+    domain: cs:BitstringStatusList
+    range: sec:multibase
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: ttl
+    label: Time to live in milliseconds
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#ttl
+    domain: cs:BitstringStatusList
+    range: xsd:string
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: statusSize
+    label: Bitstring entry size in bits
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusSize
+    domain:
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: xsd:positiveInteger
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: statusMessage
+    label: Status message
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusMessage
+    domain:
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: cs:BitstringStatusMessage
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: status
+    label: Hexadecimal value of a status message
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#status
+    range: xsd:string
+    domain: cs:BitstringStatusMessage
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: message
+    label: Human-readable message of a status value
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#message
+    range: xsd:string
+    domain: cs:BitstringStatusMessage
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: statusReference
+    label: Reference documentation for status messages
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#statusReference
+    domain:
+      - cs:BitstringStatusListEntry
+      - cs:TerseBitstringStatusListEntry
+    range: URL
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: terseStatusListBaseUrl
+    label: Terse status list base url
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry
+    domain: cs:TerseBitstringStatusListEntry
+    range: URL
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
+
+  - id: terseStatusListIndex
+    label: Terse status list index
+    defined_by: https://www.w3.org/TR/vc-bitstring-status-list-1.1/#tersebitstringstatuslistentry
+    domain: cs:TerseBitstringStatusListEntry
+    range: xsd:unsignedInt
+    context: [vocab,https://www.w3.org/ns/credentials/v2.1]
