@@ -1129,9 +1129,10 @@ Let |compressed bitstring| be the value of the
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
         </li>
         <li>
-Let |credentialIndex| be the value of the
-`statusListIndex` property of the
-<a href="#bitstringstatuslistentry">BitstringStatusListEntry</a>.
+Let |credentialIndex| be the integer represented by the `statusListIndex`
+property of the `credentialStatus` entry in |credentialToValidate|.
+Let |statusSize| be the value of <a href="#statusSize">`statusSize`</a> in
+that entry, or 1 if the property is absent.
         </li>
         <li>
 Generate a |revocation bitstring| by passing
@@ -1139,16 +1140,17 @@ Generate a |revocation bitstring| by passing
 <a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>.
         </li>
         <li>
-If the length of the |revocation bitstring| divided by
-<a href="#statusSize">`statusSize`</a> is less than |minimumNumberOfEntries|,
-raise a <a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
+If the length of the |revocation bitstring| divided by |statusSize| is
+less than |minimumNumberOfEntries|, raise a
+<a href="#STATUS_LIST_LENGTH_ERROR">STATUS_LIST_LENGTH_ERROR</a>.
         </li>
         <li>
-Let |status| be the value in the |bitstring| at the position indicated
-by the |credentialIndex| multiplied by the |size|. If the |credentialIndex|
-multiplied by the |size| is a value outside of the range of the |bitstring|, a
-<a data-cite="VC-DATA-MODEL-2.0#RANGE_ERROR">RANGE_ERROR</a> MUST be
-raised.
+Let |status position| be |credentialIndex| multiplied by |statusSize|.
+If |status position| is less than 0, or if |status position| plus |statusSize|
+exceeds the length of the |revocation bitstring|, a
+<a data-cite="VC-DATA-MODEL-2.0#RANGE_ERROR">RANGE_ERROR</a> MUST be raised.
+Let |status| be the value encoded by the |statusSize| bits starting at
+|status position| in the |revocation bitstring|.
         </li>
         <li>
 Let |result| be an empty [=map=].
