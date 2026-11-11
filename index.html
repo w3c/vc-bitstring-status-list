@@ -1355,7 +1355,7 @@ Set |result|.|statusListCredential| to the concatenation of the following values
 Set |result|.|type| to 'BitstringStatusListEntry'.
           </li>
           <li>
-Set |result|.|statusListIndex| to |statusListIndex|.
+Set |result|.|statusListIndex| to the base-10 string representation of |statusListIndex|.
           </li>
           <li>
 Set |result|.|statusPurpose| to |statusPurpose|.
@@ -1366,7 +1366,7 @@ Return |result|.
         </ol>
 
         <p>
-|result| can be used as input to the
+Use |result| as the |credentialStatus| of a copy of |vc| when invoking the
 <a href="#validate-algorithm">Bitstring Validation Algorithm</a>.
 
         </p>
