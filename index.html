@@ -1224,8 +1224,26 @@ where each bit is initialized to 0 (zero).
 For each value in `bitstring`, if there is a
 corresponding `statusListIndex` value in
 a credential in `issuedCredentials`, set the value to the
-appropriate status. The position of the value is computed as `statusListIndex`
-times the `statusSize`.
+appropriate status, using Most Significant Bit (MSB) ordering. Given a
+`status` of `statusSize` length, for each `statusBitIndex` from `0` to
+`statusSize - 1`:
+          <ol class="algorithm">
+              <li>
+                  Let `bitIndex = statusListIndex * statusSize + statusBitIndex`.
+              </li>
+              <li>
+                  Let `byteIndex = floor(bitIndex / 8)`.
+              </li>
+              <li>
+                  Let `bitPosition = 7 - (bitIndex mod 8)`.
+              </li>
+              <li>
+                  Let `statusBit = (status >> (statusSize - statusBitIndex - 1)) & 0b1`.
+              </li>
+              <li>
+                  Set `bitstring[byteIndex][bitPosition] = statusBit`.
+              </li>
+          </ol>
         </li>
         <li>
 Generate a |compressed bitstring| by using the GZIP
