@@ -1088,10 +1088,10 @@ accessible by data analysts or systems administrators.
 
       <p>
 The following process, or one generating the exact output, MUST be followed
-when validating a [=verifiable credential=] that is contained in a
+when validating the status of a [=verifiable credential=] using a
 <a href="#bitstringstatuslistcredential">BitstringStatusListCredential</a>.
-The algorithm takes a status list [=verifiable credential=] as input
-and either throws an error or returns a status list credential as output.
+The algorithm takes the credential to validate as input and either throws an
+error or returns a map containing the validation result.
       </p>
 
       <ol class="algorithm">
