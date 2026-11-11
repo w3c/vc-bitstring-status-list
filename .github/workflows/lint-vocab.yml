@@ -14,9 +14,9 @@ jobs:
       - name: Setup Node 20
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 26
       - name: Lint Security Vocabulary
         run: |
           npm install yml2vocab
           npm update yml2vocab
-          ./node_modules/.bin/yml2vocab -v vocab/vocabulary.yml -t vocab/template.html
+          ./node_modules/.bin/yml2vocab -c -v vocab/vocabulary.yml -t vocab/template.html

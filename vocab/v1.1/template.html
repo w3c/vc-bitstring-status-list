@@ -1,0 +1,356 @@
+<html lang="en">
+  <head>
+    <meta charset='utf-8'/>
+    <title></title>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+    <script class="remove" src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.3.0/dist/main.js"></script>
+    <script>
+      function remove_status_remark() {
+          const sotd = document.getElementById("sotd");
+          const p = sotd.getElementsByTagName('p')[0];
+          sotd.removeChild(p);
+      }
+      function manipulateHiddenSections() {
+            // Find all 'section' elements with class 'hidden'
+            const hiddenSections = document.querySelectorAll('section.hidden');
+
+            // Loop through each hidden section
+            hiddenSections.forEach(section => {
+                // Retrieve the value of the 'id' attribute
+                const sectionId = section.id;
+
+                // Find the 'a' element in the section that starts with "This term is formally defined in another vocabulary"
+                const aElement = Array.from(section.querySelectorAll('a')).find(a => {
+                    const textContent = a.parentElement.textContent.trim();
+                    return textContent.startsWith("This term is formally defined in another vocabulary");
+                });
+
+                // Retrieve the 'href' value if the 'a' element was found
+                const ohref = aElement ? aElement.href : null;
+
+                // Find all 'a' elements that refer to this 'id' value
+                const aElementsToReplace = document.querySelectorAll(`a[href="#${sectionId}"]`);
+
+                // Loop through each 'a' element to replace
+                aElementsToReplace.forEach(a => {
+                    if (ohref) {
+                        // Replace the 'href' attribute with 'ohref'
+                        a.href = ohref;
+                    } else {
+                        // Replace the 'a' element with a 'span' element
+                        const span = document.createElement('span');
+                        span.textContent = a.textContent;
+                        a.parentNode.replaceChild(span, a);
+                    }
+                });
+
+                // Remove the 'section' from the DOM tree
+                section.remove();
+            });
+        }
+    </script>
+    <script class="remove">
+      var respecConfig = {
+        specStatus:  "base",
+        shortName:   "ns/credentials/status",
+        thisVersion: "https://www.w3.org/ns/credentials/status/",
+        doJsonLd:    true,
+        editors: [{
+          name:       "Ivan Herman",
+          url:        "https://www.w3.org/People/Ivan/",
+          company:    "W3C",
+          w3cid:      7382,
+          orcid:      "0000-0003-0782-2704",
+          companyURL: "https://www.w3.org",
+          note:       "v2.0"
+        },{
+          name:       "Manu Sporny",
+          url:        "http://manu.sporny.org/",
+          company:    "Digital Bazaar",
+          companyURL: "http://digitalbazaar.com/",
+          w3cid:      41758,
+          note:       "v1.0, v2.0"
+        }],
+        alternateFormats: [
+          {uri: "vocabulary.ttl", label: "Turtle"},
+          {uri: "vocabulary.jsonld", label: "JSON-LD"}
+        ],
+        postProcess : [remove_status_remark, window.respecMermaid.createFigures],
+        preProcess : [manipulateHiddenSections],
+        inlineCSS: true,
+        doRDFa: false,
+        noIDLIn: true,
+        noLegacyStyle: false
+      };
+    </script>
+    <style type="text/css">
+      dl.terms dt {
+        float: left;
+        clear: left;
+        width: 10vw;
+      }
+
+      dl.terms dd {
+        margin-left: 15vw;
+      }
+
+      dl.terms dd:after {
+          content: '';
+          display: block;
+          clear: both;
+          margin-bottom: 5px;
+      }
+      table.rdfs-definition td {
+        vertical-align: top;
+        margin-right: 2em;
+      }
+      .bold {
+        font-weight: bold;
+      }
+      /* code {
+        color: red;
+      } */
+
+      .term_definitions section {
+        border-bottom-style: solid ;
+        border-bottom-width: 1px;
+        border-bottom-color: darkgrey;
+      }
+
+      .annoy {
+        background: hsla(40,100%,50%,0.95);
+		    color: black;
+		    padding: .75em 1em;
+		    border: red;
+		    border-style: solid none;
+		    box-shadow: 0 2px 8px black;
+		    text-align: center;
+      }
+
+      summary {
+        font-weight: normal !important;
+      }
+
+    </style>
+  </head>
+  <body  typeof="owl:Ontology">
+    <section id="abstract">
+      <p>This document describes the <span property="dc:title" id="title"></span>, i.e.,
+         the <span property="dc:description" id="description"></span>.
+      </p>
+      <p>Alternate versions of the vocabulary definition exist in
+        <a rel="alternate" id="alt-turtle">Turtle</a> and
+        <a rel="alternate" id="alt-jsonld">JSON-LD</a>.
+      </p>
+      <dl>
+        <dt>Published:</dt><dd><time property="dc:date" id="time"></time></dd>
+        <dt>Version Info:</dt>
+        <dd>1.0</dd>
+        <dt id="see_also">See Also: </dt>
+       </dl>
+    </section>
+    <section id="sotd">
+      <p>
+            This vocabulary has been defined by the
+            <a href="https://www.w3.org/2017/vc/WG/">
+            W3C Verifiable Credentials Working Group</a> and provides the official RDFS
+            vocabulary for
+            <a href="https://www.w3.org/TR/vc-bitstring-status-list-1.1/">
+            Bitstring Status Lists v1.1</a>. Comments regarding this document are welcome.
+            Please file issues directly on
+            <a href="https://github.com/w3c/vc-bitstring-status-list/issues/">GitHub</a>, or
+            send them to
+            <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
+            (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">
+            subscribe</a>,
+            <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">
+            archives</a>).
+      </p>
+    </section>
+    <section>
+      <h2>Specification of terms</h2>
+      <p>
+        In general, the terms &mdash; i.e., the properties and classes &mdash; used in
+        the VCDM are formally specified in Recommendation Track documents published by
+        the <a href="https://www.w3.org/groups/wg/vc">W3C Verifiable Credentials Working
+        Group</a>. In each case of such external definition, the term's description in
+        this document contains a link to the relevant specification. Additionally, the
+        `rdfs:definedBy` property in the RDFS representation(s) refers to the formal
+        specification.
+      </p>
+      <p>
+        In some cases, a local explanation is necessary to complement, or to replace,
+        the definition found in an external specification. For instance, this is so when
+        the term is needed to provide a consistent structure to the RDFS vocabulary,
+        such as when the term defines a common supertype for class instances that are
+        used as objects of specific properties. For such cases,
+        the extra definition is included in the current
+        document (and the `rdfs:comment` property is used to include them in the RDFS
+        representations).
+      </p>
+
+        <figure id="vocabulary-diagram" >
+          <pre class="diagram mermaid" style="max-width:100%" data-include="./vocabulary.mmd">
+          </pre>
+          <figcaption>Overview diagram of the vocabulary. <br>
+              Boxes represent RDFS Classes, labeled connection lines represent RDF properties with explicit domains and ranges.
+              See the <a href="vocabulary.mmd">mermaid source of the image</a> for a textual representation of the structure of the image.
+          </figcaption>
+        </figure>
+    </section>
+    <section>
+      <h2>Namespaces</h2>
+      <p>This specification makes use of the following namespaces:</p>
+      <dl class="terms" id="namespaces">
+      </dl>
+    </section>
+
+    <section>
+      <h2><code>@context</code> files</h2>
+      <p>The following <code>@context</code> files make use of the terms defined in this specification:</p>
+      <ul id="contexts">
+      </ul>
+    </section>
+
+    <section id="term_definitions">
+      <h1>Regular terms</h1>
+      <section id="property_definitions" class="term_definitions">
+        <h2>Property definitions</h2>
+      </section>
+
+      <section id="class_definitions" class="term_definitions">
+        <h2>Class definitions</h2>
+      </section>
+
+      <section id="datatype_definitions" class="term_definitions">
+        <h2>Datatype definitions</h2>
+      </section>
+
+      <section id="individual_definitions" class="term_definitions">
+        <h2>Definitions for individuals</h2>
+      </section>
+    </section>
+
+    <section id="deprecated_term_definitions">
+      <h1>Deprecated terms</h1>
+
+      <p class="annoy">All terms in this section are <em><strong>deprecated</strong></em>, and are only kept in this
+        vocabulary for backward compatibility.
+        <br><br>New applications should not use them.
+      </p>
+
+      <section id="deprecated_property_definitions" class="term_definitions">
+        <h2>Deprecated properties</h2>
+      </section>
+
+      <section id="deprecated_class_definitions" class="term_definitions">
+        <h2>Deprecated classes</h2>
+      </section>
+
+      <section id="deprecated_property_definitions" class="term_definitions">
+        <h2>Deprecated properties</h2>
+      </section>
+
+      <section id="deprecated_individual_definitions" class="term_definitions">
+        <h2>Deprecated individuals</h2>
+      </section>
+    </section>
+
+    <!-- <section class="appendix" id="vocabulary-diagram-alt">
+      <h2>Diagram description</h2>
+      <details>
+        <summary>Overview diagram of the vocabulary (without the `xsd` datatypes). The terms prefixed by <code>cred:</code> or
+        <code>sec:</code> are not defined in this vocabulary; they have only been added to the diagram for the sake of clarity.</summary>
+        <p>
+          The diagram uses boxes, ellipses, and connecting lines with different "styles"
+          (border color, end marker, line type) to differentiate their semantic meaning:
+          "Property", "Class", and "Datatype" are identified by the shape of the
+          graph node (e.g., an ellipse signifies a "Class"); "Superclass", "Domain Of", or "Range" relationships
+          are identified by the style of the connecting line.
+          These style names are used in the explanation text that follows, below.
+        </p>
+        <p>
+          The diagram is roughly divided into three sections — left, middle, and right.
+          To make this description easier to understand, these sections will be respectively referred to
+          as the "Classes", "Properties", and "Values" sections.
+          Shapes in the three sections are connected by lines of different styles.
+        </p>
+        <section>
+          <h3>Classes Section</h3>
+
+          <p>
+            The section contains three ellipses, labeled as "cred:CredentialStatus",
+            "BitstringStatusListEntry", and "BitstringStatusList". It also contains
+            a box, styled as "Property" and labeled as "cred:credentialStatus".
+          </p>
+
+          <p>
+            The "cred:CredentialStatus" ellipse, is connected to the ellipse,
+            labeled as "cred:CredentialStatus", with a line styled "Range".
+            The ellipse labeled as "BitstringStatusListEntry" is connected to the
+            ellipse, labeled as "cred:CredentialStatus", with a line styled as
+            "Superclass".
+          </p>
+
+          <p>
+            The ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are
+            also connected to a number of boxes, all styled as "Property", with lines styled as
+            "Domain Of"; see the "Properties" section below for further details.
+          </p>
+        </section>
+        <section>
+          <h3>Properties Section</h3>
+
+          <p>
+            The section contains a number of boxes, each styles as "Property". The labels of
+            these boxes are "statusListIndex", "statusListCredential", "statusPurpose",
+            "statusMessage", "ttl", "statusReference", "statusSize", and "encodedList".
+            There is also a small, unlabeled circle, which serves as an intersection point for connector
+            lines.
+          </p>
+
+          <p>
+            The ellipse labeled as "BitstringStatusListEntry", described in the previous section, is
+            connected to the "statusListIndex", and "statusListCredential" boxes with lines styled as "Domain Of".
+            The ellipse labeled as "BitstringStatusList", also described in the previous section,
+            is connected to the "statusMessage", "ttl", "statusReference", "statusSize",
+            and "encodedList" boxes, also with lines styled as "Domain Of".
+          </p>
+
+          <p>
+            Both the ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are connected to the
+            intersection point with a line styled as "Domain Of", and the intersection point is connected to the
+            box labeled as "statusPurpose with a line styled as "Domain Of".
+          </p>
+        </section>
+        <section>
+          <h3>Values Section</h3>
+
+          <p>
+            The section contains and ellipse, labeled as "BitstringStatusListCredential", which is connected to
+            another ellipse, labeled as "cred:VerifiableCredential", with a line styled as "Superclass".
+            The box labeled as "statusListCredential", described in the previous section, is connected to the ellipse,
+            labeled as "BitstringStatusListCredential", with a line styled as "Range".
+          </p>
+
+          <p>
+            Another ellipse, labeled as "BistringStatusMessage", is connected to two boxes with lines styled
+            as "Domain Of". The boxes are styled as "Property" and are labeled with "status" and "message".
+            The box labeled as "statusMessage", described in the previous section, is connected to the ellipse,
+            labeled as "BistringStatusMessage", with a line styled as "Range".
+          </p>
+
+          <p>
+            The box labeled as "statusSize", described in the previous section, is connected to a box, styled
+            as "Datatype", and labeled as "xsd:positiveInteger", with a line styled as "Range".
+          </p>
+
+          <p>
+            The box labeled as "encodedList", described in the previous section, is connected to a box, styled
+            as "Datatype", and labeled as "sec:multibase", with a line styled as "Range".
+          </p>
+        </section>
+     </details>
+    </section> -->
+</body>
+</html>

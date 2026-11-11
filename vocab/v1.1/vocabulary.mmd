@@ -1,0 +1,45 @@
+%%{
+    init: {
+        "theme" : "neutral",
+        "class": {
+            "hideEmptyMembersBox": true
+        }
+    }
+}%%
+classDiagram
+    class BitstringStatusList {
+        encodedList : multibase
+        ttl : string
+        statusPurpose : string
+    }
+    class BitstringStatusListEntry {
+        statusPurpose : string
+        statusListIndex : nonNegativeInteger
+        statusSize : positiveInteger
+        statusReference : URL
+    }
+    class BitstringStatusListCredential {}
+    class BitstringStatusMessage {
+        status : string
+        message : string
+    }
+    class TerseBitstringStatusListEntry {
+        terseStatusListBaseUrl : URL
+        terseStatusListIndex : unsignedInt
+        statusPurpose : string
+        statusListIndex : nonNegativeInteger
+        statusSize : positiveInteger
+        statusReference : URL
+    }
+
+
+    BitstringStatusListEntry --|> CredentialStatus : subClassOf
+    BitstringStatusListCredential --|> VerifiableCredential : subClassOf
+    TerseBitstringStatusListEntry --|> CredentialStatus : subClassOf
+
+    BitstringStatusListEntry --> BitstringStatusListCredential : statusListCredential
+    BitstringStatusListEntry --> BitstringStatusMessage : statusMessage
+    TerseBitstringStatusListEntry --> BitstringStatusListCredential : statusListCredential
+    TerseBitstringStatusListEntry --> BitstringStatusMessage : statusMessage
+
+    BitstringStatusListCredential --> BitstringStatusList : credentialSubject
