@@ -64,10 +64,13 @@ the status of a verifiable credential, as shown.
     "id": "https://example.com/status/3#list",
     "type": "BitstringStatusList",
     "statusPurpose": "revocation",
-    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+    "encodedList": "uH4sIAAAAAAAA_-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
   }
 }
 ```
+
+This `encodedList` decodes (multibase base64url, then GZIP) to 16KB of zero
+bytes: 131,072 one-bit entries, none of them revoked.
 
 An issuer can then issue a credential with a `credentialStatus` field that utilizes the issued `statusListCredential`.
 
@@ -119,10 +122,13 @@ A `StatusList` credential may optionally contain a list of status messages. The 
       {"status":"0x1", "message":"invalid"},
       {"status":"0x2", "message":"pending_review"}
     ],
-    "encodedList": "uH4sIAAAAAAAAA-3BMQEAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA"
+    "encodedList": "uH4sIAAAAAAAA_-3BAQEAAACAkP6v7ggKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABim_B8BAIAAAA"
   }
 }
 ```
+
+This `encodedList` decodes to 32KB of zero bytes: 131,072 two-bit entries,
+all with status `0x0`.
 
 An example credential issued to use a multiple state `statusList` looks
 identical to one issued for a single use.
