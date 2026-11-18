@@ -975,10 +975,21 @@ the information necessary to determine the status of a particular
     "id": "https://example.com/status/3#list",
     "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
-    "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+    "encodedList": "<span class="highlight">uH4sIAAAAAAAA_-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
 }
         </pre>
+
+        <p class="note" title="Decoding the example encodedList">
+The `encodedList` value in the example above is the multibase prefix `u`
+followed by the base64url encoding (with no padding) of a GZIP-compressed
+bitstring whose GZIP header has FLG 0, MTIME 0, and OS 255, as described in
+the <a href="#bitstring-generation-algorithm">Bitstring Generation
+Algorithm</a>. Passing it to the
+<a href="#bitstring-expansion-algorithm">Bitstring Expansion Algorithm</a>
+yields 16KB (131,072 bits) of zeros: a list of 131,072 one-bit entries in
+which no [=verifiable credential=] has been revoked.
+        </p>
 
       </section>
       <section>
@@ -2097,7 +2108,7 @@ data-vc-tabs="ecdsa-rdfc-2019 eddsa-rdfc-2022 jose cose">
     "id": "https://example.com/status/3#list",
     "type": "<span class="highlight">BitstringStatusList</span>",
     "statusPurpose": "<span class="highlight">revocation</span>",
-    "encodedList": "<span class="highlight">uH4sIAAAAAAAAA-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
+    "encodedList": "<span class="highlight">uH4sIAAAAAAAA_-3BMQEAAADCoPVPbQwfoAAAAAAAAAAAAAAAAAAAAIC3AYbSVKsAQAAA</span>"
   }
 }
 </pre>
