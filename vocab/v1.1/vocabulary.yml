@@ -1,3 +1,8 @@
+mermaid:
+  accDescr: RDFS vocabulary used by the VC Status List v1.1 specification, represented as a Mermaid class diagram.
+  extras:
+    - "BitstringStatusListCredential --> BitstringStatusList : credentialSubject"
+
 vocab:
   - id: cs
     value: https://www.w3.org/ns/credentials/status#

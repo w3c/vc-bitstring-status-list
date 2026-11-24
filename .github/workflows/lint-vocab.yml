@@ -19,4 +19,4 @@ jobs:
         run: |
           npm install yml2vocab
           npm update yml2vocab
-          ./node_modules/.bin/yml2vocab -c -v vocab/vocabulary.yml -t vocab/template.html
+          ./node_modules/.bin/yml2vocab -cm -v vocab/vocabulary.yml -t vocab/template.html
