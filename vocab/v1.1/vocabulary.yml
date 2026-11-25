@@ -1,5 +1,10 @@
 mermaid:
-  accDescr: RDFS vocabulary used by the VC Status List v1.1 specification, represented as a Mermaid class diagram.
+  accDescr: |
+    Mermaid representation of the Vocabulary. See the non-visual structure of the diagram
+    on ./vocabulary.mmd: classes on the diagram correspond to the RDFS classes; connecting
+    lines with labels represent properties with ranges and domains defined in this vocabulary,
+    and entries in the class boxes correspond to properties on a class that have external
+    resources or datatypes as values.
   extras:
     - "BitstringStatusListCredential --> BitstringStatusList : credentialSubject"
 
