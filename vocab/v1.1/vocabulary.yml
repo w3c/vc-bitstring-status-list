@@ -11,7 +11,7 @@ mermaid:
 vocab:
   - id: cs
     value: https://www.w3.org/ns/credentials/status#
-    context: https://www.w3.org/ns/credentials/status/v1.1r1
+    context: https://www.w3.org/ns/credentials/status/v1.1rc1
 
 prefix:
   - id: cred
