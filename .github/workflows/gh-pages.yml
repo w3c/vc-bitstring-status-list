@@ -34,7 +34,7 @@ jobs:
         run: |
           npm info yml2vocab
           npm install --verbose yml2vocab
-          ./node_modules/.bin/yml2vocab -cm -v vocab/vocabulary.yml -t vocab/template.html
+          ./node_modules/.bin/yml2vocab -cm -v vocab/v1.1/vocabulary.yml -t vocab/v1.1/template.html
           rm -rf node_modules
       - name: Setup Github Pages
         uses: actions/configure-pages@v5
