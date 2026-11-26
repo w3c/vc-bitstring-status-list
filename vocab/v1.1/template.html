@@ -62,14 +62,14 @@
           w3cid:      7382,
           orcid:      "0000-0003-0782-2704",
           companyURL: "https://www.w3.org",
-          note:       "v2.0"
+          note:       "v1.1"
         },{
           name:       "Manu Sporny",
           url:        "http://manu.sporny.org/",
           company:    "Digital Bazaar",
           companyURL: "http://digitalbazaar.com/",
           w3cid:      41758,
-          note:       "v1.0, v2.0"
+          note:       "v1.0, v1.1"
         }],
         alternateFormats: [
           {uri: "vocabulary.ttl", label: "Turtle"},
@@ -154,9 +154,9 @@
             This vocabulary has been defined by the
             <a href="https://www.w3.org/2017/vc/WG/">
             W3C Verifiable Credentials Working Group</a> and provides the official RDFS
-            vocabulary for
+            vocabulary for the
             <a href="https://www.w3.org/TR/vc-bitstring-status-list-1.1/">
-            Bitstring Status Lists v1.1</a>. Comments regarding this document are welcome.
+            VC Bitstring Status Lists v1.1</a>. Comments regarding this document are welcome.
             Please file issues directly on
             <a href="https://github.com/w3c/vc-bitstring-status-list/issues/">GitHub</a>, or
             send them to
@@ -194,7 +194,7 @@
           </pre>
           <figcaption>Overview diagram of the vocabulary. <br>
               Boxes represent RDFS Classes, labeled connection lines represent RDF properties with explicit domains and ranges.
-              See the <a href="vocabulary.mmd">mermaid source of the image</a> for a textual representation of the structure.
+              See the <a href="./vocabulary.mmd">mermaid source of the image</a> for a textual representation of the structure.
           </figcaption>
         </figure>
     </section>
@@ -247,8 +247,8 @@
         <h2>Deprecated classes</h2>
       </section>
 
-      <section id="deprecated_property_definitions" class="term_definitions">
-        <h2>Deprecated properties</h2>
+      <section id="deprecated_datatype_definitions" class="term_definitions">
+        <h2>Datatype definitions</h2>
       </section>
 
       <section id="deprecated_individual_definitions" class="term_definitions">
@@ -256,101 +256,5 @@
       </section>
     </section>
 
-    <!-- <section class="appendix" id="vocabulary-diagram-alt">
-      <h2>Diagram description</h2>
-      <details>
-        <summary>Overview diagram of the vocabulary (without the `xsd` datatypes). The terms prefixed by <code>cred:</code> or
-        <code>sec:</code> are not defined in this vocabulary; they have only been added to the diagram for the sake of clarity.</summary>
-        <p>
-          The diagram uses boxes, ellipses, and connecting lines with different "styles"
-          (border color, end marker, line type) to differentiate their semantic meaning:
-          "Property", "Class", and "Datatype" are identified by the shape of the
-          graph node (e.g., an ellipse signifies a "Class"); "Superclass", "Domain Of", or "Range" relationships
-          are identified by the style of the connecting line.
-          These style names are used in the explanation text that follows, below.
-        </p>
-        <p>
-          The diagram is roughly divided into three sections — left, middle, and right.
-          To make this description easier to understand, these sections will be respectively referred to
-          as the "Classes", "Properties", and "Values" sections.
-          Shapes in the three sections are connected by lines of different styles.
-        </p>
-        <section>
-          <h3>Classes Section</h3>
-
-          <p>
-            The section contains three ellipses, labeled as "cred:CredentialStatus",
-            "BitstringStatusListEntry", and "BitstringStatusList". It also contains
-            a box, styled as "Property" and labeled as "cred:credentialStatus".
-          </p>
-
-          <p>
-            The "cred:CredentialStatus" ellipse, is connected to the ellipse,
-            labeled as "cred:CredentialStatus", with a line styled "Range".
-            The ellipse labeled as "BitstringStatusListEntry" is connected to the
-            ellipse, labeled as "cred:CredentialStatus", with a line styled as
-            "Superclass".
-          </p>
-
-          <p>
-            The ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are
-            also connected to a number of boxes, all styled as "Property", with lines styled as
-            "Domain Of"; see the "Properties" section below for further details.
-          </p>
-        </section>
-        <section>
-          <h3>Properties Section</h3>
-
-          <p>
-            The section contains a number of boxes, each styles as "Property". The labels of
-            these boxes are "statusListIndex", "statusListCredential", "statusPurpose",
-            "statusMessage", "ttl", "statusReference", "statusSize", and "encodedList".
-            There is also a small, unlabeled circle, which serves as an intersection point for connector
-            lines.
-          </p>
-
-          <p>
-            The ellipse labeled as "BitstringStatusListEntry", described in the previous section, is
-            connected to the "statusListIndex", and "statusListCredential" boxes with lines styled as "Domain Of".
-            The ellipse labeled as "BitstringStatusList", also described in the previous section,
-            is connected to the "statusMessage", "ttl", "statusReference", "statusSize",
-            and "encodedList" boxes, also with lines styled as "Domain Of".
-          </p>
-
-          <p>
-            Both the ellipses labeled as "BitstringStatusListEntry" and "BitstringStatusList" are connected to the
-            intersection point with a line styled as "Domain Of", and the intersection point is connected to the
-            box labeled as "statusPurpose with a line styled as "Domain Of".
-          </p>
-        </section>
-        <section>
-          <h3>Values Section</h3>
-
-          <p>
-            The section contains and ellipse, labeled as "BitstringStatusListCredential", which is connected to
-            another ellipse, labeled as "cred:VerifiableCredential", with a line styled as "Superclass".
-            The box labeled as "statusListCredential", described in the previous section, is connected to the ellipse,
-            labeled as "BitstringStatusListCredential", with a line styled as "Range".
-          </p>
-
-          <p>
-            Another ellipse, labeled as "BistringStatusMessage", is connected to two boxes with lines styled
-            as "Domain Of". The boxes are styled as "Property" and are labeled with "status" and "message".
-            The box labeled as "statusMessage", described in the previous section, is connected to the ellipse,
-            labeled as "BistringStatusMessage", with a line styled as "Range".
-          </p>
-
-          <p>
-            The box labeled as "statusSize", described in the previous section, is connected to a box, styled
-            as "Datatype", and labeled as "xsd:positiveInteger", with a line styled as "Range".
-          </p>
-
-          <p>
-            The box labeled as "encodedList", described in the previous section, is connected to a box, styled
-            as "Datatype", and labeled as "sec:multibase", with a line styled as "Range".
-          </p>
-        </section>
-     </details>
-    </section> -->
 </body>
 </html>
