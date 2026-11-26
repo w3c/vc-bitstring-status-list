@@ -2,8 +2,8 @@ name: Lint the RDF vocabulary
 on:
   pull_request:
     paths:
-    - 'vocab/security/vocabulary.yml'
-    - 'vocab/security/template.html'
+    - 'vocab/v1.1/vocabulary.yml'
+    - 'vocab/v1.1/template.html'
 
 jobs:
   build:
@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: Setup environment
         uses: actions/checkout/@v3
-      - name: Setup Node 20
+      - name: Setup Node 26
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 26
       - name: Lint Security Vocabulary
         run: |
           npm install yml2vocab
           npm update yml2vocab
-          ./node_modules/.bin/yml2vocab -v vocab/vocabulary.yml -t vocab/template.html
+          ./node_modules/.bin/yml2vocab -cm -v vocab/v1.1/vocabulary.yml -t vocab/v1.1/template.html
